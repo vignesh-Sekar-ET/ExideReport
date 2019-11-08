@@ -1,0 +1,69 @@
+<div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+  <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
+      <div fxLayout="column wrap" style="background-color:#fff;" fxFlex="80" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div>
+          <h4>Create Report</h4>
+        </div>
+        <div fxLayout="row wrap" style="background-color:#fff;padding:12px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div>
+              <span class="headerclass">Create Report</span></div>
+          </div>
+        </div>
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div>
+            <mat-divider></mat-divider>
+          </div>
+        </div>
+        <form>
+          <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="column wrap" style="padding:15px" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+              <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
+                <input matInput type="text" placeholder="Report Name" required>
+
+              </mat-form-field>
+              <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
+                <mat-select placeholder="Data Source" required>
+                  <ng-template ngFor let-option [ngForOf]="selectvalue" let-i="index">
+                    <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
+                  </ng-template>
+                </mat-select>
+
+              </mat-form-field>
+              <mat-form-field>
+                <textarea matInput rows="4" cols="40" name="query" placeholder="Query" required></textarea>
+              </mat-form-field>
+            </div>
+            <div fxLayout="column wrap" style="padding:15px;" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+              <div style="margin-bottom:10px">
+                <mat-label>Query Type</mat-label>
+              </div>
+              <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false">
+                <mat-radio-button required checked="true">Text</mat-radio-button>
+                <mat-radio-button required checked="false">Store Procedure</mat-radio-button>
+              </div>
+              <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
+                <input matInput placeholder="Parameter Table Name" required>
+
+              </mat-form-field>
+              <div style="margin-bottom:10px;">
+                <mat-label>Upload File</mat-label>
+              </div>
+              <n-file-upload></n-file-upload>
+              <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
+                <mat-select placeholder="Report Group Name" required>
+                  <ng-template ngFor let-option [ngForOf]="RGname" let-i="index">
+                    <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
+                  </ng-template>
+                </mat-select>
+
+              </mat-form-field>
+              <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#0e78e5;border-radius:12px">Generate</button><button mat-button style="background-color:#ed1c24;border-radius:12px">Cancel</button></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

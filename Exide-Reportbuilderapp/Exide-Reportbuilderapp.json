@@ -1,0 +1,11 @@
+{
+    "artId": "",
+    "appName": "Exide-Reportbuilderapp",
+    "description": "Exide-Reportbuilderapp",
+    "lastModified": "2019-11-04T06:49:57.199Z",
+    "artURL": "http://localhost:3000/bhive-art/",
+    "imgSourcePath": "",
+    "version": "1.0.0",
+    "dataSource": "neutrinos-delivery-rt",
+    "createDate": "2019-11-04T06:49:57.199Z"
+}

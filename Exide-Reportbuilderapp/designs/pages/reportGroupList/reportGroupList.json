@@ -1,0 +1,13 @@
+{
+    "appPageId": "165110c9-bfbf-24d7-b0bf-953a646b0503",
+    "appPageName": "reportGroupList",
+    "componentName": "reportgrouplistComponent",
+    "selectorName": "bh-reportgrouplist",
+    "htmlFileName": "reportgrouplist.template.html",
+    "tsFileName": "reportgrouplist.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

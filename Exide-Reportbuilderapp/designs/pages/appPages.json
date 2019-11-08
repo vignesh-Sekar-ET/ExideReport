@@ -1,0 +1,27 @@
+{
+    "1422d630-671f-3997-99a9-36ec6cc88778": {
+        "appPageName": "Login",
+        "componentName": "loginComponent",
+        "isEntry": false
+    },
+    "1e492e34-1f09-0bca-ac20-307d3bd6cf42": {
+        "appPageName": "CreateReport",
+        "componentName": "createreportComponent",
+        "isEntry": false
+    },
+    "ab76df06-3a0b-8e41-3cae-f19d966aa6ab": {
+        "appPageName": "CreateReportList",
+        "componentName": "createreportlistComponent",
+        "isEntry": false
+    },
+    "165110c9-bfbf-24d7-b0bf-953a646b0503": {
+        "appPageName": "reportGroupList",
+        "componentName": "reportgrouplistComponent",
+        "isEntry": false
+    },
+    "603a1965-1702-2e8c-48a6-2b4538acc250": {
+        "appPageName": "dashboard",
+        "componentName": "dashboardComponent",
+        "isEntry": false
+    }
+}

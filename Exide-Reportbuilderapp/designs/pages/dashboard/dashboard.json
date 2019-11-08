@@ -1,0 +1,13 @@
+{
+    "appPageId": "603a1965-1702-2e8c-48a6-2b4538acc250",
+    "appPageName": "dashboard",
+    "componentName": "dashboardComponent",
+    "selectorName": "bh-dashboard",
+    "htmlFileName": "dashboard.template.html",
+    "tsFileName": "dashboard.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

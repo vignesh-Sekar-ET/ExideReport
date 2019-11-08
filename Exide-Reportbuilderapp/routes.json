@@ -1,0 +1,30 @@
+{
+    "routes": [
+        {
+            "component": "loginComponent",
+            "path": "login"
+        },
+        {
+            "component": "createreportlistComponent",
+            "path": "createreportlist"
+        },
+        {
+            "path": "createreport",
+            "component": "createreportComponent"
+        },
+        {
+            "path": "dashboard",
+            "component": "dashboardComponent"
+        },
+        {
+            "path": "''",
+            "redirectTo": "login",
+            "pathMatch": "full",
+            "default": true
+        },
+        {
+            "path": "**",
+            "component": "PageNotFoundComponent"
+        }
+    ]
+}
