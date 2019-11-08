@@ -30,7 +30,7 @@ export class dashboardComponent extends NBaseComponent implements OnInit {
     }
 
     ngOnInit() {
-
+console.log("sample")
     }
 
     get(dataModelName, filter?, keys?, sort?, pagenumber?, pagesize?) {
