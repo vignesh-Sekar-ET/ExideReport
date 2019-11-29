@@ -1,0 +1,11 @@
+{
+    "artId": "",
+    "appName": "my-Exideapp",
+    "description": "insurance company",
+    "lastModified": "2019-11-05T09:28:32.908Z",
+    "artURL": "http://localhost:3000/bhive-art/",
+    "imgSourcePath": "",
+    "version": "1.0.0",
+    "dataSource": "neutrinos-delivery-rt",
+    "createDate": "2019-11-05T09:28:32.908Z"
+}

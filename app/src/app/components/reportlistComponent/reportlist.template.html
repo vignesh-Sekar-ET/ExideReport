@@ -1,0 +1,35 @@
+<div fxLayout="row wrap" style="background: #f3f4f5;height:100%" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+  <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" style="padding-left:15%" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <div>
+        <h4> Report Group List</h4>
+      </div>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
+      <div fxLayout="column " style="background-color:#fff;" fxFlex="70" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="row wrap" style="background-color:#fff;padding:12px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="column wrap" fxFlex="60" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div>
+              <span class="headerclass">Report Group List - 1</span></div>
+          </div>
+          <div fxLayout="column wrap" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="row wrap" fxLayoutAlign="space-between start" [fxShow]="true" [fxHide]="false">
+              <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#3cb878;border-radius:12px" class="crudclass" (click)="onClickCreate()">create</button></div>
+              <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#ed1c24;border-radius:12px" class="crudclass" (click)="openDialog()">Delete</button></div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="column wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div>
+            <mat-divider></mat-divider>
+          </div>
+        </div>
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div>
+            <bh-tabledemo [rowData]="testContent" [sqColumnDefinition]="columnDefinition" [enableCheckbox]="true" (getSelectedRows)="onNotifySelected($event)" [sqPaginationConfig]="tablePaginationSettings"></bh-tabledemo>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

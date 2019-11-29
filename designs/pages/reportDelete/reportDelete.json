@@ -1,0 +1,13 @@
+{
+    "appPageId": "93196d15-1e74-52c2-1ce1-6eed109a8558",
+    "appPageName": "reportDelete",
+    "componentName": "reportdeleteComponent",
+    "selectorName": "bh-reportdelete",
+    "htmlFileName": "reportdelete.template.html",
+    "tsFileName": "reportdelete.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

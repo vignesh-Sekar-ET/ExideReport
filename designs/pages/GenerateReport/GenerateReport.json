@@ -1,0 +1,13 @@
+{
+    "appPageId": "26332ae2-1243-769d-1aff-35ef88036a83",
+    "appPageName": "GenerateReport",
+    "componentName": "generatereportComponent",
+    "selectorName": "bh-generatereport",
+    "htmlFileName": "generatereport.template.html",
+    "tsFileName": "generatereport.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

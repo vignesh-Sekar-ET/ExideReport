@@ -1,0 +1,13 @@
+{
+    "appPageId": "209a4421-115d-59a7-1a2b-5a01f5302e5d",
+    "appPageName": "dbconfigCreate",
+    "componentName": "dbconfigcreateComponent",
+    "selectorName": "bh-dbconfigcreate",
+    "htmlFileName": "dbconfigcreate.template.html",
+    "tsFileName": "dbconfigcreate.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

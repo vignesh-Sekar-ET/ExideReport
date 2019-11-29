@@ -1,0 +1,13 @@
+{
+    "appPageId": "a4796001-82dc-a56d-162e-1b96a30bbfd4",
+    "appPageName": "reportList",
+    "componentName": "reportlistComponent",
+    "selectorName": "bh-reportlist",
+    "htmlFileName": "reportlist.template.html",
+    "tsFileName": "reportlist.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

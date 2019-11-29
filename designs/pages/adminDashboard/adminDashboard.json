@@ -1,0 +1,13 @@
+{
+    "appPageId": "ad876ec5-89aa-c45d-69aa-eacd859c55e6",
+    "appPageName": "adminDashboard",
+    "componentName": "admindashboardComponent",
+    "selectorName": "bh-admindashboard",
+    "htmlFileName": "admindashboard.template.html",
+    "tsFileName": "admindashboard.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

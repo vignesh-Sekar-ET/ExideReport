@@ -1,0 +1,13 @@
+{
+    "appPageId": "38c04e9b-21f8-5c7c-b8b7-262ae79ae779",
+    "appPageName": "reportUpdate",
+    "componentName": "reportupdateComponent",
+    "selectorName": "bh-reportupdate",
+    "htmlFileName": "reportupdate.template.html",
+    "tsFileName": "reportupdate.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

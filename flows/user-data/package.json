@@ -1,0 +1,13 @@
+{
+    "name": "node-red-project",
+    "description": "A Node-RED Project",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "node-red-contrib-better-ldap": "~0.1.1",
+        "node-red-contrib-db2-fixed": "0.0.5",
+        "node-red-contrib-mssql": "0.0.7",
+        "node-red-node-mysql": "0.0.19",
+        "node-red-node-sqlite": "~0.4.0"
+    }
+}
