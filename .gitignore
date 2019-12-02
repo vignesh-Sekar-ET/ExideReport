@@ -10,6 +10,8 @@
 /app/node_modules
 /app/platforms
 /app/plugins
+/flows/user-data/node_modules
+/flows/user-data/package-lock.json
 
 # profiling files
 chrome-profiler-events.json

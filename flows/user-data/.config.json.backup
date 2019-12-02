@@ -481,7 +481,7 @@
      "enabled": true,
      "local": true,
      "module": "node-red-node-mysql",
-     "file": "C:\\Users\\c101709\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-node-mysql\\68-mysql.js"
+     "file": "C:\\Users\\C101710\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-node-mysql\\68-mysql.js"
     }
    }
   },
@@ -499,7 +499,7 @@
      "enabled": true,
      "local": true,
      "module": "node-red-node-sqlite",
-     "file": "C:\\Users\\c101709\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-node-sqlite\\sqlite.js"
+     "file": "C:\\Users\\C101710\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-node-sqlite\\sqlite.js"
     }
    }
   },
@@ -517,25 +517,7 @@
      "enabled": true,
      "local": true,
      "module": "node-red-contrib-db2-fixed",
-     "file": "C:\\Users\\c101709\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-db2-fixed\\ibmdb.js"
-    }
-   }
-  },
-  "node-red-contrib-mssql": {
-   "name": "node-red-contrib-mssql",
-   "version": "0.0.7",
-   "local": true,
-   "nodes": {
-    "mssql": {
-     "name": "mssql",
-     "types": [
-      "MSSQL-CN",
-      "MSSQL"
-     ],
-     "enabled": true,
-     "local": true,
-     "module": "node-red-contrib-mssql",
-     "file": "C:\\Users\\c101709\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-mssql\\mssql.js"
+     "file": "C:\\Users\\C101710\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-db2-fixed\\ibmdb.js"
     }
    }
   },
@@ -554,7 +536,43 @@
      "enabled": true,
      "local": true,
      "module": "node-red-contrib-better-ldap",
-     "file": "C:\\Users\\c101709\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-better-ldap\\transports\\ldap\\index.js"
+     "file": "C:\\Users\\C101710\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-better-ldap\\transports\\ldap\\index.js"
+    }
+   }
+  },
+  "node-red-contrib-mssql-plus": {
+   "name": "node-red-contrib-mssql-plus",
+   "version": "0.3.0",
+   "local": true,
+   "nodes": {
+    "mssql": {
+     "name": "mssql",
+     "types": [
+      "MSSQL-CN",
+      "MSSQL"
+     ],
+     "enabled": true,
+     "local": true,
+     "module": "node-red-contrib-mssql-plus",
+     "file": "C:\\Users\\C101710\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-mssql-plus\\src\\mssql.js"
+    }
+   }
+  },
+  "node-red-contrib-mssql": {
+   "name": "node-red-contrib-mssql",
+   "version": "0.0.7",
+   "local": true,
+   "nodes": {
+    "mssql": {
+     "name": "mssql",
+     "types": [
+      "MSSQL-CN",
+      "MSSQL"
+     ],
+     "enabled": true,
+     "local": true,
+     "module": "node-red-contrib-mssql",
+     "file": "C:\\Users\\C101710\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-mssql\\mssql.js"
     }
    }
   }

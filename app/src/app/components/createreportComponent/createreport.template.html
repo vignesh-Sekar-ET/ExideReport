@@ -54,7 +54,7 @@
               <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
                 <mat-select placeholder="Report Group Name" required>
                   <ng-template ngFor let-option [ngForOf]="RGname" let-i="index">
-                    <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
+                    <mat-option [value]="option.id">{{option.Groupname}}</mat-option>
                   </ng-template>
                 </mat-select>
 

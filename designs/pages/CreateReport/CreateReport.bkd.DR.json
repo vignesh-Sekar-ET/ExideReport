@@ -2716,13 +2716,13 @@
                                         },
                                         {
                                             "_key": "optionValue",
-                                            "_value": "option.value",
+                                            "_value": "option.id",
                                             "_type": "a",
                                             "_attrDef": "p"
                                         },
                                         {
                                             "_key": "optionView",
-                                            "_value": "{{option.viewValue}}",
+                                            "_value": "{{option.Groupname}}",
                                             "_type": "a",
                                             "_attrDef": "p"
                                         },

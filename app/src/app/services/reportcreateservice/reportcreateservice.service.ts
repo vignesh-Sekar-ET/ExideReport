@@ -35,5 +35,12 @@ onSubmit(rname: any, rcode: any, rstatus :any): Observable<any> {
         return this.http.post(url,body);
     }
 
+     reportgrouplist(){
+        let URL = this.systemProperties.modularUrl;
+        URL+= "reportgrouplst";
+        console.log(URL);
+        return this.http.get(URL)
+    }
+
 
 }

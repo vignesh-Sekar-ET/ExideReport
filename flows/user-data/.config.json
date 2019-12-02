@@ -521,6 +521,43 @@
     }
    }
   },
+  "node-red-contrib-better-ldap": {
+   "name": "node-red-contrib-better-ldap",
+   "version": "0.1.1",
+   "local": true,
+   "nodes": {
+    "ldap": {
+     "name": "ldap",
+     "types": [
+      "ldap-update in",
+      "ldap-search in",
+      "ldap"
+     ],
+     "enabled": true,
+     "local": true,
+     "module": "node-red-contrib-better-ldap",
+     "file": "C:\\Users\\C101710\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-better-ldap\\transports\\ldap\\index.js"
+    }
+   }
+  },
+  "node-red-contrib-mssql-plus": {
+   "name": "node-red-contrib-mssql-plus",
+   "version": "0.3.0",
+   "local": true,
+   "nodes": {
+    "mssql": {
+     "name": "mssql",
+     "types": [
+      "MSSQL-CN",
+      "MSSQL"
+     ],
+     "enabled": true,
+     "local": true,
+     "module": "node-red-contrib-mssql-plus",
+     "file": "C:\\Users\\C101710\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-mssql-plus\\src\\mssql.js"
+    }
+   }
+  },
   "node-red-contrib-mssql": {
    "name": "node-red-contrib-mssql",
    "version": "0.0.7",
@@ -539,22 +576,20 @@
     }
    }
   },
-  "node-red-contrib-better-ldap": {
-   "name": "node-red-contrib-better-ldap",
-   "version": "0.1.1",
-   "local": true,
+  "node-red-contrib-excel": {
+   "name": "node-red-contrib-excel",
+   "version": "0.0.3",
+   "local": false,
    "nodes": {
-    "ldap": {
-     "name": "ldap",
+    "xlsx": {
+     "name": "xlsx",
      "types": [
-      "ldap-update in",
-      "ldap-search in",
-      "ldap"
+      "excel"
      ],
      "enabled": true,
      "local": true,
-     "module": "node-red-contrib-better-ldap",
-     "file": "C:\\Users\\C101710\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-better-ldap\\transports\\ldap\\index.js"
+     "module": "node-red-contrib-excel",
+     "file": "C:\\Users\\C101710\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-excel\\excel\\excel.js"
     }
    }
   }

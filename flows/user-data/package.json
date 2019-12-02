@@ -6,7 +6,9 @@
     "dependencies": {
         "node-red-contrib-better-ldap": "~0.1.1",
         "node-red-contrib-db2-fixed": "0.0.5",
+        "node-red-contrib-excel": "0.0.3",
         "node-red-contrib-mssql": "0.0.7",
+        "node-red-contrib-mssql-plus": "~0.3.0",
         "node-red-node-mysql": "0.0.19",
         "node-red-node-sqlite": "~0.4.0"
     }
