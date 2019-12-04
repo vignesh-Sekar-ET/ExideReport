@@ -1,0 +1,55 @@
+<div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+  <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
+      <div fxLayout="column wrap" style="background-color:#fff;" fxFlex="80" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div>
+          <h4>Dashboard</h4>
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div>
+              <p>Number of report created</p>
+              <mat-progress-bar value="29"></mat-progress-bar>
+            </div>
+          </div>
+          <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div>
+              <p>Number of report created</p>
+              <mat-progress-bar value="40"></mat-progress-bar>
+            </div>
+          </div>
+          <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div>
+              <p>Total number of report Group</p>
+              <mat-progress-bar value="80"></mat-progress-bar>
+            </div>
+          </div>
+          <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div>
+              <p>Total number of user Group</p>
+              <mat-progress-bar value="70"></mat-progress-bar>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div>
+              <p>Number of Report Created</p>
+              <div>
+                <ngx-charts-bar-vertical [view]="view" [results]="mapresult" [xAxis]="true" [yAxis]="true" [showXAxisLabel]="true" [showYAxisLabel]="true"></ngx-charts-bar-vertical>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div>
+              <p>Number of Report Downloaded</p>
+            </div>
+            <div>
+              <ngx-charts-bar-vertical [view]="view" [results]="mapresult" [xAxis]="true" [yAxis]="true" [showXAxisLabel]="true" [showYAxisLabel]="true"></ngx-charts-bar-vertical>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

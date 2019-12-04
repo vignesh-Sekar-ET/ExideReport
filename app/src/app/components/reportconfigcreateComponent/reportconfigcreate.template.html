@@ -1,0 +1,107 @@
+<div fxLayout="row wrap" fxLayoutAlign="center stretch" [fxShow]="true" [fxHide]="false">
+  <div fxLayout="column wrap" fxFlex="70" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" style="text-indent: 20px;background:#f3f4f5;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <div>
+        <span class="commontextredcolor">ReportConfig- Create</span></div>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <div fxLayout="column wrap" style="background-color:#fff;" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="column wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div>
+            <mat-divider></mat-divider>
+          </div>
+        </div>
+        <form>
+          <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+              <div>
+                <span class="headerblackclass">Report Name</span></div>
+              <div fxLayout="column wrap" style="padding-top:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+                <div>
+                  <div *ngIf="loadContent">
+                    <form [formGroup]="form" (ngSubmit)="save()" (reset)="resetForm()">
+
+                      <ng-multiselect-dropdown #multiSelect [placeholder]="&apos;Select City&apos;" [data]="data" [formControl]="f.name" [settings]="settings" [disabled]="false" (onFilterChange)="onFilterChange($event)" (onDropDownClose)="onDropDownClose($event)" (onSelect)="onItemSelect($event)" (onDeSelect)="onDeSelect($event)">
+                      </ng-multiselect-dropdown>
+
+                      <span *ngIf="f?.name?.errors?.required" style="color: red;">
+      City is required
+    </span>
+
+                      <br><br>
+
+                      <!-- <input type="submit" value="Submit"> | <input type="reset" value="Reset"> -->
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div fxLayout="column wrap" fxFlex="10" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"></div>
+            <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+              <div>
+                <span class="headerblackclass">Schedule Execution Type</span></div>
+              <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+                <mat-form-field [appearance]="&apos;outline&apos;" [floatLabel]="&apos;auto&apos;">
+                  <mat-select placeholder="Select" required>
+                    <ng-template ngFor let-option [ngForOf]="state" let-i="index">
+                      <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
+                    </ng-template>
+                  </mat-select>
+
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+              <div>
+                <span class="headerblackclass">Schedule Execution Date &amp; Time</span></div>
+              <div fxLayout="column wrap" style="padding-top:10px" fxFlex="45" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+                <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+                  <div fxLayout="column wrap" fxFlex="35" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+                    <mat-form-field [appearance]="&apos;legacy&apos;">
+                      <input matInput [matDatepicker]="picker" required [disabled]="false">
+                      <mat-datepicker-toggle matSuffix [for]="picker" disabled="false"></mat-datepicker-toggle>
+                      <mat-datepicker #picker [disabled]="false"></mat-datepicker>
+
+                    </mat-form-field>
+                  </div>
+                  <div fxLayout="column wrap" fxFlex="35" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+                    <div>
+                      <div class="container">
+                        <form class="demo-form">
+                          <material-timepicker color="primary" [userTime]="exportTime" (change)="onChangeHour($event)" revertLabel="Remove" submitLabel="Ok"></material-timepicker>
+
+                        </form>
+                      </div>
+
+
+
+                    </div>
+                  </div>
+                  <div fxLayout="column wrap" fxFlex="30" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"><button mat-button>Date&amp;Time</button></div>
+                </div>
+              </div>
+            </div>
+            <div fxLayout="column wrap" fxFlex="10" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"></div>
+            <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+              <div>
+                <span class="headerblackclass">Schedule Execution Type</span></div>
+              <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+                <mat-form-field [appearance]="&apos;outline&apos;" [floatLabel]="&apos;auto&apos;">
+                  <mat-select placeholder="Select" required>
+                    <ng-template ngFor let-option [ngForOf]="state" let-i="index">
+                      <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
+                    </ng-template>
+                  </mat-select>
+
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
