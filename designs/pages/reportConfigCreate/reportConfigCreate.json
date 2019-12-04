@@ -1,0 +1,13 @@
+{
+    "appPageId": "5d9d0489-9e34-9f4b-c44b-88fb23b7efc3",
+    "appPageName": "reportConfigCreate",
+    "componentName": "reportconfigcreateComponent",
+    "selectorName": "bh-reportconfigcreate",
+    "htmlFileName": "reportconfigcreate.template.html",
+    "tsFileName": "reportconfigcreate.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

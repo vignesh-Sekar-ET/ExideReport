@@ -1,0 +1,13 @@
+{
+    "appPageId": "d8f8f46b-5608-fe46-c912-dc61daa6d314",
+    "appPageName": "dbconfigUpdate",
+    "componentName": "dbconfigupdateComponent",
+    "selectorName": "bh-dbconfigupdate",
+    "htmlFileName": "dbconfigupdate.template.html",
+    "tsFileName": "dbconfigupdate.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

@@ -1,0 +1,117 @@
+{
+    "1422d630-671f-3997-99a9-36ec6cc88778": {
+        "appPageName": "Login",
+        "componentName": "loginComponent",
+        "isEntry": false
+    },
+    "1e492e34-1f09-0bca-ac20-307d3bd6cf42": {
+        "appPageName": "CreateReport",
+        "componentName": "createreportComponent",
+        "isEntry": false
+    },
+    "ab76df06-3a0b-8e41-3cae-f19d966aa6ab": {
+        "appPageName": "CreateReportList",
+        "componentName": "createreportlistComponent",
+        "isEntry": false
+    },
+    "55e39847-b33a-aa31-19e3-e7fbba067752": {
+        "appPageName": "dashboard",
+        "componentName": "dashboardComponent",
+        "isEntry": false
+    },
+    "1e99b0d6-d64b-7f0f-96bb-353dee2144fb": {
+        "appPageName": "dbconfig",
+        "componentName": "dbconfigComponent",
+        "isEntry": false
+    },
+    "165110c9-bfbf-24d7-b0bf-953a646b0503": {
+        "appPageName": "reportGroupList",
+        "componentName": "reportgrouplistComponent",
+        "isEntry": false
+    },
+    "603a1965-1702-2e8c-48a6-2b4538acc250": {
+        "appPageName": "dashboard",
+        "componentName": "dashboardComponent",
+        "isEntry": false
+    },
+    "26332ae2-1243-769d-1aff-35ef88036a83": {
+        "appPageName": "GenerateReport",
+        "componentName": "generatereportComponent",
+        "isEntry": false
+    },
+    "209a4421-115d-59a7-1a2b-5a01f5302e5d": {
+        "appPageName": "dbconfigCreate",
+        "componentName": "dbconfigcreateComponent",
+        "isEntry": false
+    },
+    "0b92c73a-9a8e-155d-baa3-3248cffcbd45": {
+        "appPageName": "userGrouplist",
+        "componentName": "usergrouplistComponent",
+        "isEntry": false
+    },
+    "ad876ec5-89aa-c45d-69aa-eacd859c55e6": {
+        "appPageName": "adminDashboard",
+        "componentName": "admindashboardComponent",
+        "isEntry": false
+    },
+    "a4796001-82dc-a56d-162e-1b96a30bbfd4": {
+        "appPageName": "reportList",
+        "componentName": "reportlistComponent",
+        "isEntry": false
+    },
+    "441fcd7e-35af-25e1-4ed8-8ac080e8aff5": {
+        "appPageName": "reportCreate",
+        "componentName": "reportcreateComponent",
+        "isEntry": false
+    },
+    "38c04e9b-21f8-5c7c-b8b7-262ae79ae779": {
+        "appPageName": "reportUpdate",
+        "componentName": "reportupdateComponent",
+        "isEntry": false
+    },
+    "93196d15-1e74-52c2-1ce1-6eed109a8558": {
+        "appPageName": "reportDelete",
+        "componentName": "reportdeleteComponent",
+        "isEntry": false
+    },
+    "12f4d62e-33b0-2709-9fbb-a976b3b14fd9": {
+        "appPageName": "tabledemo",
+        "componentName": "tabledemoComponent",
+        "isEntry": false
+    },
+    "d8f8f46b-5608-fe46-c912-dc61daa6d314": {
+        "appPageName": "dbconfigUpdate",
+        "componentName": "dbconfigupdateComponent",
+        "isEntry": false
+    },
+    "5d9d0489-9e34-9f4b-c44b-88fb23b7efc3": {
+        "appPageName": "reportConfigCreate",
+        "componentName": "reportconfigcreateComponent",
+        "isEntry": false
+    },
+    "0d066f7f-a631-3e47-1cd0-0dd858fa6af8": {
+        "appPageName": "userReportList",
+        "componentName": "userreportlistComponent",
+        "isEntry": false
+    },
+    "7110b0a2-397c-d8aa-12c2-23bdd8801b1f": {
+        "appPageName": "userCreate",
+        "componentName": "usercreateComponent",
+        "isEntry": false
+    },
+    "59a8e5f2-aadd-552b-9e98-945835f95872": {
+        "appPageName": "userUpdate",
+        "componentName": "userupdateComponent",
+        "isEntry": false
+    },
+    "047eec97-07d0-b8fd-aa4e-9adef208e041": {
+        "appPageName": "userDelete",
+        "componentName": "userdeleteComponent",
+        "isEntry": false
+    },
+    "330fb1ec-0928-45e9-898a-8ef583babef1": {
+        "appPageName": "reportConfigList",
+        "componentName": "reportconfiglistComponent",
+        "isEntry": false
+    }
+}

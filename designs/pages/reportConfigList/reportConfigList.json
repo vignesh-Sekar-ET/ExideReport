@@ -1,0 +1,13 @@
+{
+    "appPageId": "330fb1ec-0928-45e9-898a-8ef583babef1",
+    "appPageName": "reportConfigList",
+    "componentName": "reportconfiglistComponent",
+    "selectorName": "bh-reportconfiglist",
+    "htmlFileName": "reportconfiglist.template.html",
+    "tsFileName": "reportconfiglist.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

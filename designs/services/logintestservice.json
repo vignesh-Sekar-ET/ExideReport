@@ -1,0 +1,104 @@
+[
+    {
+        "id": "sd_ZJBxSLo6cZEiHBWr",
+        "type": "tab",
+        "createdDate": "2019-11-07T06:29:22.108Z",
+        "label": "logintestservice",
+        "disabled": false,
+        "info": "",
+        "generateNext": true,
+        "generated": false,
+        "serviceName": "logintestservice"
+    },
+    {
+        "id": "sd_zJ4wq06P1kwsQ7cD",
+        "type": "Start",
+        "z": "sd_ZJBxSLo6cZEiHBWr",
+        "name": "getlogin",
+        "outputs": 1,
+        "noerr": 0,
+        "inputVariables": [],
+        "localVariables": [
+            {
+                "key": "result",
+                "defaultValue": {
+                    "type": "str",
+                    "value": ""
+                },
+                "output": true
+            },
+            {
+                "key": "apiurl",
+                "defaultValue": {
+                    "type": "str",
+                    "value": ""
+                },
+                "output": false
+            }
+        ],
+        "functionName": "getlogin",
+        "x": 120.1875,
+        "y": 87.921875,
+        "wires": [
+            [
+                "sd_Er2qQYqxFRzbq73j"
+            ]
+        ],
+        "generateNext": true,
+        "generated": false,
+        "serviceName": "logintestservice"
+    },
+    {
+        "id": "sd_Hjfz8snACeQvBu4g",
+        "type": "HttpRequest",
+        "z": "sd_ZJBxSLo6cZEiHBWr",
+        "name": "loginget",
+        "method": "get",
+        "methodMappingObj": {},
+        "urlMapping": "bh.local.apiurl",
+        "urlMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "apiurl"
+        },
+        "ret": "json",
+        "retMappingObj": {},
+        "reqBodyObj": {
+            "mapVarType": "bh.input",
+            "mapVarValue": ""
+        },
+        "resultMapping": "bh.input.result",
+        "resultMappingObj": {
+            "mapVarType": "bh.input",
+            "mapVarValue": "result"
+        },
+        "headers": {},
+        "headersObj": [],
+        "headerMappingObj": {},
+        "params": {},
+        "paramsObj": [],
+        "paramMappingObj": {},
+        "x": 412.03125,
+        "y": 91.90625,
+        "wires": [
+            []
+        ],
+        "generateNext": false,
+        "generated": true
+    },
+    {
+        "id": "sd_Er2qQYqxFRzbq73j",
+        "type": "Script",
+        "z": "sd_ZJBxSLo6cZEiHBWr",
+        "name": "",
+        "script": "bh.local.apiurl = \"SELECT * FROM sampledata \";",
+        "x": 266.03125,
+        "y": 88.921875,
+        "wires": [
+            [
+                "sd_Hjfz8snACeQvBu4g"
+            ]
+        ],
+        "generateNext": false,
+        "generated": true
+    }
+]

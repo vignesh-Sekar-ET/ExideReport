@@ -1,0 +1,94 @@
+{
+    "routes": [
+        {
+            "path": "login",
+            "component": "loginComponent"
+        },
+        {
+            "path": "createreport",
+            "component": "createreportComponent"
+        },
+        {
+            "path": "createreportlist",
+            "component": "createreportlistComponent"
+        },
+        {
+            "component": "dashboardComponent",
+            "path": "dashboard",
+            "children": [
+                {
+                    "path": "adminDashboard",
+                    "component": "admindashboardComponent"
+                },
+                {
+                    "component": "reportlistComponent",
+                    "path": "reportList"
+                },
+                {
+                    "component": "reportcreateComponent",
+                    "path": "reportCreate"
+                },
+                {
+                    "component": "reportupdateComponent",
+                    "path": "reportUpdate"
+                },
+                {
+                    "component": "reportdeleteComponent",
+                    "path": "reportDelete"
+                },
+                {
+                    "path": "DbGrouplist",
+                    "component": "reportgrouplistComponent"
+                },
+                {
+                    "component": "dbconfigcreateComponent",
+                    "path": "dbconfigCreate"
+                },
+                {
+                    "component": "dbconfigupdateComponent",
+                    "path": "dbconfigUpdate"
+                },
+                {
+                    "path": "generatereport",
+                    "component": "generatereportComponent"
+                },
+                {
+                    "path": "admindash",
+                    "component": "admindashboardComponent"
+                },
+                {
+                    "component": "reportconfigcreateComponent",
+                    "path": "reportConfigCreate"
+                },
+                {
+                    "component": "userreportlistComponent",
+                    "path": "userReportList"
+                },
+                {
+                    "component": "usercreateComponent",
+                    "path": "userCreate"
+                },
+                {
+                    "component": "userupdateComponent",
+                    "path": "userUpdate"
+                },
+                {
+                    "component": "reportconfiglistComponent",
+                    "path": "reportConfigList"
+                }
+            ],
+            "redirectTo": "",
+            "pathMatch": ""
+        },
+        {
+            "path": "''",
+            "redirectTo": "login",
+            "pathMatch": "full",
+            "default": true
+        },
+        {
+            "path": "**",
+            "component": "PageNotFoundComponent"
+        }
+    ]
+}

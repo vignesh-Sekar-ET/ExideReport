@@ -1,0 +1,13 @@
+{
+    "appPageId": "0d066f7f-a631-3e47-1cd0-0dd858fa6af8",
+    "appPageName": "userReportList",
+    "componentName": "userreportlistComponent",
+    "selectorName": "bh-userreportlist",
+    "htmlFileName": "userreportlist.template.html",
+    "tsFileName": "userreportlist.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

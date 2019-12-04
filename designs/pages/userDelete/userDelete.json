@@ -1,0 +1,13 @@
+{
+    "appPageId": "047eec97-07d0-b8fd-aa4e-9adef208e041",
+    "appPageName": "userDelete",
+    "componentName": "userdeleteComponent",
+    "selectorName": "bh-userdelete",
+    "htmlFileName": "userdelete.template.html",
+    "tsFileName": "userdelete.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

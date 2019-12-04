@@ -1,0 +1,13 @@
+{
+    "appPageId": "0b92c73a-9a8e-155d-baa3-3248cffcbd45",
+    "appPageName": "userGrouplist",
+    "componentName": "usergrouplistComponent",
+    "selectorName": "bh-usergrouplist",
+    "htmlFileName": "usergrouplist.template.html",
+    "tsFileName": "usergrouplist.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

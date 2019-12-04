@@ -1,0 +1,13 @@
+{
+    "appPageId": "1e99b0d6-d64b-7f0f-96bb-353dee2144fb",
+    "appPageName": "dbconfig",
+    "componentName": "dbconfigComponent",
+    "selectorName": "bh-dbconfig",
+    "htmlFileName": "dbconfig.template.html",
+    "tsFileName": "dbconfig.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}
