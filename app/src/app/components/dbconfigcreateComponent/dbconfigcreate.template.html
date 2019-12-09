@@ -1,0 +1,108 @@
+<div fxLayout="row wrap" fxLayoutAlign="center start" [fxShow]="true" [fxHide]="false">
+  <div fxLayout="column wrap" style="commonTablebackground" fxFlex="70" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" style="text-indent: 20px;background:#f3f4f5;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <h3>
+        DB Configuration - List</h3>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <div fxLayout="column wrap" style="text-indent: 20px;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <h3>
+          DB Configuration - List
+        </h3>
+      </div>
+    </div>
+    <div fxLayout="row wrap" style="background:#d1d1d1;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <div>
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+    <form [formGroup]="dbConfigForm" (ngSubmit)="onSubmit()">
+      <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <h3>
+            JNDI name</h3>
+          <mat-form-field [appearance]="&apos;fill&apos;" [floatLabel]="&apos;auto&apos;">
+            <input matInput placeholder="Enter JNDI name" required formControlName="jndiname" id="myTextbox">
+
+          </mat-form-field>
+        </div>
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <h3>
+            Server IP</h3>
+          <mat-form-field [appearance]="&apos;fill&apos;" [floatLabel]="&apos;auto&apos;">
+            <input matInput placeholder="Enter" required formControlName="serverip">
+            <mat-error align="start" *ngIf="dbConfigForm.invalid">Please Enter Server IP</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <h3>
+            Port number</h3>
+          <mat-form-field [appearance]="&apos;fill&apos;" [floatLabel]="&apos;auto&apos;">
+            <input matInput placeholder="Enter" required formControlName="portnumber">
+            <mat-error align="start" *ngIf="dbConfigForm.invalid">Please Enter Port number</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <h3>
+            DB Name</h3>
+          <mat-form-field [appearance]="&apos;fill&apos;" [floatLabel]="&apos;auto&apos;">
+            <input matInput placeholder="Enter" required formControlName="dbname">
+            <mat-error align="start" *ngIf="dbConfigForm.invalid">Please Enter DBname</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <h3>
+            Driver type</h3>
+          <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
+            <mat-select formControlName="drivertype" placeholder="Select" required>
+              <ng-template ngFor let-option [ngForOf]="dbData" let-i="index">
+                <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
+              </ng-template>
+            </mat-select>
+            <mat-error align="start" *ngIf="dbConfigForm.invalid">Please Select Driver type</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <h3>
+            Connection pool size</h3>
+          <mat-form-field [appearance]="&apos;fill&apos;" [floatLabel]="&apos;auto&apos;">
+            <input matInput placeholder="Enter" required formControlName="connectionpoolsize">
+            <mat-error align="start" *ngIf="dbConfigForm.invalid">Please Enter Connection pool size</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <h3>
+            DB_User Name</h3>
+          <mat-form-field [appearance]="&apos;fill&apos;" [floatLabel]="&apos;auto&apos;">
+            <input matInput placeholder="Enter" required formControlName="dbusername">
+            <mat-error align="start" *ngIf="dbConfigForm.invalid">Please Enter DB_User Name</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <h3>
+            Password</h3>
+          <mat-form-field [appearance]="&apos;fill&apos;" [floatLabel]="&apos;auto&apos;">
+            <input matInput placeholder="Enter" required formControlName="password">
+            <mat-error align="start" *ngIf="dbConfigForm.invalid">Please Enter Password</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column wrap" fxFlex="30" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <h3>
+            Active</h3>
+          <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <mat-radio-group formControlName="active" [labelPosition]="&apos;after&apos;">
+              <mat-radio-button style="padding:10px;" required *ngFor="let season of seasons" [value]="season.value" [labelPosition]="&apos;after&apos;">{{season.viewValue }}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row wrap" class="Dbbutton" fxLayoutAlign="end center" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="row wrap" fxFlex="70" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background:#00a651;" type="submit">Submit</button><button mat-button style="background:#f7941d;">Clear</button><button mat-button style="background:#ed1c24;">Cancel</button></div>
+      </div>
+    </form>
+  </div>
+</div>

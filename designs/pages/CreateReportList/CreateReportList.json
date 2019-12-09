@@ -1,0 +1,13 @@
+{
+    "appPageId": "ab76df06-3a0b-8e41-3cae-f19d966aa6ab",
+    "appPageName": "CreateReportList",
+    "componentName": "createreportlistComponent",
+    "selectorName": "bh-createreportlist",
+    "htmlFileName": "createreportlist.template.html",
+    "tsFileName": "createreportlist.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "appPageId": "28cdea65-dc10-5f98-c55a-77e37e6debb8",
+    "appPageName": "userGroupmappingCreate",
+    "componentName": "usergroupmappingcreateComponent",
+    "selectorName": "bh-usergroupmappingcreate",
+    "htmlFileName": "usergroupmappingcreate.template.html",
+    "tsFileName": "usergroupmappingcreate.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

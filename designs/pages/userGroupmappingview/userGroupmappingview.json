@@ -1,0 +1,13 @@
+{
+    "appPageId": "32fc8aff-3f0c-8ea3-756e-395bbe0d6e72",
+    "appPageName": "userGroupmappingview",
+    "componentName": "usergroupmappingviewComponent",
+    "selectorName": "bh-usergroupmappingview",
+    "htmlFileName": "usergroupmappingview.template.html",
+    "tsFileName": "usergroupmappingview.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

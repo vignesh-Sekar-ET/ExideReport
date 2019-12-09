@@ -1,0 +1,48 @@
+<div fxLayout="row wrap" fxLayoutAlign="center stretch" [fxShow]="true" [fxHide]="false">
+  <div fxLayout="column wrap" class="commonTablebackground" fxFlex="70" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" style="text-indent: 20px;background:#f3f4f5;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <h3>
+        User Group Mapping</h3>
+    </div>
+    <form [formGroup]="form">
+      <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="column wrap" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <h3>
+              User Group</h3>
+            <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
+              <mat-select formControlName="usergroup" placeholder="Select" [(ngModel)]="selectedCountry.id" required (selectionChange)="onSelect($event.value)">
+                <ng-template ngFor let-option [ngForOf]="userGroup" let-i="index">
+                  <mat-option [value]="option.id">{{option.name}}</mat-option>
+                </ng-template>
+              </mat-select>
+
+            </mat-form-field>
+          </div>
+          <div fxLayout="column wrap" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <h3>
+              Report Group</h3>
+            <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
+              <mat-select formControlName="reportgroup" placeholder="Select" required>
+                <ng-template ngFor let-option [ngForOf]="reportGroup" let-i="index">
+                  <mat-option [value]="option.id">{{option.name}}</mat-option>
+                </ng-template>
+              </mat-select>
+
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background:green;color:#fff;">Go</button></div>
+      </div>
+    </form>
+    <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div>
+          <bh-tabledemo [rowData]="reportData" [sqColumnDefinition]="columnDefinition" [enableCheckbox]="false"></bh-tabledemo>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

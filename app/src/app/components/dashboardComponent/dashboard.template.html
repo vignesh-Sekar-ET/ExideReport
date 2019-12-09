@@ -1,0 +1,36 @@
+<div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+  <mat-toolbar>
+    <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <div fxLayout="column wrap" fxFlex="5" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="color:#004eb5" (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button></div>
+      <div fxLayout="column wrap" fxFlex="10" fxLayoutAlign="start center" [fxShow]="true" [fxHide]="false"><img imgSrc="images/Logo.png" style="width:120px;"></div>
+      <div fxLayout="column wrap" fxFlex="60" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"></div>
+      <div fxLayout="column wrap" fxFlex="25" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="row wrap" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="column wrap" class="userinfo" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"></div>
+          <div>
+            {{uservalue}}</div>
+        </div>
+      </div>
+    </div>
+  </mat-toolbar>
+</div>
+<mat-sidenav-container style="height:100vh;">
+  <mat-sidenav #sidenav class="example-sidenav" [mode]="&apos;side&apos;" (opened)="sidenavOpen()" (closed)="sidenavclose()" [position]="&apos;start&apos;" [opened]="true" autoFocus="false" disableClose="false">
+    <div fxLayout="row wrap" style="padding:10px;" class="sidenavList" fxLayoutAlign="start center" [fxShow]="true" [fxHide]="false" *ngFor="let menu of navigation[0][uservalue]" (click)="onClick(menu )" [ngClass]="{ &apos;selected&apos;: menu== selectedItem }" [routerLink]="menu.router">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="column wrap" style=" padding: 0px 10px 0px 0px;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div>
+            <mat-icon>{{menu.maticon}}</mat-icon>
+          </div>
+        </div>
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div>
+            {{menu.name}}</div>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>

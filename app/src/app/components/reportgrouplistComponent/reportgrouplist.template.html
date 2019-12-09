@@ -1,0 +1,32 @@
+<div fxLayout="row wrap" style="height:100%" fxLayoutAlign="center stretch" [fxShow]="true" [fxHide]="false">
+  <div fxLayout="column wrap" fxFlex="70" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" style="text-indent: 20px;background:#f3f4f5;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <h3>
+        <span class="commontextredcolor">Report Group - List</span></h3>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false">
+      <div fxLayout="column " style="background-color:#fff;" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="column wrap" style="text-indent: 20px;" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <h3>
+              <span class="headerclass">Report Group List - 1</span>
+            </h3>
+          </div>
+          <div fxLayout="row wrap" fxFlex="50" fxLayoutAlign="end center" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="row wrap" class="Dbbutton" fxFlex="100" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false"><button mat-button class="UserGroupCreateButton" (click)="onClickCreate()" type="submit">Create</button><button mat-button class="UserGroupCommonButton" (click)="onClickUpdate()">Update</button><button mat-button class="UserGroupViewButton" (click)="openDialog()">Delete</button></div>
+          </div>
+        </div>
+        <div fxLayout="column wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div>
+            <mat-divider></mat-divider>
+          </div>
+        </div>
+        <div fxLayout="column " style="padding:5px" fxFlex="70" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div>
+            <bh-tabledemo [rowData]="testContent" [sqColumnDefinition]="columnDefinition" [enableCheckbox]="true" (getSelectedRows)="onNotifySelected($event)" [sqPaginationConfig]="tablePaginationSettings"></bh-tabledemo>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

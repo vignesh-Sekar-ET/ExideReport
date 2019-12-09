@@ -1,0 +1,13 @@
+{
+    "appPageId": "7110b0a2-397c-d8aa-12c2-23bdd8801b1f",
+    "appPageName": "userCreate",
+    "componentName": "usercreateComponent",
+    "selectorName": "bh-usercreate",
+    "htmlFileName": "usercreate.template.html",
+    "tsFileName": "usercreate.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

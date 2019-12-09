@@ -1,0 +1,74 @@
+<div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+  <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div style="width:100%">
+      <form [formGroup]="form">
+
+        <div>
+          <input class="mat-inputClass" (keyup)="applyFilter($event.target.value)" type="text" placeholder="Search Id, GroupName,GroupCode">
+        </div>
+
+
+
+        <mat-table [dataSource]="dataSource" matSort>
+
+          <ng-container *ngFor="let column of sqColumnDefinition; let i=index" matColumnDef="{{column.name}}">
+            <ng-container *ngIf="column.name ===&apos;select&apos;;then checkbox else nocheckbox"></ng-container>
+
+            <ng-template #checkbox>
+              <mat-header-cell *matHeaderCellDef>
+                <span class="table">select</span>
+              </mat-header-cell>
+
+              <mat-cell *matCellDef="let row">
+                <mat-radio-button (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null; rowSelect(row.jndiname)" [checked]="selection.isSelected(row)"></mat-radio-button>
+              </mat-cell>
+
+            </ng-template>
+
+            <ng-container *ngIf="column.name ===&apos;Active/Inactive&apos;;then checkbox1 else nocheckbox"></ng-container>
+
+            <ng-template #checkbox1>
+
+
+              <mat-cell *matCellDef="let row">
+                <mat-slide-toggle></mat-slide-toggle>
+
+              </mat-cell>
+
+            </ng-template>
+
+
+
+
+            //nocheckbox
+            <ng-template #nocheckbox>
+              <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="column.disableSorting">
+                <!--For displaying the column label & Icon-->
+                <div>
+                  <span class="table"> {{column.displayName}}</span>
+
+                </div>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{element[column.name]}}
+              </mat-cell>
+            </ng-template>
+          </ng-container>
+
+
+
+
+
+          <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
+        </mat-table>
+      </form>
+
+
+      <ng-container *ngIf="sqPaginationConfig &amp;&amp; sqPaginationConfig.enablePagination">
+        <mat-paginator [pageSize]="sqPaginationConfig.pageSize" [pageSizeOptions]="sqPaginationConfig.pageSizeOptions" [showFirstLastButtons]="sqPaginationConfig.showFirstLastButtons">
+        </mat-paginator>
+      </ng-container>
+    </div>
+  </div>
+</div>

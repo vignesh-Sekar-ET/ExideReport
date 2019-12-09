@@ -1,0 +1,107 @@
+{
+    "routes": [
+        {
+            "path": "login",
+            "component": "loginComponent",
+            "redirectTo": "",
+            "pathMatch": ""
+        },
+        {
+            "path": "createreport",
+            "component": "createreportComponent",
+            "redirectTo": "",
+            "canActivate": "",
+            "pathMatch": ""
+        },
+        {
+            "path": "createreportlist",
+            "component": "createreportlistComponent"
+        },
+        {
+            "component": "dashboardComponent",
+            "path": "dashboard",
+            "children": [
+                {
+                    "path": "adminDashboard",
+                    "component": "admindashboardComponent"
+                },
+                {
+                    "path": "DbGrouplist",
+                    "component": "reportgrouplistComponent",
+                    "redirectTo": "",
+                    "canActivate": ""
+                },
+                {
+                    "component": "dbconfigcreateComponent",
+                    "path": "dbconfigCreate"
+                },
+                {
+                    "component": "dbconfigupdateComponent",
+                    "path": "dbconfigUpdate"
+                },
+                {
+                    "path": "generatereport",
+                    "component": "generatereportComponent"
+                },
+                {
+                    "path": "admindash",
+                    "component": "admindashboardComponent",
+                    "children": []
+                },
+                {
+                    "path": "createuserlist",
+                    "component": "userreportlistComponent",
+                    "canActivate": "route_guardService"
+                },
+                {
+                    "path": "userCreate",
+                    "component": "usercreateComponent"
+                },
+                {
+                    "path": "userUpdate",
+                    "component": "userupdateComponent"
+                },
+                {
+                    "path": "usergroupmap",
+                    "component": "usergrouplistComponent"
+                },
+                {
+                    "path": "createreport",
+                    "component": "createreportComponent"
+                },
+                {
+                    "path": "createreportlist",
+                    "component": "createreportlistComponent"
+                },
+                {
+                    "path": "reportgrouplist",
+                    "component": "reportgrouplistComponent"
+                },
+                {
+                    "path": "reportCreate",
+                    "component": "reportgroupcreateComponent"
+                },
+                {
+                    "path": "reportUpdate",
+                    "component": "reportgroupupdateComponent"
+                }
+            ],
+            "redirectTo": "",
+            "pathMatch": ""
+        },
+        {
+            "path": "generatereport",
+            "component": "generatereportComponent"
+        },
+        {
+            "path": "''",
+            "redirectTo": "login",
+            "pathMatch": "full",
+            "default": true
+        },
+        {
+            "path": "**",
+            "component": "PageNotFoundComponent"
+        }
+    ]
+}

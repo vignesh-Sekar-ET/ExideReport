@@ -1,0 +1,59 @@
+<div fxLayout="row wrap" fxLayoutAlign="center start" [fxShow]="true" [fxHide]="false">
+  <div fxLayout="column wrap" style="background-color:#fff;" fxFlex="70" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div>
+      <h4>Generate Report</h4>
+    </div>
+    <div fxLayout="row wrap" style="background-color:#fff;padding:12px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div>
+          <span class="headerclass">Generate Report</span></div>
+      </div>
+    </div>
+    <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <div>
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+    <div fxLayout="row wrap" style="background-color:#fff;padding:12px" fxLayoutAlign="space-between stretch" [fxShow]="true" [fxHide]="false">
+      <div fxLayout="column wrap" fxFlex="20" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
+          <mat-select placeholder="Report Type" required>
+            <ng-template ngFor let-option [ngForOf]="selectvalue" let-i="index">
+              <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
+            </ng-template>
+          </mat-select>
+
+        </mat-form-field>
+        <div>
+        </div>
+      </div>
+      <div fxLayout="column wrap" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="space-between stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="column wrap" fxFlex="30" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <mat-form-field [appearance]="&apos;legacy&apos;">
+              <input matInput placeholder="Start Date" [matDatepicker]="FromPicker" required [disabled]="true">
+              <mat-datepicker-toggle matSuffix [for]="FromPicker" disabled="false"></mat-datepicker-toggle>
+              <mat-datepicker #FromPicker [disabled]="false"></mat-datepicker>
+
+            </mat-form-field>
+          </div>
+          <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div style="     padding-left: 20px;">
+              <span>To<span></span></span></div>
+          </div>
+          <div fxLayout="column wrap" fxFlex="30" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false">
+            <mat-form-field [appearance]="&apos;legacy&apos;">
+              <input matInput placeholder="End date" [matDatepicker]="EndPicker" required [disabled]="true">
+              <mat-datepicker-toggle matSuffix [for]="EndPicker" disabled="false"></mat-datepicker-toggle>
+              <mat-datepicker #EndPicker [disabled]="false"></mat-datepicker>
+
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="column wrap" fxFlex="20" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#3cb878;border-radius:12px">Submit</button><button mat-button style="background-color:#f7941d;border-radius:12px">Clear</button></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+{
+    "appPageId": "59a8e5f2-aadd-552b-9e98-945835f95872",
+    "appPageName": "userUpdate",
+    "componentName": "userupdateComponent",
+    "selectorName": "bh-userupdate",
+    "htmlFileName": "userupdate.template.html",
+    "tsFileName": "userupdate.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}
