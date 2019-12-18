@@ -1176,7 +1176,7 @@
                                             },
                                             {
                                                 "_key": "(click)",
-                                                "_value": "",
+                                                "_value": "updatereport()",
                                                 "_type": "kv",
                                                 "_attrDef": "p"
                                             },
@@ -1760,7 +1760,7 @@
                                     },
                                     {
                                         "_key": "html",
-                                        "_value": "<bh-tabledemo  [rowData]='testContent'\r\n[sqColumnDefinition]='columnDefinition'\r\n[enableCheckbox]=\"true\"\r\n></bh-tabledemo>",
+                                        "_value": "<bh-tabledemo  [rowData]='testContent'\r\n[sqColumnDefinition]='columnDefinition'\r\n[enableCheckbox]=\"true\"\r\n(getSelectedRows)=\"onNotifySelected($event)\"\r\n></bh-tabledemo>",
                                         "_type": "a",
                                         "_attrDef": "p"
                                     }

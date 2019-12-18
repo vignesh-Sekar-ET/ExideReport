@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { dashboardService } from '../../services/dashboard/dashboard.service';
 import 'rxjs';
 import { authService } from '../../services/auth/auth.service';
+import { UserIdleService } from 'angular-user-idle';
 
 /**
  * Service import Example :
@@ -38,13 +39,58 @@ export class loginComponent implements OnInit {
     constructor(private loginservice: loginserviceService,
         private router: Router, private _snackBar: MatSnackBar,
         private dashserve: dashboardService,
-        private auth: authService) {
+        private auth: authService, private userIdle: UserIdleService) {
 
     }
 
     ngOnInit() {
 
+        //Start watching for user inactivity.
+        this.userIdle.startWatching();
+
+        // Start watching when user idle is starting.
+        this.userIdle.onTimerStart().subscribe(/*count =>  console.log(count) */);
+
+        // Start watch when time is up.
+        this.userIdle.onTimeout().subscribe(() => {
+            // this._snackBar.open("Idle out", "", {
+            //     duration: 2000,
+            // });
+            // window.localStorage.clear();
+            // window.sessionStorage.clear();
+            // this.router.navigate(['/login']);
+        });
+
+        this.userIdle.ping$.subscribe(() => {
+            // this._snackBar.open("Session OUT", "", {
+            //     duration: 2000,
+            // });
+            // window.localStorage.clear();
+            // window.sessionStorage.clear();
+            // this.router.navigate(['/login']);
+        }
+        );
+
     }
+    //---------------AUTO LOGOUT FUNCTIONS-------------------------------------------------
+    // stop() {
+    //     this.userIdle.stopTimer();
+    // }
+
+    // stopWatching() {
+    //     this.userIdle.stopWatching();
+    // }
+
+    // startWatching() {
+    //     this.userIdle.startWatching();
+    // }
+
+    // restart() {
+    //     this.userIdle.resetTimer();
+    // }
+
+    //-----------------------------------------------------------------
+
     LoginSubmit() {
         let Uname = this.loginform.value.username;
         let Pass = this.loginform.value.password;
@@ -53,11 +99,25 @@ export class loginComponent implements OnInit {
 
                 this.datavalue = data;
                 if (this.datavalue.result == 'success') {
+
+                    var now = new Date();
+                    let timestamp: any;
+
+                    timestamp = now.getFullYear();
+                    timestamp += now.getMonth(); // JS 
+                    timestamp += now.getDate(); // pad 
+                    timestamp += now.getHours(); // pad 
+                    timestamp += now.getMinutes(); // pad 
+                    timestamp += now.getSeconds();
+                    timestamp += now.getMilliseconds();
+                    sessionStorage.setItem("Session_ID",timestamp);
+                    // console.log(isNaN(timestamp));
+
                     let groups = this.datavalue.groups;
 
                     for (let i = 0; i < groups.length; i++) {
                         // console.log(groups[i].cn);
-                        // groups[i].cn = 'enduser';
+                        // groups[i].cn = 'NRB_reportwriter';
                         if (groups[i].cn == "NRB_admins") {
 
                             this.usergroup = "admin";

@@ -67,7 +67,8 @@
                 },
                 {
                     "path": "createreport",
-                    "component": "createreportComponent"
+                    "component": "createreportComponent",
+                    "data": ""
                 },
                 {
                     "path": "createreportlist",

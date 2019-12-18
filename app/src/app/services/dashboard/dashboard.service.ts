@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class dashboardService {
-    grouptype :any ;
+    grouptype: any;
     dm: ModelMethods
     sysProps;
     systemProperties: any;
-    dbconfigupdate:any;
-    updateVal:boolean = false;
-    UpdateLabel:string = "Update";
+    dbconfigupdate: any;
+    updateVal: boolean = false;
+    UpdateLabel: string = "Update";
     constructor(private bDataModelService: NDataModelService,
         private http: HttpClient) {
         this.dm = new ModelMethods(bDataModelService);
@@ -22,15 +22,15 @@ export class dashboardService {
         // console.log(this.systemProperties);
 
     }
-    getConfigListGet(){
+    getConfigListGet() {
         let URL = this.systemProperties.modularUrl;
-        URL+= "dbconfiglist";
+        URL += "dbconfiglist";
         // console.log(URL);
         return this.http.get(URL)
     }
-        //dbconfigCreate 
+    //dbconfigCreate 
 
-    getConfigListPost(jndi,ip,port,name,type,pool,username,pass,active){
+    getConfigListPost(jndi, ip, port, name, type, pool, username, pass, active) {
         let URL = this.systemProperties.modularUrl;
         let jndiname = "'" + jndi + "'";
         let serverip = "'" + ip + "'";
@@ -41,16 +41,17 @@ export class dashboardService {
         let dbusername = "'" + username + "'";
         let password = "'" + pass + "'";
         let activestatus = "'" + active + "'";
-        let body = { "jndi":jndiname, "ip":serverip,"port":portnumber, "name":dbname, "type":drivertype,
-        "pool":connectionpoolsize,"username":dbusername, "pass":password, "active":activestatus
-    }
-   
-        URL+= "dbconfigcreate";
+        let body = {
+            "jndi": jndiname, "ip": serverip, "port": portnumber, "name": dbname, "type": drivertype,
+            "pool": connectionpoolsize, "username": dbusername, "pass": password, "active": activestatus
+        }
+
+        URL += "dbconfigcreate";
         //  console.log(body, URL)
-        return this.http.post(URL,body);
-        
+        return this.http.post(URL, body);
+
     }
-    getconfigUpdate(jndi:any, ip:any, port:any, name:any, type:any, pool:any, username:any, pass:any, active:any, id:any) {
+    getconfigUpdate(jndi: any, ip: any, port: any, name: any, type: any, pool: any, username: any, pass: any, active: any, id: any) {
         let URL = this.systemProperties.modularUrl;
         let jndiname = "'" + jndi + "'";
         let serverip = "'" + ip + "'";
@@ -61,22 +62,25 @@ export class dashboardService {
         let dbusername = "'" + username + "'";
         let password = "'" + pass + "'";
         let activestatus = "'" + active + "'";
-        let updateId="'"+ id +"'";
+        let updateId = "'" + id + "'";
         // console.log(updateId)
         let body = {
             "jndi": jndiname, "ip": serverip, "port": portnumber, "name": dbname, "type": drivertype,
-            "pool": connectionpoolsize, "username": dbusername, "pass": password, "active": activestatus,"id":updateId
+            "pool": connectionpoolsize, "username": dbusername, "pass": password, "active": activestatus, "id": updateId
         }
-         URL += "dbconfigupdate";
+        URL += "dbconfigupdate";
         // console.log( body, URL);
         return this.http.post(URL, body);
     }
     menuArray = [{
         "admin": [{ name: "Dashboard", maticon: "home", router: 'admindash' },
         { name: "Create User Group", maticon: "home", router: 'createuserlist' },
+        { name: "Create Report group", maticon: "home", router: 'reportgrouplist' },
+        { name: "Crete Report", maticon: "home", router: 'createreportlist' },
         // { name: "DB Config", maticon: "home", router: 'DbGrouplist' },
         { name: "System Config", maticon: "home", router: 'SystemConfig' },
         { name: "User Group Mapping", maticon: "home", router: 'usergroupmap' },
+        { name: "Generate Report", maticon: "home", router: 'generatereport' },
         { name: "Logout", maticon: "home", router: "/login" }],
 
         "reportwriter": [{ name: "Create Report group", maticon: "home", router: 'reportgrouplist' },

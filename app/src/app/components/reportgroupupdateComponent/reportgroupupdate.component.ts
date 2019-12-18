@@ -31,7 +31,7 @@ export class reportgroupupdateComponent extends NBaseComponent implements OnInit
     }
 
     ngOnInit() {
-        console.log(this.reportserviceupdate.updatename);
+        // console.log(this.reportserviceupdate.updatename);
 
         this.reportCreateForm = this.formBuilder.group({
             reportGroupName: ['', Validators.required],

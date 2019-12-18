@@ -335,7 +335,7 @@
                         },
                         {
                             "_key": "html",
-                            "_value": "<h4>Create Report</h4>",
+                            "_value": "<h4>{{checkvalue}}</h4>",
                             "_type": "a",
                             "_attrDef": "p"
                         }
@@ -679,7 +679,7 @@
                                 },
                                 {
                                     "_key": "html",
-                                    "_value": "<span class=\"headerclass\">Create Report</span>",
+                                    "_value": "<span class=\"headerclass\">{{checkvalue}}</span>",
                                     "_type": "a",
                                     "_attrDef": "p"
                                 }
@@ -1441,13 +1441,13 @@
                                 },
                                 {
                                     "_key": "optionValue",
-                                    "_value": "option.value",
+                                    "_value": "option.jndi_id",
                                     "_type": "a",
                                     "_attrDef": "p"
                                 },
                                 {
                                     "_key": "optionView",
-                                    "_value": "{{option.viewValue}}",
+                                    "_value": "{{option.JNDIName}}",
                                     "_type": "a",
                                     "_attrDef": "p"
                                 },
@@ -1640,7 +1640,7 @@
                                 },
                                 {
                                     "_key": "rows",
-                                    "_value": "2",
+                                    "_value": "4",
                                     "_type": "kv",
                                     "_attrDef": "c"
                                 },
@@ -1725,7 +1725,7 @@
                                 "_attrDef": "p"
                             }
                         ],
-                        "2644f305-142c-ac6e-2bd0-fb9a32853675": {
+                        "63455345-a0e0-4504-62fe-0cc477ee1f31": {
                             "paletteKey": "Html5",
                             "parentEditorKey": "487813d7-117a-a468-5b0c-e041a1d9f957",
                             "isAdvancedComponent": true,
@@ -1911,9 +1911,9 @@
                                     "_visibility": false
                                 }
                             ],
-                            "a7e27119-6bac-a28e-a1a4-f3fd284ac41f": {
+                            "1dd89959-dbf7-e839-98b0-3fa066c86ee5": {
                                 "paletteKey": "html-editor",
-                                "parentEditorKey": "2644f305-142c-ac6e-2bd0-fb9a32853675",
+                                "parentEditorKey": "63455345-a0e0-4504-62fe-0cc477ee1f31",
                                 "isAdvancedChildComponent": true,
                                 "designerReference": [
                                     {
@@ -1937,7 +1937,7 @@
                                 ]
                             }
                         },
-                        "ca6a69eb-8b54-97ab-faa2-f483334a2672": {
+                        "f21365ce-518e-8636-645a-47a736f62fef": {
                             "paletteKey": "FlexLayoutRow",
                             "parentEditorKey": "487813d7-117a-a468-5b0c-e041a1d9f957",
                             "designerReference": [
@@ -2003,9 +2003,9 @@
                                     "_attrDef": "p"
                                 }
                             ],
-                            "d28e5727-983d-2ee5-9eae-bd94bb872be9": {
+                            "1fec835e-513b-06df-68b0-bced1e4c45fb": {
                                 "paletteKey": "NG-RadioGroup",
-                                "parentEditorKey": "ca6a69eb-8b54-97ab-faa2-f483334a2672",
+                                "parentEditorKey": "f21365ce-518e-8636-645a-47a736f62fef",
                                 "designerReference": [
                                     {
                                         "_key": "componentLabel",
@@ -2081,9 +2081,9 @@
                                         "_attrDef": "c"
                                     }
                                 ],
-                                "76ae59ee-366e-9917-e1de-f5dbd96e63ef": {
+                                "111982ef-0088-ae78-ab51-f1f9c2b9bd91": {
                                     "paletteKey": "NG-Radio",
-                                    "parentEditorKey": "d28e5727-983d-2ee5-9eae-bd94bb872be9",
+                                    "parentEditorKey": "1fec835e-513b-06df-68b0-bced1e4c45fb",
                                     "designerReference": [
                                         {
                                             "_key": "style",
@@ -2186,7 +2186,7 @@
                                 }
                             }
                         },
-                        "1d6407c7-96de-273e-2530-2c5386ebc24d": {
+                        "19b6f516-12d8-0585-506e-f061e0026fad": {
                             "paletteKey": "NG-Input",
                             "parentEditorKey": "487813d7-117a-a468-5b0c-e041a1d9f957",
                             "isAdvancedComponent": true,
@@ -2377,218 +2377,6 @@
                                     "_attrDef": "c"
                                 }
                             ]
-                        },
-                        "ea27b847-9ecb-44b5-269c-2fc81dcbe9b4": {
-                            "paletteKey": "Html5",
-                            "parentEditorKey": "487813d7-117a-a468-5b0c-e041a1d9f957",
-                            "isAdvancedComponent": true,
-                            "designerReference": [
-                                {
-                                    "_key": "style",
-                                    "_value": "",
-                                    "_type": "kv",
-                                    "_attrDef": "p"
-                                },
-                                {
-                                    "_key": "class",
-                                    "_value": "",
-                                    "_type": "kv",
-                                    "_attrDef": "p"
-                                },
-                                {
-                                    "_key": "htmlElement",
-                                    "_value": "div",
-                                    "_type": "dav",
-                                    "_attrDef": "p",
-                                    "_useAsLabel": true
-                                },
-                                {
-                                    "_key": "tagType",
-                                    "_value": "",
-                                    "_type": "a",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "name",
-                                    "_value": "",
-                                    "_type": "kv",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "sandbox",
-                                    "_value": "",
-                                    "_type": "kv",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "src",
-                                    "_value": "",
-                                    "_type": "kv",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "srcdoc",
-                                    "_value": "",
-                                    "_type": "kv",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "width",
-                                    "_value": "",
-                                    "_type": "kv",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "[autoplay]",
-                                    "_value": "",
-                                    "_type": "kv",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "[loop]",
-                                    "_value": "",
-                                    "_type": "kv",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "data",
-                                    "_value": "",
-                                    "_type": "kv",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "audioSource",
-                                    "_value": [],
-                                    "_type": "a",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "videoSource",
-                                    "_value": [],
-                                    "_type": "a",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "audioDatasource",
-                                    "_value": "",
-                                    "_type": "a",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "audioSrc",
-                                    "_value": "",
-                                    "_type": "a",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "audioType",
-                                    "_value": "",
-                                    "_type": "a",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "videoDatasource",
-                                    "_value": "",
-                                    "_type": "a",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "videoSrc",
-                                    "_value": "",
-                                    "_type": "a",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "videoType",
-                                    "_value": "",
-                                    "_type": "a",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "(audioplay)",
-                                    "_value": "",
-                                    "_type": "a",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "(videoplay)",
-                                    "_value": "",
-                                    "_type": "a",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "(audiopause)",
-                                    "_value": "",
-                                    "_type": "kv",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "(videopause)",
-                                    "_value": "",
-                                    "_type": "kv",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "(audioended)",
-                                    "_value": "",
-                                    "_type": "kv",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                },
-                                {
-                                    "_key": "(videoended)",
-                                    "_value": "",
-                                    "_type": "kv",
-                                    "_attrDef": "p",
-                                    "_visibility": false
-                                }
-                            ],
-                            "3665e660-8f84-924f-6937-b98df61457fc": {
-                                "paletteKey": "html-editor",
-                                "parentEditorKey": "ea27b847-9ecb-44b5-269c-2fc81dcbe9b4",
-                                "isAdvancedChildComponent": true,
-                                "designerReference": [
-                                    {
-                                        "_key": "style",
-                                        "_value": "",
-                                        "_type": "kv",
-                                        "_attrDef": "p"
-                                    },
-                                    {
-                                        "_key": "class",
-                                        "_value": "",
-                                        "_type": "kv",
-                                        "_attrDef": "p"
-                                    },
-                                    {
-                                        "_key": "html",
-                                        "_value": "<button type = \"button\"(click)=\"fileInput.click()\">\r\n                  <mat-icon>attachment</mat-icon>\r\n                  <span>Upload Files</span>\r\n                </button><input #fileInput type=\"file\" (change)=\"onFileInput($event)\" style=\"display:none;\">",
-                                        "_type": "a",
-                                        "_attrDef": "p"
-                                    }
-                                ]
-                            }
                         },
                         "ede48fc7-adcc-7999-e253-00bbfde2294f": {
                             "paletteKey": "NG-Select",

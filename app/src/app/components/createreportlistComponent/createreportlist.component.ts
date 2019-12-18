@@ -2,7 +2,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
 
 import { Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
+// import { FormControl } from '@angular/forms';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { Columnsetting } from '../../columnsetting';
 import { MatPaginator } from '@angular/material/paginator';
@@ -75,7 +75,27 @@ export class createreportlistComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.reportservice.updatename = "";
 
+    }
+
+    updatereport() {
+        if (this.updateData) {
+            this.reportservice.updatename = this.updateData;
+
+            this.route.navigateByUrl('/dashboard/createreport');
+        }
+        else {
+            this.snackBar.open('Please Select Report', 'Close', {
+                duration: 3000
+            });
+        }
+
+
+    }
+
+    onNotifySelected(selectedRows: object[]) {
+        this.updateData = selectedRows;
     }
 
 

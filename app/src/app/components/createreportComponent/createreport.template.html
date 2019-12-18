@@ -1,12 +1,12 @@
 <div fxLayout="row wrap" fxLayoutAlign="center start" [fxShow]="true" [fxHide]="false">
   <div fxLayout="column wrap" style="background-color:#fff;" fxFlex="70" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
     <div>
-      <h4>Create Report</h4>
+      <h4>{{checkvalue}}</h4>
     </div>
     <div fxLayout="row wrap" style="background-color:#fff;padding:12px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
       <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
         <div>
-          <span class="headerclass">Create Report</span></div>
+          <span class="headerclass">{{checkvalue}}</span></div>
       </div>
     </div>
     <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
@@ -26,13 +26,13 @@
           <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
             <mat-select formControlName="source" placeholder="JNDI Name" required>
               <ng-template ngFor let-option [ngForOf]="selectvalue" let-i="index">
-                <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
+                <mat-option [value]="option.jndi_id">{{option.JNDIName}}</mat-option>
               </ng-template>
             </mat-select>
             <mat-error align="start" *ngIf="createreportform.value.source== &apos;&apos;">Please select JNDI Name</mat-error>
           </mat-form-field>
           <mat-form-field>
-            <textarea matInput rows="2" cols="40" formControlName="query" name="query" placeholder="Query" required></textarea>
+            <textarea matInput rows="4" cols="40" formControlName="query" name="query" placeholder="Query" required></textarea>
           </mat-form-field>
         </div>
         <div fxLayout="column wrap" style="padding:15px;" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
@@ -50,11 +50,6 @@
             <mat-error align="start" *ngIf="createreportform.value.ptname.length &lt; 3 &amp;&amp; createreportform.value.ptname!=&apos;&apos;">Enter min 3 to max 20 char</mat-error>
             <mat-error align="start" *ngIf="createreportform.value.ptname.length &gt;25">Enter min 3 to max 20 char</mat-error>
           </mat-form-field>
-          <div>
-            <button type="button" (click)="fileInput.click()">
-              <mat-icon>attachment</mat-icon>
-              <span>Upload Files</span>
-            </button><input #fileInput type="file" (change)="onFileInput($event)" style="display:none;"></div>
           <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
             <mat-select formControlName="rgpname" placeholder="Report Group Name" required>
               <ng-template ngFor let-option [ngForOf]="RGname" let-i="index">

@@ -1,121 +1,179 @@
-/*DEFAULT GENERATED TEMPLATE. DO NOT CHANGE SELECTOR TEMPLATE_URL AND CLASS NAME*/
-import { Component, OnInit } from '@angular/core'
-import { ModelMethods } from '../../lib/model.methods';
-// import { BDataModelService } from '../service/bDataModel.service';
-import { NDataModelService } from 'neutrinos-seed-services';
-import { NBaseComponent } from '../../../../../app/baseClasses/nBase.component';
 
-/**
- * Service import Example :
- * import { HeroService } from '../../services/hero/hero.service';
- */
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { reportcreateserviceService } from '../../services/reportcreateservice/reportcreateservice.service';
+import { MatTableDataSource, MatSort } from '@angular/material';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Columnsetting } from '../../columnsetting';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ngxCsv } from 'ngx-csv/ngx-csv';
 
-/**
-* 
-* Serivice Designer import Example - Service Name - HeroService
-* import { HeroService } from 'app/sd-services/HeroService';
-*/
 
 @Component({
     selector: 'bh-generatereport',
     templateUrl: './generatereport.template.html'
 })
 
-export class generatereportComponent extends NBaseComponent implements OnInit {
-    mm: ModelMethods;
-    selectvalue = [
+export class generatereportComponent implements OnInit {
+
+    @ViewChild(MatSort, { static: true }) sort: MatSort;
+    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+    tablePaginationSettings: Columnsetting = <Columnsetting>{};
+    columnDefinition = [];
+    reportcolumn = [];
+    selectvalue: any
+    tablevisible: boolean = false;
+
+    testContent: any;
+    generatereportform: FormGroup;
+
+    fileReaded: any;
+    uploadOptions = {
+        "entityName": "users",
+
+        "metadata": { "key": "abcj@gmail.com" }
+
+    }
+
+
+    /*   selectvalue = [
         { value: 'claim', viewValue: 'Claim Report' },
         { value: 'expense', viewValue: 'Expense Report' },
         { value: 'recovery', viewValue: 'Recovery Report' }
-    ];
+    ]; */
 
-    constructor(private bdms: NDataModelService) {
-        super();
-        this.mm = new ModelMethods(bdms);
+    constructor(private snackBar: MatSnackBar, private reportservice: reportcreateserviceService,
+        private formBuilder: FormBuilder) {
+        this.generatereportform = this.formBuilder.group(
+            {
+                rname: ['', [Validators.required]],
+                upload: ['',],
+            }
+        )
+
+
+    }
+
+    button() {
+
     }
 
     ngOnInit() {
 
+        this.reportservice.reportlist().subscribe((response) => {
+            this.selectvalue = response;
+        });
+        this.tablePaginationSettings.enablePagination = true;
+        this.tablePaginationSettings.pageSize = 5;
+        this.tablePaginationSettings.pageSizeOptions = [5, 10, 15];
+        this.tablePaginationSettings.showFirstLastButtons = true;
+
     }
 
-    get(dataModelName, filter?, keys?, sort?, pagenumber?, pagesize?) {
-        this.mm.get(dataModelName, filter, keys, sort, pagenumber, pagesize,
-            result => {
-                // On Success code here
+    reportformsubmit() {
+        this.generatereportform.value.upload = this.fileReaded
+        this.reportservice.reportgenerate(this.generatereportform.value).subscribe(
+            data => {
+            
+                this.testContent = data;
+                Object.keys(this.testContent[0]).forEach(key => {
+
+                    this.columnDefinition.push({
+                        'name': key,
+                        'displayName': key
+                    })
+                    this.reportcolumn.push(key);
+                });
+                this.tablevisible = true;
+                // this.datavalue = data;
+                // if (this.datavalue.result == 'reportcreated') {
+                //     this._snackBar.open("Report created Successful", "", {
+                //         duration: 2000,
+                //     });
+                //     this.router.navigate(['/dashboard/createreportlist']);
+                // }
+                // else {
+                //     this._snackBar.open(this.datavalue, "ERROR", {
+                //         duration: 2000,
+                //     });
+
+                // }
             },
-            error => {
-                // Handle errors here
-            });
+            err => {
+                console.log(err);
+            }
+        )
     }
 
-    getById(dataModelName, dataModelId) {
-        this.mm.getById(dataModelName, dataModelId,
-            result => {
-                // On Success code here
-            },
-            error => {
-                // Handle errors here
-            })
+    onFileInput(sender: any) {
+       
+
+        var validExts = new Array(".xlsx", ".csv");
+
+        var fileExt = sender.target.value;
+
+        fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
+
+
+        if (validExts.indexOf(fileExt) < 0) {
+            // console.log(validExts.toString() + " files only");
+            return false;
+        }
+        else {
+
+            if (fileExt == ".xlsx") {
+                console.log("uploaded file xlsx")
+            }
+            else {
+            
+                this.fileReaded = sender.target.files[0];
+
+                let reader: FileReader = new FileReader();
+                reader.readAsText(this.fileReaded);
+
+                reader.onload = (e) => {
+                    let csv: any = reader.result;
+               
+                    let allTextLines = csv.split(/\r|\n|\r/);
+                
+                    let headers = allTextLines[0].split(',');
+                   
+                    let lines = [];
+
+                    for (let i = 0; i < allTextLines.length; i++) {
+                        // split content based on comma  
+                        let data = allTextLines[i].split(',');
+                        if (data.length === headers.length) {
+                            let tarr = [];
+                            for (let j = 0; j < headers.length; j++) {
+                                tarr.push(data[j]);
+                              
+                            }
+
+                            // log each row to see output  
+                       
+                            lines.push(tarr);
+               
+                        }
+                    }
+                    // all rows in the csv file  
+ 
+                    this.fileReaded = lines;
+                   
+                }
+            }
+        }
     }
 
-    put(dataModelName, dataModelObject) {
-        this.mm.put(dataModelName, dataModelObject,
-            result => {
-                // On Success code here
-            }, error => {
-                // Handle errors here
-            })
+    generatereport() {
+        // let title = "SampleTitle";
+        var options = { 
+            fieldSeparator: ',',
+            quoteStrings: '"',
+            decimalseparator: '.',     
+            headers: this.reportcolumn
+          };
+        new ngxCsv(this.testContent, "Report",options);
     }
-
-    validatePut(formObj, dataModelName, dataModelObject) {
-        this.mm.validatePut(formObj, dataModelName, dataModelObject,
-            result => {
-                // On Success code here
-            }, error => {
-                // Handle errors here
-            })
-    }
-
-    update(dataModelName, update, filter, options) {
-        const updateObject = {
-            update: update,
-            filter: filter,
-            options: options
-        };
-        this.mm.update(dataModelName, updateObject,
-            result => {
-                //  On Success code here
-            }, error => {
-                // Handle errors here
-            })
-    }
-
-    delete(dataModelName, filter) {
-        this.mm.delete(dataModelName, filter,
-            result => {
-                // On Success code here
-            }, error => {
-                // Handle errors here
-            })
-    }
-
-    deleteById(dataModelName, dataModelId) {
-        this.mm.deleteById(dataModelName, dataModelId,
-            result => {
-                // On Success code here
-            }, error => {
-                // Handle errors here
-            })
-    }
-
-    updateById(dataModelName, dataModelId, dataModelObj) {
-        this.mm.updateById(dataModelName, dataModelId, dataModelObj,
-            result => {
-                // On Success code here
-            }, error => {
-                // Handle errors here
-            })
-    }
-
 
 }

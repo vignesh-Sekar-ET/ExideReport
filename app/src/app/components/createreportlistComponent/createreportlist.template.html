@@ -13,7 +13,7 @@
           <div fxLayout="column wrap" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
             <div fxLayout="row wrap" fxLayoutAlign="space-around start" [fxShow]="true" [fxHide]="false">
               <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#3cb878;border-radius:12px" class="crudclass" (click)="reportcreate()">create</button></div>
-              <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#f7941d;border-radius:12px" class="crudclass">Update</button></div>
+              <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#f7941d;border-radius:12px" class="crudclass" (click)="updatereport()">Update</button></div>
             </div>
           </div>
         </div>
@@ -24,7 +24,7 @@
         </div>
         <div fxLayout="column wrap" style="padding:5px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
           <div>
-            <bh-tabledemo [rowData]="testContent" [sqColumnDefinition]="columnDefinition" [enableCheckbox]="true"></bh-tabledemo>
+            <bh-tabledemo [rowData]="testContent" [sqColumnDefinition]="columnDefinition" [enableCheckbox]="true" (getSelectedRows)="onNotifySelected($event)"></bh-tabledemo>
           </div>
         </div>
       </div>

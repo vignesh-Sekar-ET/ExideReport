@@ -19,7 +19,7 @@ export class reportcreateserviceService {
         this.dm = new ModelMethods(bdms);
         this.sysProps = this.bdms;
         this.systemProperties = this.sysProps.systemService.properties;
-        // console.log(this.systemProperties);
+
     }
 
     onSubmit(rname: any, rcode: any, rstatus: any): Observable<any> {
@@ -31,13 +31,19 @@ export class reportcreateserviceService {
         let data = { 'gname': reportName, 'gcode': reportCode, 'status': reportStatus };
         url += "groupcreate"
         let body = { 'gname': reportName, 'gcode': reportCode, 'status': reportStatus };
-        console.log(body);
+
         return this.http.post(url, body);
     }
 
     reportgrouplist() {
         let URL = this.systemProperties.modularUrl;
         URL += "reportgrouplst";
+        return this.http.get(URL)
+    }
+
+    JNDIlist() {
+        let URL = this.systemProperties.modularUrl;
+        URL += "jndilist";
         return this.http.get(URL)
     }
 
@@ -48,14 +54,27 @@ export class reportcreateserviceService {
         let reportName = "'" + rptvalue.rname + "'";
         let typr = "'" + rptvalue.typeq + "'";
         let ptname = "'" + rptvalue.ptname + "'";
-        // let source = "'" + rptvalue.source + "'";
-        // let query = "'" + rptvalue.query + "'";
-        // let rgpname = "'" + rptvalue.rgpname + "'";
+        let source = rptvalue.source;
+        let query = "'" + rptvalue.query + "'";
+        let rgpname = rptvalue.rgpname;
         // let upload = "'" + rptvalue.typeq + "'";
 
 
         url += "reportcreate"
-        let body = { 'rname': reportName, 'typer': typr, 'source': rptvalue.source, 'ptname': ptname, 'query': rptvalue.query, 'rgpname': rptvalue.rgpname, 'upload': rptvalue.upload };
+        let body = { 'rname': reportName, 'typer': typr, 'source': source, 'ptname': ptname, 'query': query, 'rgpname': rgpname };
+        return this.http.post(url, body);
+
+    }
+
+    reportgenerate(rptvalue: any): Observable<any> {
+
+        let url = this.systemProperties.modularUrl;
+        let sessionid = sessionStorage.getItem('Session_ID')
+        let setvalue = parseInt(sessionid)
+
+        url += "reportgenerate"
+        let body = { 'rname': rptvalue.rname, 'upload': rptvalue.upload, 'sessionid': setvalue };
+   
         return this.http.post(url, body);
 
     }
@@ -63,7 +82,7 @@ export class reportcreateserviceService {
     reportlist() {
         let url = this.systemProperties.modularUrl;
         url += "reportlist";
-        console.log(url);
+
         return this.http.get(url)
     }
 

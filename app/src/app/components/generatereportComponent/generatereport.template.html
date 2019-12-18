@@ -14,46 +14,37 @@
         <mat-divider></mat-divider>
       </div>
     </div>
-    <div fxLayout="row wrap" style="background-color:#fff;padding:12px" fxLayoutAlign="space-between stretch" [fxShow]="true" [fxHide]="false">
-      <div fxLayout="column wrap" fxFlex="20" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-        <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
-          <mat-select placeholder="Report Type" required>
-            <ng-template ngFor let-option [ngForOf]="selectvalue" let-i="index">
-              <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
-            </ng-template>
-          </mat-select>
+    <form [formGroup]="generatereportform" (ngSubmit)="reportformsubmit()">
+      <div fxLayout="row wrap" style="background-color:#fff;padding:12px" fxLayoutAlign="space-between stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="column wrap" fxFlex="20" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
+            <mat-select formControlName="rname" placeholder="Report Type" required>
+              <ng-template ngFor let-option [ngForOf]="selectvalue" let-i="index">
+                <mat-option [value]="option.reports_id">{{option.ReportName}}</mat-option>
+              </ng-template>
+            </mat-select>
 
-        </mat-form-field>
-        <div>
+          </mat-form-field>
         </div>
-      </div>
-      <div fxLayout="column wrap" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-        <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="space-between stretch" [fxShow]="true" [fxHide]="false">
-          <div fxLayout="column wrap" fxFlex="30" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-            <mat-form-field [appearance]="&apos;legacy&apos;">
-              <input matInput placeholder="Start Date" [matDatepicker]="FromPicker" required [disabled]="true">
-              <mat-datepicker-toggle matSuffix [for]="FromPicker" disabled="false"></mat-datepicker-toggle>
-              <mat-datepicker #FromPicker [disabled]="false"></mat-datepicker>
-
-            </mat-form-field>
-          </div>
-          <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-            <div style="     padding-left: 20px;">
-              <span>To<span></span></span></div>
-          </div>
-          <div fxLayout="column wrap" fxFlex="30" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false">
-            <mat-form-field [appearance]="&apos;legacy&apos;">
-              <input matInput placeholder="End date" [matDatepicker]="EndPicker" required [disabled]="true">
-              <mat-datepicker-toggle matSuffix [for]="EndPicker" disabled="false"></mat-datepicker-toggle>
-              <mat-datepicker #EndPicker [disabled]="false"></mat-datepicker>
-
-            </mat-form-field>
+        <div fxLayout="column wrap" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div>
+              <button type="button" (click)="fileInput.click()">
+                <mat-icon>attachment</mat-icon>
+                <span>Upload Files</span>
+              </button><input #fileInput type="file" (change)="onFileInput($event)" style="display:none;"></div>
           </div>
         </div>
+        <div fxLayout="column wrap" fxFlex="20" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#3cb878;border-radius:12px" [disabled]="generatereportform.invalid" type="submit">Submit</button><button mat-button style="background-color:#f7941d;border-radius:12px">Clear</button></div>
+        </div>
       </div>
-      <div fxLayout="column wrap" fxFlex="20" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-        <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#3cb878;border-radius:12px">Submit</button><button mat-button style="background-color:#f7941d;border-radius:12px">Clear</button></div>
+      <div fxLayout="column wrap" style="padding:5px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div *ngIf="tablevisible">
+          <bh-tabledemo [rowData]="testContent" [sqColumnDefinition]="columnDefinition"></bh-tabledemo>
+        </div>
+        <div fxLayout="column wrap" fxLayoutAlign="start start" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#3cb878;border-radius:12px" *ngIf="tablevisible" (click)="generatereport()" type="button">Generate</button></div>
       </div>
-    </div>
+    </form>
   </div>
 </div>
