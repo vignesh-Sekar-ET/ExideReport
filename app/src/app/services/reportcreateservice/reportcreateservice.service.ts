@@ -62,6 +62,7 @@ export class reportcreateserviceService {
 
         url += "reportcreate"
         let body = { 'rname': reportName, 'typer': typr, 'source': source, 'ptname': ptname, 'query': query, 'rgpname': rgpname };
+        console.log(body);
         return this.http.post(url, body);
 
     }

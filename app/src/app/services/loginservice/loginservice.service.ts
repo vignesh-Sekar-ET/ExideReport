@@ -22,12 +22,7 @@ export class loginserviceService {
     LoginSubmit(uname: any, pass1: any): Observable<any> {
 
         let url = this.systemProperties.modularUrl;
-        // let username = "'" + uname + "'";
-        // let password = "'" + pass1 + "'";
-        // let data = { 'name': uname, 'pass': pass1 };
-        /* let headers = new HttpHeaders().set('Content-Type', 'application/json')
-        .set('token', this.sessions.getValue('accessToken')); */
-        /* let headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*'); */
+       
         url += "getlogin"
         let body = { 'name': uname, 'pass': pass1 };
 
