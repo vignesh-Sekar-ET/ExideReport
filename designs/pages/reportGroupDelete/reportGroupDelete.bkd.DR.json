@@ -779,7 +779,7 @@
                             },
                             {
                                 "_key": "(click)",
-                                "_value": "onNoClick()",
+                                "_value": "   this.dialog.closeAll();",
                                 "_type": "kv",
                                 "_attrDef": "p"
                             },

@@ -36,6 +36,7 @@
         "@angular/platform-browser-dynamic": "8.2.0",
         "@angular/router": "8.2.0",
         "@swimlane/ngx-charts": "12.0.1",
+        "@syncfusion/ej2-angular-calendars": "^17.4.40",
         "android-versions": "1.4.0",
         "angular-user-idle": "^2.2.1",
         "angular2-csv": "^0.2.9",

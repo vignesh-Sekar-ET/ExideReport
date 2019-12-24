@@ -24,7 +24,7 @@
         "componentName": "dbconfigComponent",
         "isEntry": false
     },
-        "603a1965-1702-2e8c-48a6-2b4538acc250": {
+    "603a1965-1702-2e8c-48a6-2b4538acc250": {
         "appPageName": "dashboard",
         "componentName": "dashboardComponent",
         "isEntry": false
@@ -59,7 +59,7 @@
         "componentName": "reportgrouplistComponent",
         "isEntry": false
     },
-        "d8f8f46b-5608-fe46-c912-dc61daa6d314": {
+    "d8f8f46b-5608-fe46-c912-dc61daa6d314": {
         "appPageName": "dbconfigUpdate",
         "componentName": "dbconfigupdateComponent",
         "isEntry": false
@@ -84,12 +84,12 @@
         "componentName": "usergroupmappingviewComponent",
         "isEntry": false
     },
-"28cdea65-dc10-5f98-c55a-77e37e6debb8": {
+    "28cdea65-dc10-5f98-c55a-77e37e6debb8": {
         "appPageName": "userGroupmappingCreate",
         "componentName": "usergroupmappingcreateComponent",
         "isEntry": false
     },
-"0d066f7f-a631-3e47-1cd0-0dd858fa6af8": {
+    "0d066f7f-a631-3e47-1cd0-0dd858fa6af8": {
         "appPageName": "userReportList",
         "componentName": "userreportlistComponent",
         "isEntry": false
@@ -108,6 +108,15 @@
         "appPageName": "userDelete",
         "componentName": "userdeleteComponent",
         "isEntry": false
+    },
+    "250872eb-9fe8-881c-6506-e54f8b151a27": {
+        "appPageName": "reportConfigList",
+        "componentName": "reportconfiglistComponent",
+        "isEntry": false
+    },
+    "2d1dc946-45a4-95e4-2278-af8b6632f6d4": {
+        "appPageName": "reportConfigCreate",
+        "componentName": "reportconfigcreateComponent",
+        "isEntry": false
     }
-
 }
