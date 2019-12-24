@@ -4,7 +4,6 @@ import { reportcreateserviceService } from '../../services/reportcreateservice/r
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Columnsetting } from '../../columnsetting';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
 
@@ -16,8 +15,7 @@ import { ngxCsv } from 'ngx-csv/ngx-csv';
 
 export class generatereportComponent implements OnInit {
 
-    @ViewChild(MatSort, { static: true }) sort: MatSort;
-    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
     tablePaginationSettings: Columnsetting = <Columnsetting>{};
     columnDefinition = [];
     reportcolumn = [];
@@ -28,19 +26,9 @@ export class generatereportComponent implements OnInit {
     generatereportform: FormGroup;
 
     fileReaded: any;
-    uploadOptions = {
-        "entityName": "users",
-
-        "metadata": { "key": "abcj@gmail.com" }
-
-    }
 
 
-    /*   selectvalue = [
-        { value: 'claim', viewValue: 'Claim Report' },
-        { value: 'expense', viewValue: 'Expense Report' },
-        { value: 'recovery', viewValue: 'Recovery Report' }
-    ]; */
+
 
     constructor(private snackBar: MatSnackBar, private reportservice: reportcreateserviceService,
         private formBuilder: FormBuilder) {
@@ -71,7 +59,7 @@ export class generatereportComponent implements OnInit {
     }
 
     reportformsubmit() {
-        this.generatereportform.value.upload = this.fileReaded
+        this.generatereportform.controls['upload'].setValue(this.fileReaded);
         this.reportservice.reportgenerate(this.generatereportform.value).subscribe(
             data => {
             
@@ -85,19 +73,6 @@ export class generatereportComponent implements OnInit {
                     this.reportcolumn.push(key);
                 });
                 this.tablevisible = true;
-                // this.datavalue = data;
-                // if (this.datavalue.result == 'reportcreated') {
-                //     this._snackBar.open("Report created Successful", "", {
-                //         duration: 2000,
-                //     });
-                //     this.router.navigate(['/dashboard/createreportlist']);
-                // }
-                // else {
-                //     this._snackBar.open(this.datavalue, "ERROR", {
-                //         duration: 2000,
-                //     });
-
-                // }
             },
             err => {
                 console.log(err);

@@ -43,7 +43,9 @@
         <div *ngIf="tablevisible">
           <bh-tabledemo [rowData]="testContent" [sqColumnDefinition]="columnDefinition"></bh-tabledemo>
         </div>
-        <div fxLayout="column wrap" fxLayoutAlign="start start" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#3cb878;border-radius:12px" *ngIf="tablevisible" (click)="generatereport()" type="button">Generate</button></div>
+        <div fxLayout="column wrap" fxLayoutAlign="start start" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false" *ngIf="tablevisible"><button mat-button style="background-color:#3cb878;border-radius:12px" (click)="generatereport()" type="button">Generate</button><button mat-button style="background-color:#f7941d;border-radius:12px">Subscribe</button></div>
+        </div>
       </div>
     </form>
   </div>

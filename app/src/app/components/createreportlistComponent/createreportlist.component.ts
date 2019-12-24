@@ -53,7 +53,7 @@ export class createreportlistComponent implements OnInit {
 
             },
             {
-                'name': 'GroupCode',
+                'name': 'Groupname',
                 'displayName': 'Report Group',
                 'disableSorting': false,
                 'icon': 'home',

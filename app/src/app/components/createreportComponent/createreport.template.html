@@ -32,7 +32,7 @@
             <mat-error align="start" *ngIf="createreportform.value.source== &apos;&apos;">Please select JNDI Name</mat-error>
           </mat-form-field>
           <mat-form-field>
-            <textarea matInput rows="4" cols="40" formControlName="query" name="query" placeholder="Query" required></textarea>
+            <textarea matInput rows="12" cols="40" formControlName="query" name="query" placeholder="Query" required></textarea>
           </mat-form-field>
         </div>
         <div fxLayout="column wrap" style="padding:15px;" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
@@ -58,7 +58,7 @@
             </mat-select>
             <mat-error align="start" *ngIf="createreportform.value.rgpname== &apos;&apos;">Please select Report Group Name</mat-error>
           </mat-form-field>
-          <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#0e78e5;border-radius:12px" [disabled]="createreportform.invalid" type="submit">Generate</button><button mat-button style="background-color:#ed1c24;border-radius:12px" (click)="formclear()">Cancel</button></div>
+          <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#0e78e5;border-radius:12px" [disabled]="createreportform.invalid" type="submit">Create</button><button mat-button style="background-color:#ed1c24;border-radius:12px" (click)="formclear()">Cancel</button></div>
         </div>
       </div>
     </form>

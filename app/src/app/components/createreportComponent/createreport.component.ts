@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core'
 import { reportcreateserviceService } from '../../services/reportcreateservice/reportcreateservice.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { NSnackbarService } from 'neutrinos-seed-services';
 import { Router } from '@angular/router';
 
 @Component({
@@ -28,7 +28,7 @@ export class createreportComponent implements OnInit {
     sub: any;
     checkvalue: any;
 
-    constructor(private reportcreate: reportcreateserviceService, private _snackBar: MatSnackBar,
+    constructor(private reportcreate: reportcreateserviceService, private _snackBar: NSnackbarService,
         private formBuilder: FormBuilder, private router: Router) {
 
         this.createreportform = this.formBuilder.group(
@@ -66,17 +66,14 @@ export class createreportComponent implements OnInit {
         // this.createreportform.value.upload = this.fileReaded;
         this.reportcreate.reportcreat(this.createreportform.value).subscribe(
             data => {
-                this.datavalue = data;
-                if (this.datavalue.result == 'reportcreated') {
-                    this._snackBar.open("Report created Successful", "", {
-                        duration: 2000,
-                    });
+                if (data.result == 'reportcreated') {
+                    this._snackBar.openSnackBar("Report created Successful", 2000,
+                    );
                     this.router.navigate(['/dashboard/createreportlist']);
                 }
                 else {
-                    this._snackBar.open(this.datavalue, "ERROR", {
-                        duration: 2000,
-                    });
+                    this._snackBar.openSnackBar(data, 2000
+                    );
 
                 }
             },

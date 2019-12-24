@@ -73,21 +73,20 @@ export class dashboardService {
         return this.http.post(URL, body);
     }
     menuArray = [{
-        "admin": [{ name: "Dashboard", maticon: "home", router: 'admindash' },
-        { name: "Create User Group", maticon: "home", router: 'createuserlist' },
-        { name: "Create Report group", maticon: "home", router: 'reportgrouplist' },
-        { name: "Crete Report", maticon: "home", router: 'createreportlist' },
-        // { name: "DB Config", maticon: "home", router: 'DbGrouplist' },
-        { name: "System Config", maticon: "home", router: 'SystemConfig' },
-        { name: "User Group Mapping", maticon: "home", router: 'usergroupmap' },
-        { name: "Generate Report", maticon: "home", router: 'generatereport' },
+        "admin": [{ name: "Dashboard", maticon: "dashboard", router: 'admindash' },
+        { name: "Create Report group", maticon: "assignment_ind", router: 'reportgrouplist' },
+        { name: "Create Report", maticon: "description", router: 'createreportlist' },
+        // { name: "Report Configuration", maticon: "description", router: 'DbGrouplist' },
+        { name: "System Config", maticon: "language", router: 'SystemConfig' },
+        { name: "User Group Mapping", maticon: "face", router: 'usergroupmap' },
+        { name: "Generate Report", maticon: "attachment", router: 'generatereport' },
         { name: "Logout", maticon: "home", router: "/login" }],
 
-        "reportwriter": [{ name: "Create Report group", maticon: "home", router: 'reportgrouplist' },
-        { name: "Crete Report", maticon: "home", router: 'createreportlist' },
+        "reportwriter": [{ name: "Create Report group", maticon: "assignment_ind", router: 'reportgrouplist' },
+        { name: "Create Report", maticon: "description", router: 'createreportlist' },
         { name: "logout", maticon: "home", router: '/login' }],
 
-        "enduser": [{ name: "Generate Report", maticon: "home", router: 'generatereport' },
+        "enduser": [{ name: "Generate Report", maticon: "attachment", router: 'generatereport' },
 
         { name: "Logout ", maticon: "home", router: '/login' }]
 
