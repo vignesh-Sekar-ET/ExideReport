@@ -1,0 +1,13 @@
+{
+    "appPageId": "bfe5ae7b-4512-a3e2-edcd-dd2fc5be9f26",
+    "appPageName": "reportGroupDelete",
+    "componentName": "reportgroupdeleteComponent",
+    "selectorName": "bh-reportgroupdelete",
+    "htmlFileName": "reportgroupdelete.template.html",
+    "tsFileName": "reportgroupdelete.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

@@ -21,19 +21,19 @@
                     "component": "admindashboardComponent"
                 },
                 {
-                    "component": "reportlistComponent",
+                    "component": "reportgrouplistComponent",
                     "path": "reportList"
                 },
                 {
-                    "component": "reportcreateComponent",
+                    "component": "reportgroupcreateComponent",
                     "path": "reportCreate"
                 },
                 {
-                    "component": "reportupdateComponent",
+                    "component": "reportgroupupdateComponent",
                     "path": "reportUpdate"
                 },
                 {
-                    "component": "reportdeleteComponent",
+                    "component": "reportgroupdeleteComponent",
                     "path": "reportDelete"
                 },
                 {
@@ -61,7 +61,7 @@
                     "path": "reportConfigCreate"
                 },
                 {
-                    "component": "userreportlistComponent",
+                    "component": "usergrouplistComponent",
                     "path": "userReportList"
                 },
                 {

@@ -12,6 +12,8 @@ export class dashboardService {
     sysProps;
     systemProperties: any;
     dbconfigupdate: any;
+    sample:any;
+    test:any;
     get date() {
         // console.log(this.dbconfigupdate);
         alert("asmple")

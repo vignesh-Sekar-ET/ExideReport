@@ -113,5 +113,25 @@
         "appPageName": "reportConfigList",
         "componentName": "reportconfiglistComponent",
         "isEntry": false
+    },
+    "48a81219-ae4c-c066-2195-d3c8c21e2465": {
+        "appPageName": "reportGroupCreate",
+        "componentName": "reportgroupcreateComponent",
+        "isEntry": false
+    },
+    "dbb0e185-3b61-8a2d-6aac-8624c8d294f9": {
+        "appPageName": "reportGroupUpdate",
+        "componentName": "reportgroupupdateComponent",
+        "isEntry": false
+    },
+    "bfe5ae7b-4512-a3e2-edcd-dd2fc5be9f26": {
+        "appPageName": "reportGroupDelete",
+        "componentName": "reportgroupdeleteComponent",
+        "isEntry": false
+    },
+    "67ab0864-9ab7-6fd7-3847-7dff3c42430e": {
+        "appPageName": "sample",
+        "componentName": "sampleComponent",
+        "isEntry": false
     }
 }

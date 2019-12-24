@@ -4,7 +4,9 @@ import { ModelMethods } from '../../lib/model.methods';
 // import { BDataModelService } from '../service/bDataModel.service';
 import { NDataModelService } from 'neutrinos-seed-services';
 import { NBaseComponent } from '../../../../../app/baseClasses/nBase.component';
-import { FormGroup, FormControl, Validator, Validators } from "@angular/forms";
+import { FormGroup, FormControl, Validator, Validators,FormBuilder } from "@angular/forms";
+import{reportconfigserviceService} from '../../services/reportconfigservice/reportconfigservice.service'
+
 
 
 @Component({
@@ -21,6 +23,11 @@ export class reportconfigcreateComponent extends NBaseComponent implements OnIni
   public data = [];
   public settings = {};
   public selectedItems = [];
+  reportConfigCreateForm:FormGroup;
+   seasons: any=  [
+        { value: '0', viewValue: 'Yes' },
+        { value: '1', viewValue: 'No' }
+    ];
   state = [
         { value: 'daily', viewValue: 'Daily' },
         { value: 'weekly', viewValue: 'Weekly' },
@@ -34,12 +41,34 @@ export class reportconfigcreateComponent extends NBaseComponent implements OnIni
     console.log('event', event);
   }
 
-    constructor(private bdms: NDataModelService) {
+    constructor(private bdms: NDataModelService,private formBuilder: FormBuilder) {
         super();
         this.mm = new ModelMethods(bdms);
     }
 
     ngOnInit() {
+
+
+         this.reportConfigCreateForm = this.formBuilder.group({
+            selectscheduledstatus: ['', Validators.required],
+            selectStartDate: ['', Validators.required],
+            // selectEndTime: ['', Validators.required],
+            networkLocation:['',Validators.required],
+            // startTime:['',Validators.required],
+            // EndTime:['',Validators.required],
+            emailSubscription:['',Validators.required],
+            downloadable:['',Validators.required],
+            Selectedstatus:['',Validators.required]
+
+
+
+
+
+        });
+
+
+
+
        this.data = [
       { item_id: 1, item_text: 'Finance Executive' },
       { item_id: 2, item_text: 'Sales Manager' },

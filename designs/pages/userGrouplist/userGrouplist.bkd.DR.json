@@ -1606,7 +1606,7 @@
                                     },
                                     {
                                         "_key": "Header Label",
-                                        "_value": "User Group",
+                                        "_value": "Groupname",
                                         "_type": "a",
                                         "_attrDef": "p"
                                     },
@@ -1618,7 +1618,7 @@
                                     },
                                     {
                                         "_key": "Mapping",
-                                        "_value": "{{table.userGroup}}",
+                                        "_value": "{{table.Groupname}}",
                                         "_type": "ma",
                                         "_attrDef": "p",
                                         "_useAsLabel": true
@@ -1663,7 +1663,7 @@
                                     },
                                     {
                                         "_key": "Header Label",
-                                        "_value": "Report Group",
+                                        "_value": "Groupcode",
                                         "_type": "a",
                                         "_attrDef": "p"
                                     },
@@ -1675,7 +1675,7 @@
                                     },
                                     {
                                         "_key": "Mapping",
-                                        "_value": "{{table.reportGroup}}",
+                                        "_value": "{{table.GroupCode}}",
                                         "_type": "ma",
                                         "_attrDef": "p",
                                         "_useAsLabel": true
@@ -1700,6 +1700,376 @@
                                         "_attrDef": "p"
                                     }
                                 ]
+                            },
+                            "9a133a6b-d8a1-107a-de12-7af1ae78dfea": {
+                                "paletteKey": "ng-table-column",
+                                "parentEditorKey": "10c85fc7-4fcb-e6dc-6132-a97e8439efea",
+                                "isAdvancedChildComponent": true,
+                                "designerReference": [
+                                    {
+                                        "_key": "style",
+                                        "_value": "",
+                                        "_type": "kv",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "class",
+                                        "_value": "",
+                                        "_type": "kv",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "Header Label",
+                                        "_value": "Status",
+                                        "_type": "a",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "matSortHeaderColumn",
+                                        "_value": "",
+                                        "_type": "a",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "Mapping",
+                                        "_value": "{{table.Active}}",
+                                        "_type": "ma",
+                                        "_attrDef": "p",
+                                        "_useAsLabel": true
+                                    },
+                                    {
+                                        "_key": "columnName",
+                                        "_value": "",
+                                        "_type": "dav",
+                                        "_attrDef": "p",
+                                        "_visibility": false
+                                    },
+                                    {
+                                        "_key": "headerclass",
+                                        "_value": "",
+                                        "_type": "dav",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "columnclass",
+                                        "_value": "",
+                                        "_type": "dav",
+                                        "_attrDef": "p"
+                                    }
+                                ]
+                            },
+                            "188f5a2a-fae8-8edc-b600-174ecc65a0a0": {
+                                "paletteKey": "ng-table-filter",
+                                "parentEditorKey": "10c85fc7-4fcb-e6dc-6132-a97e8439efea",
+                                "isAdvancedComponent": true,
+                                "advancedSiblingType": "before",
+                                "designerReference": [
+                                    {
+                                        "_key": "style",
+                                        "_value": "",
+                                        "_type": "kv",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "class",
+                                        "_value": "",
+                                        "_type": "kv",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "(tableFilterFunction)",
+                                        "_value": "",
+                                        "_type": "dav",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "placeholder",
+                                        "_value": "Search Groupname,Groupcode",
+                                        "_type": "kv",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "layoutAlign",
+                                        "_value": "start",
+                                        "_type": "a",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "fxFlex",
+                                        "_value": "end",
+                                        "_type": "a",
+                                        "_attrDef": "p"
+                                    }
+                                ]
+                            },
+                            "b537d6ef-66a8-05bc-f011-bd5323d9c658": {
+                                "paletteKey": "ng-table-paginator",
+                                "parentEditorKey": "10c85fc7-4fcb-e6dc-6132-a97e8439efea",
+                                "isAdvancedComponent": true,
+                                "advancedSiblingType": "after",
+                                "designerReference": [
+                                    {
+                                        "_key": "style",
+                                        "_value": "",
+                                        "_type": "kv",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "class",
+                                        "_value": "",
+                                        "_type": "kv",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "[length]",
+                                        "_value": "",
+                                        "_type": "kv",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "[pageSize]",
+                                        "_value": "",
+                                        "_type": "kv",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "[pageSizeOptions]",
+                                        "_value": "[5, 10, 25, 100]",
+                                        "_type": "kv",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "(page)",
+                                        "_value": "",
+                                        "_type": "kv",
+                                        "_attrDef": "p"
+                                    }
+                                ]
+                            },
+                            "071c54bc-7054-435a-386a-9641c689c33b": {
+                                "paletteKey": "ng-droppable-table-column",
+                                "parentEditorKey": "10c85fc7-4fcb-e6dc-6132-a97e8439efea",
+                                "isAdvancedChildComponent": true,
+                                "designerReference": [
+                                    {
+                                        "_key": "style",
+                                        "_value": "",
+                                        "_type": "kv",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "class",
+                                        "_value": "",
+                                        "_type": "kv",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "Sort Key",
+                                        "_value": "",
+                                        "_type": "dav",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "matSortHeaderColumn",
+                                        "_value": "",
+                                        "_type": "a",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "columnId",
+                                        "_value": "9cfb6d0e-3e49-569d-88fa-b2706d78b941",
+                                        "_type": "dav",
+                                        "_attrDef": "p"
+                                    },
+                                    {
+                                        "_key": "Header Label",
+                                        "_value": "Select",
+                                        "_type": "a",
+                                        "_attrDef": "p"
+                                    }
+                                ],
+                                "a012c729-ba3c-f46e-4b2c-3f30f47b96fa": {
+                                    "paletteKey": "NG-RadioGroup",
+                                    "parentEditorKey": "071c54bc-7054-435a-386a-9641c689c33b",
+                                    "designerReference": [
+                                        {
+                                            "_key": "componentLabel",
+                                            "_value": "Radio Group",
+                                            "_type": "kv",
+                                            "_attrDef": "p",
+                                            "_useAsLabel": true
+                                        },
+                                        {
+                                            "_key": "style",
+                                            "_value": "",
+                                            "_type": "kv",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "class",
+                                            "_value": "",
+                                            "_type": "kv",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "[value]",
+                                            "_value": "",
+                                            "_type": "kv",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "[(ngModel)]",
+                                            "_value": "",
+                                            "_type": "kv",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "name",
+                                            "_value": "",
+                                            "_type": "kv",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "selected",
+                                            "_value": "",
+                                            "_type": "kv",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "(change)",
+                                            "_value": "",
+                                            "_type": "kv",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "[labelPosition]",
+                                            "_value": "'after'",
+                                            "_type": "kv",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "required",
+                                            "_value": "required",
+                                            "_type": "a",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "label",
+                                            "_value": "",
+                                            "_type": "a",
+                                            "_attrDef": "p"
+                                        }
+                                    ],
+                                    "eeaf8c9b-a452-6553-2f27-b985039c8b90": {
+                                        "paletteKey": "NG-Radio",
+                                        "parentEditorKey": "a012c729-ba3c-f46e-4b2c-3f30f47b96fa",
+                                        "designerReference": [
+                                            {
+                                                "_key": "style",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "class",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "componentLabel",
+                                                "_value": "Radio Button",
+                                                "_type": "kv",
+                                                "_attrDef": "p",
+                                                "_useAsLabel": true
+                                            },
+                                            {
+                                                "_key": "value",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "required",
+                                                "_value": "required",
+                                                "_type": "a",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "label",
+                                                "_value": "",
+                                                "_type": "a",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "id",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "name",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "checked",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "(change)",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "[labelPosition]",
+                                                "_value": "'after'",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "[disabled]",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "[disableRipple]",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "color",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "*ngFor",
+                                                "_value": "*ngFor=\"let select of tablerow\"",
+                                                "_type": "a",
+                                                "_attrDef": "c"
+                                            },
+                                            {
+                                                "_key": "[value]",
+                                                "_value": "select .value",
+                                                "_type": "kv",
+                                                "_attrDef": "c"
+                                            },
+                                            {
+                                                "_key": "(click)",
+                                                "_value": "$event.stopPropagation()",
+                                                "_type": "kv",
+                                                "_attrDef": "c"
+                                            }
+                                        ]
+                                    }
+                                }
                             }
                         }
                     }

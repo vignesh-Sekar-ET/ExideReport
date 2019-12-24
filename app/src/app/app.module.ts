@@ -7,14 +7,21 @@ import{userdeleteComponent} from '../app/components/userdeleteComponent/userdele
 import{AllowOnlyNumberDirective}from './allow-only-number.directive';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { MaterialTimePickerModule } from '@candidosales/material-time-picker';
+import{reportgroupdeleteComponent} from '../app/components/reportgroupdeleteComponent/reportgroupdelete.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TimePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { DatePipe } from '@angular/common';
+import{eventemitterserviceService}from '../app/services/eventemitterservice/eventemitterservice.service'
+
+
 
 
 
 @NgModule({
   declarations: [...appDeclarations, CcLogoDirective,AllowOnlyNumberDirective],
-  imports: [...appImportModules,NgMultiSelectDropDownModule,MaterialTimePickerModule],
-  providers: [...appProviders],
-  entryComponents: [...appEntryComponents,userdeleteComponent],
+  imports: [...appImportModules,NgMultiSelectDropDownModule,MaterialTimePickerModule,FormsModule,TimePickerModule ],
+  providers: [...appProviders, DatePipe,eventemitterserviceService],
+  entryComponents: [...appEntryComponents,reportgroupdeleteComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [...appBootstrap]
 })

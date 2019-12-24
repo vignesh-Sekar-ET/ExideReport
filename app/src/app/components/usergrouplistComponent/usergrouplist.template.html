@@ -23,20 +23,45 @@
       <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
         <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
           <div fxLayout="column" class="tablerowColor">
-            <table mat-table [dataSource]="dataSource" class="table-width-fix">
-              <tr mat-header-row *matHeaderRowDef="[&apos;userGroup&apos;,&apos;reportGroup&apos;]"></tr>
-              <tr mat-row *matRowDef="let row; columns: [&apos;userGroup&apos;,&apos;reportGroup&apos;];"></tr>
 
-              <ng-container matColumnDef="userGroup">
-                <th mat-header-cell *matHeaderCellDef>User Group</th>
-                <td mat-cell *matCellDef="let table; let i = index;">{{table.userGroup}}</td>
+            <div fxLayout="row" fxLayoutAlign="start">
+              <div fxLayout="column" fxFlex="end">
+                <mat-form-field fxFlex="100">
+                  <input matInput placeholder="Search Groupname,Groupcode">
+                </mat-form-field>
+              </div>
+            </div>
+            <table mat-table [dataSource]="dataSource" class="table-width-fix">
+              <tr mat-header-row *matHeaderRowDef="[&apos;Groupname&apos;,&apos;GroupCode&apos;,&apos;Active&apos;,&apos;9cfb6d0e-3e49-569d-88fa-b2706d78b941&apos;]"></tr>
+              <tr mat-row *matRowDef="let row; columns: [&apos;Groupname&apos;,&apos;GroupCode&apos;,&apos;Active&apos;,&apos;9cfb6d0e-3e49-569d-88fa-b2706d78b941&apos;];"></tr>
+
+              <ng-container matColumnDef="Groupname">
+                <th mat-header-cell *matHeaderCellDef>Groupname</th>
+                <td mat-cell *matCellDef="let table; let i = index;">{{table.Groupname}}</td>
               </ng-container>
 
-              <ng-container matColumnDef="reportGroup">
-                <th mat-header-cell *matHeaderCellDef>Report Group</th>
-                <td mat-cell *matCellDef="let table; let i = index;">{{table.reportGroup}}</td>
+              <ng-container matColumnDef="GroupCode">
+                <th mat-header-cell *matHeaderCellDef>Groupcode</th>
+                <td mat-cell *matCellDef="let table; let i = index;">{{table.GroupCode}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="Active">
+                <th mat-header-cell *matHeaderCellDef>Status</th>
+                <td mat-cell *matCellDef="let table; let i = index;">{{table.Active}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="9cfb6d0e-3e49-569d-88fa-b2706d78b941">
+                <th mat-header-cell *matHeaderCellDef>Select</th>
+                <td mat-cell *matCellDef="let table">
+                  <mat-radio-group [labelPosition]="&apos;after&apos;" required>
+                    <mat-radio-button required *ngFor="let select of tablerow" [value]="select .value" (click)="$event.stopPropagation()" [labelPosition]="&apos;after&apos;"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
               </ng-container>
             </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator>
+
           </div>
         </div>
       </div>

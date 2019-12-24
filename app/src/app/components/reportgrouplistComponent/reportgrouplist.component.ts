@@ -1,15 +1,19 @@
 /*DEFAULT GENERATED TEMPLATE. DO NOT CHANGE SELECTOR TEMPLATE_URL AND CLASS NAME*/
-import { Component, OnInit, ViewChild } from '@angular/core'
+import { Component, OnInit, ViewChild, Inject } from '@angular/core'
 import { ModelMethods } from '../../lib/model.methods';
-// import { BDataModelService } from '../service/bDataModel.service';
 import { NDataModelService } from 'neutrinos-seed-services';
 import { NBaseComponent } from '../../../../../app/baseClasses/nBase.component';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { MatPaginator } from '@angular/material/paginator';
 import { Columnsetting } from '../../columnsetting';
+import { reportlistserviceService } from '../../services/reportlistservice/reportlistservice.service';
+import { Observable, of } from "rxjs";
+import { NSnackbarService } from 'neutrinos-seed-services';
+import { reportgroupdeleteComponent } from '../reportgroupdeleteComponent/reportgroupdelete.component';
 import { dashboardService } from '../../services/dashboard/dashboard.service';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'bh-reportgrouplist',
@@ -18,118 +22,86 @@ import { Router } from '@angular/router';
 
 export class reportgrouplistComponent extends NBaseComponent implements OnInit {
     mm: ModelMethods;
-    updateDb: any;
-    UpdateLabel: string = "Update";
-    rowData: any = [];
-
+    @ViewChild(MatSort, { static: true }) sort: MatSort;
+    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+    updateData: any;
+    updatename: any;
     tablePaginationSettings: Columnsetting = <Columnsetting>{};
     columnDefinition = [];
-
-    constructor(private bdms: NDataModelService, private ser: dashboardService, private route: Router) {
+    constructor(private bdms: NDataModelService, public dialog: MatDialog, public route: Router, 
+    private formBuilder: FormBuilder, public reportservice: reportlistserviceService, private snackBar: NSnackbarService) {
         super();
         this.mm = new ModelMethods(bdms);
+           this.refreshingtabledata();
         this.tablePaginationSettings.enablePagination = true;
         this.tablePaginationSettings.pageSize = 5;
         this.tablePaginationSettings.pageSizeOptions = [5, 10, 15];
         this.tablePaginationSettings.showFirstLastButtons = true;
-        //Columns Name
         this.columnDefinition = [
+
             {
-                'name': 'JNDI',
-                'displayName': 'jndiname',
+                'name': 'Groupname',
+                'displayName': 'Groupname',
                 'disableSorting': false,
-            },
-            {
-                'name': 'ServerIP',
-                'displayName': 'serverip',
-                'disableSorting': false,
-                'icon': 'face'
+                'icon': 'face',
 
             },
             {
-                'name': 'PortNumber',
-                'displayName': 'portno',
+                'name': 'GroupCode',
+                'displayName': 'GroupCode',
                 'disableSorting': false,
-                'icon': 'home'
-            },
-            {
-                'name': 'DBName',
-                'displayName': 'dbname',
-                'disableSorting': false,
-                'icon': 'face'
-            },
-            {
-                'name': 'DriveType',
-                'displayName': 'drivertype',
-                'disableSorting': false,
-                'icon': 'face'
-            },
-            {
-                'name': 'PoolSize',
-                'displayName': 'poolsize',
-                'disableSorting': false,
-                'icon': 'face'
-            },
-            {
-                'name': 'UserName',
-                'displayName': 'dbuser',
-                'disableSorting': false,
-                'icon': 'face'
+                'icon': 'home',
             },
             {
                 'name': 'Active',
-                'displayName': 'status',
+                'displayName': 'Status',
                 'disableSorting': false,
-                'icon': 'face'
+                'icon': 'home',
             }
+
         ];
+
     }
+
 
     ngOnInit() {
-        // console.log(this.rowData);
-        // console.log(this.ser.getConfigListGet())
-        this.updateDbconfig(event);
-        this.ser.getConfigListGet().subscribe(data => {  this.rowData = data; })
+}
+    onClickCreate() {
+        this.reportservice.changecomp = "create";
+        this.route.navigateByUrl('/dashboard/reportCreate');
     }
-    onNotifySelected(selectedRows: object[]) {
-        console.log(selectedRows);
-        this.updateDb = selectedRows;
-    }
-    updateDbconfig(event) {
-        if (event == "Update") {
-            this.ser.dbconfigupdate = this.updateDb;
-            this.route.navigateByUrl('dashboard/dbconfigUpdate');
+    onClickUpdate() {
+        this.reportservice.changecomp = "update";
+        if (this.updateData) {
+            this.reportservice.updatename = this.updateData;
+            this.route.navigateByUrl('/dashboard/reportCreate');
         }
+        else {
+            this.snackBar.openSnackBar('Please Select ReportGroup', 2000);
 
+        }
     }
-    // updateDbconfig(event) {
-    //     if (event == "Update") {
-    //         if (this.ser.updateVal == false) {
-    //             this.ser.dbconfigupdate = this.updateDb;
-    //             this.route.navigateByUrl('dashboard/dbconfigUpdate');
-    //         }
-    //         else {
-    //             console.log(this.ser.updateVal)
-    //             for (let i = 0; i < this.rowData.length; i++) {
-    //                 if (i == this.ser.dbconfigupdate.index) {
-    //                     this.rowData[i] = this.ser.dbconfigupdate.row[0]
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     if (this.ser.updateVal == true) {
-    //         for (let i = 0; i < this.rowData.length; i++) {
-    //             if (i == this.ser.dbconfigupdate.index) {
-    //                 console.log("sample");
-    //                 this.rowData[i] = this.ser.dbconfigupdate.row[0];
-    //             }
-    //         }
-    //     }
+    openDialog() {
+        // if (this.updateData) {
+            // this.reportservice.deleteName = this.updateData;
+            // this.reportservice.tableData = this.testContent;
+            const dialogRef = this.dialog.open(reportgroupdeleteComponent, {
+                width: '400px',
+            });
 
-    // }
+        // }
+        // else {
+        //     this.snackBar.openSnackBar('Please Select ReportGroup', 2000);
 
-    dbconfigCreate() {
-        this.route.navigateByUrl('dashboard/dbconfigCreate');
+        // }
+    }
+
+    onNotifySelected(selectedRows: object[], i) {
+        this.updateData = selectedRows;
+    }
+
+    refreshingtabledata() {
+     this.reportservice.getReportGroupList();
     }
 }
 

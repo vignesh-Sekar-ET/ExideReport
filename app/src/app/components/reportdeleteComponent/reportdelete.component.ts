@@ -40,28 +40,28 @@ export class reportdeleteComponent extends NBaseComponent implements OnInit {
     }
 
     onDeleteClick(){
-    let deleteid=this.reportListService.deleteName[0].id;
-       this.reportListService.onDeleteClick(deleteid).subscribe(
-                (data) => {
+    // let deleteid=this.reportListService.deleteName[0].id;
+    //    this.reportListService.onDeleteClick(deleteid).subscribe(
+    //             (data) => {
                    
-                     this.datavalue = data;
+    //                  this.datavalue = data;
 
-                    if (this.datavalue.result) {
-                        this.snackBar.open('Report Deleted Successfully!!', 'Close', {
-                          duration: 3000
-                          });
-                          this.route.navigateByUrl('/dashboard/reportList');
-                             location.reload();
-                          this.dialog.closeAll();
+    //                 if (this.datavalue.result) {
+    //                     this.snackBar.open('Report Deleted Successfully!!', 'Close', {
+    //                       duration: 3000
+    //                       });
+    //                       this.route.navigateByUrl('/dashboard/reportList');
+    //                          location.reload();
+    //                       this.dialog.closeAll();
 
 
-                    }
-                    else {
-                        console.log("fail");
+    //                 }
+    //                 else {
+    //                     console.log("fail");
 
-                    }; 
-                },
-                (err) => console.log(err));
+    //                 }; 
+    //             },
+    //             (err) => console.log(err));
 
     }
 

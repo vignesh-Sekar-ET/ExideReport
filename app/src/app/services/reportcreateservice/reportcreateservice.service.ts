@@ -13,6 +13,7 @@ export class reportcreateserviceService {
     sysProps;
     systemProperties: any;
     updatename:any;
+    changecomp:string;
 
     constructor(private bdms: NDataModelService,private http: HttpClient) {
         

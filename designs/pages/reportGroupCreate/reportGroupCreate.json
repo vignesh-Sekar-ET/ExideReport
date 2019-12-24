@@ -1,0 +1,13 @@
+{
+    "appPageId": "48a81219-ae4c-c066-2195-d3c8c21e2465",
+    "appPageName": "reportGroupCreate",
+    "componentName": "reportgroupcreateComponent",
+    "selectorName": "bh-reportgroupcreate",
+    "htmlFileName": "reportgroupcreate.template.html",
+    "tsFileName": "reportgroupcreate.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

@@ -2,25 +2,21 @@
   <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
     <div style="width:100%">
       <form [formGroup]="form">
-
         <div>
           <input class="mat-inputClass" (keyup)="applyFilter($event.target.value)" type="text" placeholder="Search Id, GroupName,GroupCode">
         </div>
 
-
-
         <mat-table [dataSource]="dataSource" matSort>
 
-          <ng-container *ngFor="let column of sqColumnDefinition; let i=index" matColumnDef="{{column.name}}">
+          <ng-container *ngFor="let column of sqColumnDefinition;" matColumnDef="{{column.name}}">
             <ng-container *ngIf="column.name ===&apos;select&apos;;then checkbox else nocheckbox"></ng-container>
-
             <ng-template #checkbox>
               <mat-header-cell *matHeaderCellDef>
                 <span class="table">select</span>
               </mat-header-cell>
 
               <mat-cell *matCellDef="let row">
-                <mat-radio-button (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null; rowSelect(row.jndiname)" [checked]="selection.isSelected(row)"></mat-radio-button>
+                <mat-radio-button (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null; rowSelect(row.id)" [checked]="selection.isSelected()"></mat-radio-button>
               </mat-cell>
 
             </ng-template>
@@ -60,7 +56,7 @@
 
 
           <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
+          <mat-row *matRowDef="let row; columns: columnNames;let i = index" (click)="sample(i)"></mat-row>
         </mat-table>
       </form>
 

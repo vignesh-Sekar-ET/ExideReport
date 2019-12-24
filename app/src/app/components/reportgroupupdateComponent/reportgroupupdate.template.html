@@ -8,22 +8,21 @@
     <div fxLayout="row wrap" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
       <div fxLayout="column wrap" style="background-color:#fff;padding:15px" fxFlex="70" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
         <div fxLayout="row wrap" style="background-color:#fff;padding:12px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-          <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"></div>
-        </div>
-        <div fxLayout="column wrap" style="padding:12px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-          <div>
-            <mat-divider></mat-divider>
+          <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div>
+              <span class="headerclass">Report Group Update</span></div>
           </div>
+        </div>
+        <div fxLayout="column wrap" style="padding:12px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"></div>
+        <div>
+          <mat-divider></mat-divider>
         </div>
         <form [formGroup]="reportCreateForm">
           <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
             <div fxLayout="row wrap" style="padding:12px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
               <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
                 <div>
-                  <span class="headerblackclass">Report Group Name</span>
-                  <div>
-                    <span class="headerclass">Report Group Update</span></div>
-                </div>
+                  <span class="headerblackclass">Report Group Name</span></div>
                 <div fxLayout="column wrap" style="padding-top:8px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
                   <mat-form-field class="reportGroupNameInbox" [appearance]="&apos;fill&apos;" [floatLabel]="&apos;auto&apos;">
                     <input matInput required formControlName="reportGroupName">
@@ -38,7 +37,7 @@
                       <span class="headerblackclass">Report Group Code</span></div>
                     <div fxLayout="column wrap" style="padding-top:8px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
                       <mat-form-field class="reportGroupNameInbox" [appearance]="&apos;fill&apos;" [floatLabel]="&apos;auto&apos;">
-                        <input matInput required formControlName="reportGroupCode" appAllowOnlyNumber>
+                        <input matInput required formControlName="reportGroupCode" appAllowOnlyNumber="appAllowOnlyNumber">
                         <mat-error align="start" *ngIf="reportCreateForm.invalid">Please Enter reportCode!</mat-error>
                       </mat-form-field>
                     </div>

@@ -23,7 +23,7 @@
         </div>
         <div fxLayout="column " style="padding:5px" fxFlex="70" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
           <div>
-            <bh-tabledemo [rowData]="userReportList" [sqColumnDefinition]="columnDefinition" [enableCheckbox]="true" (getSelectedRows)="onNotifySelected($event)" [sqPaginationConfig]="tablePaginationSettings"></bh-tabledemo>
+            <bh-tabledemo [rowData]="userReportList" [sqColumnDefinition]="columnDefinition" [enableCheckbox]="true" [enablestatus]="true" (getSelectedRows)="onNotifySelected($event)" [sqPaginationConfig]="tablePaginationSettings"></bh-tabledemo>
           </div>
         </div>
       </div>
