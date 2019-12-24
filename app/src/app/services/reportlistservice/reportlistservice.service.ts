@@ -5,9 +5,6 @@ import { ModelMethods } from 'app/lib/model.methods';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-
-
-
 @Injectable()
 export class reportlistserviceService {
     dm: ModelMethods
@@ -17,6 +14,7 @@ export class reportlistserviceService {
     deleteName: any;
     groupList: any; // groupList for table data in reportGroup page
     selectedGroupId: number; // id of the group that was selected for any action
+    changecomp:String;
 
     constructor(private bdms: NDataModelService, private http: HttpClient) {
 
@@ -27,12 +25,7 @@ export class reportlistserviceService {
 
 
     }
-    getJson(): Observable<any> {
-        let url = this.systemProperties.modularUrl;
-        url += "grouplist"
-        console.log(url);
-        return this.http.get(url);
-    }
+   
     onSubmit(rname: any, rcode: any, rstatus: any, rid: any): Observable<any> {
 
         let url = this.systemProperties.modularUrl;
@@ -46,14 +39,7 @@ export class reportlistserviceService {
         console.log(body);
         return this.http.post(url, body);
     }
-    onDeleteClick(dId: any): Observable<any> {
-        let url = this.systemProperties.modularUrl;
-        let deleteId = "'" + dId + "'";
-        url += "groupdelete"
-        let body = { 'id': deleteId };
-        return this.http.post(url, body);
-    }
-
+   
     getReportGroupList() {
         this.http.get(`${this.systemProperties.modularUrl}groupList`).subscribe(groupList => {
             if (groupList instanceof Array) {

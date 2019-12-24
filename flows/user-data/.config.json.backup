@@ -537,24 +537,6 @@
      "file": "C:\\Users\\C101710\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-env\\nodes\\env.js"
     }
    }
-  },
-  "node-red-contrib-db2-fixed": {
-   "name": "node-red-contrib-db2-fixed",
-   "version": "0.0.5",
-   "local": true,
-   "nodes": {
-    "bigdb2": {
-     "name": "bigdb2",
-     "types": [
-      "IbmDBdatabase",
-      "ibmdb"
-     ],
-     "enabled": false,
-     "local": true,
-     "module": "node-red-contrib-db2-fixed",
-     "file": "C:\\Users\\C101710\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-db2-fixed\\ibmdb.js"
-    }
-   }
   }
  },
  "_credentialSecret": "b5e260b6dd7ae4da15d1aa580d6ffcc728fa5fb56ec3013bbd10549b9d6625f9",

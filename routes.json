@@ -83,8 +83,16 @@
                     "component": "reportgroupcreateComponent"
                 },
                 {
-                    "path": "reportUpdate",
-                    "component": "reportgroupupdateComponent"
+                    "path": "reportDelete",
+                    "component": "reportgroupdeleteComponent"
+                },
+                {
+                    "component": "reportconfiglistComponent",
+                    "path": "reportConfigList"
+                },
+                {
+                    "component": "reportconfigcreateComponent",
+                    "path": "reportConfigCreate"
                 }
             ],
             "redirectTo": "",

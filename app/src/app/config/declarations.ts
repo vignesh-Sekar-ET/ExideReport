@@ -14,6 +14,12 @@ window['neutrinos'] = {
 }
 
 //CORE_REFERENCE_IMPORTS
+//CORE_REFERENCE_IMPORT-reportconfigcreateComponent
+import { reportconfigcreateComponent } from '../components/reportconfigcreateComponent/reportconfigcreate.component';
+//CORE_REFERENCE_IMPORT-reportconfigserviceService
+import { reportconfigserviceService } from '../services/reportconfigservice/reportconfigservice.service';
+//CORE_REFERENCE_IMPORT-reportconfiglistComponent
+import { reportconfiglistComponent } from '../components/reportconfiglistComponent/reportconfiglist.component';
 //CORE_REFERENCE_IMPORT-authService
 import { authService } from '../services/auth/auth.service';
 //CORE_REFERENCE_IMPORT-route_guardService
@@ -108,6 +114,10 @@ export const appDeclarations = [
   NMapComponent,
   ArtImgSrcDirective,
   //CORE_REFERENCE_PUSH_TO_DEC_ARRAY
+//CORE_REFERENCE_PUSH_TO_DEC_ARRAY-reportconfigcreateComponent
+reportconfigcreateComponent,
+//CORE_REFERENCE_PUSH_TO_DEC_ARRAY-reportconfiglistComponent
+reportconfiglistComponent,
 //CORE_REFERENCE_PUSH_TO_DEC_ARRAY-tabledemoComponent
 tabledemoComponent,
 //CORE_REFERENCE_PUSH_TO_DEC_ARRAY-admindashboardComponent
@@ -161,6 +171,8 @@ export const appProviders = [
   },
   NAuthGuardService,
   //CORE_REFERENCE_PUSH_TO_PRO_ARRAY
+//CORE_REFERENCE_PUSH_TO_PRO_ARRAY-reportconfigserviceService
+reportconfigserviceService,
 //CORE_REFERENCE_PUSH_TO_PRO_ARRAY-authService
 authService,
 //CORE_REFERENCE_PUSH_TO_PRO_ARRAY-route_guardService
@@ -188,5 +200,5 @@ userlistserviceService
 // CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY_START
 export const appRoutes = [{path: 'login', component: loginComponent},{path: 'createreport', component: createreportComponent},{path: 'createreportlist', component: createreportlistComponent},{path: 'dashboard', component: dashboardComponent,
 children: [{path: 'adminDashboard', component: admindashboardComponent},{path: 'DbGrouplist', component: reportgrouplistComponent},{path: 'dbconfigCreate', component: dbconfigcreateComponent},{path: 'dbconfigUpdate', component: dbconfigupdateComponent},{path: 'generatereport', component: generatereportComponent},{path: 'admindash', component: admindashboardComponent,
-children: []},{path: 'createuserlist', component: userreportlistComponent, canActivate: [route_guardService]},{path: 'userCreate', component: usercreateComponent},{path: 'userUpdate', component: userupdateComponent},{path: 'usergroupmap', component: usergrouplistComponent},{path: 'createreport', component: createreportComponent},{path: 'createreportlist', component: createreportlistComponent},{path: 'reportgrouplist', component: reportgrouplistComponent},{path: 'reportCreate', component: reportgroupcreateComponent},{path: 'reportUpdate', component: reportgroupupdateComponent}]},{path: 'generatereport', component: generatereportComponent},{path: '', redirectTo: 'login', pathMatch: 'full'},{path: '**', component: PageNotFoundComponent}]
+children: []},{path: 'createuserlist', component: userreportlistComponent, canActivate: [route_guardService]},{path: 'userCreate', component: usercreateComponent},{path: 'userUpdate', component: userupdateComponent},{path: 'usergroupmap', component: usergrouplistComponent},{path: 'createreport', component: createreportComponent},{path: 'createreportlist', component: createreportlistComponent},{path: 'reportgrouplist', component: reportgrouplistComponent},{path: 'reportCreate', component: reportgroupcreateComponent},{path: 'reportDelete', component: reportgroupdeleteComponent},{path: 'reportConfigList', component: reportconfiglistComponent},{path: 'reportConfigCreate', component: reportconfigcreateComponent}]},{path: 'generatereport', component: generatereportComponent},{path: '', redirectTo: 'login', pathMatch: 'full'},{path: '**', component: PageNotFoundComponent}]
 // CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY_END

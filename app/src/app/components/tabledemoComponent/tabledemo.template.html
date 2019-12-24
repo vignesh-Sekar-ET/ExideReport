@@ -20,7 +20,7 @@
               </mat-header-cell>
 
               <mat-cell *matCellDef="let row">
-                <mat-radio-button (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null; rowSelect(row.jndiname)" [checked]="selection.isSelected(row)"></mat-radio-button>
+                <mat-radio-button (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null; rowSelect(row.id)" [checked]="selection.isSelected(row)"></mat-radio-button>
               </mat-cell>
 
             </ng-template>
