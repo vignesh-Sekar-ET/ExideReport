@@ -1,129 +1,248 @@
-/*DEFAULT GENERATED TEMPLATE. DO NOT CHANGE SELECTOR TEMPLATE_URL AND CLASS NAME*/
-import { Component, OnInit,ViewChild,ElementRef,Input} from '@angular/core'
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core'
 import { ModelMethods } from '../../lib/model.methods';
 // import { BDataModelService } from '../service/bDataModel.service';
 import { NDataModelService } from 'neutrinos-seed-services';
 import { NBaseComponent } from '../../../../../app/baseClasses/nBase.component';
-import { FormGroup, FormControl, Validator, Validators,FormBuilder } from "@angular/forms";
-import{reportconfigserviceService} from '../../services/reportconfigservice/reportconfigservice.service'
+import { FormGroup, FormControl, Validator, Validators, FormBuilder } from "@angular/forms";
+import { reportconfigserviceService } from '../../services/reportconfigservice/reportconfigservice.service';
+import { TimePickerComponent } from '@syncfusion/ej2-angular-calendars';
+import { Pipe, PipeTransform } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import * as moment from 'moment';
+
 
 
 
 @Component({
-  selector: 'bh-reportconfigcreate',
+    selector: 'bh-reportconfigcreate',
     templateUrl: './reportconfigcreate.template.html'
-})
 
-export class reportconfigcreateComponent extends NBaseComponent implements OnInit {
-    mm: ModelMethods;
-   @ViewChild('multiSelect', { static: true }) multiSelect;
-  public form: FormGroup;
-  public loadContent: boolean = false;
-  public name = 'Cricketers';
-  public data = [];
-  public settings = {};
-  public selectedItems = [];
-  reportConfigCreateForm:FormGroup;
-   seasons: any=  [
+})
+export class reportconfigcreateComponent implements OnInit {
+
+
+    @ViewChild('multiSelect', { static: true }) multiSelect;
+
+    public loadContent: boolean = false;
+    public data: any;
+    public settings = {};
+    public selectedItems = [];
+    index: number;
+    updateData: any;
+    form: FormGroup;
+    times: any;
+    startTime: any;
+    endTime: any;
+    date: any;
+    selectemail: boolean = false;
+    selectstatus: boolean = false;
+    seldown: boolean = false;
+    selectstarttime: boolean = false;
+    selecttime: boolean = false;
+    selectEndtime: boolean = false;
+
+
+    downloads: any = [
         { value: '0', viewValue: 'Yes' },
         { value: '1', viewValue: 'No' }
     ];
-  state = [
+    statuss: any = [
+        { value: '0', viewValue: 'Yes' },
+        { value: '1', viewValue: 'No' }
+    ];
+    emails: any = [
+        { value: '0', viewValue: 'Yes' },
+        { value: '1', viewValue: 'No' }
+    ];
+    state = [
         { value: 'daily', viewValue: 'Daily' },
         { value: 'weekly', viewValue: 'Weekly' },
         { value: 'monthly', viewValue: 'Monthly' },
     ];
+    private exportTime = { hour: '0', minute: '0', meriden: 'AM', format: 12 };
+    private exportTime1 = { hour: '0', minute: '0', meriden: 'AM', format: 12 };
 
+    onChangeHour(event) {
+        /*splitting the hour,minute and meriden in one variable*/
+        this.times = event.hour + ':' + event.minute + '' + event.meriden;
+        /*ends*/
+        /* setting the formControlName and values for time,starttime and endtime*/
+        this.form.controls.time.setValue(this.times);
+        /*ends*/
 
-  private exportTime = { hour: 7, minute: 15, meriden: 'PM', format: 12 };
+    }
+    onChangestarttime(event) {
 
-  onChangeHour(event) {
-    console.log('event', event);
-  }
+        this.startTime = event.hour + ':' + event.minute + '' + event.meriden;
+        this.form.controls.StartTime.setValue(this.startTime);
+    }
+    onChangeendtime(event) {
 
-    constructor(private bdms: NDataModelService,private formBuilder: FormBuilder) {
-        super();
-        this.mm = new ModelMethods(bdms);
+        this.endTime = event.hour + ':' + event.minute + '' + event.meriden;
+        this.form.controls.EndTime.setValue(this.endTime);
+    }
+
+    constructor(private bdms: NDataModelService, private formBuilder: FormBuilder, public reportConfigService: reportconfigserviceService) {
+
     }
 
     ngOnInit() {
-
-
-         this.reportConfigCreateForm = this.formBuilder.group({
-            // selectscheduledstatus: ['', Validators.required],
-            selectStartDate: ['', Validators.required],
-            // selectEndTime: ['', Validators.required],
-            networkLocation:['',Validators.required],
-            // startTime:['',Validators.required],
-            // EndTime:['',Validators.required],
-            emailSubscription:['',Validators.required],
-            downloadable:['',Validators.required],
-            Selectedstatus:['',Validators.required]
-
-
-
+        this.reportConfigService.getReportConfigList().subscribe((response) => {
+            this.data = response;
 
 
         });
 
 
+        // setting and support i18n
+        this.settings = {
+            singleSelection: false,
+            idField: 'reports_id',
+            textField: 'ReportName',
+            enableCheckAll: false,
+            selectAllText: 'Chọn All',
+            unSelectAllText: 'Hủy chọn',
+            allowSearchFilter: true,
+            limitSelection: -1,
+            clearSearchFilter: true,
+            maxHeight: 197,
+            itemsShowLimit: 3,
+            searchPlaceholderText: 'Search',
+            noDataAvailablePlaceholderText: 'Không có dữ liệu',
+            closeDropDownOnSelection: false,
+            showSelectedItemsAtTop: false,
+            defaultOpen: false
+        };
+        this.setForm();
 
-
-       this.data = [
-      { item_id: 1, item_text: 'Finance Executive' },
-      { item_id: 2, item_text: 'Sales Manager' },
-      { item_id: 3, item_text: 'Report Executive' },
-      { item_id: 4, item_text: 'Finance ' },
-      { item_id: 5, item_text: 'Sales' }
-    ];
-
-   this.settings = {
-      singleSelection: true,
-      idField: 'item_id',
-      textField: 'item_text',
-      enableCheckAll: false,
-      allowSearchFilter: true,
-      limitSelection: -1,
-      clearSearchFilter: true,
-      maxHeight: 197,
-      itemsShowLimit: 3,
-      searchPlaceholderText: 'Search',
-      noDataAvailablePlaceholderText: 'Search',
-      closeDropDownOnSelection: false,
-      showSelectedItemsAtTop: false,
-      defaultOpen: false
-    };
-    this.setForm();
     }
-     public setForm() {
-    this.form = new FormGroup({
-      name: new FormControl(this.data, Validators.required)
-    });
-    this.loadContent = true;
-  }
+
+    public setForm() {
+
+        this.form = new FormGroup({
+
+            name: new FormControl('', Validators.required),
+            selectscheduledstatus: new FormControl('', Validators.required),
+            ScheduledStartDate: new FormControl('', Validators.required),
+            networkLocation: new FormControl('', Validators.required),
+            emailSubscription: new FormControl('', Validators.required),
+            downloadable: new FormControl('', Validators.required),
+            Selectedstatus: new FormControl('', Validators.required),
+            time: new FormControl('', Validators.required),
+            StartTime: new FormControl('', Validators.required),
+            EndTime: new FormControl('', Validators.required)
+
+        });
+        this.loadContent = true;
+
+    }
+
     get f() { return this.form.controls; }
 
+    public onFilterChange(item: any) {
+    }
+    public onDropDownClose(item: any) {
+    }
+
+    public onItemSelect(item: any) {
+
+        this.selectedItems.push(item.reports_id);
+        // console.log(this.selectedItems);
+
+    }
+    public onDeSelect(item: any) {
+        let index = this.selectedItems.findIndex(ind => ind == item.reports_id);
+        this.selectedItems.splice(index, 1)
+        // console.log("index" + this.selectedItems);
 
 
-  public onFilterChange(item: any) {
-    console.log(item);
-  }
-  public onDropDownClose(item: any) {
-    console.log(item);
-  }
+    }
+    emailSelected() {
+        this.selectemail = false;
 
-  public onItemSelect(item: any) {
-    console.log(item);
-  }
-  public onDeSelect(item: any) {
-    console.log(item);
-  }
+    }
+    down() {
+        this.seldown = false;
+    }
 
 
+    activeStatus(){
+        this.selectstatus = false;
+    }
+    endtime() {
+        this.selectEndtime = false;
+    }
+    timeclick() {
+        this.selecttime = false;
+
+    }
+    starttimeclick() {
+        this.selectstarttime = false;
 
 
-   }
+    }
 
-  
+    onSubmit(form: FormGroup) {
 
 
+        if (this.form.invalid) {
+
+        }
+        if (this.form.value.StartTime == '') {
+            this.selectstarttime = true;
+        }
+
+        if (this.form.value.EndTime == '') {
+            this.selectEndtime = true;
+        }
+        if (this.form.value.time == '') {
+            this.selecttime = true;
+        }
+
+        if (this.form.value.emailSubscription != 1 && this.form.value.emailSubscription != 0) {
+
+            this.selectemail = true;
+        }
+        if (this.form.value.downloadable != 1 && this.form.value.downloadable != 0) {
+            this.seldown = true;
+
+        }
+        if (this.form.value.Selectedstatus != 1 && this.form.value.Selectedstatus != 0) {
+            this.selectstatus = true;
+        }
+        
+
+
+
+
+        else {
+
+
+            let reportName = this.form.value.name;
+            let scheduledexcutionType = this.form.value.selectscheduledstatus;
+            /*moment used for format the date*/
+            this.date = moment(this.form.value.ScheduledStartDate).format('DD/MM/YYYY');
+            let scheduledexcutiondate = this.date;
+
+            let time = this.form.value.time;
+            let networklocation = this.form.value.networkLocation;
+            let starttime = this.form.value.StartTime;
+            let endtime = this.form.value.EndTime;
+            let email = this.form.value.emailSubscription;
+            let downloadble = this.form.value.downloadable;
+            let status = this.form.value.Selectedstatus;
+            console.log("startdate" + downloadble);
+
+            this.reportConfigService.onSubmit(reportName, scheduledexcutionType, scheduledexcutiondate, time, networklocation, starttime, endtime, email, downloadble, status).subscribe(
+                (data) => {
+                    // alert("hi");
+                });
+            console.log("REPORTCONFIG" + reportName, scheduledexcutionType, scheduledexcutiondate, time, networklocation, starttime, endtime, email, downloadble, status)
+        }
+
+
+    }
+    onClear() {
+
+    }
+}
