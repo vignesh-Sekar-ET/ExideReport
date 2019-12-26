@@ -4,30 +4,36 @@
       <h3>
         User Group Mapping</h3>
     </div>
-    <form [formGroup]="form" (ngSubmit)="save(form.value)">
+    <form [formGroup]="form">
       <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-        <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-          <h3>
-            User Group</h3>
-          <div>
-            <ng-multiselect-dropdown [placeholder]="&apos;Select User Group&apos;" [data]="bank" formControlName="singleselect" [settings]="singlesettings" [disabled]="false" (onFilterChange)="onFilterChange($event)" (onDropDownClose)="onDropDownClose($event)" (onSelect)="onItemSelect($event)" (onDeSelect)="onDeSelect($event)" (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)">
-            </ng-multiselect-dropdown>
-          </div>
-        </div>
         <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
           <h3>
             Report Group</h3>
           <div>
-            <ng-multiselect-dropdown id="1" [placeholder]="&apos;Select Report Group&apos;" [data]="data" formControlName="multiselect" [settings]="settings" [disabled]="false" (onFilterChange)="onFilterChange($event)" (onDropDownClose)="onDropDownClose($event)" (onSelect)="onItemSelect($event)" (onDeSelect)="onDeSelect($event)" (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)">
-            </ng-multiselect-dropdown>
+            <label for="User Group">User Group</label>
+            <angular2-multiselect [data]="userGroupdatalist" [settings]="dropdownSettingsUG" (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)" (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)" formControlName="userGroup"></angular2-multiselect>
+
+            <mat-error *ngIf="isSubmitted &amp;&amp; getuserGroup.errors">* Select userGroup!!!</mat-error>
+
+            <!-- <mat-error [fxShow]='isSubmitted && form.invalid'>* Select userGroup!!!</mat-error> -->
+          </div>
+        </div>
+        <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <h3>
+            User Group</h3>
+          <div>
+
+            <label for="Report Group">Report Group</label>
+            <angular2-multiselect id="reportGroupdatalist" name="reportGroupdatalist" [data]="reportGroupdatalist" [settings]="dropdownSettingsRG" (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)" (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)" formControlName="reportGroup">
+            </angular2-multiselect>
+
+            <mat-error [fxShow]="isSubmitted &amp;&amp; getReportGroup?.errors">* Select reportGroup!!!</mat-error>
           </div>
         </div>
       </div>
-      <div fxLayout="row wrap" style="height:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"></div>
-      <div fxLayout="row wrap" class="Dbbutton" fxLayoutAlign="end center" [fxShow]="true" [fxHide]="false">
-        <div fxLayout="row wrap" fxFlex="70" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background:#00a651;" type="submit">Submit</button><button mat-button style="background:#f7941d;">Clear</button><button mat-button style="background:#ed1c24;">Cancel</button></div>
+      <div fxLayout="row wrap" style="margin-top:10px;" class="Dbbutton" fxLayoutAlign="end center" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="row wrap" fxFlex="70" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background:#00a651;" (click)="save(form.value)" type="button">Submit</button><button mat-button style="background:#f7941d;" (click)="clear()">Clear</button><button mat-button style="background:#ed1c24;">Cancel</button></div>
       </div>
-      <div fxLayout="row wrap" style="height:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"></div>
     </form>
   </div>
 </div>
