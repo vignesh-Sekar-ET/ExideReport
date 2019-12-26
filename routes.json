@@ -93,6 +93,10 @@
                 {
                     "component": "reportconfigcreateComponent",
                     "path": "reportConfigCreate"
+                },
+                {
+                    "component": "usergroupmappingcreateComponent",
+                    "path": "userGroupmappingCreate"
                 }
             ],
             "redirectTo": "",
