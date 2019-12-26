@@ -65,7 +65,7 @@ import { dbconfigcreateComponent } from '../components/dbconfigcreateComponent/d
 import { dbconfigComponent } from '../components/dbconfigComponent/dbconfig.component';
 //CORE_REFERENCE_IMPORT-serService
 import { serService } from '../services/ser/ser.service';
-
+import { mappingserviceService } from '../services/mappingservice/mappingservice.service';
 import { userlistserviceService } from '../services/userlistservice/userlistservice.service';
 //CORE_REFERENCE_IMPORT-dummyComponent
 //CORE_REFERENCE_IMPORT-dashboardService
@@ -77,6 +77,7 @@ import { reportgroupcreateComponent } from '../components/reportgroupcreateCompo
 import { reportgroupupdateComponent } from '../components/reportgroupupdateComponent/reportgroupupdate.component';
 import { reportgroupdeleteComponent } from '../components/reportgroupdeleteComponent/reportgroupdelete.component';
 import { dbconfigupdateComponent } from '../components/dbconfigupdateComponent/dbconfigupdate.component';
+import { usergroupmappingcreateComponent } from '../components/usergroupmappingcreateComponent/usergroupmappingcreate.component';
 
 // import { reportgrouplistComponent } from '../components/reportgrouplistComponent/reportgrouplist.component';
 /**
@@ -153,7 +154,8 @@ reportgrouplistComponent,
 reportgroupcreateComponent,
 reportgroupupdateComponent,
 reportgroupdeleteComponent,
-dbconfigupdateComponent
+dbconfigupdateComponent,
+usergroupmappingcreateComponent
 ];
 
 /**
@@ -189,7 +191,8 @@ loginserviceService,
 serService,
 //CORE_REFERENCE_PUSH_TO_PRO_ARRAY-dashboardService
 dashboardService,
-userlistserviceService
+userlistserviceService,
+mappingserviceService
 
 ];
 
@@ -200,5 +203,5 @@ userlistserviceService
 // CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY_START
 export const appRoutes = [{path: 'login', component: loginComponent},{path: 'createreport', component: createreportComponent},{path: 'createreportlist', component: createreportlistComponent},{path: 'dashboard', component: dashboardComponent,
 children: [{path: 'adminDashboard', component: admindashboardComponent},{path: 'DbGrouplist', component: reportgrouplistComponent},{path: 'dbconfigCreate', component: dbconfigcreateComponent},{path: 'dbconfigUpdate', component: dbconfigupdateComponent},{path: 'generatereport', component: generatereportComponent},{path: 'admindash', component: admindashboardComponent,
-children: []},{path: 'createuserlist', component: userreportlistComponent, canActivate: [route_guardService]},{path: 'userCreate', component: usercreateComponent},{path: 'userUpdate', component: userupdateComponent},{path: 'usergroupmap', component: usergrouplistComponent},{path: 'createreport', component: createreportComponent},{path: 'createreportlist', component: createreportlistComponent},{path: 'reportgrouplist', component: reportgrouplistComponent},{path: 'reportCreate', component: reportgroupcreateComponent},{path: 'reportDelete', component: reportgroupdeleteComponent},{path: 'reportConfigList', component: reportconfiglistComponent},{path: 'reportConfigCreate', component: reportconfigcreateComponent}]},{path: 'generatereport', component: generatereportComponent},{path: '', redirectTo: 'login', pathMatch: 'full'},{path: '**', component: PageNotFoundComponent}]
+children: []},{path: 'createuserlist', component: userreportlistComponent, canActivate: [route_guardService]},{path: 'userCreate', component: usercreateComponent},{path: 'userUpdate', component: userupdateComponent},{path: 'usergroupmap', component: usergrouplistComponent},{path: 'createreport', component: createreportComponent},{path: 'createreportlist', component: createreportlistComponent},{path: 'reportgrouplist', component: reportgrouplistComponent},{path: 'reportCreate', component: reportgroupcreateComponent},{path: 'reportDelete', component: reportgroupdeleteComponent},{path: 'reportConfigList', component: reportconfiglistComponent},{path: 'reportConfigCreate', component: reportconfigcreateComponent},{path: 'userGroupmappingCreate', component: usergroupmappingcreateComponent}]},{path: 'generatereport', component: generatereportComponent},{path: '', redirectTo: 'login', pathMatch: 'full'},{path: '**', component: PageNotFoundComponent}]
 // CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY_END

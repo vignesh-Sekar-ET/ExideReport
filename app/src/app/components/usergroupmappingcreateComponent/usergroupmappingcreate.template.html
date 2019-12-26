@@ -13,9 +13,9 @@
             <label for="User Group">User Group</label>
             <angular2-multiselect [data]="userGroupdatalist" [settings]="dropdownSettingsUG" (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)" (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)" formControlName="userGroup"></angular2-multiselect>
 
-            <mat-error *ngIf="isSubmitted &amp;&amp; getuserGroup.errors">* Select userGroup!!!</mat-error>
+            <!-- <mat-error *ngIf="isSubmitted && getuserGroup.errors">* Select userGroup!!!</mat-error> -->
 
-            <!-- <mat-error [fxShow]='isSubmitted && form.invalid'>* Select userGroup!!!</mat-error> -->
+            <mat-error [fxShow]="isSubmitted &amp;&amp; form.invalid">* Select userGroup!!!</mat-error>
           </div>
         </div>
         <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">

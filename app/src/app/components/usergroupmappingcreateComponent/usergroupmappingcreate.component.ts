@@ -8,7 +8,7 @@ import { ModelMethods } from '../../lib/model.methods';
 import { NDataModelService } from 'neutrinos-seed-services';
 import { NBaseComponent } from '../../../../../app/baseClasses/nBase.component';
 // import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { mappingserviceService } from '../../services/mappingservice/mappingservice.service';
@@ -58,7 +58,7 @@ export class usergroupmappingcreateComponent extends NBaseComponent implements O
     public userGroup: any;
     public reportGroup: any;
     isSubmitted = false;
-    constructor(private bdms: NDataModelService, public renderer: Renderer2, public element: ElementRef, private mappingservice: mappingserviceService) {
+    constructor(private bdms: NDataModelService,private fb: FormBuilder, public renderer: Renderer2, public element: ElementRef, private mappingservice: mappingserviceService) {
         super();
         this.mm = new ModelMethods(bdms);
     }
@@ -100,9 +100,9 @@ export class usergroupmappingcreateComponent extends NBaseComponent implements O
     }
 
     public setForm() {
-        this.form = new FormGroup({
-            userGroup: new FormControl('', Validators.required),
-            reportGroup: new FormControl('', Validators.required)
+        this.form = this.fb.group({
+            userGroup: ['',Validators.required],
+            reportGroup: ['',Validators.required]
         });
         this.loadContent = true;
     }

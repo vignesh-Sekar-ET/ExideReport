@@ -9,12 +9,12 @@ import { UserIdleModule } from 'angular-user-idle';
 import { AllowOnlyNumberDirective } from './allow-only-number.directive';
 import { usergroupmappingcreateComponent } from './components/usergroupmappingcreateComponent/usergroupmappingcreate.component';
 import { usergroupmappingviewComponent } from './components/usergroupmappingviewComponent/usergroupmappingview.component';
-
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
 @NgModule({
   declarations: [...appDeclarations, CcLogoDirective, AllowOnlyNumberDirective
     , usergroupmappingcreateComponent, usergroupmappingviewComponent],
-  imports: [...appImportModules, UserIdleModule.forRoot({ idle: 600, timeout: 10, ping: 10 })],
+  imports: [...appImportModules, UserIdleModule.forRoot({ idle: 600, timeout: 10, ping: 10 }), AngularMultiSelectModule],
   providers: [...appProviders],
   entryComponents: [...appEntryComponents, reportgroupdeleteComponent, userdeleteComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

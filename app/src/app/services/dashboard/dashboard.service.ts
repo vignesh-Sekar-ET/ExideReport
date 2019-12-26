@@ -19,37 +19,23 @@ export class dashboardService {
         this.dm = new ModelMethods(bDataModelService);
         this.sysProps = this.bDataModelService;
         this.systemProperties = this.sysProps.systemService.properties;
-        // console.log(this.systemProperties);
-
     }
     getConfigListGet() {
         let URL = this.systemProperties.modularUrl;
         URL += "dbconfiglist";
-        // console.log(URL);
         return this.http.get(URL)
     }
     //dbconfigCreate 
 
-    getConfigListPost(jndi, ip, port, name, type, pool, username, pass, active) {
+    getConfigListPost(jndi,active) {
         let URL = this.systemProperties.modularUrl;
         let jndiname = "'" + jndi + "'";
-        let serverip = "'" + ip + "'";
-        let portnumber = "'" + port + "'";
-        let dbname = "'" + name + "'";
-        let drivertype = "'" + type + "'";
-        let connectionpoolsize = "'" + pool + "'";
-        let dbusername = "'" + username + "'";
-        let password = "'" + pass + "'";
         let activestatus = "'" + active + "'";
         let body = {
-            "jndi": jndiname, "ip": serverip, "port": portnumber, "name": dbname, "type": drivertype,
-            "pool": connectionpoolsize, "username": dbusername, "pass": password, "active": activestatus
+            "jndi": jndiname, "active": activestatus
         }
-
         URL += "dbconfigcreate";
-        //  console.log(body, URL)
         return this.http.post(URL, body);
-
     }
     getconfigUpdate(jndi: any, ip: any, port: any, name: any, type: any, pool: any, username: any, pass: any, active: any, id: any) {
         let URL = this.systemProperties.modularUrl;
