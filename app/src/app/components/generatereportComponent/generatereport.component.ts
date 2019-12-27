@@ -50,6 +50,7 @@ export class generatereportComponent implements OnInit {
 
         this.reportservice.reportlist().subscribe((response) => {
             this.selectvalue = response;
+            console.log(response);
         });
         this.tablePaginationSettings.enablePagination = true;
         this.tablePaginationSettings.pageSize = 5;
@@ -62,7 +63,7 @@ export class generatereportComponent implements OnInit {
         this.generatereportform.controls['upload'].setValue(this.fileReaded);
         this.reportservice.reportgenerate(this.generatereportform.value).subscribe(
             data => {
-            
+
                 this.testContent = data;
                 Object.keys(this.testContent[0]).forEach(key => {
 
@@ -81,7 +82,7 @@ export class generatereportComponent implements OnInit {
     }
 
     onFileInput(sender: any) {
-       
+
 
         var validExts = new Array(".xlsx", ".csv");
 
@@ -100,7 +101,7 @@ export class generatereportComponent implements OnInit {
                 console.log("uploaded file xlsx")
             }
             else {
-            
+
                 this.fileReaded = sender.target.files[0];
 
                 let reader: FileReader = new FileReader();
@@ -108,11 +109,11 @@ export class generatereportComponent implements OnInit {
 
                 reader.onload = (e) => {
                     let csv: any = reader.result;
-               
+
                     let allTextLines = csv.split(/\r|\n|\r/);
-                
+
                     let headers = allTextLines[0].split(',');
-                   
+
                     let lines = [];
 
                     for (let i = 0; i < allTextLines.length; i++) {
@@ -122,19 +123,19 @@ export class generatereportComponent implements OnInit {
                             let tarr = [];
                             for (let j = 0; j < headers.length; j++) {
                                 tarr.push(data[j]);
-                              
+
                             }
 
                             // log each row to see output  
-                       
+
                             lines.push(tarr);
-               
+
                         }
                     }
                     // all rows in the csv file  
- 
+
                     this.fileReaded = lines;
-                   
+
                 }
             }
         }
@@ -142,13 +143,13 @@ export class generatereportComponent implements OnInit {
 
     generatereport() {
         // let title = "SampleTitle";
-        var options = { 
+        var options = {
             fieldSeparator: ',',
             quoteStrings: '"',
-            decimalseparator: '.',     
+            decimalseparator: '.',
             headers: this.reportcolumn
-          };
-        new ngxCsv(this.testContent, "Report",options);
+        };
+        new ngxCsv(this.testContent, "Report", options);
     }
 
 }

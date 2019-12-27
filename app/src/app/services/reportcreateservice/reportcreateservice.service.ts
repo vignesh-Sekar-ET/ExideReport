@@ -82,8 +82,7 @@ export class reportcreateserviceService {
 
     reportlist() {
         let url = this.systemProperties.modularUrl;
-        url += "reportlist";
-
+        url += "genreportlist";
         return this.http.get(url)
     }
 
