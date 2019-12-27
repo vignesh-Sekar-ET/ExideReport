@@ -1018,7 +1018,7 @@
                                     },
                                     {
                                         "_key": "html",
-                                        "_value": "<label for=\"User Group\">User Group</label>\r\n <angular2-multiselect [data]=\"userGroupdatalist\" \r\n    [settings]=\"dropdownSettingsUG\" \r\n    (onSelect)=\"onItemSelect($event)\" \r\n    (onDeSelect)=\"OnItemDeSelect($event)\"\r\n    (onSelectAll)=\"onSelectAll($event)\"\r\n    (onDeSelectAll)=\"onDeSelectAll($event)\"\r\n    formControlName=\"userGroup\"\r\n    ></angular2-multiselect>\r\n\r\n    <mat-error *ngIf=\"isSubmitted && getuserGroup.errors\">* Select userGroup!!!</mat-error>\r\n\r\n<!-- <mat-error [fxShow]='isSubmitted && form.invalid'>* Select userGroup!!!</mat-error> -->\r\n",
+                                        "_value": "<label for=\"User Group\">User Group</label>\r\n <angular2-multiselect [data]=\"userGroupdatalist\" \r\n    [settings]=\"dropdownSettingsUG\" \r\n    (onSelect)=\"onItemSelect($event)\" \r\n    (onDeSelect)=\"OnItemDeSelect($event)\"\r\n    (onSelectAll)=\"onSelectAll($event)\"\r\n    (onDeSelectAll)=\"onDeSelectAll($event)\"\r\n    formControlName=\"userGroup\"\r\n    ></angular2-multiselect>\r\n\r\n    <!-- <mat-error *ngIf=\"isSubmitted && getuserGroup.errors\">* Select userGroup!!!</mat-error> -->\r\n\r\n<mat-error [fxShow]='isSubmitted && form.invalid'>* Select userGroup!!!</mat-error>\r\n",
                                         "_type": "a",
                                         "_attrDef": "p"
                                     }
@@ -1509,7 +1509,7 @@
                                     },
                                     {
                                         "_key": "html",
-                                        "_value": "\r\n        <label for=\"Report Group\">Report Group</label>\r\n  <angular2-multiselect id=\"reportGroupdatalist\" name=\"reportGroupdatalist\" [data]=\"reportGroupdatalist\"  \r\n                                  [settings]=\"dropdownSettingsRG\" \r\n                                  (onSelect)=\"onItemSelect($event)\"\r\n                                  (onDeSelect)=\"OnItemDeSelect($event)\" \r\n                                  (onSelectAll)=\"onSelectAll($event)\" \r\n                                  (onDeSelectAll)=\"onDeSelectAll($event)\" formControlName=\"reportGroup\">\r\n            </angular2-multiselect>\r\n\r\n<mat-error [fxShow]='isSubmitted && getReportGroup?.errors'>* Select reportGroup!!!</mat-error>\r\n",
+                                        "_value": "\r\n        <label for=\"Report Group\">Report Group</label>\r\n  <angular2-multiselect id=\"reportGroupdatalist\" name=\"reportGroupdatalist\" [data]=\"reportGroupdatalist\"  \r\n                                  [settings]=\"dropdownSettingsRG\" \r\n                                  (onSelect)=\"onItemSelect($event)\"\r\n                                  (onDeSelect)=\"OnItemDeSelect($event)\" \r\n                                  (onSelectAll)=\"onSelectAll($event)\" \r\n                                  (onDeSelectAll)=\"onDeSelectAll($event)\" \r\n                                  formControlName=\"reportGroup\">\r\n            </angular2-multiselect>\r\n\r\n<mat-error [fxShow]='isSubmitted && getReportGroup?.errors'>* Select reportGroup!!!</mat-error>\r\n",
                                         "_type": "a",
                                         "_attrDef": "p"
                                     }

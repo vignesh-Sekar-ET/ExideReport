@@ -524,7 +524,7 @@
   "node-red-contrib-db2": {
    "name": "node-red-contrib-db2",
    "version": "0.0.2",
-   "local": false,
+   "local": true,
    "nodes": {
     "ibmdb": {
      "name": "ibmdb",
