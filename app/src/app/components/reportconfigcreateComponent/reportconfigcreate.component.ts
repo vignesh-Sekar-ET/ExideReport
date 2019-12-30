@@ -78,6 +78,7 @@ export class reportconfigcreateComponent implements OnInit {
         this.endTime = event.hour + ':' + event.minute + '' + event.meriden;
         this.form.controls.EndTime.setValue(this.endTime);
     }
+     
 
     constructor(private bdms: NDataModelService, private formBuilder: FormBuilder, public reportConfigService: reportconfigserviceService, private snackBar: NSnackbarService, private route: Router) {
         this.title = 'Report Config - Create'
@@ -109,22 +110,21 @@ export class reportconfigcreateComponent implements OnInit {
     }
 
     ngOnInit() {
-
-        this.form = this.formBuilder.group({
-            downloadable: ['', Validators.required],
-            StartTime: ['', Validators.required],
-            EndTime: ['', Validators.required],
-            networkLocation: ['', Validators.required],
-            emailSubscription: ['', Validators.required],
-            Selectedstatus: ['', Validators.required],
-            name: ['', Validators.required],
-
-
-        });
+            this.form = new FormGroup({
+             downloadable: new FormControl('', Validators.required),
+             StartTime:new FormControl('',Validators.required),
+             EndTime:new FormControl('',Validators.required),
+             networkLocation:new FormControl('',Validators.required),
+             emailSubscription:new FormControl('',Validators.required),
+             Selectedstatus:new FormControl('',Validators.required),
+             name:new FormControl('',Validators.required)
+            });
+                this.setForm();
 
 
-        this.setForm();
         this.update();
+
+
 
 
 
@@ -138,12 +138,23 @@ public setForm() {
 
 
     update() {
+
+          this.form = new FormGroup({
+             downloadable: new FormControl('', Validators.required),
+             StartTime:new FormControl('',Validators.required),
+             EndTime:new FormControl('',Validators.required),
+             networkLocation:new FormControl('',Validators.required),
+             emailSubscription:new FormControl('',Validators.required),
+             Selectedstatus:new FormControl('',Validators.required),
+             name:new FormControl('',Validators.required)
+            });
         if (this.reportConfigService.changecomp == "update") {
             this.title = 'Report Config - Update';
-            alert(this.reportConfigService.updatename[0].starttime )
-            alert(this.reportConfigService.updatename[0].EndTime )
+                        this.form.patchValue({ StartTime: this.reportConfigService.updatename[0].starttime })
 
-            // this.form.setValue({ StartTime: this.reportConfigService.updatename[0].starttime })
+        //  this.form.get("StartTime").setValue(this.reportConfigService.updatename[0].starttime );
+            //  this.templateForm.control.get("address").patchValue(address);
+
 
 
 
@@ -189,28 +200,28 @@ public setForm() {
 
     onSubmit(form: FormGroup) {
         if (this.reportConfigService.changecomp == "create") {
-        if (this.form.invalid) {
+        // if (this.form.invalid) {
 
-        }
-        if (this.form.value.StartTime == '') {
-            this.selectstarttime = true;
-        }
+        // }
+        // if (this.form.value.StartTime == '') {
+        //     this.selectstarttime = true;
+        // }
 
-        if (this.form.value.EndTime == '') {
-            this.selectEndtime = true;
-        }
-        if (this.form.value.emailSubscription != 1 && this.form.value.emailSubscription != 0) {
+        // if (this.form.value.EndTime == '') {
+        //     this.selectEndtime = true;
+        // }
+        // if (this.form.value.emailSubscription != 1 && this.form.value.emailSubscription != 0) {
 
-            this.selectemail = true;
-        }
-        if (this.form.value.downloadable != 1 && this.form.value.downloadable != 0) {
-            this.seldown = true;
+        //     this.selectemail = true;
+        // }
+        // if (this.form.value.downloadable != 1 && this.form.value.downloadable != 0) {
+        //     this.seldown = true;
 
-        }
-        if (this.form.value.Selectedstatus != 1 && this.form.value.Selectedstatus != 0) {
-            this.selectstatus = true;
-        }
-        else {
+        // }
+        // if (this.form.value.Selectedstatus != 1 && this.form.value.Selectedstatus != 0) {
+        //     this.selectstatus = true;
+        // }
+        // else {
             let reportName = this.reportConfigService.reportid[0].reports_id;
             let networklocation = this.form.value.networkLocation;
             let starttime = this.form.value.StartTime;
@@ -229,7 +240,7 @@ public setForm() {
 
         }
         }
-    }
+    // }
     onClear() {
 
     }
