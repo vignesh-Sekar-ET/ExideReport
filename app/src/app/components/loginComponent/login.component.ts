@@ -117,12 +117,12 @@ export class loginComponent implements OnInit {
                     // console.log(isNaN(timestamp));
 
                     let groups = this.datavalue.groups;
-
+                    // this.reportservice.UserGroupList.push(groups.cn);
                     for (let i = 0; i < groups.length; i++) {
 
                         // groups[i].cn = 'NRB_reportwriter';
                         if (groups[i].cn == "NRB_admins") {
-                            this.reportservice.UserGroupList.push(groups[i].cn);
+                          
                             this.usergroup = "admin";
                             this.dashserve.grouptype = this.usergroup;
                             this.auth.setvariable = this.usergroup;
@@ -137,7 +137,7 @@ export class loginComponent implements OnInit {
                             this.router.navigate(['/dashboard/reportgrouplist']);
                         }
                         else {
-                            this.reportservice.UserGroupList.push(groups[i].cn);
+                           
                             this.usergroup = "enduser"
                             this.dashserve.grouptype = this.usergroup;
                             this.auth.setvariable = this.usergroup;
