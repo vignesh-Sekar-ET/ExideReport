@@ -12,7 +12,7 @@ export class reportlistserviceService {
     systemProperties: any;
     updatename: any;
     deleteName: any;
-    groupList: any; // groupList for table data in reportGroup page
+    groupList: any = []; // groupList for table data in reportGroup page
     selectedGroupId: number; // id of the group that was selected for any action
     changecomp:String;
 

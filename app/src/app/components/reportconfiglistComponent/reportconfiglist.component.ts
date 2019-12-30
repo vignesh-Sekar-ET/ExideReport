@@ -110,4 +110,3 @@ export class reportconfiglistComponent extends NBaseComponent implements OnInit 
     this.reportConfigService.getReportConfigList();
   }
 }
-
