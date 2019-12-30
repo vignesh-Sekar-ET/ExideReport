@@ -20,6 +20,7 @@ export class generatereportComponent implements OnInit {
     columnDefinition = [];
     reportcolumn = [];
     selectvalue: any
+    Selectedfilename:any = "Select File";
     tablevisible: boolean = false;
 
     testContent: any;
@@ -50,7 +51,6 @@ export class generatereportComponent implements OnInit {
 
         this.reportservice.reportlist().subscribe((response) => {
             this.selectvalue = response;
-            console.log(response);
         });
         this.tablePaginationSettings.enablePagination = true;
         this.tablePaginationSettings.pageSize = 5;
@@ -82,14 +82,14 @@ export class generatereportComponent implements OnInit {
     }
 
     onFileInput(sender: any) {
-
-
+        
         var validExts = new Array(".xlsx", ".csv");
 
         var fileExt = sender.target.value;
+        this.Selectedfilename = fileExt.replace(/^.*[\\\/]/, '')
 
         fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
-
+    
 
         if (validExts.indexOf(fileExt) < 0) {
             // console.log(validExts.toString() + " files only");
