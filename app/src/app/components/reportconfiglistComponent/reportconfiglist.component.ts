@@ -18,15 +18,15 @@ import { Columnsetting } from '../../columnsetting';
 
 export class reportconfiglistComponent extends NBaseComponent implements OnInit {
     mm: ModelMethods;
-    @ViewChild(MatSort, { static: true }) sort: MatSort;
-    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+    // @ViewChild(MatSort, { static: true }) sort: MatSort;
+    // @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-    rowData = [
-        { jndiname: 'Report1', serverip: '9PM', portno: '10PM', dbname: 'H', downloadable: 'yes' },
-        { jndiname: 'Report2 ', serverip: '9PM', portno: '10PM', dbname: 'He', downloadable: 'yes' },
-        { jndiname: 'Report3', serverip: '9PM', portno: '10AM', dbname: 'Li', downloadable: 'yes' },
-        { jndiname: 'Report4', serverip: '9PM', portno: '10AM', dbname: 'Li', downloadable: 'yes' },
-        { jndiname: 'Report5', serverip: '9PM', portno: '10AM', dbname: 'Li', downloadable: 'yes' }]
+    // rowData = [
+    //     { jndiname: 'Report1', serverip: '9PM', portno: '10PM', dbname: 'H', downloadable: 'yes' },
+    //     { jndiname: 'Report2 ', serverip: '9PM', portno: '10PM', dbname: 'He', downloadable: 'yes' },
+    //     { jndiname: 'Report3', serverip: '9PM', portno: '10AM', dbname: 'Li', downloadable: 'yes' },
+    //     { jndiname: 'Report4', serverip: '9PM', portno: '10AM', dbname: 'Li', downloadable: 'yes' },
+    //     { jndiname: 'Report5', serverip: '9PM', portno: '10AM', dbname: 'Li', downloadable: 'yes' }]
 
 
     tablePaginationSettings: Columnsetting = <Columnsetting>{};
