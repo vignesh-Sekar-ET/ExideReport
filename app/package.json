@@ -35,6 +35,7 @@
         "@angular/platform-browser": "8.2.0",
         "@angular/platform-browser-dynamic": "8.2.0",
         "@angular/router": "8.2.0",
+        "@candidosales/material-time-picker": "^2.0.0",
         "@swimlane/ngx-charts": "12.0.1",
         "@syncfusion/ej2-angular-calendars": "^17.4.40",
         "android-versions": "1.4.0",

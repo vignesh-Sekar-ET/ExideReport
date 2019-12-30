@@ -11,7 +11,7 @@
             },
             {
                 "_key": "style",
-                "_value": "height:100%",
+                "_value": "height:100%;background:#f3f4f5;",
                 "_type": "kv",
                 "_attrDef": "p"
             },
@@ -143,7 +143,7 @@
                     },
                     {
                         "_key": "style",
-                        "_value": "text-indent: 20px;background:#f3f4f5;",
+                        "_value": "text-indent: 20px;",
                         "_type": "kv",
                         "_attrDef": "p"
                     },
@@ -1754,7 +1754,7 @@
                                     },
                                     {
                                         "_key": "html",
-                                        "_value": "<bh-tabledemo  [rowData]= \"reportservice.groupList\"\r\n[sqColumnDefinition]='columnDefinition'\r\n[enableCheckbox]=\"true\"\r\n(getSelectedRows)=\"onNotifySelected($event)\"\r\n[sqPaginationConfig]=\"tablePaginationSettings\"\r\n></bh-tabledemo>",
+                                        "_value": "<bh-tabledemo  [rowData]= \"reportservice.groupList\"\r\n[sqColumnDefinition]='columnDefinition'\r\n[enableCheckbox]=\"true\"\r\n(getSelectedRows)=\"selectTablerowData($event)\"\r\n[sqPaginationConfig]=\"tablePaginationSettings\"\r\n></bh-tabledemo>",
                                         "_type": "a",
                                         "_attrDef": "p"
                                     }

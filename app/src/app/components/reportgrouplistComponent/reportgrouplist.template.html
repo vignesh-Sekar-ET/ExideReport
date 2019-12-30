@@ -1,6 +1,6 @@
-<div fxLayout="row wrap" style="height:100%" fxLayoutAlign="center stretch" [fxShow]="true" [fxHide]="false">
+<div fxLayout="row wrap" style="height:100%;background:#f3f4f5;" fxLayoutAlign="center stretch" [fxShow]="true" [fxHide]="false">
   <div fxLayout="column wrap" fxFlex="70" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-    <div fxLayout="row wrap" style="text-indent: 20px;background:#f3f4f5;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" style="text-indent: 20px;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
       <h3>
         <span class="commontextredcolor">Report Group - List</span></h3>
     </div>
@@ -23,7 +23,7 @@
         </div>
         <div fxLayout="column " style="padding:5px" fxFlex="70" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
           <div>
-            <bh-tabledemo [rowData]="reportservice.groupList" [sqColumnDefinition]="columnDefinition" [enableCheckbox]="true" (getSelectedRows)="onNotifySelected($event)" [sqPaginationConfig]="tablePaginationSettings"></bh-tabledemo>
+            <bh-tabledemo [rowData]="reportservice.groupList" [sqColumnDefinition]="columnDefinition" [enableCheckbox]="true" (getSelectedRows)="selectTablerowData($event)" [sqPaginationConfig]="tablePaginationSettings"></bh-tabledemo>
           </div>
         </div>
       </div>

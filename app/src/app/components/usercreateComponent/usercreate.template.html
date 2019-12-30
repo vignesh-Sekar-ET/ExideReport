@@ -24,7 +24,7 @@
                 <div>
                   <span class="headerblackclass">User Group Name</span></div>
                 <div fxLayout="column wrap" style="padding-top:8px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-                  <mat-form-field class="reportGroupNameInbox" [appearance]="&apos;fill&apos;" [floatLabel]="&apos;auto&apos;">
+                  <mat-form-field class="reportGroupNameInbox" [appearance]="&apos;outline&apos;" [floatLabel]="&apos;auto&apos;">
                     <input matInput required formControlName="reportGroupName">
                     <mat-error align="start" *ngIf="reportCreateForm.invalid">Please Enter reportname!</mat-error>
                   </mat-form-field>

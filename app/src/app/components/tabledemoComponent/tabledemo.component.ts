@@ -41,6 +41,7 @@ export class tabledemoComponent extends NBaseComponent implements OnChanges, Aft
     @Output() getSelectedRows = new EventEmitter();
     selectedRowIndex = -1;
     dataSource: MatTableDataSource<{}>;
+
     array = [];
     //create custom element
     @ViewChild('one', { static: false }) d1: ElementRef;
@@ -78,13 +79,13 @@ export class tabledemoComponent extends NBaseComponent implements OnChanges, Aft
         }
         // Condition to add selection column to the table
         if (this.enableCheckbox) {
-            this.columnNames.splice(9, 0, 'select');
+            this.columnNames.splice(9, 0, 'Select');
             this.sqColumnDefinition.splice(9, 0, {
-                'name': 'select',
+                'name': 'Select',
                 'displayName': '#'
             });
         }
-        // this.getArray();
+        this.dataSource = new MatTableDataSource(this.rowData);
     }
     isAllSelected() {
         const numSelected = this.selection.selected.length;
@@ -101,24 +102,31 @@ export class tabledemoComponent extends NBaseComponent implements OnChanges, Aft
     }
 
     ngOnChanges() {
-        this.dataSource = new MatTableDataSource(this.rowData);
+      this.dataSource = new MatTableDataSource(this.rowData);
+        this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
     }
     rowSelect(rowid) {
-        this.reportlist.selectedGroupId = rowid;
+      this.getSelectedRows.emit( this.selection.selected);
+
+       this.reportlist.selectedGroupId = rowid;
     }
    
    
     paginationClicked(event) {
         console.log(event)
     }
+    //  search(term: string) {
+    //     console.log(term)
+    //     if (!term) {
+    //         this.dataSource = this.rowData;
+    //     }
+    //     else {
+    //         this.dataSource = this.rowData.filter(x => x.Groupname.toLowerCase().includes(term.toLowerCase()));
+    //     }
+    // }
 
    
-
-    getArray() {
-
-        
-    }
    
 
    

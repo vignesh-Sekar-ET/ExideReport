@@ -11,7 +11,7 @@ import { NBaseComponent } from '../../../../../app/baseClasses/nBase.component';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { mappingserviceService } from '../../services/mappingservice/mappingservice.service';
+// import { mappingserviceService } from '../../services/mappingservice/mappingservice.service';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 // import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
@@ -58,7 +58,7 @@ export class usergroupmappingcreateComponent extends NBaseComponent implements O
     public userGroup: any;
     public reportGroup: any;
     isSubmitted = false;
-    constructor(private bdms: NDataModelService, public renderer: Renderer2, public element: ElementRef, private mappingservice: mappingserviceService) {
+    constructor(private bdms: NDataModelService, public renderer: Renderer2, public element: ElementRef) {
         super();
         this.mm = new ModelMethods(bdms);
     }
@@ -87,15 +87,15 @@ export class usergroupmappingcreateComponent extends NBaseComponent implements O
             primaryKey: "id"
         };
 
-        this.mappingservice.getReportGroup().subscribe((data) => {
-            this.reportGroupdatalist = data;
-            this.testExecutionFunction()
-        });
+        // this.mappingservice.getReportGroup().subscribe((data) => {
+        //     this.reportGroupdatalist = data;
+        //     this.testExecutionFunction()
+        // });
 
-        this.mappingservice.getUserGroup().subscribe((data) => {
-            this.userGroupdatalist = data["groups"];
-            this.testExecutionFunction()
-        });
+        // this.mappingservice.getUserGroup().subscribe((data) => {
+        //     this.userGroupdatalist = data["groups"];
+        //     this.testExecutionFunction()
+        // });
         this.setForm();
     }
 
@@ -119,18 +119,18 @@ export class usergroupmappingcreateComponent extends NBaseComponent implements O
             return false;
         }
         else {
-            this.uniqueArrayUserGroup(event.userGroup)
-            this.uniqueArrayReportGroup(event.reportGroup)
-            let Umap = this.usermapGroup.map(item => ({ Usergroup: item.cn, reporGroupmap: [...new Set(event.reportGroup)] }))
-            let Rmap = this.reportmapGroup.map(item => ({ ReportGroup: item.Groupname, userGroupmap: [...new Set(event.userGroup)] }))
-            console.log("ReportGroup", Rmap, 'Usergroup', Umap)
-            console.log(JSON.stringify(Rmap) )
-            let umapping = Umap.map((userGroup) => {
-                // let result = {
-                //     key:userGroup.Usergroup
-                // }
-                console.log(userGroup)
-            })
+            // this.uniqueArrayUserGroup(event.userGroup)
+            // this.uniqueArrayReportGroup(event.reportGroup)
+            // let Umap = this.usermapGroup.map(item => ({ Usergroup: item.cn, reporGroupmap: [...new Set(event.reportGroup)] }))
+            // let Rmap = this.reportmapGroup.map(item => ({ ReportGroup: item.Groupname, userGroupmap: [...new Set(event.userGroup)] }))
+            // console.log("ReportGroup", Rmap, 'Usergroup', Umap)
+            // console.log(JSON.stringify(Rmap) )
+            // let umapping = Umap.map((userGroup) => {
+            //     // let result = {
+            //     //     key:userGroup.Usergroup
+            //     // }
+            //     console.log(userGroup)
+            // })
         }
 
 

@@ -1734,7 +1734,7 @@
                                                 },
                                                 {
                                                     "_key": "[appearance]",
-                                                    "_value": "'fill'",
+                                                    "_value": "'outline'",
                                                     "_type": "a",
                                                     "_attrDef": "p"
                                                 },

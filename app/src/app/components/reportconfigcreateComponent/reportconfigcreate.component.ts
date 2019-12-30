@@ -9,9 +9,8 @@ import { TimePickerComponent } from '@syncfusion/ej2-angular-calendars';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import * as moment from 'moment';
-
-
-
+import { NSnackbarService } from 'neutrinos-seed-services';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'bh-reportconfigcreate',
@@ -19,10 +18,7 @@ import * as moment from 'moment';
 
 })
 export class reportconfigcreateComponent implements OnInit {
-
-
     @ViewChild('multiSelect', { static: true }) multiSelect;
-
     public loadContent: boolean = false;
     public data: any;
     public settings = {};
@@ -40,6 +36,7 @@ export class reportconfigcreateComponent implements OnInit {
     selectstarttime: boolean = false;
     selecttime: boolean = false;
     selectEndtime: boolean = false;
+    title: any;
 
 
     downloads: any = [
@@ -82,19 +79,13 @@ export class reportconfigcreateComponent implements OnInit {
         this.form.controls.EndTime.setValue(this.endTime);
     }
 
-    constructor(private bdms: NDataModelService, private formBuilder: FormBuilder, public reportConfigService: reportconfigserviceService) {
-
-    }
-
-    ngOnInit() {
-        this.reportConfigService.getReportConfigList().subscribe((response) => {
+    constructor(private bdms: NDataModelService, private formBuilder: FormBuilder, public reportConfigService: reportconfigserviceService, private snackBar: NSnackbarService, private route: Router) {
+        this.title = 'Report Config - Create'
+        this.reportConfigService.configcreatelist().subscribe((response) => {
             this.data = response;
-
-
+            console.log("data" +JSON.stringify(this.data))
+            this.reportConfigService.reportid = this.data;
         });
-
-
-        // setting and support i18n
         this.settings = {
             singleSelection: false,
             idField: 'reports_id',
@@ -108,36 +99,56 @@ export class reportconfigcreateComponent implements OnInit {
             maxHeight: 197,
             itemsShowLimit: 3,
             searchPlaceholderText: 'Search',
-            noDataAvailablePlaceholderText: 'Không có dữ liệu',
+            noDataAvailablePlaceholderText: 'No List Available',
             closeDropDownOnSelection: false,
             showSelectedItemsAtTop: false,
             defaultOpen: false
         };
-        this.setForm();
+
 
     }
 
-    public setForm() {
+    ngOnInit() {
 
-        this.form = new FormGroup({
+        this.form = this.formBuilder.group({
+            downloadable: ['', Validators.required],
+            StartTime: ['', Validators.required],
+            EndTime: ['', Validators.required],
+            networkLocation: ['', Validators.required],
+            emailSubscription: ['', Validators.required],
+            Selectedstatus: ['', Validators.required],
+            name: ['', Validators.required],
 
-            name: new FormControl('', Validators.required),
-            selectscheduledstatus: new FormControl('', Validators.required),
-            ScheduledStartDate: new FormControl('', Validators.required),
-            networkLocation: new FormControl('', Validators.required),
-            emailSubscription: new FormControl('', Validators.required),
-            downloadable: new FormControl('', Validators.required),
-            Selectedstatus: new FormControl('', Validators.required),
-            time: new FormControl('', Validators.required),
-            StartTime: new FormControl('', Validators.required),
-            EndTime: new FormControl('', Validators.required)
 
         });
-        this.loadContent = true;
+
+
+        this.setForm();
+        this.update();
+
+
 
     }
 
+public setForm() {
+    this.loadContent = true;
+
+    }
     get f() { return this.form.controls; }
+
+
+    update() {
+        if (this.reportConfigService.changecomp == "update") {
+            this.title = 'Report Config - Update';
+            alert(this.reportConfigService.updatename[0].starttime )
+            alert(this.reportConfigService.updatename[0].EndTime )
+
+            // this.form.setValue({ StartTime: this.reportConfigService.updatename[0].starttime })
+
+
+
+        }
+    }
 
     public onFilterChange(item: any) {
     }
@@ -145,15 +156,12 @@ export class reportconfigcreateComponent implements OnInit {
     }
 
     public onItemSelect(item: any) {
-
         this.selectedItems.push(item.reports_id);
-        // console.log(this.selectedItems);
 
     }
     public onDeSelect(item: any) {
         let index = this.selectedItems.findIndex(ind => ind == item.reports_id);
         this.selectedItems.splice(index, 1)
-        // console.log("index" + this.selectedItems);
 
 
     }
@@ -166,16 +174,13 @@ export class reportconfigcreateComponent implements OnInit {
     }
 
 
-    activeStatus(){
+    activeStatus() {
         this.selectstatus = false;
     }
     endtime() {
         this.selectEndtime = false;
     }
-    timeclick() {
-        this.selecttime = false;
 
-    }
     starttimeclick() {
         this.selectstarttime = false;
 
@@ -183,8 +188,7 @@ export class reportconfigcreateComponent implements OnInit {
     }
 
     onSubmit(form: FormGroup) {
-
-
+        if (this.reportConfigService.changecomp == "create") {
         if (this.form.invalid) {
 
         }
@@ -195,10 +199,6 @@ export class reportconfigcreateComponent implements OnInit {
         if (this.form.value.EndTime == '') {
             this.selectEndtime = true;
         }
-        if (this.form.value.time == '') {
-            this.selecttime = true;
-        }
-
         if (this.form.value.emailSubscription != 1 && this.form.value.emailSubscription != 0) {
 
             this.selectemail = true;
@@ -210,37 +210,25 @@ export class reportconfigcreateComponent implements OnInit {
         if (this.form.value.Selectedstatus != 1 && this.form.value.Selectedstatus != 0) {
             this.selectstatus = true;
         }
-        
-
-
-
-
         else {
-
-
-            let reportName = this.form.value.name;
-            let scheduledexcutionType = this.form.value.selectscheduledstatus;
-            /*moment used for format the date*/
-            this.date = moment(this.form.value.ScheduledStartDate).format('DD/MM/YYYY');
-            let scheduledexcutiondate = this.date;
-
-            let time = this.form.value.time;
+            let reportName = this.reportConfigService.reportid[0].reports_id;
             let networklocation = this.form.value.networkLocation;
             let starttime = this.form.value.StartTime;
             let endtime = this.form.value.EndTime;
             let email = this.form.value.emailSubscription;
             let downloadble = this.form.value.downloadable;
             let status = this.form.value.Selectedstatus;
-            console.log("startdate" + downloadble);
-
-            this.reportConfigService.onSubmit(reportName, scheduledexcutionType, scheduledexcutiondate, time, networklocation, starttime, endtime, email, downloadble, status).subscribe(
+            // console.log("getreport" +reportName, networklocation, starttime, endtime, email, downloadble, status)
+            this.reportConfigService.onSubmit(reportName, networklocation, starttime, endtime, email, downloadble, status).subscribe(
                 (data) => {
-                    // alert("hi");
-                });
-            console.log("REPORTCONFIG" + reportName, scheduledexcutionType, scheduledexcutiondate, time, networklocation, starttime, endtime, email, downloadble, status)
+
+                    this.snackBar.openSnackBar('Report Config Created Successfully', 2000);
+                    this.route.navigateByUrl('/dashboard/reportConfigList');
+                },
+                (err) => console.log(err));
+
         }
-
-
+        }
     }
     onClear() {
 

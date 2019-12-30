@@ -14,7 +14,7 @@ export class reportlistserviceService {
     deleteName: any;
     groupList: any; // groupList for table data in reportGroup page
     selectedGroupId: number; // id of the group that was selected for any action
-    changecomp:String;
+    changecomp: String;
 
     constructor(private bdms: NDataModelService, private http: HttpClient) {
 
@@ -25,9 +25,8 @@ export class reportlistserviceService {
 
 
     }
-   
-    onSubmit(rname: any, rcode: any, rstatus: any, rid: any): Observable<any> {
 
+    onSubmit(rname: any, rcode: any, rstatus: any, rid: any): Observable<any> {
         let url = this.systemProperties.modularUrl;
         let reportName = "'" + rname + "'";
         let reportCode = "'" + rcode + "'";
@@ -36,10 +35,8 @@ export class reportlistserviceService {
         let data = { 'gname': reportName, 'gcode': reportCode, 'status': reportStatus, 'id': reportId };
         url += "groupupdate "
         let body = { 'gname': reportName, 'gcode': reportCode, 'status': reportStatus, 'id': reportId };
-        console.log(body);
         return this.http.post(url, body);
     }
-   
     getReportGroupList() {
         this.http.get(`${this.systemProperties.modularUrl}groupList`).subscribe(groupList => {
             if (groupList instanceof Array) {

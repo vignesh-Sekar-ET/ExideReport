@@ -13,7 +13,6 @@ import { reportlistserviceService } from '../../services/reportlistservice/repor
 import { Observable, of } from "rxjs";
 import { NSnackbarService } from 'neutrinos-seed-services';
 import { reportgroupdeleteComponent } from '../reportgroupdeleteComponent/reportgroupdelete.component';
-import { dashboardService } from '../../services/dashboard/dashboard.service';
 
 @Component({
     selector: 'bh-reportgrouplist',
@@ -26,6 +25,7 @@ export class reportgrouplistComponent extends NBaseComponent implements OnInit {
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     updateData: any;
     updatename: any;
+    radiobtnselect:boolean =false;
     tablePaginationSettings: Columnsetting = <Columnsetting>{};
     columnDefinition = [];
     constructor(private bdms: NDataModelService, public dialog: MatDialog, public route: Router, 
@@ -48,7 +48,7 @@ export class reportgrouplistComponent extends NBaseComponent implements OnInit {
             },
             {
                 'name': 'GroupCode',
-                'displayName': 'GroupCode',
+                'displayName': 'Groupcode',
                 'disableSorting': false,
                 'icon': 'home',
             },
@@ -71,9 +71,9 @@ export class reportgrouplistComponent extends NBaseComponent implements OnInit {
         this.route.navigateByUrl('/dashboard/reportCreate');
     }
     onClickUpdate() {
-        this.reportservice.changecomp = "update";
         if (this.updateData) {
-            this.reportservice.updatename = this.updateData;
+            this.reportservice.changecomp = "update";
+             this.reportservice.updatename = this.updateData;
             this.route.navigateByUrl('/dashboard/reportCreate');
         }
         else {
@@ -82,21 +82,19 @@ export class reportgrouplistComponent extends NBaseComponent implements OnInit {
         }
     }
     openDialog() {
-        // if (this.updateData) {
-            // this.reportservice.deleteName = this.updateData;
-            // this.reportservice.tableData = this.testContent;
+        if (this.updateData) {
+            this.reportservice.deleteName = this.updateData;
             const dialogRef = this.dialog.open(reportgroupdeleteComponent, {
                 width: '400px',
             });
+             }
+        else {
+            this.snackBar.openSnackBar('Please Select ReportGroup', 2000);
 
-        // }
-        // else {
-        //     this.snackBar.openSnackBar('Please Select ReportGroup', 2000);
-
-        // }
+        }
     }
 
-    onNotifySelected(selectedRows: object[], i) {
+    selectTablerowData(selectedRows: object[], i) {
         this.updateData = selectedRows;
     }
 
