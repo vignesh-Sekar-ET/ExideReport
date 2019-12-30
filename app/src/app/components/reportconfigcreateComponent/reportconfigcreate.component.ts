@@ -138,8 +138,7 @@ public setForm() {
 
 
     update() {
-
-          this.form = new FormGroup({
+             this.form = new FormGroup({
              downloadable: new FormControl('', Validators.required),
              StartTime:new FormControl('',Validators.required),
              EndTime:new FormControl('',Validators.required),
@@ -150,10 +149,8 @@ public setForm() {
             });
         if (this.reportConfigService.changecomp == "update") {
             this.title = 'Report Config - Update';
-                        this.form.patchValue({ StartTime: this.reportConfigService.updatename[0].starttime })
+            this.form.patchValue({ StartTime: this.reportConfigService.updatename[0].starttime })
 
-        //  this.form.get("StartTime").setValue(this.reportConfigService.updatename[0].starttime );
-            //  this.templateForm.control.get("address").patchValue(address);
 
 
 
