@@ -2775,7 +2775,7 @@
                                                     },
                                                     {
                                                         "_key": "html",
-                                                        "_value": "<div class=\"timepicker\">\r\n  <!-- <form class=\"demo-form\"> formControlName=\"startTime\" -->\r\n    <material-timepicker placeholder=\"select Start Time\" color=\"primary\" [userTime]=\"exportTime\" (change)=\"onChangestarttime($event)\" revertLabel=\"Remove\" submitLabel=\"Ok\" (click)=\"starttimeclick()\" ></material-timepicker>\r\n    <span *ngIf=\"selectstarttime\" style=\"color: red;\">\r\n      Please select StartTime!!\r\n    </span>\r\n    \r\n  <!-- </form> -->\r\n</div>\r\n \r\n\r\n\r\n ",
+                                                        "_value": "<div  class=\"timepicker\" >\r\n   <form class=\"demo-form\"> \r\n    <material-timepicker placeholder=\"select Start Time\"  color=\"primary\" [userTime]=\"exportTime\" (change)=\"onChangestarttime($event)\" revertLabel=\"Remove\" submitLabel=\"Ok\" (click)=\"starttimeclick()\" ></material-timepicker>\r\n    <span *ngIf=\"selectstarttime\" style=\"color: red;\">\r\n      Please select StartTime!!\r\n    </span>\r\n    \r\n  </form>\r\n</div>\r\n \r\n\r\n\r\n ",
                                                         "_type": "a",
                                                         "_attrDef": "p"
                                                     }

@@ -53,13 +53,13 @@
                 <div fxLayout="row wrap" style="border:1px solid #adadad;border-radius:4px" fxFlex="100" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false">
                   <div>
                     <div class="timepicker">
-                      <!-- <form class="demo-form"> formControlName="startTime" -->
-                      <material-timepicker placeholder="select Start Time" color="primary" [userTime]="exportTime" (change)="onChangestarttime($event)" revertLabel="Remove" submitLabel="Ok" (click)="starttimeclick()"></material-timepicker>
-                      <span *ngIf="selectstarttime" style="color: red;">
+                      <form class="demo-form">
+                        <material-timepicker placeholder="select Start Time" color="primary" [userTime]="exportTime" (change)="onChangestarttime($event)" revertLabel="Remove" submitLabel="Ok" (click)="starttimeclick()"></material-timepicker>
+                        <span *ngIf="selectstarttime" style="color: red;">
       Please select StartTime!!
     </span>
 
-                      <!-- </form> -->
+                      </form>
                     </div>
 
 
