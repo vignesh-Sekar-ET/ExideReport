@@ -1,3 +1,4 @@
+/*DEFAULT GENERATED TEMPLATE. DO NOT CHANGE SELECTOR TEMPLATE_URL AND CLASS NAME*/
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { ModelMethods } from '../../lib/model.methods';
 import { NDataModelService } from 'neutrinos-seed-services';
@@ -42,7 +43,7 @@ export class reportconfiglistComponent extends NBaseComponent implements OnInit 
             },
             {
                 'name': 'starttime',
-                'displayName': 'Excution Start Time',
+                'displayName': 'Execution Srt Time',
                 'disableSorting': false,
                 'icon': 'face',
                 'formcontrol': 'jndc1'
@@ -50,14 +51,14 @@ export class reportconfiglistComponent extends NBaseComponent implements OnInit 
             },
             {
                 'name': 'endtime',
-                'displayName': 'Excution End Time',
+                'displayName': 'Execution End Time',
                 'disableSorting': false,
                 'icon': 'home',
                 'formcontrol': 'jndc2'
             },
             {
                 'name': 'isdownloadable',
-                'displayName': 'Downloable',
+                'displayName': 'Downloadable',
                 'disableSorting': false,
                 'icon': 'face',
                 'formcontrol': 'jndc3'
@@ -85,13 +86,14 @@ export class reportconfiglistComponent extends NBaseComponent implements OnInit 
 
     }
      Create() {
-        this.reportConfigService.changecomp = "create";
+         console.log("create clicked")
+        this.reportConfigService.changecomp = 'create';
         this.route.navigateByUrl('/dashboard/reportConfigCreate');
 
     }
      Update() {
         if (this.updateData) {
-            this.reportConfigService.changecomp = "update";
+            this.reportConfigService.changecomp = 'update';
              this.reportConfigService.updatename = this.updateData;
              this.route.navigateByUrl('/dashboard/reportConfigCreate');
 
@@ -110,4 +112,6 @@ export class reportconfiglistComponent extends NBaseComponent implements OnInit 
     this.reportConfigService.getReportConfigList();
   }
 }
+
+
 

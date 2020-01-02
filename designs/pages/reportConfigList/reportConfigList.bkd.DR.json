@@ -929,7 +929,7 @@
                                 },
                                 {
                                     "_key": "layoutAlign",
-                                    "_value": "end",
+                                    "_value": "space-around",
                                     "_type": "a",
                                     "_attrDef": "p"
                                 },
@@ -1018,10 +1018,17 @@
                                         "_attrDef": "p"
                                     }
                                 ],
-                                "1cf0fd34-98ab-b3dc-4577-1cb8189705b5": {
-                                    "paletteKey": "NG-button",
+                                "d9941045-b85d-b219-d268-3b3583f1eb5b": {
+                                    "paletteKey": "FlexLayoutCol",
                                     "parentEditorKey": "d18321ce-82ed-139d-a1bd-c9afa3a42793",
                                     "designerReference": [
+                                        {
+                                            "_key": "componentLabel",
+                                            "_value": "Column",
+                                            "_type": "kv",
+                                            "_attrDef": "p",
+                                            "_useAsLabel": true
+                                        },
                                         {
                                             "_key": "style",
                                             "_value": "",
@@ -1030,59 +1037,126 @@
                                         },
                                         {
                                             "_key": "class",
-                                            "_value": "UserGroupCreateButton",
+                                            "_value": "",
                                             "_type": "kv",
                                             "_attrDef": "p"
                                         },
                                         {
-                                            "_key": "buttonname",
-                                            "_value": "Create",
+                                            "_key": "fxFlex",
+                                            "_value": "25",
+                                            "_type": "kv",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "fxLayoutGap",
+                                            "_value": "",
+                                            "_type": "kv",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "wrap",
+                                            "_value": "wrap",
                                             "_type": "a",
-                                            "_attrDef": "p",
-                                            "_useAsLabel": true
+                                            "_attrDef": "p"
                                         },
                                         {
-                                            "_key": "color",
-                                            "_value": "",
+                                            "_key": "layoutAlign",
+                                            "_value": "start",
+                                            "_type": "a",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "pLayoutAlign",
+                                            "_value": "stretch",
+                                            "_type": "a",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "[fxShow]",
+                                            "_value": "true",
                                             "_type": "kv",
                                             "_attrDef": "p"
                                         },
                                         {
-                                            "_key": "(click)",
-                                            "_value": "",
-                                            "_type": "kv",
-                                            "_attrDef": "p"
-                                        },
-                                        {
-                                            "_key": "[disabled]",
-                                            "_value": "",
-                                            "_type": "kv",
-                                            "_attrDef": "p"
-                                        },
-                                        {
-                                            "_key": "[disableRipple]",
-                                            "_value": "",
-                                            "_type": "kv",
-                                            "_attrDef": "p"
-                                        },
-                                        {
-                                            "_key": "type",
-                                            "_value": "submit",
-                                            "_type": "kv",
-                                            "_attrDef": "p"
-                                        },
-                                        {
-                                            "_key": "routerLink",
-                                            "_value": "/dashboard/reportConfigCreate",
+                                            "_key": "[fxHide]",
+                                            "_value": "false",
                                             "_type": "kv",
                                             "_attrDef": "p"
                                         }
-                                    ]
+                                    ],
+                                    "1cf0fd34-98ab-b3dc-4577-1cb8189705b5": {
+                                        "paletteKey": "NG-button",
+                                        "parentEditorKey": "d9941045-b85d-b219-d268-3b3583f1eb5b",
+                                        "designerReference": [
+                                            {
+                                                "_key": "style",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "class",
+                                                "_value": "UserGroupCreateButton",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "buttonname",
+                                                "_value": "Create",
+                                                "_type": "a",
+                                                "_attrDef": "p",
+                                                "_useAsLabel": true
+                                            },
+                                            {
+                                                "_key": "color",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "(click)",
+                                                "_value": "Create()",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "[disabled]",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "[disableRipple]",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "type",
+                                                "_value": "button",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "routerLink",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            }
+                                        ]
+                                    }
                                 },
-                                "f2f0f412-cf16-e6b8-1221-4e7d5111d0f5": {
-                                    "paletteKey": "NG-button",
+                                "875bf97c-4bcb-f03e-3bfe-0bdefd5f4ba0": {
+                                    "paletteKey": "FlexLayoutCol",
                                     "parentEditorKey": "d18321ce-82ed-139d-a1bd-c9afa3a42793",
                                     "designerReference": [
+                                        {
+                                            "_key": "componentLabel",
+                                            "_value": "Column",
+                                            "_type": "kv",
+                                            "_attrDef": "p",
+                                            "_useAsLabel": true
+                                        },
                                         {
                                             "_key": "style",
                                             "_value": "",
@@ -1091,54 +1165,114 @@
                                         },
                                         {
                                             "_key": "class",
-                                            "_value": "UserGroupCommonButton",
+                                            "_value": "",
                                             "_type": "kv",
                                             "_attrDef": "p"
                                         },
                                         {
-                                            "_key": "buttonname",
-                                            "_value": "Update",
+                                            "_key": "fxFlex",
+                                            "_value": "25",
+                                            "_type": "kv",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "fxLayoutGap",
+                                            "_value": "",
+                                            "_type": "kv",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "wrap",
+                                            "_value": "wrap",
                                             "_type": "a",
-                                            "_attrDef": "p",
-                                            "_useAsLabel": true
+                                            "_attrDef": "p"
                                         },
                                         {
-                                            "_key": "color",
-                                            "_value": "",
+                                            "_key": "layoutAlign",
+                                            "_value": "start",
+                                            "_type": "a",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "pLayoutAlign",
+                                            "_value": "stretch",
+                                            "_type": "a",
+                                            "_attrDef": "p"
+                                        },
+                                        {
+                                            "_key": "[fxShow]",
+                                            "_value": "true",
                                             "_type": "kv",
                                             "_attrDef": "p"
                                         },
                                         {
-                                            "_key": "(click)",
-                                            "_value": "",
-                                            "_type": "kv",
-                                            "_attrDef": "p"
-                                        },
-                                        {
-                                            "_key": "[disabled]",
-                                            "_value": "",
-                                            "_type": "kv",
-                                            "_attrDef": "p"
-                                        },
-                                        {
-                                            "_key": "[disableRipple]",
-                                            "_value": "",
-                                            "_type": "kv",
-                                            "_attrDef": "p"
-                                        },
-                                        {
-                                            "_key": "type",
-                                            "_value": "",
-                                            "_type": "kv",
-                                            "_attrDef": "p"
-                                        },
-                                        {
-                                            "_key": "routerLink",
-                                            "_value": "/dashboard/reportConfigCreate",
+                                            "_key": "[fxHide]",
+                                            "_value": "false",
                                             "_type": "kv",
                                             "_attrDef": "p"
                                         }
-                                    ]
+                                    ],
+                                    "f2f0f412-cf16-e6b8-1221-4e7d5111d0f5": {
+                                        "paletteKey": "NG-button",
+                                        "parentEditorKey": "875bf97c-4bcb-f03e-3bfe-0bdefd5f4ba0",
+                                        "designerReference": [
+                                            {
+                                                "_key": "style",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "class",
+                                                "_value": "UserGroupCommonButton",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "buttonname",
+                                                "_value": "Update",
+                                                "_type": "a",
+                                                "_attrDef": "p",
+                                                "_useAsLabel": true
+                                            },
+                                            {
+                                                "_key": "color",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "(click)",
+                                                "_value": "Update() ",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "[disabled]",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "[disableRipple]",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "type",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            },
+                                            {
+                                                "_key": "routerLink",
+                                                "_value": "",
+                                                "_type": "kv",
+                                                "_attrDef": "p"
+                                            }
+                                        ]
+                                    }
                                 }
                             }
                         }
@@ -1693,7 +1827,7 @@
                                     },
                                     {
                                         "_key": "html",
-                                        "_value": "<bh-tabledemo  [rowData]='rowData'\r\n[sqColumnDefinition]='columnDefinition'\r\n[enableCheckbox]=\"true\"\r\n(getSelectedRows)=\"onNotifySelected($event)\"\r\n[sqPaginationConfig]=\"tablePaginationSettings\"\r\n></bh-tabledemo>",
+                                        "_value": "<bh-tabledemo  [rowData]='reportConfigService.reportconfiglist'\r\n[sqColumnDefinition]='columnDefinition'\r\n[enableCheckbox]=\"true\"\r\n(getSelectedRows)=\"selectTablerowData($event)\"\r\n[sqPaginationConfig]=\"tablePaginationSettings\"\r\n></bh-tabledemo>",
                                         "_type": "a",
                                         "_attrDef": "p"
                                     }
