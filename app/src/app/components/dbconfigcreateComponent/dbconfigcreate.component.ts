@@ -30,27 +30,39 @@ export class dbconfigcreateComponent extends NBaseComponent implements OnInit {
     dbConfigForm: FormGroup;
     submitted = false;
     Dbresponse: any;
+    action: string;
     seasons: any = [
-        { value: '0', viewValue: 'Yes' },
-        { value: '1', viewValue: 'No' }
+        { value: 0, viewValue: 'Yes' },
+        { value: 1, viewValue: 'No' }
     ];
-    constructor(private bdms: NDataModelService, private snackBar: NSnackbarService, private route: Router, private dbconfig: dashboardService, private formBuilder: FormBuilder, private _snackBar: MatSnackBar, public el: ElementRef, public renderer: Renderer) {
+    dbData = [
+        { value: 'mssql', viewValue: 'MSSQL' },
+        { value: 'sql', viewValue: 'SQL' },
+        { value: 'mongodb', viewValue: 'MongoDB' }
+    ]
+    constructor(private bdms: NDataModelService, private snackBar: NSnackbarService, private route: Router, private ser: dashboardService, private formBuilder: FormBuilder, private _snackBar: MatSnackBar, public el: ElementRef, public renderer: Renderer) {
         super();
         this.mm = new ModelMethods(bdms);
         this.createDbconfig();
     }
 
     ngOnInit() {
-
+        if (this.ser.dbConfigLabelCreateUpdate === 'Create') {
+            console.log("create")
+        }
+        else {
+            this.dbconfigupdate();
+        }
     }
 
     openSnackBar() {
-        this.snackBar.openSnackBar('Db configuration Created!!!', 2000);
+        this.snackBar.openSnackBar(this.action, 2000);
     }
     createDbconfig() {
         this.dbConfigForm = this.formBuilder.group(
             {
                 jndiname: ['', Validators.required],
+                drivertype: ['', Validators.required],
                 active: ['', Validators.required]
             }
         )
@@ -58,30 +70,61 @@ export class dbconfigcreateComponent extends NBaseComponent implements OnInit {
     // convenience getter for easy access to form fields
 
     onSubmit(event) {
-        this.submitted = true;
-        if (this.dbConfigForm.invalid) {
-            console.log("invalid")
-            return;
+        if (this.ser.dbConfigLabelCreateUpdate === 'Create') {
+            console.log("submit")
+            this.dbconfigCreatesubmitbutton();
         }
         else {
-            console.log("valid")
-            let jndiname = this.dbConfigForm.value.jndiname;
-            let active = this.dbConfigForm.value.active;
-            console.log(jndiname, active);
-            this.dbconfig.getConfigListPost(jndiname, active).subscribe(
-                data => {
-                    this.openSnackBar();
-                }
-            )
-
+            this.dbconfigUpdatesubmitbutton();
         }
+
     }
     clear() {
-        // this.submitted = false;
         this.dbConfigForm.reset();
         // this.dbConfigForm.markAsPristine();
         // this.dbConfigForm.markAsUntouched();
     }
     get RadioButton() { return this.dbConfigForm.get("active") }
     get jndiname() { return this.dbConfigForm.get("jndiname") }
+    dbconfigupdate() {
+        this.dbConfigForm.patchValue({ active: this.ser.dbconfigupdate[0]["isactive"] == "Yes" ? 0 : 1 })
+        this.dbConfigForm.patchValue({ drivertype: this.ser.dbconfigupdate[0]["db"] })
+        this.dbConfigForm.patchValue({ jndiname: this.ser.dbconfigupdate[0]["JNDIName"] })
+
+    }
+    dbconfigCreatesubmitbutton() {
+        this.submitted = true;
+        if (this.dbConfigForm.valid) {
+            console.log("valid")
+            let jndiname = this.dbConfigForm.value.jndiname;
+            let active = this.dbConfigForm.value.active;
+            let drivertype = this.dbConfigForm.value.drivertype;
+            this.ser.getConfigListPost(jndiname, active, drivertype).subscribe(
+                data => {
+                    console.log(data)
+                    this.action = "Db configuration Created!!!"
+                    this.route.navigateByUrl('dashboard/dbconfigList');
+                    this.openSnackBar();
+
+                }
+            )
+        }
+    }
+
+    dbconfigUpdatesubmitbutton() {
+        let jndiname = this.dbConfigForm.value.jndiname;
+        let drivertype = this.dbConfigForm.value.drivertype;
+        let active = this.dbConfigForm.value.active;
+        let updateid = this.ser.dbconfigupdate[0].jndi_id;
+        if (this.dbConfigForm.valid) {
+            this.ser.getconfigUpdate(jndiname, drivertype, active, updateid).subscribe(data => {
+                console.log(data)
+                this.route.navigateByUrl('dashboard/dbconfigList');
+                this.action = "Db configuration Updated!!!";
+                this.openSnackBar()
+            })
+        }
+
+
+    }
 }

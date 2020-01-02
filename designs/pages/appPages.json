@@ -118,5 +118,10 @@
         "appPageName": "reportConfigCreate",
         "componentName": "reportconfigcreateComponent",
         "isEntry": false
+    },
+    "3e0c08a1-56b8-d96e-386f-965f0c387995": {
+        "appPageName": "dbConfigList",
+        "componentName": "dbconfiglistComponent",
+        "isEntry": false
     }
 }
