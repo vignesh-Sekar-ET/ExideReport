@@ -1049,7 +1049,7 @@
                                         },
                                         {
                                             "_key": "(click)",
-                                            "_value": "onClickCreate()",
+                                            "_value": "onClick($event.target.innerText)",
                                             "_type": "kv",
                                             "_attrDef": "p"
                                         },
@@ -1110,7 +1110,7 @@
                                         },
                                         {
                                             "_key": "(click)",
-                                            "_value": "onClickUpdate()",
+                                            "_value": "onClick($event.target.innerText)",
                                             "_type": "kv",
                                             "_attrDef": "p"
                                         },
