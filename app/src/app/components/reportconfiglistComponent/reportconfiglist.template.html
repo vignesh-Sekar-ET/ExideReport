@@ -12,8 +12,11 @@
               <span class="headerclass">Report Configuration List </span>
             </h3>
           </div>
-          <div fxLayout="row wrap" fxFlex="50" fxLayoutAlign="end center" [fxShow]="true" [fxHide]="false">
-            <div fxLayout="row wrap" class="Dbbutton" fxFlex="100" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false"><button mat-button class="UserGroupCreateButton" type="submit" routerLink="/dashboard/reportConfigCreate">Create</button><button mat-button class="UserGroupCommonButton" routerLink="/dashboard/reportConfigCreate">Update</button></div>
+          <div fxLayout="row wrap" fxFlex="50" fxLayoutAlign="space-around center" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="row wrap" class="Dbbutton" fxFlex="100" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false">
+              <div fxLayout="column wrap" fxFlex="25" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"><button mat-button class="UserGroupCreateButton" (click)="Create()" type="button">Create</button></div>
+              <div fxLayout="column wrap" fxFlex="25" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"><button mat-button class="UserGroupCommonButton" (click)="Update() ">Update</button></div>
+            </div>
           </div>
         </div>
         <div fxLayout="column wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
@@ -23,12 +26,8 @@
         </div>
         <div fxLayout="column " style="padding:5px" fxFlex="70" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
           <div>
-            <!-- <bh-tabledemo  [rowData]='rowData'
-[sqColumnDefinition]='columnDefinition'
-[enableCheckbox]="true"
-<!-- (getSelectedRows)="onNotifySelected($event)" -->
-            <!-- [sqPaginationConfig]="tablePaginationSettings" -->
-            <!-- ></bh-tabledemo> --> --&gt;</div>
+            <bh-tabledemo [rowData]="reportConfigService.reportconfiglist" [sqColumnDefinition]="columnDefinition" [enableCheckbox]="true" (getSelectedRows)="selectTablerowData($event)" [sqPaginationConfig]="tablePaginationSettings"></bh-tabledemo>
+          </div>
         </div>
       </div>
     </div>

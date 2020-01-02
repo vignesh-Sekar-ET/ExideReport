@@ -28,11 +28,11 @@ export class reportgrouplistComponent extends NBaseComponent implements OnInit {
     updatename: any;
     tablePaginationSettings: Columnsetting = <Columnsetting>{};
     columnDefinition = [];
-    constructor(private bdms: NDataModelService, public dialog: MatDialog, public route: Router,
-        private formBuilder: FormBuilder, public reportservice: reportlistserviceService, private snackBar: NSnackbarService) {
+    constructor(private bdms: NDataModelService, public dialog: MatDialog, public route: Router, 
+    private formBuilder: FormBuilder, public reportservice: reportlistserviceService, private snackBar: NSnackbarService) {
         super();
         this.mm = new ModelMethods(bdms);
-
+           this.refreshingtabledata();
         this.tablePaginationSettings.enablePagination = true;
         this.tablePaginationSettings.pageSize = 5;
         this.tablePaginationSettings.pageSizeOptions = [5, 10, 15];
@@ -65,8 +65,7 @@ export class reportgrouplistComponent extends NBaseComponent implements OnInit {
 
 
     ngOnInit() {
-        this.refreshingtabledata();
-    }
+}
     onClickCreate() {
         this.reportservice.changecomp = "create";
         this.route.navigateByUrl('/dashboard/reportCreate');
@@ -84,11 +83,11 @@ export class reportgrouplistComponent extends NBaseComponent implements OnInit {
     }
     openDialog() {
         // if (this.updateData) {
-        // this.reportservice.deleteName = this.updateData;
-        // this.reportservice.tableData = this.testContent;
-        const dialogRef = this.dialog.open(reportgroupdeleteComponent, {
-            width: '400px',
-        });
+            // this.reportservice.deleteName = this.updateData;
+            // this.reportservice.tableData = this.testContent;
+            const dialogRef = this.dialog.open(reportgroupdeleteComponent, {
+                width: '400px',
+            });
 
         // }
         // else {
@@ -97,12 +96,12 @@ export class reportgrouplistComponent extends NBaseComponent implements OnInit {
         // }
     }
 
-    onNotifySelected(selectedRows: object[]) {
+    onNotifySelected(selectedRows: object[], i) {
         this.updateData = selectedRows;
     }
 
     refreshingtabledata() {
-        this.reportservice.getReportGroupList();
+     this.reportservice.getReportGroupList();
     }
 }
 
