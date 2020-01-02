@@ -36,10 +36,6 @@
                     "path": "dbconfigCreate"
                 },
                 {
-                    "component": "dbconfigupdateComponent",
-                    "path": "dbconfigUpdate"
-                },
-                {
                     "path": "generatereport",
                     "component": "generatereportComponent"
                 },
@@ -97,6 +93,10 @@
                 {
                     "component": "usergroupmappingcreateComponent",
                     "path": "userGroupmappingCreate"
+                },
+                {
+                    "path": "dbconfigList",
+                    "component": "dbconfiglistComponent"
                 }
             ],
             "redirectTo": "",
