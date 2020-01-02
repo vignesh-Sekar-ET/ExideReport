@@ -58,8 +58,9 @@ export class dashboardService {
         { name: "Create Report", maticon: "description", router: 'createreportlist' },
         { name: "Report Configuration", maticon: "description", router: 'reportConfigList' },
         { name: "DB Configuration", maticon: "description", router: 'dbconfiglist' },
+
         { name: "System Config", maticon: "language", router: 'SystemConfig' },
-        { name: "User Group Mapping", maticon: "face", router: 'userGroupmappingCreate' },
+        { name: "User Group Mapping", maticon: "face", router: 'usergroupmap' },
         { name: "Generate Report", maticon: "attachment", router: 'generatereport' },
         { name: "Logout", maticon: "home", router: "/login" }],
 

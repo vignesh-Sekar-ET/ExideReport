@@ -43,6 +43,7 @@ export class tabledemoComponent extends NBaseComponent implements OnChanges, Aft
     selectedRowIndex = -1;
     totalCount = 50;
     dataSource: MatTableDataSource<{}>;
+
     array = [];
     @ViewChild('one', { static: false }) d1: ElementRef;
     currntPageNum = 1;
@@ -61,13 +62,13 @@ export class tabledemoComponent extends NBaseComponent implements OnChanges, Aft
         }
         // Condition to add selection column to the table
         if (this.enableCheckbox) {
-            this.columnNames.splice(9, 0, 'select');
+            this.columnNames.splice(9, 0, 'Select');
             this.sqColumnDefinition.splice(9, 0, {
-                'name': 'select',
+                'name': 'Select',
                 'displayName': '#'
             });
         }
-
+        this.dataSource = new MatTableDataSource(this.rowData);
     }
     isAllSelected() {
         const numSelected = this.selection.selected.length;
@@ -82,19 +83,35 @@ export class tabledemoComponent extends NBaseComponent implements OnChanges, Aft
     }
 
     ngOnChanges() {
-        this.dataSource = new MatTableDataSource(this.rowData);
+      this.dataSource = new MatTableDataSource(this.rowData);
+        // this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
         // this.setMatTable();
         
     }
-    rowSelect() {
-        this.getSelectedRows.emit(this.selection.selected );
-    }
+    rowSelect(rowid) {
+      this.getSelectedRows.emit( this.selection.selected);
 
-    // PagerItem
+    //    this.reportlist.selectedGroupId = rowid;
+    }
+   
+   
+    paginationClicked(event) {
+        console.log(event)
+    }
+    //  search(term: string) {
+    //     console.log(term)
+    //     if (!term) {
+    //         this.reportlist.groupList = this.rowData;
+    //     }
+    //     else {
+    //         this.reportlist.groupList = this.rowData.filter(x => x.Groupname.toLowerCase().includes(term.toLowerCase()));
+    //     }
+    // }
+
+   
+   
 
     
    
 }
-
-

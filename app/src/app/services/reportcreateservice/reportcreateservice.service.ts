@@ -12,8 +12,8 @@ export class reportcreateserviceService {
     dm: ModelMethods
     sysProps;
     systemProperties: any;
-    UserGroupList:any =[];
     updatename: any;
+    UserGroupList:any
 
     constructor(private bdms: NDataModelService, private http: HttpClient) {
 
@@ -98,14 +98,9 @@ export class reportcreateserviceService {
     }
 
     reportlist() {
-        console.log(this.UserGroupList);
-        let url = this.systemProperties.modularUrl;
-        url += "genreportlist";
-        return this.http.post(url,this.UserGroupList)
-    }
-    createreportlist() {
         let url = this.systemProperties.modularUrl;
         url += "reportlist";
+
         return this.http.get(url)
     }
 
