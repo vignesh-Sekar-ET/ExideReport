@@ -7,37 +7,12 @@
             "pathMatch": ""
         },
         {
-            "path": "createreport",
-            "component": "createreportComponent",
-            "redirectTo": "",
-            "canActivate": "",
-            "pathMatch": ""
-        },
-        {
-            "path": "createreportlist",
-            "component": "createreportlistComponent"
-        },
-        {
             "component": "dashboardComponent",
             "path": "dashboard",
             "children": [
                 {
                     "path": "adminDashboard",
                     "component": "admindashboardComponent"
-                },
-                {
-                    "path": "DbGrouplist",
-                    "component": "reportgrouplistComponent",
-                    "redirectTo": "",
-                    "canActivate": ""
-                },
-                {
-                    "component": "dbconfigcreateComponent",
-                    "path": "dbconfigCreate"
-                },
-                {
-                    "component": "dbconfigupdateComponent",
-                    "path": "dbconfigUpdate"
                 },
                 {
                     "path": "generatereport",
@@ -96,15 +71,24 @@
                 },
                 {
                     "component": "usergroupmappingcreateComponent",
-                    "path": "userGroupmappingCreate"
+                    "path": "userGroupmappingCreate",
+                    "children": []
+                },
+                {
+                    "path": "dbconfiglist",
+                    "component": "dbconfiglistComponent"
+                },
+                {
+                    "path": "dbconfigCreate",
+                    "component": "dbconfigcreateComponent"
+                },
+                {
+                    "path": "dbconfigupdate",
+                    "component": "dbconfigupdateComponent"
                 }
             ],
             "redirectTo": "",
             "pathMatch": ""
-        },
-        {
-            "path": "generatereport",
-            "component": "generatereportComponent"
         },
         {
             "path": "''",
