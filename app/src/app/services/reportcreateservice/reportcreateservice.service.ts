@@ -58,10 +58,26 @@ export class reportcreateserviceService {
         let source = rptvalue.source;
         let query = "'" + rptvalue.query + "'";
         let rgpname = rptvalue.rgpname;
-        // let upload = "'" + rptvalue.typeq + "'";
-
+       
 
         url += "reportcreate"
+        let body = { 'rname': reportName, 'typer': typr, 'source': source, 'ptname': ptname, 'query': query, 'rgpname': rgpname };
+        console.log(body);
+        return this.http.post(url, body);
+
+    }
+    reportupdate (rptvalue: any): Observable<any> {
+        let url = this.systemProperties.modularUrl;
+
+        let reportName = "'" + rptvalue.rname + "'";
+        let typr = "'" + rptvalue.typeq + "'";
+        let ptname = "'" + rptvalue.ptname + "'";
+        let source = rptvalue.source;
+        let query = "'" + rptvalue.query + "'";
+        let rgpname = rptvalue.rgpname;
+       
+
+        url += "reportupdate"
         let body = { 'rname': reportName, 'typer': typr, 'source': source, 'ptname': ptname, 'query': query, 'rgpname': rgpname };
         console.log(body);
         return this.http.post(url, body);

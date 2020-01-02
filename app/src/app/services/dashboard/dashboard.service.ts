@@ -56,7 +56,9 @@ export class dashboardService {
         "admin": [{ name: "Dashboard", maticon: "dashboard", router: 'admindash' },
         { name: "Create Report group", maticon: "assignment_ind", router: 'reportgrouplist' },
         { name: "Create Report", maticon: "description", router: 'createreportlist' },
-        // { name: "Report Configuration", maticon: "description", router: 'DbGrouplist' },
+        { name: "Report Configuration", maticon: "description", router: 'reportConfigList' },
+        { name: "DB Configuration", maticon: "description", router: 'dbconfiglist' },
+
         { name: "System Config", maticon: "language", router: 'SystemConfig' },
         { name: "User Group Mapping", maticon: "face", router: 'usergroupmap' },
         { name: "Generate Report", maticon: "attachment", router: 'generatereport' },

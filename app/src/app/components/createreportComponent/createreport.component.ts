@@ -54,6 +54,12 @@ export class createreportComponent implements OnInit {
         console.log(check)
         if (Array.isArray(check)) {
             this.checkvalue = "Update Report";
+            this.createreportform.patchValue({ rname: check[0]["ReportName"] })
+            this.createreportform.patchValue({ typeq: check[0]["querytype"] == "Query" ? 'q' : 'sp' })
+            this.createreportform.patchValue({ source: check[0]["jndi_id"] })
+            this.createreportform.patchValue({ ptname: check[0]["tablename"] })
+            this.createreportform.patchValue({ query: check[0]["query"] })
+            this.createreportform.patchValue({ rgpname: check[0]["id"] })
         }
         else {
             this.checkvalue = "Create Report";
@@ -64,23 +70,47 @@ export class createreportComponent implements OnInit {
 
     reportformsubmit() {
         // this.createreportform.value.upload = this.fileReaded;
-        this.reportcreate.reportcreat(this.createreportform.value).subscribe(
-            data => {
-                if (data.result == 'reportcreated') {
-                    this._snackBar.openSnackBar("Report created Successful", 2000,
-                    );
-                    this.router.navigate(['/dashboard/createreportlist']);
-                }
-                else {
-                    this._snackBar.openSnackBar(data, 2000
-                    );
+        if (this.checkvalue == "Create Report") {
+            this.reportcreate.reportcreat(this.createreportform.value).subscribe(
+                data => {
+                    if (data.result == 'reportcreated') {
+                        this._snackBar.openSnackBar("Report created Successful", 2000,
+                        );
+                        this.router.navigate(['/dashboard/createreportlist']);
+                    }
+                    else {
+                        this._snackBar.openSnackBar(data, 2000
+                        );
 
+                    }
+                },
+                err => {
+                    console.log(err);
                 }
-            },
-            err => {
-                console.log(err);
-            }
-        )
+            )
+        }
+        else
+        {
+             this.reportcreate.reportupdate(this.createreportform.value).subscribe(
+                data => {
+                    if (data.result == 'reportcreated') {
+                        this._snackBar.openSnackBar("Report created Successful", 2000,
+                        );
+                        this.router.navigate(['/dashboard/createreportlist']);
+                    }
+                    else {
+                        this._snackBar.openSnackBar(data, 2000
+                        );
+
+                    }
+                },
+                err => {
+                    console.log(err);
+                }
+            )
+
+        }
+
     }
 
     formclear() {
