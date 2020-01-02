@@ -12,8 +12,7 @@ export class dashboardService {
     sysProps;
     systemProperties: any;
     dbconfigupdate: any;
-    updateVal: boolean = false;
-    UpdateLabel: string = "Update";
+    dbConfigLabelCreateUpdate:string;
     constructor(private bDataModelService: NDataModelService,
         private http: HttpClient) {
         this.dm = new ModelMethods(bDataModelService);
@@ -22,40 +21,35 @@ export class dashboardService {
     }
     getConfigListGet() {
         let URL = this.systemProperties.modularUrl;
-        URL += "dbconfiglist";
+        URL += "jndilist";
         return this.http.get(URL)
     }
     //dbconfigCreate 
 
-    getConfigListPost(jndi,active) {
+    getConfigListPost(jndi,active, dbname) {
         let URL = this.systemProperties.modularUrl;
         let jndiname = "'" + jndi + "'";
-        let activestatus = "'" + active + "'";
+        let activestatus = active ;
+        let datanasename = "'" + dbname + "'";
         let body = {
-            "jndi": jndiname, "active": activestatus
+            "jndiname": jndiname, "active": activestatus, "dbname":datanasename
         }
-        URL += "dbconfigcreate";
+        URL += "jndicreate";
+        console.log(URL)
         return this.http.post(URL, body);
     }
-    getconfigUpdate(jndi: any, ip: any, port: any, name: any, type: any, pool: any, username: any, pass: any, active: any, id: any) {
+    getconfigUpdate(jndi: any,  dbname: any, active: any, id: any) {
         let URL = this.systemProperties.modularUrl;
         let jndiname = "'" + jndi + "'";
-        let serverip = "'" + ip + "'";
-        let portnumber = "'" + port + "'";
-        let dbname = "'" + name + "'";
-        let drivertype = "'" + type + "'";
-        let connectionpoolsize = "'" + pool + "'";
-        let dbusername = "'" + username + "'";
-        let password = "'" + pass + "'";
-        let activestatus = "'" + active + "'";
-        let updateId = "'" + id + "'";
+        let datanasename = "'" + dbname + "'";
+        let activestatus =  active ;
+        let updateId = id ;
         // console.log(updateId)
         let body = {
-            "jndi": jndiname, "ip": serverip, "port": portnumber, "name": dbname, "type": drivertype,
-            "pool": connectionpoolsize, "username": dbusername, "pass": password, "active": activestatus, "id": updateId
+            "jndiname": jndiname, "dbname": datanasename, "active": activestatus, "id": updateId
         }
-        URL += "dbconfigupdate";
-        // console.log( body, URL);
+        URL += "jndiupdate";
+        console.log( body, URL);
         return this.http.post(URL, body);
     }
     menuArray = [{

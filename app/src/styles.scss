@@ -277,6 +277,8 @@ th.mat-header-cell {
 
 .UserGroupCommonButton {
     background: var(--main-button-corel);
+    margin-left: 10px !important;
+    margin-right: 15px !important;
 }
 
 .UserGroupCreateButton {
@@ -407,6 +409,52 @@ mat-cell, mat-footer-cell, mat-header-cell {
 .dropdown-list{
     // position: relative !important;
     width:95% !important;
+}
+
+
+//Pagination style
+.pagination{
+   list-style-type: none;
+}
+.pagination li{
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.pagination {
+    margin: 0px;
+    padding: 0;
+    li {
+        display: inline;
+        padding: 12px;
+        margin: 0px 10px;
+    }
+}
+
+.opacityDisable {
+    opacity: 0.3;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+.pagination .active {
+    background-color: blue !important;
+    color: white;
+    font-weight: 900;
+    // border-radius: 50%;
+    min-width: 22px;
+    height: 22px;
+    text-align: center;
+}
+
+.pagination .mat-tab-group {
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.pagination a {
+    color: #989898;
+}
+.mat-paginator-navigation-first, .mat-paginator-navigation-previous, .mat-paginator-navigation-next, .mat-paginator-navigation-last{
+    // display: none !important;
 }
 
 //-------------------------------------------------------------
