@@ -335,11 +335,290 @@
                         },
                         {
                             "_key": "html",
-                            "_value": "<div style=\"text-align:center;\">\r\n\r\n\r\n<mat-table [dataSource]=\"dataSource\">\r\n    <ng-container *ngFor=\"let column of sqColumnDefinition; let i = index\" matColumnDef=\"{{column.name}}\">\r\n        <ng-container *ngIf=\"column.name ==='select';then checkbox else nocheckbox\"></ng-container>\r\n        <ng-template #checkbox>\r\n            <mat-header-cell *matHeaderCellDef>\r\n                <h3>select</h3>\r\n            </mat-header-cell>\r\n            <mat-cell *matCellDef=\"let row\">\r\n                <mat-radio-button (click)=\"$event.stopPropagation()\" (change)=\"$event ? selection.toggle(row) : null; rowSelect(row)\" [checked]=\"selection.isSelected()\"></mat-radio-button>\r\n                <!-- <input type=\"radio\" (click)=\"$event.stopPropagation()\" (change)=\"$event ? selection.toggle(row) : null; rowSelect()\" [checked]=\"selection.isSelected(row)\" /> -->\r\n                <!-- <mat-checkbox (click)=\"$event.stopPropagation()\"\r\n                    (change)=\"$event ? selection.toggle(row) : null; rowSelect()\" [checked]=\"selection.isSelected(row)\">\r\n                </mat-checkbox> -->\r\n            </mat-cell>\r\n        </ng-template>\r\n\r\n        //nocheckbox\r\n        <ng-template #nocheckbox>\r\n            <mat-header-cell *matHeaderCellDef  [disabled]=\"column.disableSorting\">\r\n                <!--For displaying the column label & Icon-->\r\n                <div>\r\n                    <span> {{column.displayName}}</span>\r\n                    <div>\r\n                        <!-- <input class='mat-inputClass' type=\"text\" /> -->\r\n                    </div>\r\n                </div>\r\n            </mat-header-cell>\r\n            <mat-cell *matCellDef=\"let element\">\r\n                {{element[column.name]}}\r\n            </mat-cell>\r\n        </ng-template>\r\n    </ng-container>\r\n    <mat-header-row *matHeaderRowDef=\"columnNames\"></mat-header-row>\r\n    <mat-row *matRowDef=\"let row; columns: columnNames;\"></mat-row>\r\n</mat-table>\r\n</div>\r\n<ng-container [fxShow]=\"sqPaginationConfig && sqPaginationConfig.enablePagination\">\r\n    <mat-paginator [pageSize]=\"sqPaginationConfig.pageSize\"\r\n                   [pageSizeOptions]=\"sqPaginationConfig.pageSizeOptions\"\r\n\t\t\t\t   (page) = \"pageEvent=paginationClicked($event.pageSize)\"\r\n                   [showFirstLastButtons]=\"sqPaginationConfig.showFirstLastButtons\">\r\n    </mat-paginator>\r\n</ng-container>",
+                            "_value": "<div style=\"text-align:center;\">\r\n\r\n\r\n<mat-table [dataSource]=\"dataSource\">\r\n    <ng-container *ngFor=\"let column of sqColumnDefinition; let i = index\" matColumnDef=\"{{column.name}}\">\r\n        <ng-container *ngIf=\"column.name ==='select';then checkbox else nocheckbox\"></ng-container>\r\n        <ng-template #checkbox>\r\n            <mat-header-cell *matHeaderCellDef>\r\n                <h3>Select</h3>\r\n            </mat-header-cell>\r\n            <mat-cell *matCellDef=\"let row\">\r\n                <mat-radio-button (click)=\"$event.stopPropagation()\" (change)=\"$event ? selection.toggle(row) : null; rowSelect(row)\" [checked]=\"selection.isSelected()\"></mat-radio-button>\r\n                <!-- <input type=\"radio\" (click)=\"$event.stopPropagation()\" (change)=\"$event ? selection.toggle(row) : null; rowSelect()\" [checked]=\"selection.isSelected(row)\" /> -->\r\n                <!-- <mat-checkbox (click)=\"$event.stopPropagation()\"\r\n                    (change)=\"$event ? selection.toggle(row) : null; rowSelect()\" [checked]=\"selection.isSelected(row)\">\r\n                </mat-checkbox> -->\r\n            </mat-cell>\r\n        </ng-template>\r\n\r\n        //nocheckbox\r\n        <ng-template #nocheckbox>\r\n            <mat-header-cell *matHeaderCellDef  [disabled]=\"column.disableSorting\">\r\n                <!--For displaying the column label & Icon-->\r\n                <div>\r\n                    <span> {{column.displayName}}</span>\r\n                    <div>\r\n                        <!-- <input class='mat-inputClass' type=\"text\" /> -->\r\n                    </div>\r\n                </div>\r\n            </mat-header-cell>\r\n            <mat-cell *matCellDef=\"let element\">\r\n                {{element[column.name]}}\r\n            </mat-cell>\r\n        </ng-template>\r\n    </ng-container>\r\n    <mat-header-row *matHeaderRowDef=\"columnNames\"></mat-header-row>\r\n    <mat-row *matRowDef=\"let row; columns: columnNames;\"></mat-row>\r\n</mat-table>\r\n</div>\r\n<ng-container [fxShow]=\"sqPaginationConfig && sqPaginationConfig.enablePagination\">\r\n    <mat-paginator [pageSize]=\"sqPaginationConfig.pageSize\"\r\n                   [pageSizeOptions]=\"sqPaginationConfig.pageSizeOptions\"\r\n\t\t\t\t   (page) = \"pageEvent=paginationClicked($event.pageSize)\"\r\n                   [showFirstLastButtons]=\"sqPaginationConfig.showFirstLastButtons\">\r\n    </mat-paginator>\r\n</ng-container>",
                             "_type": "a",
                             "_attrDef": "p"
                         }
                     ]
+                }
+            },
+            "dc0db0df-f279-f820-0140-c9df6daad37c": {
+                "paletteKey": "FlexLayoutRow",
+                "parentEditorKey": "cbfd1fa7-168e-3c7b-6481-82ec8ed525a6",
+                "designerReference": [
+                    {
+                        "_key": "componentLabel",
+                        "_value": "Row",
+                        "_type": "kv",
+                        "_attrDef": "p",
+                        "_useAsLabel": true
+                    },
+                    {
+                        "_key": "style",
+                        "_value": "",
+                        "_type": "kv",
+                        "_attrDef": "p"
+                    },
+                    {
+                        "_key": "class",
+                        "_value": "",
+                        "_type": "kv",
+                        "_attrDef": "p"
+                    },
+                    {
+                        "_key": "fxFlex",
+                        "_value": "",
+                        "_type": "kv",
+                        "_attrDef": "p"
+                    },
+                    {
+                        "_key": "fxLayoutGap",
+                        "_value": "",
+                        "_type": "kv",
+                        "_attrDef": "p"
+                    },
+                    {
+                        "_key": "wrap",
+                        "_value": "wrap",
+                        "_type": "a",
+                        "_attrDef": "p"
+                    },
+                    {
+                        "_key": "layoutAlign",
+                        "_value": "start",
+                        "_type": "a",
+                        "_attrDef": "p"
+                    },
+                    {
+                        "_key": "pLayoutAlign",
+                        "_value": "stretch",
+                        "_type": "a",
+                        "_attrDef": "p"
+                    },
+                    {
+                        "_key": "[fxShow]",
+                        "_value": "true",
+                        "_type": "kv",
+                        "_attrDef": "p"
+                    },
+                    {
+                        "_key": "[fxHide]",
+                        "_value": "false",
+                        "_type": "kv",
+                        "_attrDef": "p"
+                    }
+                ],
+                "a0610798-72bc-019b-23cd-9133b3777283": {
+                    "paletteKey": "Html5",
+                    "parentEditorKey": "dc0db0df-f279-f820-0140-c9df6daad37c",
+                    "isAdvancedComponent": true,
+                    "designerReference": [
+                        {
+                            "_key": "style",
+                            "_value": "",
+                            "_type": "kv",
+                            "_attrDef": "p"
+                        },
+                        {
+                            "_key": "class",
+                            "_value": "",
+                            "_type": "kv",
+                            "_attrDef": "p"
+                        },
+                        {
+                            "_key": "htmlElement",
+                            "_value": "div",
+                            "_type": "dav",
+                            "_attrDef": "p",
+                            "_useAsLabel": true
+                        },
+                        {
+                            "_key": "tagType",
+                            "_value": "",
+                            "_type": "a",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "name",
+                            "_value": "",
+                            "_type": "kv",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "sandbox",
+                            "_value": "",
+                            "_type": "kv",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "src",
+                            "_value": "",
+                            "_type": "kv",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "srcdoc",
+                            "_value": "",
+                            "_type": "kv",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "width",
+                            "_value": "",
+                            "_type": "kv",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "[autoplay]",
+                            "_value": "",
+                            "_type": "kv",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "[loop]",
+                            "_value": "",
+                            "_type": "kv",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "data",
+                            "_value": "",
+                            "_type": "kv",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "audioSource",
+                            "_value": [],
+                            "_type": "a",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "videoSource",
+                            "_value": [],
+                            "_type": "a",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "audioDatasource",
+                            "_value": "",
+                            "_type": "a",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "audioSrc",
+                            "_value": "",
+                            "_type": "a",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "audioType",
+                            "_value": "",
+                            "_type": "a",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "videoDatasource",
+                            "_value": "",
+                            "_type": "a",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "videoSrc",
+                            "_value": "",
+                            "_type": "a",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "videoType",
+                            "_value": "",
+                            "_type": "a",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "(audioplay)",
+                            "_value": "",
+                            "_type": "a",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "(videoplay)",
+                            "_value": "",
+                            "_type": "a",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "(audiopause)",
+                            "_value": "",
+                            "_type": "kv",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "(videopause)",
+                            "_value": "",
+                            "_type": "kv",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "(audioended)",
+                            "_value": "",
+                            "_type": "kv",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        },
+                        {
+                            "_key": "(videoended)",
+                            "_value": "",
+                            "_type": "kv",
+                            "_attrDef": "p",
+                            "_visibility": false
+                        }
+                    ],
+                    "8e1217ff-b5d0-0d5c-1551-637c9c6f7fb8": {
+                        "paletteKey": "html-editor",
+                        "parentEditorKey": "a0610798-72bc-019b-23cd-9133b3777283",
+                        "isAdvancedChildComponent": true,
+                        "designerReference": [
+                            {
+                                "_key": "style",
+                                "_value": "",
+                                "_type": "kv",
+                                "_attrDef": "p"
+                            },
+                            {
+                                "_key": "class",
+                                "_value": "",
+                                "_type": "kv",
+                                "_attrDef": "p"
+                            },
+                            {
+                                "_key": "html",
+                                "_value": "      <div>\r\n        <ul class=\"pagination\" style=\"display: flex;\">\r\n\r\n          <li [ngClass]=\"(currntPageNum == 1) ? &apos;opacityDisable&apos; : &apos;&apos;\" style=\"margin-right:38px;\">\r\n            <a (click)=\"(currntPageNum === 1) ? pageItem(currntPageNum,pageSize) : pageItem(currntPageNum - 1,pageSize)\"><i class=\"material-icons\">keyboard_arrow_left</i></a>\r\n          </li>\r\n\r\n\r\n          <li *ngFor=\"let page of pager\" (click)=\"pageItem(page ,pageSize)\" [ngClass]=\"{&apos;active&apos;:currntPageNum === page}\"><span>{{page}}</span>\r\n          </li>\r\n\r\n          <li style=\"margin-left:38px;\" [ngClass]=\"((currntPageNum * ser.agentFilterCache.pageSize) &gt;= totalLeads) ? &apos;opacityDisable&apos; : &apos;&apos;\">\r\n            <a (click)=\"(currntPageNum === page_Index) ? pageItem(currntPageNum,pageSize) : pageItem(currntPageNum + 1,pageSize)\"><i class=\"material-icons\">keyboard_arrow_right</i></a>\r\n          </li>\r\n        </ul>\r\n      </div>",
+                                "_type": "a",
+                                "_attrDef": "p"
+                            }
+                        ]
+                    }
                 }
             }
         }

@@ -1,29 +1,24 @@
 <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
   <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
     <div style="width:100%">
-      <form>
-
-        <div>
-          <input class="mat-inputClass"  type="text" placeholder="Search Groupname,Groupcode"> </div>
+      <div style="text-align:center;">
 
 
-
-        <mat-table [dataSource]="dataSource" matSort>
-
-          <ng-container *ngFor="let column of sqColumnDefinition; let i=index" matColumnDef="{{column.name}}">
-            <ng-container *ngIf="column.name ===&apos;Select&apos;;then checkbox else nocheckbox"></ng-container>
-
+        <mat-table [dataSource]="dataSource">
+          <ng-container *ngFor="let column of sqColumnDefinition; let i = index" matColumnDef="{{column.name}}">
+            <ng-container *ngIf="column.name ===&apos;select&apos;;then checkbox else nocheckbox"></ng-container>
             <ng-template #checkbox>
               <mat-header-cell *matHeaderCellDef>
-                <span class="table">Select</span>
+                <h3>Select</h3>
               </mat-header-cell>
-
               <mat-cell *matCellDef="let row">
-                <mat-radio-button (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null; rowSelect(row.id)" [checked]="selection.isSelected()"></mat-radio-button>
+                <mat-radio-button (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null; rowSelect(row)" [checked]="selection.isSelected()"></mat-radio-button>
+                <!-- <input type="radio" (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null; rowSelect()" [checked]="selection.isSelected(row)" /> -->
+                <!-- <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null; rowSelect()" [checked]="selection.isSelected(row)">
+                </mat-checkbox> -->
               </mat-cell>
-
             </ng-template>
-
             <ng-container *ngIf="column.name ===&apos;Active/Inactive&apos;;then checkbox1 else nocheckbox"></ng-container>
 
             <ng-template #checkbox1>
@@ -35,17 +30,15 @@
               </mat-cell>
 
             </ng-template>
-
-
-
-
             //nocheckbox
             <ng-template #nocheckbox>
-              <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="column.disableSorting">
+              <mat-header-cell *matHeaderCellDef [disabled]="column.disableSorting">
                 <!--For displaying the column label & Icon-->
                 <div>
-                  <span class="table"> {{column.displayName}}</span>
-
+                  <span> {{column.displayName}}</span>
+                  <div>
+                    <!-- <input class='mat-inputClass' type="text" /> -->
+                  </div>
                 </div>
               </mat-header-cell>
               <mat-cell *matCellDef="let element">
@@ -53,21 +46,34 @@
               </mat-cell>
             </ng-template>
           </ng-container>
-
-
-
-
-
           <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
           <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
         </mat-table>
-      </form>
-
-
-      <ng-container *ngIf="sqPaginationConfig &amp;&amp; sqPaginationConfig.enablePagination">
-        <mat-paginator [pageSize]="sqPaginationConfig.pageSize" [pageSizeOptions]="sqPaginationConfig.pageSizeOptions" [showFirstLastButtons]="sqPaginationConfig.showFirstLastButtons">
+      </div>
+      <ng-container [fxShow]="sqPaginationConfig &amp;&amp; sqPaginationConfig.enablePagination">
+        <mat-paginator [pageSize]="sqPaginationConfig.pageSize" [pageSizeOptions]="sqPaginationConfig.pageSizeOptions" (page)="pageEvent=paginationClicked($event.pageSize)" [showFirstLastButtons]="sqPaginationConfig.showFirstLastButtons">
         </mat-paginator>
       </ng-container>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <div>
+        <div>
+          <ul class="pagination" style="display: flex;">
+
+            <li [ngClass]="(currntPageNum == 1) ? &apos;opacityDisable&apos; : &apos;&apos;" style="margin-right:38px;">
+              <a (click)="(currntPageNum === 1) ? pageItem(currntPageNum,pageSize) : pageItem(currntPageNum - 1,pageSize)"><i class="material-icons">keyboard_arrow_left</i></a>
+            </li>
+
+
+            <li *ngFor="let page of pager" (click)="pageItem(page ,pageSize)" [ngClass]="{&apos;active&apos;:currntPageNum === page}"><span>{{page}}</span>
+            </li>
+
+            <li style="margin-left:38px;" [ngClass]="((currntPageNum * ser.agentFilterCache.pageSize) &gt;= totalLeads) ? &apos;opacityDisable&apos; : &apos;&apos;">
+              <a (click)="(currntPageNum === page_Index) ? pageItem(currntPageNum,pageSize) : pageItem(currntPageNum + 1,pageSize)"><i class="material-icons">keyboard_arrow_right</i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

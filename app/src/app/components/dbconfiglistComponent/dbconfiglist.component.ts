@@ -44,18 +44,18 @@ export class dbconfiglistComponent extends NBaseComponent implements OnInit {
         this.columnDefinition = [
             {
                 'name': 'JNDIName',
-                'displayName': 'jndiname',
+                'displayName': 'JNDI Name',
                 'disableSorting': false,
             },
             {
                 'name': 'db',
-                'displayName': 'drivertype',
+                'displayName': 'Driver Type',
                 'disableSorting': false,
                 'icon': 'face'
             },
             {
                 'name': 'isactive',
-                'displayName': 'status',
+                'displayName': 'Status',
                 'disableSorting': false,
                 'icon': 'face'
             }
