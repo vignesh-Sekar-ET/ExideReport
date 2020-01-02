@@ -96,7 +96,7 @@ export class reportgrouplistComponent extends NBaseComponent implements OnInit {
         // }
     }
 
-    onNotifySelected(selectedRows: object[], i) {
+    onNotifySelected(selectedRows: object[]) {
         this.updateData = selectedRows;
     }
 

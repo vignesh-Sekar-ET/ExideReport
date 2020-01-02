@@ -1,5 +1,5 @@
 <div fxLayout="row wrap" fxLayoutAlign="center start" [fxShow]="true" [fxHide]="false">
-  <div fxLayout="column wrap" fxFlex="80" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+  <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
     <div fxLayout="row wrap" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
       <div fxLayout="column " style="background-color:#fff;" fxFlex="80" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
         <div>
@@ -24,7 +24,7 @@
         </div>
         <div fxLayout="column wrap" style="padding:5px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
           <div>
-            <bh-tabledemo [rowData]="testContent" [sqColumnDefinition]="columnDefinition" [enableCheckbox]="true" (getSelectedRows)="onNotifySelected($event)"></bh-tabledemo>
+            <bh-tabledemo [rowData]="testContent" [sqColumnDefinition]="columnDefinition" [enableCheckbox]="true" (getSelectedRows)="onNotifySelected($event)" [sqPaginationConfig]="tablePaginationSettings"></bh-tabledemo>
           </div>
         </div>
       </div>
