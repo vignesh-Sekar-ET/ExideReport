@@ -15,7 +15,7 @@ export class reportconfigserviceService {
     dropdownlist: any;
     reportid: number;
     reportconfiglist: any;
-    changecomp: any;
+    changecomp: any ;
     updatename: any;
     constructor(private bdms: NDataModelService, private http: HttpClient) {
 
@@ -27,7 +27,6 @@ export class reportconfigserviceService {
     configcreatelist() {
         let url = this.systemProperties.modularUrl;
         url += "configcreatelist"
-console.log("uuuuu"+ url)
         return this.http.get(url);
     }
     onSubmit(rname: any, networklocation: any, starttime: any, endtime: any, email: any, downloable: any, selectedstatuss: any): Observable<any> {
