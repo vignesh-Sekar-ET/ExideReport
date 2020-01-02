@@ -11,7 +11,7 @@
             },
             {
                 "_key": "style",
-                "_value": "height:100%",
+                "_value": "height:100%;background:#f3f4f5;",
                 "_type": "kv",
                 "_attrDef": "p"
             },
@@ -89,7 +89,7 @@
                 },
                 {
                     "_key": "fxFlex",
-                    "_value": "70",
+                    "_value": "100",
                     "_type": "kv",
                     "_attrDef": "p"
                 },
@@ -143,7 +143,7 @@
                     },
                     {
                         "_key": "style",
-                        "_value": "text-indent: 20px;background:#f3f4f5;",
+                        "_value": "padding-left:4%",
                         "_type": "kv",
                         "_attrDef": "p"
                     },
@@ -452,13 +452,13 @@
                     },
                     {
                         "_key": "layoutAlign",
-                        "_value": "space-around",
+                        "_value": "center",
                         "_type": "a",
                         "_attrDef": "p"
                     },
                     {
                         "_key": "pLayoutAlign",
-                        "_value": "stretch",
+                        "_value": "center",
                         "_type": "a",
                         "_attrDef": "p"
                     },
@@ -488,7 +488,7 @@
                         },
                         {
                             "_key": "style",
-                            "_value": "background-color:#fff;",
+                            "_value": "background-color:#fff;padding:15px;margin:15px",
                             "_type": "kv",
                             "_attrDef": "p"
                         },
@@ -878,7 +878,7 @@
                                         },
                                         {
                                             "_key": "html",
-                                            "_value": "<span class=\"headerclass\">Report Group List - 1</span>\r\n",
+                                            "_value": "<span class=\"headerclass\">Report Group List</span>\r\n",
                                             "_type": "a",
                                             "_attrDef": "p"
                                         }
@@ -952,7 +952,7 @@
                                     "_attrDef": "p"
                                 }
                             ],
-                            "221bf3d6-5698-6e77-f7ac-f030e8041a52": {
+                            "2fde0f4b-2ada-f5c5-a933-b2400939b5a6": {
                                 "paletteKey": "FlexLayoutRow",
                                 "parentEditorKey": "faf919c1-5be9-3d28-82f6-d30e5bdbb567",
                                 "designerReference": [
@@ -1018,9 +1018,9 @@
                                         "_attrDef": "p"
                                     }
                                 ],
-                                "682ed149-93f0-cce2-68ee-40b25c1fc263": {
+                                "8cdb2741-9e10-c1ee-9d1d-c460dd7c5619": {
                                     "paletteKey": "NG-button",
-                                    "parentEditorKey": "221bf3d6-5698-6e77-f7ac-f030e8041a52",
+                                    "parentEditorKey": "2fde0f4b-2ada-f5c5-a933-b2400939b5a6",
                                     "designerReference": [
                                         {
                                             "_key": "style",
@@ -1049,7 +1049,7 @@
                                         },
                                         {
                                             "_key": "(click)",
-                                            "_value": "onClick($event.target.innerText)",
+                                            "_value": "onClickCreate()",
                                             "_type": "kv",
                                             "_attrDef": "p"
                                         },
@@ -1079,9 +1079,9 @@
                                         }
                                     ]
                                 },
-                                "e64d2203-3af4-c8cd-0f54-df89fee44aea": {
+                                "e5596476-7f4f-e86e-f902-3820d01fc563": {
                                     "paletteKey": "NG-button",
-                                    "parentEditorKey": "221bf3d6-5698-6e77-f7ac-f030e8041a52",
+                                    "parentEditorKey": "2fde0f4b-2ada-f5c5-a933-b2400939b5a6",
                                     "designerReference": [
                                         {
                                             "_key": "style",
@@ -1110,7 +1110,7 @@
                                         },
                                         {
                                             "_key": "(click)",
-                                            "_value": "onClick($event.target.innerText)",
+                                            "_value": "onClickUpdate()",
                                             "_type": "kv",
                                             "_attrDef": "p"
                                         },
@@ -1140,9 +1140,9 @@
                                         }
                                     ]
                                 },
-                                "917024a4-5e35-c419-75b3-dcf505d85274": {
+                                "0ad5d5c9-70c1-b3e8-742e-031a1fa29e64": {
                                     "paletteKey": "NG-button",
-                                    "parentEditorKey": "221bf3d6-5698-6e77-f7ac-f030e8041a52",
+                                    "parentEditorKey": "2fde0f4b-2ada-f5c5-a933-b2400939b5a6",
                                     "designerReference": [
                                         {
                                             "_key": "style",

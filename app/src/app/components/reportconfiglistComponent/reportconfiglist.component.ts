@@ -86,7 +86,6 @@ export class reportconfiglistComponent extends NBaseComponent implements OnInit 
 
     }
      Create() {
-         console.log("create clicked")
         this.reportConfigService.changecomp = 'create';
         this.route.navigateByUrl('/dashboard/reportConfigCreate');
 
@@ -105,7 +104,6 @@ export class reportconfiglistComponent extends NBaseComponent implements OnInit 
     }
      selectTablerowData(selectedRows: object[], i) {
         this.updateData = selectedRows;
-        // console.log("getrowselect" + JSON.stringify(this.updateData))
     }
     
     ReportConfigList(){

@@ -11,7 +11,7 @@
             },
             {
                 "_key": "style",
-                "_value": "",
+                "_value": "height:100%;background:#f3f4f5;",
                 "_type": "kv",
                 "_attrDef": "p"
             },
@@ -89,7 +89,7 @@
                 },
                 {
                     "_key": "fxFlex",
-                    "_value": "70",
+                    "_value": "100",
                     "_type": "kv",
                     "_attrDef": "p"
                 },
@@ -452,13 +452,13 @@
                     },
                     {
                         "_key": "layoutAlign",
-                        "_value": "space-around",
+                        "_value": "center",
                         "_type": "a",
                         "_attrDef": "p"
                     },
                     {
                         "_key": "pLayoutAlign",
-                        "_value": "stretch",
+                        "_value": "center",
                         "_type": "a",
                         "_attrDef": "p"
                     },
@@ -488,7 +488,7 @@
                         },
                         {
                             "_key": "style",
-                            "_value": "background-color:#fff;",
+                            "_value": "background-color:#fff;padding:15px;margin:15px",
                             "_type": "kv",
                             "_attrDef": "p"
                         },

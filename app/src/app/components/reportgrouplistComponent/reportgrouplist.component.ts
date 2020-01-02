@@ -82,18 +82,17 @@ export class reportgrouplistComponent extends NBaseComponent implements OnInit {
         }
     }
     openDialog() {
-        // if (this.updateData) {
-            // this.reportservice.deleteName = this.updateData;
-            // this.reportservice.tableData = this.testContent;
+        if (this.updateData) {
+            this.reportservice.deleteName = this.updateData;
             const dialogRef = this.dialog.open(reportgroupdeleteComponent, {
                 width: '400px',
             });
 
-        // }
-        // else {
-        //     this.snackBar.openSnackBar('Please Select ReportGroup', 2000);
+        }
+        else {
+            this.snackBar.openSnackBar('Please Select ReportGroup', 2000);
 
-        // }
+        }
     }
 
     onNotifySelected(selectedRows: object[], i) {

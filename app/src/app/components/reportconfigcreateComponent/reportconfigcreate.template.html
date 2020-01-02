@@ -1,11 +1,11 @@
 <div fxLayout="row wrap" style="height:100%;background:#f3f4f5;" fxFlex="100" fxLayoutAlign="center stretch" [fxShow]="true" [fxHide]="false">
   <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-    <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" style="padding-left:4%" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
       <div>
         <span class="commontextredcolor">ReportConfig- Create</span></div>
     </div>
-    <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-      <div fxLayout="column wrap" style="background-color:#fff;padding:15px" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
+      <div fxLayout="column wrap" style="background-color:#fff;padding:15px;margin:15px" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
         <div fxLayout="column wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
           <div>
             <mat-divider></mat-divider>
@@ -18,13 +18,9 @@
                 <span class="headerblackclass">Report Name</span></div>
               <div fxLayout="column wrap" style="padding-top:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
                 <div>
-                  <form [formGroup]="form">
-                    <div *ngIf="loadreportname">
-                      <input type="text" formControlName="reportname">
 
-                    </div>
-
-                    <div *ngIf="loadContent">
+                  <div *ngIf="loadContent">
+                    <form [formGroup]="form">
                       <ng-multiselect-dropdown #multiSelect [placeholder]="&apos;Select Report&apos;" [data]="data" [formControl]="f.name" [settings]="settings" [disabled]="false" (onFilterChange)="onFilterChange($event)" (onDropDownClose)="onDropDownClose($event)" (onSelect)="onItemSelect($event)" (onDeSelect)="onDeSelect($event)" (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)">
                       </ng-multiselect-dropdown>
                       <span *ngIf="f?.name?.errors?.required" style="color: red;">
@@ -32,8 +28,8 @@
     </span>
 
 
-                    </div>
-                  </form>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -57,8 +53,13 @@
                 <div fxLayout="row wrap" class="refortconfigcommonclass" fxFlex="100" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false">
                   <div>
                     <div class="timepicker">
+                      <!-- <form class="demo-form"> formControlName="startTime" -->
                       <material-timepicker placeholder="select Start Time" color="primary" [userTime]="exportTime" (change)="onChangestarttime($event)" revertLabel="Remove" submitLabel="Ok" (click)="starttimeclick()"></material-timepicker>
-                      <mat-error *ngIf="selectstarttime">Please select StartTime!!</mat-error>
+                      <span *ngIf="selectstarttime" style="color: red;">
+      Please select StartTime!!
+    </span>
+
+                      <!-- </form> -->
                     </div>
 
 
@@ -66,8 +67,13 @@
                   </div>
                   <div>
                     <div class="timepicker">
-                      <material-timepicker placeholder="select End Time" color="primary" [userTime]="exportTime1" (change)="onChangeendtime($event)" revertLabel="Remove" submitLabel="Ok" (click)="endtime()"></material-timepicker>
-                      <mat-error *ngIf="selectEndtime">Please select EndTime!!</mat-error>
+                      <!-- <form class="demo-form"> formControlName="EndTime"-->
+                      <material-timepicker placeholder="select End Time" color="primary" [userTime]="exportTime" (change)="onChangeendtime($event)" revertLabel="Remove" submitLabel="Ok" (click)="endtime()"></material-timepicker>
+                      <span *ngIf="selectEndtime" style="color: red;">
+      Please select EndTime!!
+    </span>
+
+                      <!-- </form> -->
                     </div>
 
 
@@ -81,13 +87,14 @@
               <div>
                 <span class="headerblackclass">Email Subscriptions</span></div>
               <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-                <mat-radio-group formControlName="emailSubscription" name="emailSubscription" [labelPosition]="&apos;after&apos;" required>
+                <mat-radio-group [(ngModel)]="required" formControlName="emailSubscription" name="emailSubscription" [labelPosition]="&apos;after&apos;" required>
                   <mat-radio-button style="padding:10px;" required *ngFor="let email of emails" [value]="email.value" (click)="emailSelected()" [labelPosition]="&apos;after&apos;">{{email .viewValue }}</mat-radio-button>
                 </mat-radio-group>
               </div>
               <div>
-                <mat-error *ngIf="selectemail">Please Select Email Subscription</mat-error>
-              </div>
+                <span *ngIf="selectemail" style="color: red;">
+      Please select Email Subscrption!!
+    </span></div>
             </div>
           </div>
           <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
@@ -95,26 +102,28 @@
               <div>
                 <span class="headerblackclass">Downloadable</span></div>
               <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-                <mat-radio-group formControlName="downloadable" [labelPosition]="&apos;after&apos;" required>
-                  <mat-radio-button style="padding:10px;" required *ngFor="let download of downloads" [value]="download.value" [labelPosition]="&apos;after&apos;">{{download.viewValue }}</mat-radio-button>
+                <mat-radio-group [(ngModel)]="drequired" formControlName="downloadable" [labelPosition]="&apos;after&apos;" required>
+                  <mat-radio-button style="padding:10px;" required *ngFor="let download of downloads" [value]="download.value" (click)="down()" [labelPosition]="&apos;after&apos;">{{download.viewValue }}</mat-radio-button>
                 </mat-radio-group>
               </div>
               <div>
-                <mat-error *ngIf="seldown">Please select Downloable!!</mat-error>
-              </div>
+                <span *ngIf="seldown" style="color: red;">
+      Please select Downloable!!
+    </span></div>
             </div>
             <div fxLayout="column wrap" fxFlex="10" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"></div>
             <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
               <div>
                 <span class="headerblackclass">Status</span></div>
               <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-                <mat-radio-group formControlName="Selectedstatus" [labelPosition]="&apos;after&apos;" required>
-                  <mat-radio-button style="padding:10px;" required *ngFor="let status of statuss" [value]="status.value" [labelPosition]="&apos;after&apos;">{{status .viewValue }}</mat-radio-button>
+                <mat-radio-group [(ngModel)]="erequired" formControlName="Selectedstatus" [labelPosition]="&apos;after&apos;" required>
+                  <mat-radio-button style="padding:10px;" required *ngFor="let status of statuss" [value]="status.value" (click)="activeStatus()" [labelPosition]="&apos;after&apos;">{{status .viewValue }}</mat-radio-button>
                 </mat-radio-group>
               </div>
               <div>
-                <mat-error *ngIf="selectstatus">Please select Status!!</mat-error>
-              </div>
+                <span *ngIf="selectstatus" style="color: red;">
+      Please select Status!!
+    </span></div>
             </div>
           </div>
           <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">

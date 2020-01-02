@@ -167,13 +167,15 @@ export class reportconfigcreateComponent implements OnInit {
     onSubmit(form: FormGroup) {
         if (this.reportConfigService.changecomp == 'create') {
             if (this.form.invalid) {
+               this.selectstarttime=true;
+               this.selectEndtime=true;
                this.selectemail=true;
                this.seldown=true;
                this.selectstatus=true;
-               this.selectstarttime=true;
-               this.selectEndtime=true;
+               
                 }
            else {
+               
             let reportName = this.reportConfigService.reportid[0].reports_id;
             let networklocation = this.form.value.networkLocation;
             let starttime = this.form.value.StartTime;

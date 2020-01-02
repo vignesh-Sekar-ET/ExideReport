@@ -3,7 +3,7 @@ import { ModelMethods } from '../../lib/model.methods';
 // import { BDataModelService } from '../service/bDataModel.service';
 import { NDataModelService } from 'neutrinos-seed-services';
 import { NBaseComponent } from '../../../../../app/baseClasses/nBase.component';
-import { MatTableModule, MatTableDataSource, ThemePalette, MatPaginator } from '@angular/material';
+import { MatTableModule, MatTableDataSource, MatSort, ThemePalette, MatPaginator } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 import { dashboardService } from '../../services/dashboard/dashboard.service';
 import { reportlistserviceService } from '../../services/reportlistservice/reportlistservice.service';
@@ -31,32 +31,65 @@ import { mappingserviceService } from '../../services/mappingservice/mappingserv
 
 export class tabledemoComponent extends NBaseComponent implements OnChanges, AfterViewInit, OnChanges {
     mm: ModelMethods;
-  selection = new SelectionModel<{}>();
+    selection = new SelectionModel<{}>();
     @Input() rowData: object[];
     @Input() enableCheckbox: boolean;
     @Input() sqColumnDefinition: any;
     @Input() sqPaginationConfig: any;
     columnNames: string[] = [];
-    // @ViewChild(MatSort, { static: false }) sort: MatSort;
+    @ViewChild(MatSort, { static: false }) sort: MatSort;
     @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
     @Output() getSelectedRows = new EventEmitter();
     selectedRowIndex = -1;
     totalCount = 50;
+
     dataSource: MatTableDataSource<{}>;
 
     array = [];
+    //create custom element
     @ViewChild('one', { static: false }) d1: ElementRef;
+    //Custom Paging Declaration Here
+    
+
+    /***** */
     currntPageNum = 1;
+
+    pages = [];
     pager = [];
     paginatorIndex = 0;
     page_Index;
     totalLeads = 0;
-    constructor(private bdms: NDataModelService,  private renderer: Renderer2, private el: ElementRef) {
+
+
+
+
+    // currntPageNum = 1;
+
+    pageLimit = 10;
+    pageNeighbours = 1;
+    props:any;
+    totalRecords=50;
+    totalCountries;
+    /*** */
+    constructor(private bdms: NDataModelService,  private ser: dashboardService,private reportlist:reportlistserviceService, private renderer: Renderer2, private el: ElementRef) {
         super();
         this.mm = new ModelMethods(bdms);
-
+       
     }
+    range = (from, to, step = 1) => {
+        let i = from;
+        let range = []
+        while (i <= to) {
+            range.push(i);
+            i += step;
+            console.log(range)
+        }
+        return range;
+    }
+
     ngOnInit() {
+
+
         for (const column of this.sqColumnDefinition) {
             this.columnNames.push(column.name);
         }
@@ -79,15 +112,15 @@ export class tabledemoComponent extends NBaseComponent implements OnChanges, Aft
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
-        console.log(this.paginator)
+
+        
+
     }
 
     ngOnChanges() {
       this.dataSource = new MatTableDataSource(this.rowData);
-        // this.dataSource.sort = this.sort;
+        this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        // this.setMatTable();
-        
     }
     rowSelect(rowid) {
       this.getSelectedRows.emit( this.selection.selected);
@@ -99,7 +132,7 @@ export class tabledemoComponent extends NBaseComponent implements OnChanges, Aft
     paginationClicked(event) {
         console.log(event)
     }
-    //  search(term: string) {
+ //  search(term: string) {
     //     console.log(term)
     //     if (!term) {
     //         this.reportlist.groupList = this.rowData;
@@ -108,10 +141,13 @@ export class tabledemoComponent extends NBaseComponent implements OnChanges, Aft
     //         this.reportlist.groupList = this.rowData.filter(x => x.Groupname.toLowerCase().includes(term.toLowerCase()));
     //     }
     // }
+   
 
+    search(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
    
    
 
-    
    
 }

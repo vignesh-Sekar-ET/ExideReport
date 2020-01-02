@@ -100,10 +100,10 @@ th.mat-header-cell {
 
 
 
-.sidenavList:hover {
-    background-color: var(--main-hover-color); 
-    cursor: pointer;
-}
+// .sidenavList:hover {
+//     background-color: var(--main-hover-color); 
+//     cursor: pointer;
+// }
 
 .example-sidenav {
     background: var(--main-bg-color);
@@ -124,13 +124,13 @@ th.mat-header-cell {
     background-color: #5398db;
 }
 
-.sidenavList:hover .SidenavIcon {
-    color: rgb(12, 9, 135);
-}
+// .sidenavList:hover .SidenavIcon {
+//     color: rgb(12, 9, 135);
+// }
 
-.sidenavList:hover .label {
-    color: rgb(12, 9, 135);
-}
+// .sidenavList:hover .label {
+//     color: rgb(12, 9, 135);
+// }
 
 .example-container {
     height: 100vh;
@@ -277,9 +277,9 @@ background-color: #f3f4f5;
      margin: inherit !important;
     text-indent: 17px !important;
 }
-.mat-sidenav-content {
-  margin-left: 0 !important;
-}
+// .mat-sidenav-content {
+//   margin-left: 0 !important;
+// }
 .item1{
     overflow: hidden !important;
 }
@@ -288,6 +288,7 @@ background-color: #f3f4f5;
 }
 .table{
     color:white;
+    padding-bottom:12px;
 }
 
 //12-5-2019 rasathi
@@ -505,3 +506,62 @@ mat-cell, mat-footer-cell, mat-header-cell {
       width: 100%;
     }
   }
+  //02-01-2020
+
+  .designInput {
+    .mat-form-field-flex {
+        border: 1px solid #aaa;
+        padding: 4px 5px;
+        border-radius: 2px;
+        height: 38px;
+        align-items: center;
+    }
+
+    .mat-form-field-infix {
+        width: 110px !important;
+        padding: 0;
+        margin: 0;
+        border: 0px;
+        position: static;            
+    }
+
+    .mat-form-field-wrapper {
+        font-size: 14px;
+        padding: 0;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-underline {
+        height: 1px;
+        display: none;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-subscript-wrapper {
+        margin: 0;
+    }
+
+    .mat-form-field-prefix .mat-icon, .mat-form-field-suffix .mat-icon {
+        font-size: 20px;
+        line-height: 5.128 !important;
+        height: initial;
+    }
+
+    .mat-form-field-prefix, .mat-form-field-suffix{
+     line-height: 5.128 !important;      
+     height: 20px;
+    }
+
+    .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label{
+        display: none;
+    }
+
+    .mat-form-field-label-wrapper {
+        top: 0;
+        padding: 0;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-label {
+        top: 12px;
+        left: 8px;
+        width: calc(100% - 8px);
+    }
+}
