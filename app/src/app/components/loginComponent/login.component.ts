@@ -100,7 +100,7 @@ export class loginComponent implements OnInit {
             (data) => {
 
                 this.datavalue = data;
-        
+
                 if (this.datavalue.result == 'success') {
 
                     var now = new Date();
@@ -117,12 +117,13 @@ export class loginComponent implements OnInit {
                     // console.log(isNaN(timestamp));
 
                     let groups = this.datavalue.groups;
-                    // this.reportservice.UserGroupList.push(groups.cn);
-                    for (let i = 0; i < groups.length; i++) {
+                    this.reportservice.UserGroupList = [];
 
+                    for (let i = 0; i < groups.length; i++) {
+                        this.reportservice.UserGroupList.push(groups[i].cn);
                         // groups[i].cn = 'NRB_reportwriter';
                         if (groups[i].cn == "NRB_admins") {
-                          
+
                             this.usergroup = "admin";
                             this.dashserve.grouptype = this.usergroup;
                             this.auth.setvariable = this.usergroup;
@@ -137,7 +138,7 @@ export class loginComponent implements OnInit {
                             this.router.navigate(['/dashboard/reportgrouplist']);
                         }
                         else {
-                           
+
                             this.usergroup = "enduser"
                             this.dashserve.grouptype = this.usergroup;
                             this.auth.setvariable = this.usergroup;
@@ -158,7 +159,7 @@ export class loginComponent implements OnInit {
                         duration: 2000,
                     });
                 }
-              
+
 
             },
             (err) => {

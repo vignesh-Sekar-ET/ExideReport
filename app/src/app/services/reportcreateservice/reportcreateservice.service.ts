@@ -44,7 +44,7 @@ export class reportcreateserviceService {
 
     JNDIlist() {
         let URL = this.systemProperties.modularUrl;
-        URL += "jndilist";
+        URL += "reportjndilist";
         return this.http.get(URL)
     }
 
@@ -85,7 +85,7 @@ export class reportcreateserviceService {
         console.log(this.UserGroupList);
         let url = this.systemProperties.modularUrl;
         url += "genreportlist";
-        return this.http.get(url)
+        return this.http.post(url,this.UserGroupList)
     }
     createreportlist() {
         let url = this.systemProperties.modularUrl;
