@@ -935,7 +935,7 @@
             },
             {
                 "_key": "style",
-                "_value": "height:100vh;",
+                "_value": "height: calc(100vh - 64px);",
                 "_type": "kv",
                 "_attrDef": "p"
             },
