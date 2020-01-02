@@ -48,7 +48,7 @@ export class generatereportComponent implements OnInit {
 
     ngOnInit() {
 
-        this.reportservice.reportlist().subscribe((response) => {
+        this.reportservice.genreportlist().subscribe((response) => {
             this.selectvalue = response;
         });
         this.tablePaginationSettings.enablePagination = true;

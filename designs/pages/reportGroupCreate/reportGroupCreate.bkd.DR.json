@@ -3561,7 +3561,7 @@
                                                     },
                                                     {
                                                         "_key": "(click)",
-                                                        "_value": "dashboard/reportgrouplist",
+                                                        "_value": "",
                                                         "_type": "kv",
                                                         "_attrDef": "p"
                                                     },
@@ -3585,7 +3585,7 @@
                                                     },
                                                     {
                                                         "_key": "routerLink",
-                                                        "_value": "",
+                                                        "_value": "dashboard/reportgrouplist",
                                                         "_type": "kv",
                                                         "_attrDef": "p"
                                                     }

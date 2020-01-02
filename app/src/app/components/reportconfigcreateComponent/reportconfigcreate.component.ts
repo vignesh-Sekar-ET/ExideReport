@@ -58,8 +58,8 @@ export class reportconfigcreateComponent implements OnInit {
         { value: 'weekly', viewValue: 'Weekly' },
         { value: 'monthly', viewValue: 'Monthly' },
     ];
-    private exportTime = { hour: '00', minute: '00', meriden: '', format: 24 };
-    private exportTime1 = { hour: '00', minute: '00', meriden: '', format: 24 };
+    exportTime = { hour: '00', minute: '00', meriden: '', format: 24 };
+    exportTime1 = { hour: '00', minute: '00', meriden: '', format: 24 };
 
     onChangeHour(event) {
         /*splitting the hour,minute and meriden in one variable*/
@@ -164,7 +164,7 @@ export class reportconfigcreateComponent implements OnInit {
     }
    
 
-    onSubmit(form: FormGroup) {
+    onSubmit() {
         if (this.reportConfigService.changecomp == 'create') {
             if (this.form.invalid) {
                this.selectemail=true;

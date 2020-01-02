@@ -51,7 +51,7 @@ export class tabledemoComponent extends NBaseComponent implements OnChanges, Aft
     paginatorIndex = 0;
     page_Index;
     totalLeads = 0;
-    constructor(private bdms: NDataModelService,  private renderer: Renderer2, private el: ElementRef) {
+    constructor(private bdms: NDataModelService, private reportlist:reportlistserviceService, private renderer: Renderer2, private el: ElementRef) {
         super();
         this.mm = new ModelMethods(bdms);
 
@@ -91,8 +91,7 @@ export class tabledemoComponent extends NBaseComponent implements OnChanges, Aft
     }
     rowSelect(rowid) {
       this.getSelectedRows.emit( this.selection.selected);
-
-    //    this.reportlist.selectedGroupId = rowid;
+    //  this.reportlist.selectedGroupId = rowid;
     }
    
    

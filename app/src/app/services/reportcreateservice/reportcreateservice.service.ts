@@ -103,6 +103,12 @@ export class reportcreateserviceService {
 
         return this.http.get(url)
     }
+    genreportlist() {
+        let url = this.systemProperties.modularUrl;
+        url += "genreportlist";
+
+        return this.http.post(url,this.UserGroupList)
+    }
 
 
 }

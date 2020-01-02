@@ -1,11 +1,11 @@
 <div fxLayout="row wrap" style="height:100%;background:#f3f4f5;" fxFlex="100" fxLayoutAlign="center stretch" [fxShow]="true" [fxHide]="false">
   <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-    <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" style="padding-left:15%" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
       <div>
         <span class="commontextredcolor">ReportConfig- Create</span></div>
     </div>
-    <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-      <div fxLayout="column wrap" style="background-color:#fff;padding:15px" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
+      <div fxLayout="column wrap" style="background-color:#fff;padding:15px" fxFlex="70" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
         <div fxLayout="column wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
           <div>
             <mat-divider></mat-divider>
@@ -57,7 +57,7 @@
                 <div fxLayout="row wrap" class="refortconfigcommonclass" fxFlex="100" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false">
                   <div>
                     <div class="timepicker">
-                      <material-timepicker placeholder="select Start Time" color="primary" [userTime]="exportTime" (change)="onChangestarttime($event)" revertLabel="Remove" submitLabel="Ok" (click)="starttimeclick()"></material-timepicker>
+                      <material-timepicker placeholder="select Start Time" color="primary" [userTime]="exportTime" (change)="onChangestarttime($event)" revertLabel="Remove" submitLabel="Ok"></material-timepicker>
                       <mat-error *ngIf="selectstarttime">Please select StartTime!!</mat-error>
                     </div>
 
@@ -66,7 +66,7 @@
                   </div>
                   <div>
                     <div class="timepicker">
-                      <material-timepicker placeholder="select End Time" color="primary" [userTime]="exportTime1" (change)="onChangeendtime($event)" revertLabel="Remove" submitLabel="Ok" (click)="endtime()"></material-timepicker>
+                      <material-timepicker placeholder="select End Time" color="primary" [userTime]="exportTime1" (change)="onChangeendtime($event)" revertLabel="Remove" submitLabel="Ok" ></material-timepicker>
                       <mat-error *ngIf="selectEndtime">Please select EndTime!!</mat-error>
                     </div>
 
