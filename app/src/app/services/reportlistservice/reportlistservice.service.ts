@@ -50,7 +50,6 @@ export class reportlistserviceService {
                 });
             } else {
                 this.groupList = []
-                
             }
         }, error => {
             console.log(error);
