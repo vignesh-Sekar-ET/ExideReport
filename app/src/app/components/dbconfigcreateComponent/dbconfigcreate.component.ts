@@ -102,7 +102,7 @@ export class dbconfigcreateComponent extends NBaseComponent implements OnInit {
             this.ser.getConfigListPost(jndiname, active, drivertype).subscribe(
                 data => {
                     console.log(data)
-                    this.action = "Db configuration Created!!!"
+                    this.action = "Db configuration created"
                     this.route.navigateByUrl('dashboard/dbconfigList');
                     this.openSnackBar();
 
@@ -120,7 +120,7 @@ export class dbconfigcreateComponent extends NBaseComponent implements OnInit {
             this.ser.getconfigUpdate(jndiname, drivertype, active, updateid).subscribe(data => {
                 console.log(data)
                 this.route.navigateByUrl('dashboard/dbconfigList');
-                this.action = "Db configuration Updated!!!";
+                this.action = "Db configuration updated";
                 this.openSnackBar()
             })
         }
