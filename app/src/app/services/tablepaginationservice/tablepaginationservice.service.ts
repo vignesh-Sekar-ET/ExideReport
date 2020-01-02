@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 export class tablepaginationserviceService {
    tableData:any = {};
    recordPerPage:number  = 5;
+   dbconfigcreateDisablebutton:boolean = false;
    searchParameters = '';
     agentFilterCache: any = {
         pageNumber: 0,
