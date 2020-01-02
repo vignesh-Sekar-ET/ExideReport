@@ -12,8 +12,8 @@ export class reportcreateserviceService {
     dm: ModelMethods
     sysProps;
     systemProperties: any;
-    UserGroupList:any =[];
     updatename: any;
+    UserGroupList:any
 
     constructor(private bdms: NDataModelService, private http: HttpClient) {
 
@@ -44,7 +44,7 @@ export class reportcreateserviceService {
 
     JNDIlist() {
         let URL = this.systemProperties.modularUrl;
-        URL += "jndilist";
+        URL += "reportjndilist";
         return this.http.get(URL)
     }
 
@@ -58,10 +58,26 @@ export class reportcreateserviceService {
         let source = rptvalue.source;
         let query = "'" + rptvalue.query + "'";
         let rgpname = rptvalue.rgpname;
-        // let upload = "'" + rptvalue.typeq + "'";
-
+       
 
         url += "reportcreate"
+        let body = { 'rname': reportName, 'typer': typr, 'source': source, 'ptname': ptname, 'query': query, 'rgpname': rgpname };
+        console.log(body);
+        return this.http.post(url, body);
+
+    }
+    reportupdate (rptvalue: any): Observable<any> {
+        let url = this.systemProperties.modularUrl;
+
+        let reportName = "'" + rptvalue.rname + "'";
+        let typr = "'" + rptvalue.typeq + "'";
+        let ptname = "'" + rptvalue.ptname + "'";
+        let source = rptvalue.source;
+        let query = "'" + rptvalue.query + "'";
+        let rgpname = rptvalue.rgpname;
+       
+
+        url += "reportupdate"
         let body = { 'rname': reportName, 'typer': typr, 'source': source, 'ptname': ptname, 'query': query, 'rgpname': rgpname };
         console.log(body);
         return this.http.post(url, body);
@@ -82,14 +98,9 @@ export class reportcreateserviceService {
     }
 
     reportlist() {
-        console.log(this.UserGroupList);
-        let url = this.systemProperties.modularUrl;
-        url += "genreportlist";
-        return this.http.get(url)
-    }
-    createreportlist() {
         let url = this.systemProperties.modularUrl;
         url += "reportlist";
+
         return this.http.get(url)
     }
 

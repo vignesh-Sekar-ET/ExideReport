@@ -29,7 +29,7 @@ export class createreportlistComponent implements OnInit {
 
     constructor(public route: Router, private snackBar: MatSnackBar, private reportservice: reportcreateserviceService) {
 
-        this.reportservice.createreportlist().subscribe((response) => {
+        this.reportservice.reportlist().subscribe((response) => {
             this.testContent = response;
             console.log(this.testContent);
 

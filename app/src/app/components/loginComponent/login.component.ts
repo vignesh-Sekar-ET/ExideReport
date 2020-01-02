@@ -9,10 +9,10 @@ import { loginserviceService } from '../../services/loginservice/loginservice.se
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { dashboardService } from '../../services/dashboard/dashboard.service';
-import { reportcreateserviceService } from '../../services/reportcreateservice/reportcreateservice.service';
 import 'rxjs';
 import { authService } from '../../services/auth/auth.service';
 import { UserIdleService } from 'angular-user-idle';
+import { reportcreateserviceService } from 'app/services/reportcreateservice/reportcreateservice.service';
 
 /**
  * Service import Example :
@@ -41,7 +41,7 @@ export class loginComponent implements OnInit {
         private router: Router, private _snackBar: MatSnackBar,
         private dashserve: dashboardService,
         private auth: authService, private userIdle: UserIdleService,
-        private reportservice: reportcreateserviceService) {
+        private reportservice :reportcreateserviceService ) {
 
     }
 
@@ -100,7 +100,6 @@ export class loginComponent implements OnInit {
             (data) => {
 
                 this.datavalue = data;
-        
                 if (this.datavalue.result == 'success') {
 
                     var now = new Date();
@@ -117,12 +116,13 @@ export class loginComponent implements OnInit {
                     // console.log(isNaN(timestamp));
 
                     let groups = this.datavalue.groups;
-                    // this.reportservice.UserGroupList.push(groups.cn);
-                    for (let i = 0; i < groups.length; i++) {
+                    this.reportservice.UserGroupList = [];
 
+                    for (let i = 0; i < groups.length; i++) {
+                        this.reportservice.UserGroupList.push(groups[i].cn);
                         // groups[i].cn = 'NRB_reportwriter';
                         if (groups[i].cn == "NRB_admins") {
-                          
+
                             this.usergroup = "admin";
                             this.dashserve.grouptype = this.usergroup;
                             this.auth.setvariable = this.usergroup;
@@ -137,7 +137,6 @@ export class loginComponent implements OnInit {
                             this.router.navigate(['/dashboard/reportgrouplist']);
                         }
                         else {
-                           
                             this.usergroup = "enduser"
                             this.dashserve.grouptype = this.usergroup;
                             this.auth.setvariable = this.usergroup;
@@ -148,17 +147,18 @@ export class loginComponent implements OnInit {
 
 
                 }
-                else if (this.datavalue.result == 'failure' && this.datavalue.reason == 'invaliduser') {
-                    this._snackBar.open("Invalid User", "", {
-                        duration: 2000,
-                    });
-                }
                 else if (this.datavalue.result == 'failure') {
                     this._snackBar.open("Group Not Defined", "", {
                         duration: 2000,
                     });
                 }
-              
+                else {
+                    this._snackBar.open("Invalid User", "", {
+                        duration: 2000,
+                    });
+                }
+
+
 
             },
             (err) => {

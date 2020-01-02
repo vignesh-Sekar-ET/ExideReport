@@ -19,7 +19,17 @@
                 </mat-checkbox> -->
               </mat-cell>
             </ng-template>
+            <ng-container *ngIf="column.name ===&apos;Active/Inactive&apos;;then checkbox1 else nocheckbox"></ng-container>
 
+            <ng-template #checkbox1>
+
+
+              <mat-cell *matCellDef="let row">
+                <mat-slide-toggle></mat-slide-toggle>
+
+              </mat-cell>
+
+            </ng-template>
             //nocheckbox
             <ng-template #nocheckbox>
               <mat-header-cell *matHeaderCellDef [disabled]="column.disableSorting">
