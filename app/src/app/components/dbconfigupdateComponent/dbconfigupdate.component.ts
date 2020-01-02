@@ -101,7 +101,7 @@ export class dbconfigupdateComponent extends NBaseComponent implements OnInit {
             return;
         }
         else {
-            this.ser.getconfigUpdate(jndiname, serverip, portnumber, dbname, drivertype, connectionpoolsize, dbusername, password, active, updateid).subscribe(data => {
+            this.ser.getconfigUpdate(jndiname,drivertype, active, updateid).subscribe(data => {
                 console.log(data)
                 this.dbconfigUpdate = data;
                 if (this.dbconfigUpdate.result) {
