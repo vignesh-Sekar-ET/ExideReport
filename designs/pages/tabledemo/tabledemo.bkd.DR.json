@@ -1,5 +1,5 @@
 {
-    "b823ca35-7a39-e9b9-3854-456f405c175b": {
+    "a3275071-96f4-4a48-4c30-c055ee9bd171": {
         "paletteKey": "FlexLayoutRow",
         "designerReference": [
             {
@@ -23,7 +23,7 @@
             },
             {
                 "_key": "fxFlex",
-                "_value": "",
+                "_value": "100",
                 "_type": "kv",
                 "_attrDef": "p"
             },
@@ -64,9 +64,9 @@
                 "_attrDef": "p"
             }
         ],
-        "eddb36ae-ba53-9382-ff3d-5d100cb90c81": {
+        "cbfd1fa7-168e-3c7b-6481-82ec8ed525a6": {
             "paletteKey": "FlexLayoutCol",
-            "parentEditorKey": "b823ca35-7a39-e9b9-3854-456f405c175b",
+            "parentEditorKey": "a3275071-96f4-4a48-4c30-c055ee9bd171",
             "designerReference": [
                 {
                     "_key": "componentLabel",
@@ -130,9 +130,9 @@
                     "_attrDef": "p"
                 }
             ],
-            "51157d1d-7077-33b3-3cd6-41b6b05ffe1c": {
+            "7d0aec20-4cb9-a79d-79f9-885b3838b45b": {
                 "paletteKey": "Html5",
-                "parentEditorKey": "eddb36ae-ba53-9382-ff3d-5d100cb90c81",
+                "parentEditorKey": "cbfd1fa7-168e-3c7b-6481-82ec8ed525a6",
                 "isAdvancedComponent": true,
                 "designerReference": [
                     {
@@ -316,9 +316,9 @@
                         "_visibility": false
                     }
                 ],
-                "3d8bb143-b776-78fe-80c1-e3521e2d5da8": {
+                "e1905ea0-65db-a5b1-fded-e34cd46c1aa9": {
                     "paletteKey": "html-editor",
-                    "parentEditorKey": "51157d1d-7077-33b3-3cd6-41b6b05ffe1c",
+                    "parentEditorKey": "7d0aec20-4cb9-a79d-79f9-885b3838b45b",
                     "isAdvancedChildComponent": true,
                     "designerReference": [
                         {
@@ -335,7 +335,7 @@
                         },
                         {
                             "_key": "html",
-                            "_value": "<form [formGroup]=\"form\">\r\n  \r\n <div>\r\n<input class=\"mat-inputClass\" (keyup)=\"search($event.target.value)\"  type=\"text\" placeholder=\"Search Groupname,Groupcode\"> </div>\r\n\r\n\r\n\r\n<mat-table [dataSource]=\"dataSource\"  matSort >\r\n \r\n    <ng-container *ngFor=\"let column of sqColumnDefinition; let i=index\" matColumnDef=\"{{column.name}}\" >\r\n        <ng-container *ngIf=\"column.name ==='Select';then checkbox else nocheckbox\"></ng-container>\r\n         \r\n        <ng-template #checkbox>\r\n             <mat-header-cell *matHeaderCellDef>\r\n                <span class=\"table\">Select</span>\r\n               </mat-header-cell>\r\n\r\n            <mat-cell *matCellDef=\"let row\">\r\n                <mat-radio-button (click)=\"$event.stopPropagation()\" (change)=\"$event ? selection.toggle(row) : null; rowSelect(row.id)\" [checked]=\"selection.isSelected()\"></mat-radio-button>\r\n               </mat-cell>\r\n\r\n             </ng-template>\r\n             \r\n        <ng-container *ngIf=\"column.name ==='Active/Inactive';then checkbox1 else nocheckbox\"></ng-container>\r\n         \r\n        <ng-template #checkbox1>\r\n             \r\n\r\n            <mat-cell *matCellDef=\"let row\">\r\n                <mat-slide-toggle></mat-slide-toggle>\r\n\r\n               </mat-cell>\r\n\r\n             </ng-template>\r\n             \r\n \r\n\r\n\r\n        //nocheckbox\r\n        <ng-template #nocheckbox>\r\n            <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]=\"column.disableSorting\">\r\n                <!--For displaying the column label & Icon-->\r\n                <div>\r\n                    <span class=\"table\"> {{column.displayName}}</span>\r\n                   \r\n                </div>\r\n            </mat-header-cell>\r\n            <mat-cell *matCellDef=\"let element\">\r\n                {{element[column.name]}}\r\n            </mat-cell>\r\n        </ng-template>\r\n    </ng-container>\r\n\r\n\r\n\r\n\r\n\r\n    <mat-header-row *matHeaderRowDef=\"columnNames\"></mat-header-row>\r\n    <mat-row *matRowDef=\"let row; columns: columnNames;\"></mat-row>\r\n</mat-table>\r\n</form>\r\n\r\n\r\n<ng-container *ngIf=\"sqPaginationConfig && sqPaginationConfig.enablePagination\">\r\n    <mat-paginator [pageSize]=\"sqPaginationConfig.pageSize\"\r\n                   [pageSizeOptions]=\"sqPaginationConfig.pageSizeOptions\"\r\n                   [showFirstLastButtons]=\"sqPaginationConfig.showFirstLastButtons\">\r\n    </mat-paginator>\r\n</ng-container>",
+                            "_value": "<div style=\"text-align:center;\">\r\n\r\n\r\n<mat-table [dataSource]=\"dataSource\">\r\n    <ng-container *ngFor=\"let column of sqColumnDefinition; let i = index\" matColumnDef=\"{{column.name}}\">\r\n        <ng-container *ngIf=\"column.name ==='select';then checkbox else nocheckbox\"></ng-container>\r\n        <ng-template #checkbox>\r\n            <mat-header-cell *matHeaderCellDef>\r\n                <h3>select</h3>\r\n            </mat-header-cell>\r\n            <mat-cell *matCellDef=\"let row\">\r\n                <mat-radio-button (click)=\"$event.stopPropagation()\" (change)=\"$event ? selection.toggle(row) : null; rowSelect(row)\" [checked]=\"selection.isSelected()\"></mat-radio-button>\r\n                <!-- <input type=\"radio\" (click)=\"$event.stopPropagation()\" (change)=\"$event ? selection.toggle(row) : null; rowSelect()\" [checked]=\"selection.isSelected(row)\" /> -->\r\n                <!-- <mat-checkbox (click)=\"$event.stopPropagation()\"\r\n                    (change)=\"$event ? selection.toggle(row) : null; rowSelect()\" [checked]=\"selection.isSelected(row)\">\r\n                </mat-checkbox> -->\r\n            </mat-cell>\r\n        </ng-template>\r\n\r\n        //nocheckbox\r\n        <ng-template #nocheckbox>\r\n            <mat-header-cell *matHeaderCellDef  [disabled]=\"column.disableSorting\">\r\n                <!--For displaying the column label & Icon-->\r\n                <div>\r\n                    <span> {{column.displayName}}</span>\r\n                    <div>\r\n                        <!-- <input class='mat-inputClass' type=\"text\" /> -->\r\n                    </div>\r\n                </div>\r\n            </mat-header-cell>\r\n            <mat-cell *matCellDef=\"let element\">\r\n                {{element[column.name]}}\r\n            </mat-cell>\r\n        </ng-template>\r\n    </ng-container>\r\n    <mat-header-row *matHeaderRowDef=\"columnNames\"></mat-header-row>\r\n    <mat-row *matRowDef=\"let row; columns: columnNames;\"></mat-row>\r\n</mat-table>\r\n</div>\r\n<ng-container [fxShow]=\"sqPaginationConfig && sqPaginationConfig.enablePagination\">\r\n    <mat-paginator [pageSize]=\"sqPaginationConfig.pageSize\"\r\n                   [pageSizeOptions]=\"sqPaginationConfig.pageSizeOptions\"\r\n\t\t\t\t   (page) = \"pageEvent=paginationClicked($event.pageSize)\"\r\n                   [showFirstLastButtons]=\"sqPaginationConfig.showFirstLastButtons\">\r\n    </mat-paginator>\r\n</ng-container>",
                             "_type": "a",
                             "_attrDef": "p"
                         }
