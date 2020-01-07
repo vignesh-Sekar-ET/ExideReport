@@ -11,7 +11,7 @@ export class dashboardService {
     dm: ModelMethods
     sysProps;
     systemProperties: any;
-    dbconfigupdate: any;
+    getTableValue: any;
     dbConfigLabelCreateUpdate:string;
     constructor(private bDataModelService: NDataModelService,
         private http: HttpClient) {

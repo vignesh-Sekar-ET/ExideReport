@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 export class tablepaginationserviceService {
    tableData:any = {};
    recordPerPage:number  = 5;
-   dbconfigcreateDisablebutton:boolean = false;
+   disableCreateButton:boolean = false;
+   public disabled: boolean = false;
    searchParameters = '';
     agentFilterCache: any = {
         pageNumber: 0,
@@ -18,7 +19,6 @@ export class tablepaginationserviceService {
 
     constructor() {
         this.tableData = this.initialiseLeadsPageData();
-        // console.log(this.agentFilterCache.pageSize)
     }
     pagination(index, totalCount, pageSize) {
        console.log(index)
@@ -30,16 +30,12 @@ export class tablepaginationserviceService {
         console.log(index *5)
         if (index * 5 < totalPages) {
             finalSize = index * 5;
-            // console.log("final", finalSize)
         } else {
             finalSize = totalPages;
-            // console.log("finalsize", finalSize)
         }
         i = (index - 1) * 10;
-        // console.log("index",  i)
         while (i < finalSize) {
             pager.push(i + 1);
-            // console.log(pager)
             i = i + 1;
         }
         return { pager: pager, page_Index: totalPages };

@@ -1,15 +1,8 @@
 <div fxLayout="row wrap" fxLayoutAlign="center start" [fxShow]="true" [fxHide]="false">
   <div fxLayout="column wrap" style="commonTablebackground" fxFlex="70" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
     <div fxLayout="row wrap" style="text-indent: 20px;background:#f3f4f5;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-      <h3 [style.color]="&apos;red&apos;">
+      <h3 [style.color]="&apos;red&apos;" class="commonHeaderTextColor">
         DB Configuration</h3>
-    </div>
-    <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-      <div fxLayout="column wrap" style="text-indent: 20px;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-        <h3 [ngStyle]="{&apos;color&apos;:&apos;#3583d1&apos;}">
-          DB Configuration
-        </h3>
-      </div>
     </div>
     <div fxLayout="row wrap" style="background:#d1d1d1;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
       <div>
@@ -17,41 +10,62 @@
       </div>
     </div>
     <form [formGroup]="dbConfigForm">
-      <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false">
-        <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"><label>
-            JNDI name</label>
-          <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
-            <input matInput placeholder="Enter JNDI name" required formControlName="jndiname">
-            <mat-error align="start" *ngIf="dbConfigForm.invalid">please enter JNDI name</mat-error>
-          </mat-form-field>
-        </div>
-        <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-          <h3>
-            Driver type</h3>
-          <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
-            <mat-select formControlName="drivertype" placeholder="Select" required>
-              <ng-template ngFor let-option [ngForOf]="dbData" let-i="index">
-                <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
-              </ng-template>
-            </mat-select>
-            <mat-error align="start" *ngIf="dbConfigForm.invalid">Please Select Driver type</mat-error>
-          </mat-form-field>
-        </div>
-        <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-          <h3>
-            Active</h3>
-          <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-            <mat-radio-group formControlName="active" [labelPosition]="&apos;after&apos;">
-              <mat-radio-button style="padding:10px;" required *ngFor="let season of seasons" [value]="season.value" [labelPosition]="&apos;after&apos;">{{season.viewValue }}</mat-radio-button>
-              <div>
-                <mat-error [fxShow]="submitted &amp;&amp; RadioButton?.errors">Select Radio Button!!!</mat-error>
-              </div>
-            </mat-radio-group>
+      <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"></div>
+      <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="row " fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="column wrap" class="dbconfigtextfieldalign" fxFlex="33" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <h3>
+              JNDI name</h3>
+            <mat-form-field class="reportGroupNameInbox" [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
+              <input matInput required formControlName="jndiname">
+              <mat-error align="start" *ngIf="submitted &amp;&amp; jndiname.errors">Select Jndi name</mat-error>
+            </mat-form-field>
+            <div>
+              <!-- <mat-error [fxShow]='submitted && dbConfigForm.invalid'>* Select userGroup!!!</mat-error> -->
+            </div>
+          </div>
+          <div fxLayout="column wrap" class="dbconfigtextfieldalign" fxFlex="33" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <h3>
+              Driver type</h3>
+            <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
+              <mat-select formControlName="drivertype" placeholder="Select" required>
+                <ng-template ngFor let-option [ngForOf]="dbData" let-i="index">
+                  <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
+                </ng-template>
+              </mat-select>
+              <mat-error align="start" *ngIf="submitted &amp;&amp; drivertype.errors">* Select Driver type</mat-error>
+            </mat-form-field>
+            <div>
+              <!-- <mat-error [fxShow]='submitted && dbConfigForm.invalid'>* Select Driver type</mat-error> -->
+              <!-- <mat-error *ngIf="submitted && jndiname.errors">* Select Driver type</mat-error> -->
+            </div>
+          </div>
+          <div fxLayout="column wrap" class="dbconfigtextfieldalign" fxFlex="33" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <h3>
+              Active</h3>
+            <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+              <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
+                <mat-select formControlName="active" placeholder="Select" required>
+                  <ng-template ngFor let-option [ngForOf]="seasons" let-i="index">
+                    <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
+                  </ng-template>
+                </mat-select>
+                <mat-error align="start" *ngIf="submitted &amp;&amp; drivertype.errors">* Select Driver type</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+              <mat-radio-group formControlName="active" *ngIf="false" [labelPosition]="&apos;after&apos;">
+                <mat-radio-button style="padding:10px;" required *ngFor="let season of seasons" [value]="season.value" [labelPosition]="&apos;after&apos;">{{season.viewValue }}</mat-radio-button>
+                <div>
+                  <mat-error [fxShow]="submitted &amp;&amp; RadioButton?.errors">Select Radio Button!!!</mat-error>
+                </div>
+              </mat-radio-group>
+            </div>
           </div>
         </div>
       </div>
-      <div fxLayout="row wrap" class="Dbbutton" fxLayoutAlign="end center" [fxShow]="true" [fxHide]="false">
-        <div fxLayout="row wrap" fxFlex="70" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background:#00a651;" (click)="onSubmit(dbConfigForm.value)" type="button">Submit</button><button mat-button style="background:#f7941d;" (click)="clear()">Clear</button><button mat-button style="background:#ed1c24;">Cancel</button></div>
+      <div fxLayout="row wrap" class="Dbbutton" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="row wrap" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background:#00a651;" class="UserGroupCommonButton" (click)="onSubmit(dbConfigForm.value)">Submit</button><button mat-button style="background:#f7941d;" class="UserGroupCommonButton" (click)="clear(dbConfigForm.value)">Clear</button><button mat-button style="background:#ed1c24;" class="UserGroupCommonButton">Cancel</button></div>
       </div>
     </form>
   </div>

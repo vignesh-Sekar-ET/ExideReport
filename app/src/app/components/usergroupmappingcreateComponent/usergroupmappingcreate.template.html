@@ -1,16 +1,15 @@
 <div fxLayout="row wrap" fxLayoutAlign="center stretch" [fxShow]="true" [fxHide]="false">
   <div fxLayout="column wrap" class="commonTablebackground" fxFlex="70" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
     <div fxLayout="row wrap" style="text-indent: 20px;background:#f3f4f5;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-      <h3>
+      <h3 class="commonHeaderTextColor">
         User Group Mapping</h3>
     </div>
     <form [formGroup]="form">
       <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
         <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
           <h3>
-            Report Group</h3>
+            User Group</h3>
           <div>
-            <label for="User Group">User Group</label>
             <angular2-multiselect [data]="userGroupdatalist" [settings]="dropdownSettingsUG" (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)" (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)" formControlName="userGroup"></angular2-multiselect>
 
             <!-- <mat-error *ngIf="isSubmitted && getuserGroup.errors">* Select userGroup!!!</mat-error> -->
@@ -20,10 +19,8 @@
         </div>
         <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
           <h3>
-            User Group</h3>
+            Report Group</h3>
           <div>
-
-            <label for="Report Group">Report Group</label>
             <angular2-multiselect id="reportGroupdatalist" name="reportGroupdatalist" [data]="reportGroupdatalist" [settings]="dropdownSettingsRG" (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)" (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)" formControlName="reportGroup">
             </angular2-multiselect>
 
@@ -31,8 +28,8 @@
           </div>
         </div>
       </div>
-      <div fxLayout="row wrap" style="margin-top:10px;" class="Dbbutton" fxLayoutAlign="end center" [fxShow]="true" [fxHide]="false">
-        <div fxLayout="row wrap" fxFlex="70" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background:#00a651;" (click)="save(form.value)" type="button">Submit</button><button mat-button style="background:#f7941d;" (click)="clear()">Clear</button><button mat-button style="background:#ed1c24;">Cancel</button></div>
+      <div fxLayout="row wrap" style="margin-top:10px;" class="Dbbutton" fxLayoutAlign="end start" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="row wrap" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background:#00a651;" class="commonbtnalign" (click)="save(form.value)" type="button">Submit</button><button mat-button style="background:#f7941d;" class="commonbtnalign" (click)="clear()">Clear</button><button mat-button style="background:#ed1c24;" class="commonbtnalign">Cancel</button></div>
       </div>
     </form>
   </div>

@@ -201,9 +201,8 @@ th.mat-header-cell {
     height:40px;
     border-radius: 4px;
     border: 1px solid #adadad;
+    padding: 5px 10px;
     // text-indent: 3px;
-
-    
 }
 .reportstatusdropdown.mat-form-field.mat-form-field-wrapper.mat-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-form-field-flex{
 border: 1px solid lightgray !important;
@@ -236,12 +235,12 @@ background-color: #f3f4f5;
 
 .Dbbutton {
     color: var(--main-white-color);
+    padding: 10px;
 }
 
 .UserGroupCommonButton {
     background: var(--main-button-corel);
-    margin-left: 10px !important;
-    margin-right: 15px !important;
+    margin:0px 10px 0px 10px !important;
 }
 
 .UserGroupCreateButton {
@@ -284,7 +283,7 @@ background-color: #f3f4f5;
     overflow: hidden !important;
 }
 .dropdown-list{
-    position: relative !important;
+    // position: relative !important;
 }
 .table{
     color:white;
@@ -430,8 +429,8 @@ mat-cell, mat-footer-cell, mat-header-cell {
 .pagination a {
     color: #989898;
 }
-.mat-paginator-navigation-first, .mat-paginator-navigation-previous, .mat-paginator-navigation-next, .mat-paginator-navigation-last{
-    // display: none !important;
+.mat-paginator-navigation-previous, .mat-paginator-navigation-next{
+    display: none !important;
 }
 
 //-------------------------------------------------------------
@@ -505,3 +504,22 @@ mat-cell, mat-footer-cell, mat-header-cell {
       width: 100%;
     }
   }
+
+  .selected-list .c-btn{
+      width:90% !important;
+  }
+.commonHeaderTextColor{
+    color:var(--main-red-color);
+    text-indent: 20px;
+    background:#f3f4f5;
+}
+.commonbtnalign {
+    margin:0px 10px 0px 10px !important;
+}
+.dbconfigtextfieldalign{
+    margin: 0px 40px 0px 0px;
+}
+.reportGroupNameInbox .mat-form-field-wrapper{
+    line-height:0px !important;
+
+}

@@ -1,10 +1,10 @@
 /*DEFAULT GENERATED TEMPLATE. DO NOT CHANGE SELECTOR TEMPLATE_URL AND CLASS NAME*/
-import { Component, OnInit, ElementRef, AfterContentInit, Renderer, Directive, DoCheck, Input } from '@angular/core'
+import { Component, OnInit, ElementRef, AfterContentInit, Renderer, Directive, DoCheck, Input, ViewChild } from '@angular/core'
 import { ModelMethods } from '../../lib/model.methods';
 // import { BDataModelService } from '../service/bDataModel.service';
 import { NDataModelService } from 'neutrinos-seed-services';
 import { NBaseComponent } from '../../../../../app/baseClasses/nBase.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { dashboardService } from '../../services/dashboard/dashboard.service';
 import { Router } from '@angular/router';
@@ -31,9 +31,11 @@ export class dbconfigcreateComponent extends NBaseComponent implements OnInit {
     submitted = false;
     Dbresponse: any;
     action: string;
+    @ViewChild(FormGroupDirective, { static: true }) formGroupDirective: FormGroupDirective;
+
     seasons: any = [
-        { value: 0, viewValue: 'Yes' },
-        { value: 1, viewValue: 'No' }
+        { value: 1, viewValue: 'Yes' },
+        { value: 0, viewValue: 'No' }
     ];
     dbData = [
         { value: 'mssql', viewValue: 'MSSQL' },
@@ -71,29 +73,26 @@ export class dbconfigcreateComponent extends NBaseComponent implements OnInit {
 
     onSubmit(event) {
         if (this.ser.dbConfigLabelCreateUpdate === 'Create') {
-            console.log("submit")
-            this.dbconfigCreatesubmitbutton();
+            this.submitted = true;
+            this.create();
         }
         else {
-            this.dbconfigUpdatesubmitbutton();
+            this.update();
         }
 
     }
-    clear() {
-        this.dbConfigForm.reset();
-        // this.dbConfigForm.markAsPristine();
-        // this.dbConfigForm.markAsUntouched();
-    }
+
+
     get RadioButton() { return this.dbConfigForm.get("active") }
     get jndiname() { return this.dbConfigForm.get("jndiname") }
+    get drivertype() { return this.dbConfigForm.get("drivertype") }
     dbconfigupdate() {
-        this.dbConfigForm.patchValue({ active: this.ser.dbconfigupdate[0]["isactive"] == "Yes" ? 0 : 1 })
-        this.dbConfigForm.patchValue({ drivertype: this.ser.dbconfigupdate[0]["db"] })
-        this.dbConfigForm.patchValue({ jndiname: this.ser.dbconfigupdate[0]["JNDIName"] })
-
+        this.dbConfigForm.patchValue({ active: this.ser.getTableValue[0]["isactive"] == "Yes" ? 1 : 0 })
+        this.dbConfigForm.patchValue({ drivertype: this.ser.getTableValue[0]["db"] })
+        this.dbConfigForm.patchValue({ jndiname: this.ser.getTableValue[0]["JNDIName"] })
     }
-    dbconfigCreatesubmitbutton() {
-        this.submitted = true;
+    create() {
+
         if (this.dbConfigForm.valid) {
             console.log("valid")
             let jndiname = this.dbConfigForm.value.jndiname;
@@ -103,7 +102,7 @@ export class dbconfigcreateComponent extends NBaseComponent implements OnInit {
                 data => {
                     console.log(data)
                     this.action = "Db configuration created"
-                    this.route.navigateByUrl('dashboard/dbconfigList');
+                    this.route.navigateByUrl('dashboard/dbconfiglist');
                     this.openSnackBar();
 
                 }
@@ -111,20 +110,41 @@ export class dbconfigcreateComponent extends NBaseComponent implements OnInit {
         }
     }
 
-    dbconfigUpdatesubmitbutton() {
+    update() {
         let jndiname = this.dbConfigForm.value.jndiname;
         let drivertype = this.dbConfigForm.value.drivertype;
         let active = this.dbConfigForm.value.active;
-        let updateid = this.ser.dbconfigupdate[0].jndi_id;
+        let updateid = this.ser.getTableValue[0].jndi_id;
         if (this.dbConfigForm.valid) {
             this.ser.getconfigUpdate(jndiname, drivertype, active, updateid).subscribe(data => {
                 console.log(data)
-                this.route.navigateByUrl('dashboard/dbconfigList');
+                this.route.navigateByUrl('dashboard/dbconfiglist');
                 this.action = "Db configuration updated";
                 this.openSnackBar()
             })
         }
 
 
+    }
+    clear(event) {
+        console.log("clear", event)
+        this.submitted = false;
+        this.dbConfigForm.reset()
+        this.dbConfigForm.markAsDirty()
+        this.dbConfigForm.markAsTouched()
+    }
+    private currentFormState() {
+        const formState = {
+            dirty: this.dbConfigForm.dirty,
+            invalid: this.dbConfigForm.invalid,
+            pending: this.dbConfigForm.pending,
+            pristine: this.dbConfigForm.pristine,
+            status: this.dbConfigForm.status,
+            touched: this.dbConfigForm.touched,
+            untouched: this.dbConfigForm.untouched,
+            valid: this.dbConfigForm.valid
+        };
+
+        return formState;
     }
 }

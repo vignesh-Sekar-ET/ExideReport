@@ -113,7 +113,7 @@
                 },
                 {
                     "_key": "pLayoutAlign",
-                    "_value": "stretch",
+                    "_value": "center",
                     "_type": "a",
                     "_attrDef": "p"
                 },
@@ -137,7 +137,7 @@
                 "designerReference": [
                     {
                         "_key": "style",
-                        "_value": "width:100%",
+                        "_value": "width:95%",
                         "_type": "kv",
                         "_attrDef": "p"
                     },
@@ -335,14 +335,14 @@
                         },
                         {
                             "_key": "html",
-                            "_value": "<div style=\"text-align:center;\">\r\n\r\n\r\n<mat-table [dataSource]=\"dataSource\">\r\n    <ng-container *ngFor=\"let column of sqColumnDefinition; let i = index\" matColumnDef=\"{{column.name}}\">\r\n        <ng-container *ngIf=\"column.name ==='select';then checkbox else nocheckbox\"></ng-container>\r\n        <ng-template #checkbox>\r\n            <mat-header-cell *matHeaderCellDef>\r\n                <h3>Select</h3>\r\n            </mat-header-cell>\r\n            <mat-cell *matCellDef=\"let row\">\r\n                <mat-radio-button (click)=\"$event.stopPropagation()\" (change)=\"$event ? selection.toggle(row) : null; rowSelect(row)\" [checked]=\"selection.isSelected()\"></mat-radio-button>\r\n                <!-- <input type=\"radio\" (click)=\"$event.stopPropagation()\" (change)=\"$event ? selection.toggle(row) : null; rowSelect()\" [checked]=\"selection.isSelected(row)\" /> -->\r\n                <!-- <mat-checkbox (click)=\"$event.stopPropagation()\"\r\n                    (change)=\"$event ? selection.toggle(row) : null; rowSelect()\" [checked]=\"selection.isSelected(row)\">\r\n                </mat-checkbox> -->\r\n            </mat-cell>\r\n        </ng-template>\r\n\r\n        //nocheckbox\r\n        <ng-template #nocheckbox>\r\n            <mat-header-cell *matHeaderCellDef  [disabled]=\"column.disableSorting\">\r\n                <!--For displaying the column label & Icon-->\r\n                <div>\r\n                    <span> {{column.displayName}}</span>\r\n                    <div>\r\n                        <!-- <input class='mat-inputClass' type=\"text\" /> -->\r\n                    </div>\r\n                </div>\r\n            </mat-header-cell>\r\n            <mat-cell *matCellDef=\"let element\">\r\n                {{element[column.name]}}\r\n            </mat-cell>\r\n        </ng-template>\r\n    </ng-container>\r\n    <mat-header-row *matHeaderRowDef=\"columnNames\"></mat-header-row>\r\n    <mat-row *matRowDef=\"let row; columns: columnNames;\"></mat-row>\r\n</mat-table>\r\n</div>\r\n<ng-container [fxShow]=\"sqPaginationConfig && sqPaginationConfig.enablePagination\">\r\n    <mat-paginator [pageSize]=\"sqPaginationConfig.pageSize\"\r\n                   [pageSizeOptions]=\"sqPaginationConfig.pageSizeOptions\"\r\n\t\t\t\t   (page) = \"pageEvent=paginationClicked($event.pageSize)\"\r\n                   [showFirstLastButtons]=\"sqPaginationConfig.showFirstLastButtons\">\r\n    </mat-paginator>\r\n</ng-container>",
+                            "_value": "<div style=\"text-align:center;\">\r\n\r\n\r\n<mat-table [dataSource]=\"dataSource\">\r\n    <ng-container *ngFor=\"let column of sqColumnDefinition; let i = index\" matColumnDef=\"{{column.name}}\">\r\n        <ng-container *ngIf=\"column.name ==='select';then checkbox else nocheckbox\"></ng-container>\r\n        <ng-template #checkbox>\r\n            <mat-header-cell *matHeaderCellDef>\r\n                <h3>Select</h3>\r\n            </mat-header-cell>\r\n            <mat-cell *matCellDef=\"let row\">\r\n                <mat-radio-button (click)=\"$event.stopPropagation()\" (change)=\"$event ? selection.toggle(row) : null; rowSelect(row)\" [checked]=\"selection.isSelected()\"></mat-radio-button>\r\n                <!-- <input type=\"radio\" (click)=\"$event.stopPropagation()\" (change)=\"$event ? selection.toggle(row) : null; rowSelect()\" [checked]=\"selection.isSelected(row)\" /> -->\r\n                <!-- <mat-checkbox (click)=\"$event.stopPropagation()\"\r\n                    (change)=\"$event ? selection.toggle(row) : null; rowSelect()\" [checked]=\"selection.isSelected(row)\">\r\n                </mat-checkbox> -->\r\n            </mat-cell>\r\n        </ng-template>\r\n\r\n        //nocheckbox\r\n        <ng-template #nocheckbox>\r\n            <mat-header-cell *matHeaderCellDef  [disabled]=\"column.disableSorting\">\r\n                <!--For displaying the column label & Icon-->\r\n                <div>\r\n                    <span> {{column.displayName}}</span>\r\n                    <div>\r\n                        <!-- <input class='mat-inputClass' type=\"text\" /> -->\r\n                    </div>\r\n                </div>\r\n            </mat-header-cell>\r\n            <mat-cell *matCellDef=\"let element\">\r\n                {{element[column.name]}}\r\n            </mat-cell>\r\n        </ng-template>\r\n    </ng-container>\r\n    <mat-header-row *matHeaderRowDef=\"columnNames\"></mat-header-row>\r\n    <mat-row *matRowDef=\"let row; columns: columnNames;\"></mat-row>\r\n</mat-table>\r\n</div>\r\n<ng-container [fxShow]=\"sqPaginationConfig && sqPaginationConfig.enablePagination\">\r\n    <mat-paginator #paginator [pageSize]=\"sqPaginationConfig.pageSize\"\r\n                   [pageSizeOptions]=\"sqPaginationConfig.pageSizeOptions\"\r\n\t\t\t\t   (page) = \"pageEvent=paginationClicked($event.pageSize)\"\r\n                   [showFirstLastButtons]=\"sqPaginationConfig.showFirstLastButtons\">\r\n    </mat-paginator>\r\n    <div #matpageinsert *ngIf=\"dataSource?.data?.length\">\r\n        <ul class=\"pagination\" style=\"display: flex;\">\r\n\r\n          <li [ngClass]=\"(currntPageNum == 1) ? &apos;opacityDisable&apos; : &apos;&apos;\" style=\"margin-right:38px;\">\r\n            <a (click)=\"(currntPageNum === 1) ? pageItem(currntPageNum,ser.agentFilterCache.pageSize) : pageItem(currntPageNum - 1,ser.agentFilterCache.pageSize)\"><i class=\"material-icons\">keyboard_arrow_left</i></a>\r\n          </li>\r\n\r\n\r\n          <li *ngFor=\"let page of pager\" (click)=\"pageItem(page ,ser.agentFilterCache.pageSize)\" [ngClass]=\"{&apos;active&apos;:currntPageNum === page}\"><span>{{page}}</span>\r\n          </li>\r\n\r\n          <li style=\"margin-left:38px;\" [ngClass]=\"((currntPageNum * ser.agentFilterCache.pageSize) &gt;= totalLeads) ? &apos;opacityDisable&apos; : &apos;&apos;\">\r\n            <a (click)=\"(currntPageNum === page_Index) ? pageItem(currntPageNum,ser.agentFilterCache.pageSize) : pageItem(currntPageNum + 1,ser.agentFilterCache.pageSize)\"><i class=\"material-icons\">keyboard_arrow_right</i></a>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n</ng-container>",
                             "_type": "a",
                             "_attrDef": "p"
                         }
                     ]
                 }
             },
-            "dc0db0df-f279-f820-0140-c9df6daad37c": {
+            "74326291-ddd1-fb51-9498-2e7e140709e8": {
                 "paletteKey": "FlexLayoutRow",
                 "parentEditorKey": "cbfd1fa7-168e-3c7b-6481-82ec8ed525a6",
                 "designerReference": [
@@ -397,20 +397,20 @@
                     },
                     {
                         "_key": "[fxShow]",
-                        "_value": "true",
+                        "_value": "false",
                         "_type": "kv",
                         "_attrDef": "p"
                     },
                     {
                         "_key": "[fxHide]",
-                        "_value": "false",
+                        "_value": "true",
                         "_type": "kv",
                         "_attrDef": "p"
                     }
                 ],
-                "a0610798-72bc-019b-23cd-9133b3777283": {
+                "988c8569-6b16-80f6-1965-fb16c4081305": {
                     "paletteKey": "Html5",
-                    "parentEditorKey": "dc0db0df-f279-f820-0140-c9df6daad37c",
+                    "parentEditorKey": "74326291-ddd1-fb51-9498-2e7e140709e8",
                     "isAdvancedComponent": true,
                     "designerReference": [
                         {
@@ -594,9 +594,9 @@
                             "_visibility": false
                         }
                     ],
-                    "8e1217ff-b5d0-0d5c-1551-637c9c6f7fb8": {
+                    "2ffa74ad-3590-9b54-88c1-5dc264888d62": {
                         "paletteKey": "html-editor",
-                        "parentEditorKey": "a0610798-72bc-019b-23cd-9133b3777283",
+                        "parentEditorKey": "988c8569-6b16-80f6-1965-fb16c4081305",
                         "isAdvancedChildComponent": true,
                         "designerReference": [
                             {
@@ -613,7 +613,7 @@
                             },
                             {
                                 "_key": "html",
-                                "_value": "      <div>\r\n        <ul class=\"pagination\" style=\"display: flex;\">\r\n\r\n          <li [ngClass]=\"(currntPageNum == 1) ? &apos;opacityDisable&apos; : &apos;&apos;\" style=\"margin-right:38px;\">\r\n            <a (click)=\"(currntPageNum === 1) ? pageItem(currntPageNum,pageSize) : pageItem(currntPageNum - 1,pageSize)\"><i class=\"material-icons\">keyboard_arrow_left</i></a>\r\n          </li>\r\n\r\n\r\n          <li *ngFor=\"let page of pager\" (click)=\"pageItem(page ,pageSize)\" [ngClass]=\"{&apos;active&apos;:currntPageNum === page}\"><span>{{page}}</span>\r\n          </li>\r\n\r\n          <li style=\"margin-left:38px;\" [ngClass]=\"((currntPageNum * ser.agentFilterCache.pageSize) &gt;= totalLeads) ? &apos;opacityDisable&apos; : &apos;&apos;\">\r\n            <a (click)=\"(currntPageNum === page_Index) ? pageItem(currntPageNum,pageSize) : pageItem(currntPageNum + 1,pageSize)\"><i class=\"material-icons\">keyboard_arrow_right</i></a>\r\n          </li>\r\n        </ul>\r\n      </div>",
+                                "_value": "<div>\r\n        <ul class=\"pagination\" style=\"display: flex;\">\r\n\r\n          <li [ngClass]=\"(currntPageNum == 1) ? &apos;opacityDisable&apos; : &apos;&apos;\" style=\"margin-right:38px;\">\r\n            <a (click)=\"(currntPageNum === 1) ? pageItem(currntPageNum,ser.agentFilterCache.pageSize) : pageItem(currntPageNum - 1,ser.agentFilterCache.pageSize)\"><i class=\"material-icons\">keyboard_arrow_left</i></a>\r\n          </li>\r\n\r\n\r\n          <li *ngFor=\"let page of pager\" (click)=\"pageItem(page ,ser.agentFilterCache.pageSize)\" [ngClass]=\"{&apos;active&apos;:currntPageNum === page}\"><span>{{page}}</span>\r\n          </li>\r\n\r\n          <li style=\"margin-left:38px;\" [ngClass]=\"((currntPageNum * ser.agentFilterCache.pageSize) &gt;= totalLeads) ? &apos;opacityDisable&apos; : &apos;&apos;\">\r\n            <a (click)=\"(currntPageNum === page_Index) ? pageItem(currntPageNum,ser.agentFilterCache.pageSize) : pageItem(currntPageNum + 1,ser.agentFilterCache.pageSize)\"><i class=\"material-icons\">keyboard_arrow_right</i></a>\r\n          </li>\r\n        </ul>\r\n      </div>",
                                 "_type": "a",
                                 "_attrDef": "p"
                             }

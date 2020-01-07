@@ -1,6 +1,6 @@
 <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-  <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-    <div style="width:100%">
+  <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start center" [fxShow]="true" [fxHide]="false">
+    <div style="width:95%">
       <div style="text-align:center;">
 
 
@@ -19,17 +19,7 @@
                 </mat-checkbox> -->
               </mat-cell>
             </ng-template>
-            <ng-container *ngIf="column.name ===&apos;Active/Inactive&apos;;then checkbox1 else nocheckbox"></ng-container>
 
-            <ng-template #checkbox1>
-
-
-              <mat-cell *matCellDef="let row">
-                <mat-slide-toggle></mat-slide-toggle>
-
-              </mat-cell>
-
-            </ng-template>
             //nocheckbox
             <ng-template #nocheckbox>
               <mat-header-cell *matHeaderCellDef [disabled]="column.disableSorting">
@@ -51,25 +41,41 @@
         </mat-table>
       </div>
       <ng-container [fxShow]="sqPaginationConfig &amp;&amp; sqPaginationConfig.enablePagination">
-        <mat-paginator [pageSize]="sqPaginationConfig.pageSize" [pageSizeOptions]="sqPaginationConfig.pageSizeOptions" (page)="pageEvent=paginationClicked($event.pageSize)" [showFirstLastButtons]="sqPaginationConfig.showFirstLastButtons">
+        <mat-paginator #paginator [pageSize]="sqPaginationConfig.pageSize" [pageSizeOptions]="sqPaginationConfig.pageSizeOptions" (page)="pageEvent=paginationClicked($event.pageSize)" [showFirstLastButtons]="sqPaginationConfig.showFirstLastButtons">
         </mat-paginator>
+        <div #matpageinsert *ngIf="dataSource?.data?.length">
+          <ul class="pagination" style="display: flex;">
+
+            <li [ngClass]="(currntPageNum == 1) ? &apos;opacityDisable&apos; : &apos;&apos;" style="margin-right:38px;">
+              <a (click)="(currntPageNum === 1) ? pageItem(currntPageNum,ser.agentFilterCache.pageSize) : pageItem(currntPageNum - 1,ser.agentFilterCache.pageSize)"><i class="material-icons">keyboard_arrow_left</i></a>
+            </li>
+
+
+            <li *ngFor="let page of pager" (click)="pageItem(page ,ser.agentFilterCache.pageSize)" [ngClass]="{&apos;active&apos;:currntPageNum === page}"><span>{{page}}</span>
+            </li>
+
+            <li style="margin-left:38px;" [ngClass]="((currntPageNum * ser.agentFilterCache.pageSize) &gt;= totalLeads) ? &apos;opacityDisable&apos; : &apos;&apos;">
+              <a (click)="(currntPageNum === page_Index) ? pageItem(currntPageNum,ser.agentFilterCache.pageSize) : pageItem(currntPageNum + 1,ser.agentFilterCache.pageSize)"><i class="material-icons">keyboard_arrow_right</i></a>
+            </li>
+          </ul>
+        </div>
       </ng-container>
     </div>
-    <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="false" [fxHide]="true">
       <div>
         <div>
           <ul class="pagination" style="display: flex;">
 
             <li [ngClass]="(currntPageNum == 1) ? &apos;opacityDisable&apos; : &apos;&apos;" style="margin-right:38px;">
-              <a (click)="(currntPageNum === 1) ? pageItem(currntPageNum,pageSize) : pageItem(currntPageNum - 1,pageSize)"><i class="material-icons">keyboard_arrow_left</i></a>
+              <a (click)="(currntPageNum === 1) ? pageItem(currntPageNum,ser.agentFilterCache.pageSize) : pageItem(currntPageNum - 1,ser.agentFilterCache.pageSize)"><i class="material-icons">keyboard_arrow_left</i></a>
             </li>
 
 
-            <li *ngFor="let page of pager" (click)="pageItem(page ,pageSize)" [ngClass]="{&apos;active&apos;:currntPageNum === page}"><span>{{page}}</span>
+            <li *ngFor="let page of pager" (click)="pageItem(page ,ser.agentFilterCache.pageSize)" [ngClass]="{&apos;active&apos;:currntPageNum === page}"><span>{{page}}</span>
             </li>
 
             <li style="margin-left:38px;" [ngClass]="((currntPageNum * ser.agentFilterCache.pageSize) &gt;= totalLeads) ? &apos;opacityDisable&apos; : &apos;&apos;">
-              <a (click)="(currntPageNum === page_Index) ? pageItem(currntPageNum,pageSize) : pageItem(currntPageNum + 1,pageSize)"><i class="material-icons">keyboard_arrow_right</i></a>
+              <a (click)="(currntPageNum === page_Index) ? pageItem(currntPageNum,ser.agentFilterCache.pageSize) : pageItem(currntPageNum + 1,ser.agentFilterCache.pageSize)"><i class="material-icons">keyboard_arrow_right</i></a>
             </li>
           </ul>
         </div>

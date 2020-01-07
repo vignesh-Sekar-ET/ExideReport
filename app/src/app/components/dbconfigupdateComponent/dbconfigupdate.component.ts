@@ -47,21 +47,21 @@ export class dbconfigupdateComponent extends NBaseComponent implements OnInit {
     ngOnInit() {
 
          // console.log(updateid)
-        console.log(this.ser.dbconfigupdate[0]["JNDI"])
+        console.log(this.ser.getTableValue[0]["JNDI"])
         this.dbConfigForm.patchValue({
             // jndiname: [this.ser.dbconfigupdate[0]["JNDI"]],
-            serverip: this.ser.dbconfigupdate[0]["ServerIP"],
-            portnumber: this.ser.dbconfigupdate[0]["PortNumber"],
-            dbname: this.ser.dbconfigupdate[0]["DBName"],
+            serverip: this.ser.getTableValue[0]["ServerIP"],
+            portnumber: this.ser.getTableValue[0]["PortNumber"],
+            dbname: this.ser.getTableValue[0]["DBName"],
             // drivertype:[this.ser.dbconfigupdate[0]["DriveType"]],
-            connectionpoolsize: this.ser.dbconfigupdate[0]["PoolSize"],
-            dbusername: this.ser.dbconfigupdate[0]["UserName"],
-            password: this.ser.dbconfigupdate[0]["Password"],
+            connectionpoolsize: this.ser.getTableValue[0]["PoolSize"],
+            dbusername: this.ser.getTableValue[0]["UserName"],
+            password: this.ser.getTableValue[0]["Password"],
         })
-        this.dbConfigForm.patchValue({ active: this.ser.dbconfigupdate[0]["Active"] })
-        this.dbConfigForm.patchValue({ drivertype: this.ser.dbconfigupdate[0]["DriveType"] })
-        this.dbConfigForm.patchValue({ jndiname: this.ser.dbconfigupdate[0]["JNDI"] })
-        console.log(this.ser.dbconfigupdate[0]["Active"], this.ser.dbconfigupdate[0]["DriveType"], typeof (this.ser.dbconfigupdate[0]["JNDI"]))
+        this.dbConfigForm.patchValue({ active: this.ser.getTableValue[0]["Active"] })
+        this.dbConfigForm.patchValue({ drivertype: this.ser.getTableValue[0]["DriveType"] })
+        this.dbConfigForm.patchValue({ jndiname: this.ser.getTableValue[0]["JNDI"] })
+        console.log(this.ser.getTableValue[0]["Active"], this.ser.getTableValue[0]["DriveType"], typeof (this.ser.getTableValue[0]["JNDI"]))
     }
 
 
@@ -92,7 +92,7 @@ export class dbconfigupdateComponent extends NBaseComponent implements OnInit {
         let dbusername = this.dbConfigForm.value.dbusername;
         let password = this.dbConfigForm.value.password;
         let active = this.dbConfigForm.value.active;
-        let updateid = this.ser.dbconfigupdate[0].id;
+        let updateid = this.ser.getTableValue[0].id;
         console.log(updateid)
 
         // this.ser.dbconfigupdate[0] = val;
@@ -103,11 +103,8 @@ export class dbconfigupdateComponent extends NBaseComponent implements OnInit {
         else {
             this.ser.getconfigUpdate(jndiname,drivertype, active, updateid).subscribe(data => {
                 console.log(data)
-                this.dbconfigUpdate = data;
-                if (this.dbconfigUpdate.result) {
-                    this.route.navigateByUrl('dashboard/DbGrouplist');
-                    this.openSnackBar()
-                }
+                // this.getTableValue = data;
+
 
             })
 

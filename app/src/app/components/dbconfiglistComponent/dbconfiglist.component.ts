@@ -10,6 +10,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Columnsetting } from '../../columnsetting';
 import { Router } from '@angular/router';
 import { dashboardService } from '../../services/dashboard/dashboard.service';
+import { tablepaginationserviceService } from '../../services/tablepaginationservice/tablepaginationservice.service'
+import { NSnackbarService } from 'neutrinos-seed-services';
 
 /**
  * Service import Example :
@@ -29,10 +31,12 @@ import { dashboardService } from '../../services/dashboard/dashboard.service';
 
 export class dbconfiglistComponent extends NBaseComponent implements OnInit {
     mm: ModelMethods;
-    rowData:any;
+    rowData: any;
     tablePaginationSettings: Columnsetting = <Columnsetting>{};
     columnDefinition = [];
-    constructor(private bdms: NDataModelService, private route: Router, private ser: dashboardService) {
+    action: string;
+    constructor(private bdms: NDataModelService, private snackBar: NSnackbarService, private route: Router, 
+    private ser: dashboardService, private tService: tablepaginationserviceService) {
         super();
         this.mm = new ModelMethods(bdms);
         this.tablePaginationSettings.enablePagination = true;
@@ -64,15 +68,16 @@ export class dbconfiglistComponent extends NBaseComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.tService.disableCreateButton = false; //disable create button 
         this.ser.getConfigListGet().subscribe(
             data => {
                 console.log(data)
                 this.rowData = data;
                 this.rowData.map(item => {
-                    if(item.isactive === 1){
+                    if (item.isactive === 1) {
                         item.isactive = "Yes";
                     }
-                    else{
+                    else {
                         item.isactive = "No";
                     }
                 })
@@ -83,17 +88,25 @@ export class dbconfiglistComponent extends NBaseComponent implements OnInit {
     }
 
     onNotifySelected(selectedRows: object[]) {
-        this.ser.dbconfigupdate = selectedRows;
-
+        this.ser.getTableValue = selectedRows;
     }
     onClick(label) {
         console.log(label)
         this.ser.dbConfigLabelCreateUpdate = label;
-        if (this.ser.dbConfigLabelCreateUpdate) {
+        if ((this.ser.dbConfigLabelCreateUpdate == 'Update') && (this.tService.disableCreateButton == false)) {
+            // console.log(this.tService.dbconfigcreateDisablebutton)
+            this.action = 'Please select dbconfiguration list';
+            this.openSnackBar();
+        }
+        else {
             this.route.navigateByUrl('dashboard/dbconfigCreate');
         }
+
     }
-    getValueOutside(){
+    getValueOutside() {
         console.log(this.rowData)
+    }
+    openSnackBar() {
+        this.snackBar.openSnackBar(this.action, 2000);
     }
 }
