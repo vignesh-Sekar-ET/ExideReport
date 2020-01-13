@@ -15,8 +15,7 @@ export class loginserviceService {
         this.dm = new ModelMethods(bDataModelService);
         this.sysProps = this.bDataModelService;
         this.systemProperties = this.sysProps.systemService.properties;
-      
-
+    
     }
     //Login Form Submit
     LoginSubmit(uname: any, pass1: any): Observable<any> {

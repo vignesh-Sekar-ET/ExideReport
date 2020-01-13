@@ -20,10 +20,13 @@ import { Router } from '@angular/router';
 export class reportconfigcreateComponent implements OnInit {
     @ViewChild('multiSelect', { static: true }) multiSelect;
     public loadContent: boolean = false;
-    public loadreportname:boolean=false;
-    public data: any;
+    public loadreportname: boolean = false;
+    public data: any = [];
     public settings = {};
     public selectedItems = [];
+    loading = false;
+    indices: any;
+    readonly bufferSize: number = 10;
     index: number;
     updateData: any;
     form: FormGroup;
@@ -31,35 +34,31 @@ export class reportconfigcreateComponent implements OnInit {
     startTime: any;
     endTime: any;
     date: any;
-    selectemail: boolean = false;
-    selectstatus: boolean = false;
-    seldown: boolean = false;
-    selectstarttime: boolean = false;
-    selecttime: boolean = false;
-    selectEndtime: boolean = false;
     title: any;
-    checkedstatus:boolean =false;
-
+    checkedstatus: boolean = false;
+    reportname: any;
+    submitted = false;
+    reportid: any = [];
 
     downloads: any = [
-        { value: 0, viewValue: 'Yes' },
-        { value: 1, viewValue: 'No' }
+        { value: 1, viewValue: 'Yes' },
+        { value: 0, viewValue: 'No' }
     ];
     statuss: any = [
-        { value: 0, viewValue: 'Yes' },
-        { value: 1, viewValue: 'No' }
+        { value: 1, viewValue: 'Active' },
+        { value: 0, viewValue: 'InActive' }
     ];
     emails: any = [
-        { value: 0, viewValue: 'Yes' },
-        { value: 1, viewValue: 'No' }
+        { value: 1, viewValue: 'Yes' },
+        { value: 0, viewValue: 'No' }
     ];
     state = [
         { value: 'daily', viewValue: 'Daily' },
         { value: 'weekly', viewValue: 'Weekly' },
         { value: 'monthly', viewValue: 'Monthly' },
     ];
-    exportTime = { hour: '00', minute: '00', meriden: '', format: 24 };
-    exportTime1 = { hour: '00', minute: '00', meriden: '', format: 24 };
+    exportTime = { hour: '12', minute: '0', meriden:'AM', format: 12 };
+    exportTime1 = { hour: '12', minute: '0', meriden:'AM', format: 12 };
 
     onChangeHour(event) {
         /*splitting the hour,minute and meriden in one variable*/
@@ -71,43 +70,56 @@ export class reportconfigcreateComponent implements OnInit {
 
     }
     onChangestarttime(event) {
-
-        this.startTime = event.hour + ':' + event.minute + '' + event.meriden;
+        event.hour = parseInt(event.hour);
+        event.meriden == 'PM' && event.hour < 12 ? event.hour += 12 : event.hour
+        this.startTime = event.hour + ':' + event.minute;
         this.form.controls.StartTime.setValue(this.startTime);
+
+        let re = /^\d{1,2}:\d{2}([AP]M)?$/;
+        if (!event.srcElement.value.match(re)) {
+            this.snackBar.openSnackBar('Time format incorrect!!', 2000);
+        }
     }
     onChangeendtime(event) {
-
-        this.endTime = event.hour + ':' + event.minute + '' + event.meriden;
+        event.hour = parseInt(event.hour);
+        event.meriden == 'PM' && event.hour < 12 ? event.hour += 12 : event.hour
+        this.endTime = event.hour + ':' + event.minute;
         this.form.controls.EndTime.setValue(this.endTime);
+         if (this.startTime>this.endTime) {
+            this.snackBar.openSnackBar('End Time should be greater than starttime!!', 2000);
+
+        }
+        let re = /^\d{1,2}:\d{2}([AP]M)?$/;
+        if (!event.srcElement.value.match(re)) {
+            this.snackBar.openSnackBar('Time format incorrect!!', 2000);
+
+        }
+       
     }
-      constructor(private bdms: NDataModelService, private formBuilder: FormBuilder, public reportConfigService: reportconfigserviceService, private snackBar: NSnackbarService, private route: Router) {
-        this.title = 'Report Config - Create'
+    constructor(private bdms: NDataModelService, private formBuilder: FormBuilder, public reportConfigService: reportconfigserviceService, private snackBar: NSnackbarService, private route: Router) {
+        this.title = 'Report Configuration - Create'
+
         this.reportConfigService.configcreatelist().subscribe((response) => {
             this.data = response;
             this.reportConfigService.reportid = this.data;
         });
+
         this.settings = {
-            singleSelection: false,
-            idField: 'reports_id',
-            textField: 'ReportName',
-            enableCheckAll: false,
-            selectAllText: '',
-            unSelectAllText: '',
-            allowSearchFilter: true,
-            limitSelection: -1,
-            clearSearchFilter: true,
-            maxHeight: 197,
-            itemsShowLimit: 3,
-            searchPlaceholderText: 'Search',
-            noDataAvailablePlaceholderText: 'No List Available',
-            closeDropDownOnSelection: false,
-            showSelectedItemsAtTop: false,
-            defaultOpen: false
+            text: "Select Reportname",
+            selectAllText: 'Select All',
+            unSelectAllText: 'UnSelect All',
+            classes: "myclass custom-class",
+            enableSearchFilter: true,
+            lazyLoading: true,
+            labelKey: "ReportName",
+            primaryKey: "reports_id"
+
+
+
         };
-
-
     }
-     ngOnInit() {
+    ngOnInit() {
+
         this.form = new FormGroup({
             downloadable: new FormControl('', Validators.required),
             StartTime: new FormControl('', Validators.required),
@@ -116,36 +128,18 @@ export class reportconfigcreateComponent implements OnInit {
             emailSubscription: new FormControl('', Validators.required),
             Selectedstatus: new FormControl('', Validators.required),
             name: new FormControl('', Validators.required),
-            reportname:new FormControl('',Validators.required)
         });
         this.setForm();
         this.update();
-      }
+
+
+    }
 
     public setForm() {
         this.loadContent = true;
 
     }
     get f() { return this.form.controls; }
-
-     update() {
-        if (this.reportConfigService.changecomp == "update") {
-            this.loadreportname = true;
-            this.loadContent = false;
-            this.title = 'Report Config - Update';
-            let timestart=this.reportConfigService.updatename[0].starttime;
-            let starttimesplit = timestart.split(":");
-            this.exportTime={ hour:starttimesplit[0] , minute: starttimesplit[1], meriden: '', format: 12 };
-            let timeend=this.reportConfigService.updatename[0].endtime;
-            let endtimesplit = timeend.split(":");
-            this.exportTime1={ hour:endtimesplit[0] , minute: endtimesplit[1], meriden: '', format: 12 };
-            this.form.controls.reportname.setValue(this.reportConfigService.updatename[0].ReportName);
-            this.form.patchValue({emailSubscription:this.reportConfigService.updatename[0]["issubscribe"]=="Yes"?0:1 });
-            this.form.patchValue({downloadable:this.reportConfigService.updatename[0]["isdownloadable"]=="Yes"?0:1 });
-            this.form.patchValue({Selectedstatus:this.reportConfigService.updatename[0]["status"]=="Yes"?0:1 });
-     }
-    }
-
     public onFilterChange(item: any) {
     }
     public onDropDownClose(item: any) {
@@ -159,44 +153,83 @@ export class reportconfigcreateComponent implements OnInit {
     public onDeSelect(item: any) {
         let index = this.selectedItems.findIndex(ind => ind == item.reports_id);
         this.selectedItems.splice(index, 1)
-
-
     }
-   
-
-    onSubmit() {
-        if (this.reportConfigService.changecomp == 'create') {
-            if (this.form.invalid) {
-               this.selectemail=true;
-               this.seldown=true;
-               this.selectstatus=true;
-               this.selectstarttime=true;
-               this.selectEndtime=true;
-                }
-           else {
-            let reportName = this.reportConfigService.reportid[0].reports_id;
+    get selectreportname() { return this.form.get("name") }
+    get selectstarttime() { return this.form.get("StartTime") }
+    get selectEndtime() { return this.form.get("EndTime") }
+    get emailclick() { return this.form.get("emailSubscription") }
+    get down() { return this.form.get("downloadable") }
+    get status() { return this.form.get("Selectedstatus") }
+    Submit() {
+        this.submitted = true;
+        if (this.reportConfigService.changecomp === 'create' && this.form.valid) {
+            this.loadreportname = true;
+            this.loadContent = false;
+            let reportName = this.selectedItems;
             let networklocation = this.form.value.networkLocation;
             let starttime = this.form.value.StartTime;
             let endtime = this.form.value.EndTime;
-            let email = this.form.value.emailSubscription;
             let downloadble = this.form.value.downloadable;
+            let email = this.form.value.emailSubscription;
             let status = this.form.value.Selectedstatus;
             this.reportConfigService.onSubmit(reportName, networklocation, starttime, endtime, email, downloadble, status).subscribe(
                 (data) => {
-
                     this.snackBar.openSnackBar('Report Config Created Successfully', 2000);
                     this.route.navigateByUrl('/dashboard/reportConfigList');
                 },
                 (err) => console.log(err));
 
         }
-    }
-    else
-    {
-        console.log("else");
-    }
-    }
-    onClear() {
+
+        else if (this.reportConfigService.changecomp === 'update') {
+            this.submitted = true;
+            this.reportid.push(this.reportConfigService.updatename[0].reports_id)
+            let networklocation = this.form.value.networkLocation;
+            let starttime = this.form.value.StartTime;
+            let endtime = this.form.value.EndTime;
+            let email = this.form.value.emailSubscription;
+            let downloadble = this.form.value.downloadable;
+            let status = this.form.value.Selectedstatus;
+            this.reportConfigService.onSubmit(this.reportid, networklocation, starttime, endtime, email, downloadble, status).subscribe(
+                (data) => {
+
+                    this.snackBar.openSnackBar('Report Config updated Successfully', 2000);
+                    this.route.navigateByUrl('/dashboard/reportConfigList');
+                },
+                (err) => console.log(err));
+
+        }
+
 
     }
+    update() {
+         if (this.reportConfigService.changecomp == "update") {
+            this.title = 'Report Configuration - Update';
+            this.loadreportname = true;
+            this.loadContent = false;
+            let timestart = this.reportConfigService.updatename[0].starttime;
+            let starttimesplit = timestart.split(":");
+            this.exportTime = { hour: starttimesplit[0], minute: starttimesplit[1], meriden: '', format: 12 };
+            this.form.controls.StartTime.setValue(this.reportConfigService.updatename[0].starttime);
+
+            let timeend = this.reportConfigService.updatename[0].endtime;
+            let endtimesplit = timeend.split(":");
+            this.exportTime1 = { hour: endtimesplit[0], minute: endtimesplit[1], meriden: '', format: 12 };
+            this.form.controls.EndTime.setValue(this.reportConfigService.updatename[0].endtime);
+
+            this.reportname = this.reportConfigService.updatename[0].ReportName;
+            this.form.patchValue({ networkLocation:this.reportConfigService.updatename[0].Network});
+            this.form.patchValue({ emailSubscription: this.reportConfigService.updatename[0]["issubscribe"] == "Yes" ? 1 : 0 });
+            this.form.patchValue({ downloadable: this.reportConfigService.updatename[0]["isdownloadable"] == "Yes" ? 1 : 0 });
+            this.form.patchValue({ Selectedstatus: this.reportConfigService.updatename[0]["status"] == "Yes" ? 1 : 0 });
+        }
+    }
+
+    onClear() {
+        this.form.reset();
+    }
+
+
+
+
 }

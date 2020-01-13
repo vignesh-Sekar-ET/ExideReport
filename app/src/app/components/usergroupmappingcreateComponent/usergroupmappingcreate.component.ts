@@ -1,18 +1,20 @@
 /*DEFAULT GENERATED TEMPLATE. DO NOT CHANGE SELECTOR TEMPLATE_URL AND CLASS NAME*/
 import {
-    Component, OnInit, ViewChild, ElementRef, Input,
-    Renderer2, ChangeDetectorRef, ViewContainerRef, ViewChildren, ChangeDetectionStrategy
+    Component, OnInit, ViewChild, ElementRef, Input, Renderer2, ChangeDetectorRef, ViewContainerRef,
+    ViewChildren, ChangeDetectionStrategy
 } from '@angular/core'
 import { ModelMethods } from '../../lib/model.methods';
-// import { BDataModelService } from '../service/bDataModel.service';
 import { NDataModelService } from 'neutrinos-seed-services';
 import { NBaseComponent } from '../../../../../app/baseClasses/nBase.component';
-// import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { mappingserviceService } from '../../services/mappingservice/mappingservice.service';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NSnackbarService } from 'neutrinos-seed-services';
+import { dashboardService } from '../../services/dashboard/dashboard.service';
+import { Router } from '@angular/router';
+
+
 // import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 
@@ -47,9 +49,9 @@ export class usergroupmappingcreateComponent extends NBaseComponent implements O
     public usermapGroup = [];
     public reportmapGroup = [];
     public URarray = []; item; i = 0;
-    // foods = new BehaviorSubject(['Bacon', 'Letuce', 'Tomatoes']);
     itemList: any = [];
     selectedItems = [];
+    rgselectedItems = [];
     settings = {};
     userGroupdatalist = [];
     reportGroupdatalist: any = [];
@@ -58,51 +60,138 @@ export class usergroupmappingcreateComponent extends NBaseComponent implements O
     public userGroup: any;
     public reportGroup: any;
     isSubmitted = false;
-    constructor(private bdms: NDataModelService,private fb: FormBuilder, public renderer: Renderer2, public element: ElementRef, private mappingservice: mappingserviceService) {
+    action: string;
+    ugupdatearray = [];
+    rgupdatearray = [];
+    updatecheckug: any;
+    updatecheckrg: any;
+    mapupdateid: any;
+    updateUsergroup: any;
+    updateReportgroup: any;
+    loading = false;
+    indices: any;
+    dataLoading:boolean = true;
+    readonly bufferSize: number = 10;
+    constructor(private bdms: NDataModelService, public _snackbar: NSnackbarService, private fb: FormBuilder,
+        public renderer: Renderer2, public element: ElementRef, private mappingservice: mappingserviceService,
+        private ser: dashboardService, private route: Router) {
         super();
         this.mm = new ModelMethods(bdms);
+        this.setForm();
+
     }
 
     ngOnInit() {
-        this.selectedItems = [];
-
-        this.dropdownSettingsUG = {
-            text: "Select Skills",
-            selectAllText: 'Select All',
-            unSelectAllText: 'UnSelect All',
-            enableSearchFilter: true,
-            lazyLoading: true,
-            badgeShowLimit: 3,
-            labelKey: "cn",
-            primaryKey: "cn"
-        };
-        this.dropdownSettingsRG = {
-            text: "Select Skills",
-            selectAllText: 'Select All',
-            unSelectAllText: 'UnSelect All',
-            enableSearchFilter: true,
-            lazyLoading: true,
-            badgeShowLimit: 3,
-            labelKey: "Groupname",
-            primaryKey: "id"
-        };
-
+        // this.selectedItems = [];
+         this.dataLoading= false;
         this.mappingservice.getReportGroup().subscribe((data) => {
             this.reportGroupdatalist = data;
-            this.testExecutionFunction()
+            this.testExecutionFunction();
+            if (this.ser.dbConfigLabelCreateUpdate == 'Update') {
+                this.getselectedItem();
+                setTimeout(() => {
+                    let sample = this.reportGroupdatalist.filter(item => {
+                        // console.log(item)
+                        if (item.Groupname == this.updatecheckrg) {
+                            return item;
+                        }
+                    })
+                    this.rgselectedItems = sample;
+                }, 0)
+            }
         });
 
         this.mappingservice.getUserGroup().subscribe((data) => {
             this.userGroupdatalist = data["groups"];
+            if (this.ser.dbConfigLabelCreateUpdate == 'Update') {
+                console.log(this.ser.getTableValue)
+                this.getselectedItem();
+                setTimeout(() => {
+                    let sample = this.userGroupdatalist.filter(item => {
+                        if (item.cn == this.updatecheckug) {
+                            return item;
+                        }
+                    })
+                    this.selectedItems = sample;
+                }, 0)
+
+                console.log(this.selectedItems)
+            }
             this.testExecutionFunction()
         });
-        this.setForm();
+
+        if (this.ser.dbConfigLabelCreateUpdate === 'Create') {
+            this.dropdownSettingsUG = {
+                text: "Select user group",
+                selectAllText: 'Select All',
+                unSelectAllText: 'UnSelect All',
+                enableSearchFilter: true,
+                lazyLoading: true,
+                badgeShowLimit: 3,
+                labelKey: "cn",
+                primaryKey: "cn",
+                searchBy: ['cn'],
+                noDataLabel: "No Data...",
+                classes: "myclass custom-class"
+                // searchPlaceholderText: "Custom Placeholder text"
+            };
+            this.dropdownSettingsRG = {
+                text: "Select report group",
+                selectAllText: 'Select All',
+                unSelectAllText: 'UnSelect All',
+                enableSearchFilter: true,
+                lazyLoading: true,
+                badgeShowLimit: 3,
+                labelKey: "Groupname",
+                primaryKey: "id",
+                searchBy: ['Groupname'],
+                noDataLabel: "No Data..."
+            };
+        }
+        else {
+            this.dropdownSettingsUG = {
+                singleSelection: true,
+                text: "Select user group",
+                selectAllText: 'Select All',
+                unSelectAllText: 'UnSelect All',
+                enableSearchFilter: true,
+                lazyLoading: true,
+                badgeShowLimit: 3,
+                labelKey: "cn",
+                primaryKey: "cn",
+                searchBy: ['cn'],
+                noDataLabel: "No Data...",
+                showCheckbox: false
+            };
+            this.dropdownSettingsRG = {
+                singleSelection: true,
+                text: "Select report group",
+                selectAllText: 'Select All',
+                unSelectAllText: 'UnSelect All',
+                enableSearchFilter: true,
+                lazyLoading: true,
+                badgeShowLimit: 3,
+                labelKey: "Groupname",
+                primaryKey: "id",
+                searchBy: ['Groupname'],
+                noDataLabel: "No Data...",
+                showCheckbox: false
+            };
+        }
     }
 
+    public getselectedItem() {
+        this.ser.getTableValue.map(item => {
+            this.updatecheckug = item.UserGroup;
+            this.updatecheckrg = item.Groupname;
+            this.mapupdateid = item.map_id;
+        }
+        );
+    }
     public setForm() {
         this.form = this.fb.group({
-            userGroup: ['',Validators.required],
-            reportGroup: ['',Validators.required]
+            userGroup: ['', Validators.required],
+            reportGroup: ['', Validators.required]
         });
         this.loadContent = true;
     }
@@ -111,33 +200,22 @@ export class usergroupmappingcreateComponent extends NBaseComponent implements O
         this.userGroupdatalist;
         this.reportGroupdatalist;
     }
+    openSnackBar() {
+        this._snackbar.openSnackBar(this.action, 2000);
+    }
     get getuserGroup() { return this.form.get('userGroup'); }
     get getReportGroup() { return this.form.get('reportGroup'); }
     save(event) {
-        this.isSubmitted = true;
-        if (this.form.invalid) {
-            return false;
+        if (this.ser.dbConfigLabelCreateUpdate === 'Create') {
+            // this.submitted = true;
+            this.create(event);
         }
         else {
-            this.uniqueArrayUserGroup(event.userGroup)
-            this.uniqueArrayReportGroup(event.reportGroup)
-            let Umap = this.usermapGroup.map(item => ({ Usergroup: item.cn, reporGroupmap: [...new Set(event.reportGroup)] }))
-            let Rmap = this.reportmapGroup.map(item => ({ ReportGroup: item.Groupname, userGroupmap: [...new Set(event.userGroup)] }))
-            console.log("ReportGroup", Rmap, 'Usergroup', Umap)
-            console.log(JSON.stringify(Rmap) )
-            let umapping = Umap.map((userGroup) => {
-                // let result = {
-                //     key:userGroup.Usergroup
-                // }
-                console.log(userGroup)
-            })
+            this.update(event);
         }
-
-
     }
 
     uniqueArrayUserGroup(array) {
-      
         this.usermapGroup = [];
         for (let i = 0; i < array.length; i++) {
             if (this.usermapGroup.indexOf(array[i]["cn"]) === -1) {
@@ -160,20 +238,19 @@ export class usergroupmappingcreateComponent extends NBaseComponent implements O
         return array.filter(item => !lookUp.has(item[key]) && lookUp.add(item[key]))
     }
     groupBy = (array, key) => {
-        // console.log(array, key)
         return array.reduce((result, currentValue) => {
             (result[currentValue.key] = result[currentValue.key] || []).push(
                 currentValue
             );
-            // console.log(JSON.stringify({ ...result }), "cV", JSON.stringify(currentValue));
             return result;
         }, {});
-
     };
 
-
     clear() {
+        this.selectedItems = [];
+        this.rgselectedItems = [];
         this.isSubmitted = false;
+        console.log(this.isSubmitted)
         this.form.reset();
         this.form.markAsDirty()
         this.form.markAsTouched()
@@ -186,6 +263,69 @@ export class usergroupmappingcreateComponent extends NBaseComponent implements O
     onSelectAll(items: any) {
     }
     onDeSelectAll(items: any) {
-        this.clear();
+        // this.clear();
+    }
+
+    //create
+    create(event) {
+        this.isSubmitted = true;
+        if (this.form.valid) {
+            this.uniqueArrayUserGroup(event.userGroup)
+            this.uniqueArrayReportGroup(event.reportGroup)
+            let Umap = this.usermapGroup.map(item => ({ Usergroup: item.cn, reporGroupmap: [...new Set(event.reportGroup)] }))
+            let Rmap = this.reportmapGroup.map(item => ({ ReportGroup: item.Groupname, userGroupmap: [...new Set(event.userGroup)] }))
+            this.mappingservice.postUserGroupmapping(Umap).subscribe(data => {
+                if (data["result"] === "success") {
+                    this.dataLoading=true;
+                    this.action = 'Usermapping created';
+                    this.openSnackBar();
+                    this.route.navigateByUrl('/dashboard/groupmaplist');
+                }
+                if (data["reason"]) {
+                    this.action = 'Duplicate user mapping please map new group mapping';
+                    this.openSnackBar();
+                }
+            })
+        }
+    }
+
+    update(event) {
+        this.isSubmitted = true;
+        if (this.form.valid) {
+            let ugupdate = event.userGroup.map(item => item.cn)
+            let rgupdate = event.reportGroup.map(item => {
+                this.updateUsergroup = ugupdate[0];
+                this.updateReportgroup = item.id;
+            })
+            console.log(this.mapupdateid, this.updateUsergroup, this.updateReportgroup)
+            this.mappingservice.updateUserGroupmapping(this.updateUsergroup, this.updateReportgroup, this.mapupdateid)
+                .subscribe((data) => {
+                    console.log(data)
+                    if (data["result"] === "success") {
+                        this.route.navigateByUrl('/dashboard/groupmaplist');
+                        this.action = 'Usermapping updated';
+                        this.openSnackBar();
+                    }
+                    if (data["reason"] == 'Duplicate Value') {
+                        this.action = 'Duplicate user mapping please map new group mapping';
+                        this.openSnackBar();
+                    }
+
+                })
+
+        }
+    }
+     fetchMore(event: any) {
+    //     if (event.end === this.userGroupdatalist.length - 1) {
+           
+    //         this.loading = true;
+    //         this.mappingservice.getUserGroup(this.userGroupdatalist.length, this.bufferSize).then(chunk => {
+    //             this.userGroupdatalist = this.userGroupdatalist.concat(chunk);
+    //             this.loading = false;
+    //         }, () => this.loading = false);
+    //     }
+     }
+        onScroll(e: any) {
+        console.log(e);
     }
 }

@@ -21,8 +21,8 @@ export class createreportComponent implements OnInit {
            { value: 'mssql_sharebazaar', viewValue: 'MSSQL_SHAREBAZAAR' },
        ]; */
     querytype: any = [
-        { value: 'q', viewValue: 'query' },
-        { value: 'sp', viewValue: 'Store Procedure' }
+        { value: 'q', viewValue: 'Query' },
+        { value: 'sp', viewValue: 'Stored Procedure' }
     ];
 
     sub: any;
@@ -34,15 +34,17 @@ export class createreportComponent implements OnInit {
         this.createreportform = this.formBuilder.group(
             {
                 rname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
-                typeq: ['',],
+                typeq: ['',[Validators.required]],
                 source: ['', [Validators.required]],
-                ptname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
-                query: ['',],
+                ptname: [''],
+                query: ['', [Validators.required]],
                 rgpname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
+                reports_id:[''],
             }
         )
 
     }
+  
 
     ngOnInit() {
         this.reportcreate.reportgrouplist().subscribe(
@@ -51,7 +53,6 @@ export class createreportComponent implements OnInit {
             data => { this.selectvalue = data });
 
         let check = this.reportcreate.updatename;
-        console.log(check)
         if (Array.isArray(check)) {
             this.checkvalue = "Update Report";
             this.createreportform.patchValue({ rname: check[0]["ReportName"] })
@@ -73,39 +74,58 @@ export class createreportComponent implements OnInit {
         if (this.checkvalue == "Create Report") {
             this.reportcreate.reportcreat(this.createreportform.value).subscribe(
                 data => {
-                    if (data.result == 'reportcreated') {
+                    if (data.result == 'success') {
                         this._snackBar.openSnackBar("Report created Successful", 2000,
                         );
                         this.router.navigate(['/dashboard/createreportlist']);
                     }
+                    else if (data.result == 'failure' && data.reason == 'Duplicate Values') {
+                        this._snackBar.openSnackBar("Report Name Already Exist", 2000,
+                        );
+                    }
+                    else if (data.result == 'failure' && data.error) {
+                        this._snackBar.openSnackBar(data.error.message, 4000,
+                        );
+                    }
                     else {
-                        this._snackBar.openSnackBar(data, 2000
+                        this._snackBar.openSnackBar(data, 4000
                         );
 
                     }
                 },
                 err => {
-                    console.log(err);
+                    this._snackBar.openSnackBar("Server Problem", 2000
+                    );
                 }
             )
         }
-        else
-        {
-             this.reportcreate.reportupdate(this.createreportform.value).subscribe(
+        else {
+            this.createreportform.patchValue({ reports_id: this.reportcreate.updatename[0]["reports_id"] })
+            this.reportcreate.reportupdate(this.createreportform.value).subscribe(
                 data => {
-                    if (data.result == 'reportcreated') {
-                        this._snackBar.openSnackBar("Report created Successful", 2000,
+
+                    if (data.result == 'success') {
+                        this._snackBar.openSnackBar("Report Updated Successful", 2000,
                         );
                         this.router.navigate(['/dashboard/createreportlist']);
                     }
+                    else if (data.result == 'failure' && data.reason == 'Duplicate Values') {
+                        this._snackBar.openSnackBar("Report Name Already Exist", 2000,
+                        );
+                    }
+                    else if (data.result == 'failure' && data.error) {
+                        this._snackBar.openSnackBar(data.error.message, 4000,
+                        );
+                    }
                     else {
-                        this._snackBar.openSnackBar(data, 2000
+                        this._snackBar.openSnackBar(data, 4000
                         );
 
                     }
                 },
                 err => {
-                    console.log(err);
+                    this._snackBar.openSnackBar("Server Problem", 2000
+                    );
                 }
             )
 

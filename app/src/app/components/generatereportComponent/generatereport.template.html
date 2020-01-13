@@ -1,52 +1,57 @@
-<div fxLayout="row wrap" fxLayoutAlign="center start" [fxShow]="true" [fxHide]="false">
-  <div fxLayout="column wrap" style="background-color:#fff;" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-    <div>
-      <h4>Generate Report</h4>
+<div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center stretch" [fxShow]="true" [fxHide]="false">
+  <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" style="text-indent: 20px;background:#f3f4f5;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <h3>
+        <span class="commontextredcolor">Generate Report</span></h3>
     </div>
-    <div fxLayout="row wrap" style="background-color:#fff;padding:12px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-      <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-        <div>
-          <span class="headerclass">Generate Report</span></div>
-      </div>
-    </div>
-    <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-      <div>
-        <mat-divider></mat-divider>
-      </div>
-    </div>
-    <form [formGroup]="generatereportform" (ngSubmit)="reportformsubmit()">
-      <div fxLayout="row wrap" style="background-color:#fff;padding:12px" fxLayoutAlign="space-between stretch" [fxShow]="true" [fxHide]="false">
-        <div fxLayout="column wrap" fxFlex="20" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-          <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
-            <mat-select formControlName="rname" placeholder="Report Type" required>
-              <ng-template ngFor let-option [ngForOf]="selectvalue" let-i="index">
-                <mat-option [value]="option.reports_id">{{option.ReportName}}</mat-option>
-              </ng-template>
-            </mat-select>
-
-          </mat-form-field>
-        </div>
-        <div fxLayout="column wrap" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-          <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-            <div>
-              <button type="button" (click)="fileInput.click()">
-                <mat-icon>attachment</mat-icon>
-                <span>Upload Files</span>
-              </button><input #fileInput type="file" (change)="onFileInput($event)" style="display:none;"></div>
+    <div fxLayout="row wrap" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
+      <div fxLayout="column wrap" style="background-color:#fff;padding:15px" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="column wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div>
+            <mat-divider></mat-divider>
           </div>
         </div>
-        <div fxLayout="column wrap" fxFlex="20" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-          <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#3cb878;border-radius:12px" [disabled]="generatereportform.invalid" type="submit">Submit</button><button mat-button style="background-color:#f7941d;border-radius:12px">Clear</button></div>
-        </div>
+        <form [formGroup]="generatereportform" (ngSubmit)="reportformsubmit()">
+          <div fxLayout="row wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="column wrap" style="padding:15px" fxFlex="30" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+              <div>
+                <span class="headerblackclass">Report Type *</span></div>
+              <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+                <div>
+                  <angular2-multiselect *ngIf="true" [data]="selectvalue" [settings]="dropdownsetting" [loading]="loading" formControlName="rname" (onDeSelectAll)="onDeSelectAll($event)">
+                  </angular2-multiselect>
+                  <mat-error align="start" *ngIf="generatereportform.controls.rname.invalid &amp;&amp; generatereportform.controls.rname.touched">Please Select Report name</mat-error>
+                </div>
+              </div>
+            </div>
+            <div fxLayout="column wrap" style="margin-top:15px" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+              <div>
+                <span class="headerblackclass">Upload File *</span></div>
+              <div>
+                <mat-form-field class="reportGroupNameInbox">
+                  <input matInput [value]="filename" disabled>
+                </mat-form-field>
+                <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;">
+                <button class="generatebutton" type="button" (click)="fileInput.click()">
+                  <mat-icon>attachment</mat-icon>
+                </button>
+                <mat-error style="padding-left:10px" align="start" *ngIf="invalid_csv">Upload Only CSV/EXCEL File</mat-error>
+              </div>
+            </div>
+            <div fxLayout="column wrap" style="margin-top:30px" fxFlex="30" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+              <div fxLayout="row wrap" class="Dbbutton" fxLayoutAlign="center stretch" [fxShow]="true" [fxHide]="false"><button mat-button class="mr-10 greenbtn" [disabled]="generatereportform.invalid" type="submit">Submit</button><button mat-button class="mr-10 orangebtn" (click)="generateformreset()" type="button">Clear</button></div>
+            </div>
+          </div>
+          <div fxLayout="column wrap" style="padding:5px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div *ngIf="tablevisible">
+              <bh-tabledemo [rowData]="testContent" [sqColumnDefinition]="columnDefinition" (getSelectedRows)="onNotifySelected($event)" [sqPaginationConfig]="tablePaginationSettings"></bh-tabledemo>
+            </div>
+            <div fxLayout="column wrap" style="padding-left:15px" fxLayoutAlign="start start" [fxShow]="true" [fxHide]="false">
+              <div fxLayout="row wrap" class="Dbbutton" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"><button mat-button class="mr-10 greenbtn" *ngIf="downloadable" (click)="generatereport()" type="button">Generate</button><button mat-button class="mr-10 orangebtn" *ngIf="subscribable">Subscribe</button></div>
+            </div>
+          </div>
+        </form>
       </div>
-      <div fxLayout="column wrap" style="padding:5px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-        <div *ngIf="tablevisible">
-          <bh-tabledemo [rowData]="testContent" [sqColumnDefinition]="columnDefinition"></bh-tabledemo>
-        </div>
-        <div fxLayout="column wrap" fxLayoutAlign="start start" [fxShow]="true" [fxHide]="false">
-          <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false" *ngIf="tablevisible"><button mat-button style="background-color:#3cb878;border-radius:12px" (click)="generatereport()" type="button">Generate</button><button mat-button style="background-color:#f7941d;border-radius:12px">Subscribe</button></div>
-        </div>
-      </div>
-    </form>
+    </div>
   </div>
 </div>

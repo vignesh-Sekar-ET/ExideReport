@@ -377,7 +377,7 @@
      "enabled": true,
      "local": true,
      "module": "node-red-contrib-better-ldap",
-     "file": "C:\\Users\\c101709\\Desktop\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-better-ldap\\transports\\ldap\\index.js"
+     "file": "C:\\Users\\C101710\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-better-ldap\\transports\\ldap\\index.js"
     }
    }
   },
@@ -394,7 +394,7 @@
      "enabled": true,
      "local": true,
      "module": "node-red-contrib-env",
-     "file": "C:\\Users\\c101709\\Desktop\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-env\\nodes\\env.js"
+     "file": "C:\\Users\\C101710\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-env\\nodes\\env.js"
     }
    }
   },
@@ -412,7 +412,7 @@
      "enabled": true,
      "local": true,
      "module": "node-red-node-sqlite",
-     "file": "C:\\Users\\c101709\\Desktop\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-node-sqlite\\sqlite.js"
+     "file": "C:\\Users\\C101710\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-node-sqlite\\sqlite.js"
     }
    }
   },
@@ -535,7 +535,7 @@
      "enabled": true,
      "local": true,
      "module": "node-red-contrib-db2",
-     "file": "C:\\Users\\c101709\\Desktop\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-db2\\ibmdb.js"
+     "file": "C:\\Users\\C101710\\neutrinos-studio\\my-Exideapp\\flows\\user-data\\node_modules\\node-red-contrib-db2\\ibmdb.js"
     }
    }
   }

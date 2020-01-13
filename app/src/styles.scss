@@ -7,6 +7,7 @@
     --main-button-corel: #f7941d;
     --main-button-create: #3cb878;
     --main-red-color: #ed1c24;
+    --main-table-select-bgcolor:#0e78e5;
 }
 .dropdown-list .item1 .filter-textbox::after{
     font-family: "Material Icons";
@@ -25,6 +26,7 @@
 .headerblackclass{
     color:#000;
     font-weight: bold;
+    // margin-left:15px
 
 }
 .headerdelete{
@@ -199,19 +201,90 @@ th.mat-header-cell {
 }
 .reportGroupNameInbox{
     height:40px;
+    border-radius:4px;
+    border: 1px solid #003975;
+    padding:5px 10px;
+    // max-height:0px !important
+    }
+    .generatebutton
+    {
+    height: 53px;
     border-radius: 4px;
-    border: 1px solid #adadad;
-    // text-indent: 3px;
+    border: 1px solid #003975;
+    padding: 15px 10px;
+    cursor:pointer;
+    }
+    .reportGroupNameInbox .mat-form-field-underline{
+        display: none;
+    }
+    .textareaborder
+    {
+    height:150px;
+    border-radius:4px;
+    border: 1px solid #003975;
+    padding:5px 10px;
+    }
+    .textareaborder .mat-form-field-underline
+    {
+        display: none
+    }
 
-    
-}
-.reportstatusdropdown.mat-form-field.mat-form-field-wrapper.mat-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-form-field-flex{
-border: 1px solid lightgray !important;
-border-radius: 5px !important;
-cursor: pointer !important;
-background-color: #f3f4f5;
+.rtgpdropdown .mat-form-field{
+     height:40px ;
+    border: 1px solid #003975 ;
+    border-radius:4px;
+    padding:5px 10px 5px 10px;
+
 
 }
+.rtgpdropdown .mat-form-field-underline{
+            display: none;
+
+}
+// .matlogoutbutton
+// {
+//     width: 100px !important;
+
+// }
+.matlogoutbutton .mat-form-field-underline{
+            display: none;
+}
+
+.mat-form-field .mat-select.mat-select-invalid .mat-select-arrow {
+     color: initial !important
+}
+
+.c-btn{
+      height:40px !important;
+    border: 1px solid #003975 !important;
+    padding:5px 10px;
+    border-radius:4px
+}
+
+.reportconfig{
+     width: 100% !important;
+    height: 40px;
+     margin: inherit !important;
+     border-radius:4px;
+    border: 1px solid #003975;
+    padding:5px 10px;
+
+}
+.dropdown-list{
+    // position: relative !important;
+}
+.mr-10{
+      margin-right:10px !important;
+  }
+  .greenbtn{
+      background-color:var( --main-button-create);
+  }
+  .orangebtn{
+      background-color:var( --main-button-corel);
+  }
+  .redbtn{
+     background-color:var( --main-red-color) ;
+  }
 
 #searchbox {
     background-color: white;
@@ -223,12 +296,12 @@ background-color: #f3f4f5;
 
 
 
-#mat-form-field-label-3{
-    display:none;
-}
-#mat-form-field-label-5{
-    display:none;
-}
+// #mat-form-field-label-3{
+//     display:none;
+// }
+// #mat-form-field-label-5{
+//     display:none;
+// }
 
 .mat-select-arrow {
     color: #fff;
@@ -236,12 +309,16 @@ background-color: #f3f4f5;
 
 .Dbbutton {
     color: var(--main-white-color);
+    
+}
+.mr-5{
+    margin-right:5px;
 }
 
 .UserGroupCommonButton {
     background: var(--main-button-corel);
     margin-left: 10px !important;
-    margin-right: 15px !important;
+    margin-right: 10px !important;
 }
 
 .UserGroupCreateButton {
@@ -283,14 +360,8 @@ background-color: #f3f4f5;
 .item1{
     overflow: hidden !important;
 }
-.dropdown-list{
-    position: relative !important;
-}
-.table{
-    color:white;
-}
 
-//12-5-2019 rasathi
+
 
 mat-cell, mat-footer-cell, mat-header-cell {
     flex: 1;
@@ -335,27 +406,28 @@ mat-cell, mat-footer-cell, mat-header-cell {
 
 
 
-
-.mat-radio-label {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: pointer;
-    display: block !important;
-    align-items: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    width: 100%;
-}
+// .mat-radio-label {
+//     -webkit-user-select: none;
+//     -moz-user-select: none;
+//     -ms-user-select: none;
+//     user-select: none;
+//     cursor: pointer;
+//     display: block !important;
+//     align-items: center;
+//     white-space: nowrap;
+//     vertical-align: middle;
+//     width: 100%;
+// }
 .mat-cell {
         font-size: 14px;
         min-height: 48px;
         text-align: center;
         border-right: 1px solid lightgrey;
+        justify-content: center;
     }
     .table{
         text-align: center;
+         color:white;
     }
     .mat-slide-toggle-label {
     display: inline-grid !important;
@@ -382,6 +454,11 @@ mat-cell, mat-footer-cell, mat-header-cell {
     flex: 1 1 100%;
     height:100px;
 }
+.center_align
+{
+    align-items: center;
+    place-content: center;
+}
 
 .dropdown-list{
     // position: relative !important;
@@ -389,50 +466,6 @@ mat-cell, mat-footer-cell, mat-header-cell {
 }
 
 
-//Pagination style
-.pagination{
-   list-style-type: none;
-}
-.pagination li{
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-.pagination {
-    margin: 0px;
-    padding: 0;
-    li {
-        display: inline;
-        padding: 12px;
-        margin: 0px 10px;
-    }
-}
-
-.opacityDisable {
-    opacity: 0.3;
-    background: rgba(255, 255, 255, 0.1);
-    pointer-events: none;
-}
-.pagination .active {
-    background-color: blue !important;
-    color: white;
-    font-weight: 900;
-    // border-radius: 50%;
-    min-width: 22px;
-    height: 22px;
-    text-align: center;
-}
-
-.pagination .mat-tab-group {
-    font-family: "Source Sans Pro", sans-serif;
-}
-
-.pagination a {
-    color: #989898;
-}
-.mat-paginator-navigation-first, .mat-paginator-navigation-previous, .mat-paginator-navigation-next, .mat-paginator-navigation-last{
-    // display: none !important;
-}
 
 //-------------------------------------------------------------
 //---------Vignesh 12-27-1019-----------------------
@@ -504,4 +537,227 @@ mat-cell, mat-footer-cell, mat-header-cell {
       cursor: pointer;
       width: 100%;
     }
+  }
+  //06-01-2020//
+
+  .mr-10{
+      margin-right:10px !important;
+  }
+  .greenbtn{
+      background-color:var( --main-button-create);
+  }
+  .orangebtn{
+      background-color:var( --main-button-corel);
+  }
+  .redbtn{
+     background-color:var( --main-red-color) ;
+  }
+  .full-width {
+  width: 100%;
+}
+  
+
+
+
+// .designInput {
+//     .mat-form-field-flex {
+//         border: 1px solid #aaa;
+//         padding: 4px 5px;
+//         border-radius: 2px;
+//         height: 38px;
+//         align-items: center;
+//     }
+
+//     .mat-form-field-infix {
+//         width: 110px !important;
+//         padding: 0;
+//         margin: 0;
+//         border: 0px;
+//         position: static;            
+//     }
+
+//     .mat-form-field-wrapper {
+//         font-size: 14px;
+//         padding: 0;
+//     }
+
+//     .mat-form-field-appearance-legacy .mat-form-field-underline {
+//         height: 1px;
+//         display: none;
+//     }
+
+//     .mat-form-field-appearance-legacy .mat-form-field-subscript-wrapper {
+//         margin: 0;
+//     }
+
+//     .mat-form-field-prefix .mat-icon, .mat-form-field-suffix .mat-icon {
+//         font-size: 20px;
+//         line-height: 1;
+//         height: initial;
+//     }
+
+//     .mat-form-field-prefix, .mat-form-field-suffix{
+//         line-height: 1;
+//         height: 20px;
+//     }
+
+//     .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label{
+//         display: none;
+//     }
+
+//     .mat-form-field-label-wrapper {
+//         top: 0;
+//         padding: 0;
+//     }
+
+//     .mat-form-field-appearance-legacy .mat-form-field-label {
+//         top: 12px;
+//         left: 8px;
+//         width: calc(100% - 8px);
+//     }
+// }
+
+.commonbtnalign {
+    margin:0px 10px 0px 0px !important;
+}
+.dbconfigtextfieldalign{
+    margin: 0px 40px 0px 0px;
+}
+
+.commonHeaderTextColor{
+    color:var(--main-red-color);
+    text-indent: 20px;
+    background:#f3f4f5;
+}
+.dropdown-list{
+    // position: relative !important;
+    width:95% !important;
+}
+  .selected-list .c-btn{
+      width:90% !important;
+  }
+.commonbtnlastalign{
+    margin: 0px 40px 0px 0px !important;
+}
+.mat-header-cell{
+    color:var(--main-white-color)
+}
+.mat-paginator-navigation-previous, .mat-paginator-navigation-next, .mat-paginator-navigation-first, .mat-paginator-navigation-last{
+    display: none !important;
+}
+
+//Pagination style
+.pagination{
+   list-style-type: none;
+}
+.pagination li{
+    // padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ababab;
+}
+.pagination {
+    margin: 0px;
+    padding: 0;
+    li {
+        // display: inline; old one
+        display: flex;
+        padding: 12px;
+        margin: 0px 5px;
+        min-width: 12px;
+        height: 12px;
+        // background:var(--main-table-select-bgcolor);
+        border:1px solid #ababab;
+    }
+    span{
+        align-items: center;
+        display: flex;
+    }
+}
+
+.opacityDisable {
+    opacity: 0.3;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+.pagination .active {
+    // background-color: blue !important;
+    background:var(--main-table-select-bgcolor) !important;
+    color: #fff;
+    font-weight: 900;
+    // border-radius: 50%;
+    min-width: 12px;
+    height: 12px;
+    text-align: center;
+}
+
+.pagination .mat-tab-group {
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.pagination a {
+    color: #989898;
+    display: flex;
+    align-items: center;
+}
+.mat-icon-button{
+    border-radius:5px !important;
+    border:1px solid #ababab !important;
+}
+
+//10-01-2020//
+
+.reportGroupNameInbox{
+    height:40px;
+    border-radius:4px;
+    border: 1px solid #003975;
+    padding:5px 10px;
+    // max-height:0px !important
+    }
+    .reportGroupNameInbox .mat-form-field-underline{
+        display: none;
+    }
+
+.rtgpdropdown .mat-form-field{
+     height:40px ;
+    border: 1px solid #003975 ;
+    border-radius:4px;
+    padding:5px 10px 5px 10px;
+
+
+}
+.rtgpdropdown .mat-form-field-underline{
+            display: none;
+
+}
+.c-btn{
+      height:40px !important;
+    border: 1px solid #003975 !important;
+    padding:5px 10px;
+    border-radius:4px
+}
+
+.reportconfig{
+     width: 100% !important;
+    height: 40px;
+     margin: inherit !important;
+     border-radius:4px;
+    border: 1px solid #003975;
+    padding:5px 10px;
+
+}
+.dropdown-list{
+    // position: relative !important;
+}
+.mr-10{
+      margin-right:10px !important;
+  }
+  .greenbtn{
+      background-color:var( --main-button-create);
+  }
+  .orangebtn{
+      background-color:var( --main-button-corel);
+  }
+  .redbtn{
+     background-color:var( --main-red-color) ;
   }

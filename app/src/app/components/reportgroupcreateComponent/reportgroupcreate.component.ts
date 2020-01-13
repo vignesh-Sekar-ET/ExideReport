@@ -33,8 +33,8 @@ export class reportgroupcreateComponent extends NBaseComponent implements OnInit
 
     ngOnInit() {
         this.reportCreateForm = this.formBuilder.group({
-            reportGroupName: ['', Validators.required],
-            reportGroupCode: ['', Validators.required],
+            reportGroupName: ['', Validators.required,],
+            reportGroupCode: ['', [Validators.required,Validators.maxLength(10)]],
             selectStatus: ['active', Validators.required]
 
         });
@@ -63,8 +63,16 @@ export class reportgroupcreateComponent extends NBaseComponent implements OnInit
                 let status = this.reportCreateForm.value.selectStatus == 'active' ? "1" : "0";
                 this.CreateService.onSubmit(reportgroupname, reportgroupcode, status).subscribe(
                     (data) => {
-                       this.snackBar.openSnackBar('Report Created Successfully', 2000);
-                       this.route.navigateByUrl('/dashboard/reportgrouplist');
+                        console.log(data)
+                        if(data.result=='success'){
+                        this.snackBar.openSnackBar('Report Group Created Successfully', 2000);
+                        this.route.navigateByUrl('/dashboard/reportgrouplist');
+                        }
+                        else{
+                        this.snackBar.openSnackBar('Duplicate report please create new report', 2000);
+                          }
+
+                       
 
                     },
                     (err) => console.log(err));
@@ -83,7 +91,7 @@ export class reportgroupcreateComponent extends NBaseComponent implements OnInit
                 let status = this.reportCreateForm.value.selectStatus == 'active' ? "1" : "0";
                 this.reportserviceupdate.onSubmit(reportgroupname, reportgroupcode, status, updateid).subscribe(
                     (data) => {
-                     this.snackBar.openSnackBar('Report Updated successfully', 2000);
+                     this.snackBar.openSnackBar('Report Group Updated successfully', 2000);
 
                         this.route.navigateByUrl('/dashboard/reportgrouplist');
                     },

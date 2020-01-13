@@ -6,6 +6,7 @@ import { loginserviceService } from '../../services/loginservice/loginservice.se
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { dashboardService } from '../../services/dashboard/dashboard.service';
+import { CookieService } from 'ngx-cookie-service';
 import 'rxjs';
 import { authService } from '../../services/auth/auth.service';
 import { UserIdleService } from 'angular-user-idle';
@@ -19,64 +20,41 @@ import { reportcreateserviceService } from 'app/services/reportcreateservice/rep
 
 export class loginComponent implements OnInit {
     usergroup: any;
+    remember_me: boolean = false;
+
     loginform = new FormGroup({
-        username: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
-        password: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)])
+        username: new FormControl(this.remember_me_service.get('username'), [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+        password: new FormControl(this.remember_me_service.get('password'), [Validators.required, Validators.minLength(3), Validators.maxLength(15)])
     });
     datavalue: any;
     constructor(private loginservice: loginserviceService,
         private router: Router, private _snackBar: MatSnackBar,
         private dashserve: dashboardService,
         private auth: authService, private userIdle: UserIdleService,
-        private reportservice :reportcreateserviceService ) {
+        private reportservice: reportcreateserviceService,
+        private remember_me_service: CookieService) {
 
     }
 
     ngOnInit() {
-
-        //Start watching for user inactivity.
-        this.userIdle.startWatching();
-
-        // Start watching when user idle is starting.
-        this.userIdle.onTimerStart().subscribe(/*count =>  console.log(count) */);
-
-        // Start watch when time is up.
-        this.userIdle.onTimeout().subscribe(() => {
-            // this._snackBar.open("Idle out", "", {
-            //     duration: 2000,
-            // });
-            // window.localStorage.clear();
-            // window.sessionStorage.clear();
-            // this.router.navigate(['/login']);
-        });
-
-        this.userIdle.ping$.subscribe(() => {
-            // this._snackBar.open("Session OUT", "", {
-            //     duration: 2000,
-            // });
-            // window.localStorage.clear();
-            // window.sessionStorage.clear();
-            // this.router.navigate(['/login']);
-        }
-        );
-
+        this.auth.setvariable = '';
     }
-    //---------------AUTO LOGOUT FUNCTIONS-------------------------------------------------
-    // stop() {
-    //     this.userIdle.stopTimer();
-    // }
+    // ---------------AUTO LOGOUT FUNCTIONS-------------------------------------------------
+    stop() {
+        this.userIdle.stopTimer();
+    }
 
-    // stopWatching() {
-    //     this.userIdle.stopWatching();
-    // }
+    stopWatching() {
+        this.userIdle.stopWatching();
+    }
 
-    // startWatching() {
-    //     this.userIdle.startWatching();
-    // }
+    startWatching() {
+        this.userIdle.startWatching();
+    }
 
-    // restart() {
-    //     this.userIdle.resetTimer();
-    // }
+    restart() {
+        this.userIdle.resetTimer();
+    }
 
     //-----------------------------------------------------------------
 
@@ -89,18 +67,20 @@ export class loginComponent implements OnInit {
                 this.datavalue = data;
                 if (this.datavalue.result == 'success') {
 
-                    var now = new Date();
-                    let timestamp: any;
+                    this.userIdle.startWatching();
+                    this.userIdle.onTimerStart().subscribe(count => console.log(count));
+                    this.userIdle.onTimeout().subscribe(() => {
+                        this._snackBar.open("Idle Time out", "", {
+                            duration: 4000,
+                        });
 
-                    timestamp = now.getFullYear();
-                    timestamp += now.getMonth(); // JS 
-                    timestamp += now.getDate(); // pad 
-                    timestamp += now.getHours(); // pad 
-                    timestamp += now.getMinutes(); // pad 
-                    timestamp += now.getSeconds();
-                    timestamp += now.getMilliseconds();
-                    sessionStorage.setItem("Session_ID", timestamp);
-                    // console.log(isNaN(timestamp));
+                        this.router.navigate(['/login']);
+                    });
+
+                    if (this.remember_me) {
+                        this.remember_me_service.set('username', this.loginform.value.username);
+                        this.remember_me_service.set('password', this.loginform.value.password);
+                    }
 
                     let groups = this.datavalue.groups;
                     this.reportservice.UserGroupList = [];
@@ -109,38 +89,50 @@ export class loginComponent implements OnInit {
                         this.reportservice.UserGroupList.push(groups[i].cn);
                         // groups[i].cn = 'NRB_reportwriter';
                         if (groups[i].cn == "NRB_admins") {
-
+                            // this.remember_me_service.set('log_username', this.loginform.value.username);
+                            // this.remember_me_service.set('log_password', this.loginform.value.password);
+                            // this.remember_me_service.set('log_access', 'admin');
                             this.usergroup = "admin";
                             this.dashserve.grouptype = this.usergroup;
+                            this.dashserve.username = this.loginform.value.username;
                             this.auth.setvariable = this.usergroup;
-                            this.router.navigate(['/dashboard/admindash']);
+                            this.router.navigate(['/dashboard/admindashboard']);
                             break;
                         }
                         else if (groups[i].cn == "NRB_reportwriter") {
+                            // this.remember_me_service.set('log_username', this.loginform.value.username);
+                            // this.remember_me_service.set('log_password', this.loginform.value.password);
+                            // this.remember_me_service.set('log_access', 'reportwriter');
 
                             this.usergroup = "reportwriter"
                             this.dashserve.grouptype = this.usergroup;
+                            this.dashserve.username = this.loginform.value.username;
                             this.auth.setvariable = this.usergroup;
                             this.router.navigate(['/dashboard/reportgrouplist']);
                         }
                         else {
                             this.usergroup = "enduser"
+                            // this.remember_me_service.set('log_username', this.loginform.value.username);
+                            // this.remember_me_service.set('log_password', this.loginform.value.password);
+                            // this.remember_me_service.set('log_access', 'enduser');
                             this.dashserve.grouptype = this.usergroup;
                             this.auth.setvariable = this.usergroup;
+                            this.dashserve.username = this.loginform.value.username;
                             this.router.navigate(['/dashboard/generatereport']);
                         }
 
                     }
 
 
+
                 }
-                else if (this.datavalue.result == 'failure') {
-                    this._snackBar.open("Group Not Defined", "", {
+                else if (this.datavalue.result == 'failure' && this.datavalue.reason == 'invaliduser') {
+                    this._snackBar.open("Username Or Password Incorrect", "", {
                         duration: 2000,
                     });
                 }
                 else {
-                    this._snackBar.open("Invalid User", "", {
+                    this._snackBar.open("Group Not Defined", "", {
                         duration: 2000,
                     });
                 }
@@ -153,13 +145,15 @@ export class loginComponent implements OnInit {
                     duration: 2000,
                 });
             });
-
-
-
     }
 
+    rememberme(value: any) {
+        if (value.checked == true) {
+            this.remember_me = true;
+        }
+        else {
+            this.remember_me = false;
+        }
 
-
-
-
+    }
 }

@@ -1,20 +1,15 @@
-<div fxLayout="row wrap" fxLayoutAlign="center start" [fxShow]="true" [fxHide]="false">
-  <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-    <div fxLayout="row wrap" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
-      <div fxLayout="column " style="background-color:#fff;" fxFlex="80" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-        <div>
-          <h4>Create Report List</h4>
-        </div>
-        <div fxLayout="row wrap" style="background-color:#fff;padding:12px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-          <div fxLayout="column wrap" fxFlex="60" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-            <div>
-              <span class="headerclass">Create Report List -1</span></div>
-          </div>
-          <div fxLayout="column wrap" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-            <div fxLayout="row wrap" fxLayoutAlign="space-around start" [fxShow]="true" [fxHide]="false">
-              <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#3cb878;border-radius:12px" class="crudclass" (click)="reportcreate()">create</button></div>
-              <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#f7941d;border-radius:12px" class="crudclass" (click)="updatereport()">Update</button></div>
-            </div>
+<div fxLayout="row wrap" style="height:100%;background:#f3f4f5;" fxLayoutAlign="center stretch" [fxShow]="true" [fxHide]="false">
+  <div fxLayout="column " fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" style="padding-left:4%" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <h3>
+        <span class="commontextredcolor">Create Report - List</span></h3>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <div fxLayout="column wrap" style="background-color:#fff;padding:15px" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="row wrap" style="height:37px;" fxLayoutAlign="start center" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="column wrap" style="text-indent: 20px;" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"></div>
+          <div fxLayout="row wrap" fxFlex="50" fxLayoutAlign="end center" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="row wrap" class="Dbbutton mr-5" fxFlex="100" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false"><button mat-button class="mr-10 greenbtn" (click)="reportcreate()">Create</button><button mat-button class="mr-10 orangebtn" (click)="updatereport()">Update</button></div>
           </div>
         </div>
         <div fxLayout="column wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">

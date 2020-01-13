@@ -105,7 +105,7 @@ export class reportconfiglistComponent extends NBaseComponent implements OnInit 
     }
      selectTablerowData(selectedRows: object[]) {
         this.updateData = selectedRows;
-        // console.log("getrowselect" + JSON.stringify(this.updateData))
+        console.log("getrowselect" + JSON.stringify(this.updateData))
     }
     
     ReportConfigList(){

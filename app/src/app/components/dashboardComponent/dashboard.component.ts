@@ -16,34 +16,39 @@ import { dashboardService } from '../../services/dashboard/dashboard.service';
 
 export class dashboardComponent extends NBaseComponent implements OnInit {
     mm: ModelMethods;
-    uservalue:any;
-    navigation:any
+    uservalue: any;
+    navigation: any
     selectedItem = null;
+    grouptype: any;
     constructor(private bdms: NDataModelService, private nav: dashboardService) {
         super();
         this.mm = new ModelMethods(bdms);
     }
     userName: string = "";
     arrayval: any;
+    logoutarray: any = [
+        { viewValue: 'Logout' },
+    ];
     ngOnInit() {
         // console.log(this.nav.menuArray[0]["Abi"]);
-        this.uservalue = this.nav.grouptype;
+        this.uservalue = this.nav.username;
+        this.grouptype = this.nav.grouptype
         this.navigation = this.nav.menuArray;
-        // console.log(this.nav.grouptype);
-        // console.log(this.nav.menuArray);
+
 
         this.arrayval = JSON.parse(localStorage.getItem("currentUser"));
-        // this.userName = this.arrayval.result.user_name;
     }
-    //select value highlight
+
     onClick(item) {
-        //   console.log(item)
+
         this.selectedItem = item;
     }
     sidenavOpen() {
-        //   console.log("sidenavOpen")
+
     }
     sidenavclose() {
-        //   console.log("sidenavClosed")
+    }
+    logoutoption() {
+        console.log('open');
     }
 }

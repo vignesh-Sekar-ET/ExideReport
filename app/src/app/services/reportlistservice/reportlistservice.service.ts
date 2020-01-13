@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 export class reportlistserviceService {
     dm: ModelMethods
     sysProps;
+    
     systemProperties: any;
     updatename: any;
     deleteName: any;
@@ -43,6 +44,7 @@ export class reportlistserviceService {
     getReportGroupList() {
         this.http.get(`${this.systemProperties.modularUrl}groupList`).subscribe(groupList => {
             if (groupList instanceof Array) {
+                
                 this.groupList = groupList.map(item => {
                     if (item.Active == 1) { item.Active = 'Active' }
                     else { item.Active = 'Inactive' }
