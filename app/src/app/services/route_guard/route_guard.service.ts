@@ -12,6 +12,8 @@ export class route_guardService implements CanActivate {
     constructor(private auth: authService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        // console.log(route);
+        // console.log(state);
         return this.auth.isUserAuthenticated(route);
     }
 

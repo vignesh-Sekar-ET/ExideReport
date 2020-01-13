@@ -11,84 +11,81 @@
             "path": "dashboard",
             "children": [
                 {
-                    "path": "adminDashboard",
-                    "component": "admindashboardComponent"
-                },
-                {
-                    "path": "generatereport",
-                    "component": "generatereportComponent"
-                },
-                {
-                    "path": "admindash",
+                    "path": "admindashboard",
                     "component": "admindashboardComponent",
-                    "children": []
-                },
-                {
-                    "path": "createuserlist",
-                    "component": "userreportlistComponent",
                     "canActivate": "route_guardService"
                 },
                 {
-                    "path": "userCreate",
-                    "component": "usercreateComponent"
+                    "path": "generatereport",
+                    "component": "generatereportComponent",
+                    "canActivate": "route_guardService"
                 },
                 {
-                    "path": "userUpdate",
-                    "component": "userupdateComponent"
-                },
-                {
-                    "path": "usergroupmap",
-                    "component": "usergrouplistComponent"
+                    "path": "groupmaplist",
+                    "component": "usergrouplistComponent",
+                    "canActivate": "route_guardService"
                 },
                 {
                     "path": "createreport",
                     "component": "createreportComponent",
-                    "data": ""
+                    "data": "",
+                    "canActivate": "route_guardService"
                 },
                 {
                     "path": "createreportlist",
-                    "component": "createreportlistComponent"
+                    "component": "createreportlistComponent",
+                    "canActivate": "route_guardService"
                 },
                 {
                     "path": "reportgrouplist",
-                    "component": "reportgrouplistComponent"
+                    "component": "reportgrouplistComponent",
+                    "canActivate": "route_guardService"
                 },
                 {
-                    "path": "reportCreate",
-                    "component": "reportgroupcreateComponent"
+                    "path": "reportgroupcreate",
+                    "component": "reportgroupcreateComponent",
+                    "canActivate": "route_guardService"
                 },
                 {
-                    "path": "reportDelete",
-                    "component": "reportgroupdeleteComponent"
+                    "path": "reportgroupdelete",
+                    "component": "reportgroupdeleteComponent",
+                    "canActivate": "route_guardService"
                 },
                 {
                     "component": "reportconfiglistComponent",
-                    "path": "reportConfigList"
+                    "path": "reportConfigList",
+                    "canActivate": "route_guardService"
                 },
                 {
                     "component": "reportconfigcreateComponent",
-                    "path": "reportConfigCreate"
+                    "path": "reportConfigCreate",
+                    "canActivate": "route_guardService"
                 },
                 {
                     "component": "usergroupmappingcreateComponent",
                     "path": "userGroupmappingCreate",
-                    "children": []
+                    "children": [],
+                    "canActivate": "route_guardService"
                 },
                 {
                     "path": "dbconfiglist",
-                    "component": "dbconfiglistComponent"
+                    "component": "dbconfiglistComponent",
+                    "canActivate": "route_guardService"
                 },
                 {
                     "path": "dbconfigCreate",
-                    "component": "dbconfigcreateComponent"
+                    "component": "dbconfigcreateComponent",
+                    "canActivate": "route_guardService"
                 },
                 {
-                    "path": "dbconfigupdate",
-                    "component": "dbconfigupdateComponent"
+                    "path": "systemconfig",
+                    "component": "systemconfigComponent",
+                    "canActivate": "route_guardService"
                 }
             ],
             "redirectTo": "",
-            "pathMatch": ""
+            "pathMatch": "",
+            "canActivate": "route_guardService"
         },
         {
             "path": "''",

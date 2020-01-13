@@ -8,9 +8,11 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class dashboardService {
     grouptype: any;
+    username:any;
     dm: ModelMethods
     sysProps;
     systemProperties: any;
+	getTableValue: any;
     dbconfigupdate: any;
     dbConfigLabelCreateUpdate:string;
     constructor(private bDataModelService: NDataModelService,
@@ -53,24 +55,24 @@ export class dashboardService {
         return this.http.post(URL, body);
     }
     menuArray = [{
-        "admin": [{ name: "Dashboard", maticon: "dashboard", router: 'admindash' },
-        { name: "Create Report group", maticon: "assignment_ind", router: 'reportgrouplist' },
-        { name: "Create Report", maticon: "description", router: 'createreportlist' },
+        "admin": [{ name: "Dashboard", maticon: "dashboard", router: 'admindashboard' },
+        { name: "Report group", maticon: "assignment_ind", router: 'reportgrouplist' },
+        { name: "Report", maticon: "description", router: 'createreportlist' },
         { name: "Report Configuration", maticon: "description", router: 'reportConfigList' },
-        { name: "DB Configuration", maticon: "description", router: 'dbconfiglist' },
+        { name: "JNDI Configuration", maticon: "grid_on", router: 'dbconfiglist' },
 
-        { name: "System Config", maticon: "language", router: 'SystemConfig' },
-        { name: "User Group Mapping", maticon: "face", router: 'usergroupmap' },
+        { name: "System Configuration", maticon: "settings_brightness", router: 'systemconfig' },
+        { name: "Group Mapping", maticon: "people_outline", router: 'groupmaplist' },
         { name: "Generate Report", maticon: "attachment", router: 'generatereport' },
-        { name: "Logout", maticon: "home", router: "/login" }],
+        { name: "Logout", maticon: "power_settings_new", router: "/login" }],
 
         "reportwriter": [{ name: "Create Report group", maticon: "assignment_ind", router: 'reportgrouplist' },
         { name: "Create Report", maticon: "description", router: 'createreportlist' },
-        { name: "logout", maticon: "home", router: '/login' }],
+        { name: "logout", maticon: "power_settings_new", router: '/login' }],
 
         "enduser": [{ name: "Generate Report", maticon: "attachment", router: 'generatereport' },
 
-        { name: "Logout ", maticon: "home", router: '/login' }]
+        { name: "Logout ", maticon: "power_settings_new", router: '/login' }]
 
     }]
 

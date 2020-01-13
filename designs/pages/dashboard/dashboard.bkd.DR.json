@@ -703,6 +703,12 @@
                                     "_value": "false",
                                     "_type": "kv",
                                     "_attrDef": "p"
+                                },
+                                {
+                                    "_key": "(click)",
+                                    "_value": "logoutoption()",
+                                    "_type": "kv",
+                                    "_attrDef": "c"
                                 }
                             ]
                         },
@@ -1145,7 +1151,7 @@
                     },
                     {
                         "_key": "*ngFor",
-                        "_value": "*ngFor=\"let menu of navigation[0][uservalue]\"",
+                        "_value": "*ngFor=\"let menu of navigation[0][grouptype]\"",
                         "_type": "a",
                         "_attrDef": "c"
                     },
@@ -1505,7 +1511,7 @@
                                     },
                                     {
                                         "_key": "html",
-                                        "_value": "<mat-icon>{{menu.maticon}}</mat-icon>",
+                                        "_value": "<mat-icon class = \"table\">{{menu.maticon}}</mat-icon>",
                                         "_type": "a",
                                         "_attrDef": "p"
                                     }
@@ -1784,7 +1790,7 @@
                                     },
                                     {
                                         "_key": "html",
-                                        "_value": "{{menu.name}}",
+                                        "_value": "<span class=\"table\">{{menu.name}}</span>",
                                         "_type": "a",
                                         "_attrDef": "p"
                                     }

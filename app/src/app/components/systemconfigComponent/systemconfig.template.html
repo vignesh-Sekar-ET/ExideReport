@@ -1,38 +1,45 @@
-<div fxLayout="row wrap" style="height:100%;background:#f3f4f5;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+<div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
   <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-    <div fxLayout="row wrap" style="padding-left:4%" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" style="background:#f3f4f5;padding-left:40px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
       <h3>
-        <span class="commontextredcolor"> {{title}}</span></h3>
+        <span class="commontextredcolor">System Configuration</span></h3>
     </div>
     <div fxLayout="row wrap" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
       <div fxLayout="column wrap" style="background-color:#fff;padding:15px;margin:15px" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-        <form [formGroup]="reportCreateForm">
+        <div fxLayout="row wrap" style="background-color:#fff;padding:12px" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="row wrap" class="Dbbutton mr-5" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false"><button mat-button class="mr-10 orangebtn" (click)="update()">Update</button></div>
+        </div>
+        <div fxLayout="column wrap" style="margin:5px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div>
+            <mat-divider></mat-divider>
+          </div>
+        </div>
+        <form [formGroup]="systemConfigForm">
           <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
             <div fxLayout="row wrap" style="padding:12px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
               <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
                 <div>
-                  <span class="headerblackclass">Report Group Name</span></div>
+                  <span class="headerblackclass">Maximum Time Out(In sec)</span></div>
                 <div fxLayout="column wrap" style="padding-top:8px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
                   <mat-form-field class="reportGroupNameInbox" [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
-                    <input matInput required formControlName="reportGroupName">
-                    <mat-error align="start" *ngIf="reportCreateForm.invalid">Please Enter reportname!</mat-error>
+                    <input matInput required formControlName="systemMaxTimeout" appAllowOnlyNumber="appAllowOnlyNumber" readonly="true">
+                    <mat-error align="start" *ngIf="systemConfigForm.invalid">Please Enter Maximum Timeout</mat-error>
                   </mat-form-field>
                 </div>
               </div>
               <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
                 <div fxLayout="row wrap" fxLayoutAlign="start start" [fxShow]="true" [fxHide]="false">
-                  <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
-                    <div style="margin-right: 60px;">
-                      <span class="headerblackclass">Report Group Code</span></div>
+                  <div fxLayout="column wrap" fxFlex="60" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
+                    <div style="margin-right: 28px">
+                      <span class="headerblackclass">Maximum Record Output</span></div>
                     <div fxLayout="column wrap" style="padding-top:8px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
                       <mat-form-field class="reportGroupNameInbox" [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
-                        <input matInput required formControlName="reportGroupCode" appAllowOnlyNumber="appAllowOnlyNumber">
-                        <mat-error align="start" *ngIf="this.reportCreateForm.invalid">Please enter reportgroupcode!!</mat-error>
-                        <mat-error align="start" *ngIf="reportCreateForm.value.reportGroupCode.length &gt;10">Please Enter max 10 code</mat-error>
+                        <input matInput required formControlName="systemMaxRecordOutput" appAllowOnlyNumber="appAllowOnlyNumber" readonly="true">
+                        <mat-error align="start" *ngIf="systemConfigForm.invalid">Please Enter Maximum record output</mat-error>
                       </mat-form-field>
                     </div>
                   </div>
-                  <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
+                  <div fxLayout="column wrap" fxFlex="40" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
                     <div style="margin-bottom:8px;margin-right: 151px;">
                       <span class="headerblackclass">Status</span></div>
                     <div fxLayout="column wrap" class="rtgpdropdown" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
@@ -49,11 +56,8 @@
                 </div>
               </div>
             </div>
-            <div fxLayout="row wrap" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false">
-              <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="false" [fxHide]="true"></div>
-              <div fxLayout="row wrap" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false">
-                <div fxLayout="row wrap" class="Dbbutton" fxFlex="100" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false"><button mat-button class="UserGroupCreateButton commonbtnalign" (click)="onSubmit()" type="submit">Submit</button><button mat-button class="UserGroupCommonButton commonbtnlastalign" routerLink="/dashboard/reportgrouplist">Cancel</button></div>
-              </div>
+            <div fxLayout="row wrap" fxLayoutAlign="end center" [fxShow]="true" [fxHide]="false">
+              <div fxLayout="row wrap" class="Dbbutton" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false"><button mat-button class="UserGroupCreateButton" (click)="Submit()">Submit</button><button mat-button class="UserGroupCommonButton">Clear</button></div>
             </div>
           </div>
         </form>

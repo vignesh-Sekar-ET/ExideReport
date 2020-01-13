@@ -123,5 +123,10 @@
         "appPageName": "dbConfigList",
         "componentName": "dbconfiglistComponent",
         "isEntry": false
+    },
+    "163a0060-63d4-f050-92e5-356b5e5bdfd2": {
+        "appPageName": "systemconfig",
+        "componentName": "systemconfigComponent",
+        "isEntry": false
     }
 }

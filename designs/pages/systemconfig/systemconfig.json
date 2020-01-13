@@ -1,0 +1,13 @@
+{
+    "appPageId": "9dcb7763-7943-c8d4-42af-3348585fe68c",
+    "appPageName": "systemConfig",
+    "componentName": "systemconfigComponent",
+    "selectorName": "bh-systemconfig",
+    "htmlFileName": "systemconfig.template.html",
+    "tsFileName": "systemconfig.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

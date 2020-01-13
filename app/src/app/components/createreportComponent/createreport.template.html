@@ -1,66 +1,104 @@
-<div fxLayout="row wrap" fxLayoutAlign="center start" [fxShow]="true" [fxHide]="false">
-  <div fxLayout="column wrap" style="background-color:#fff;" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-    <div>
-      <h4>{{checkvalue}}</h4>
+<div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center stretch" [fxShow]="true" [fxHide]="false">
+  <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" style="text-indent: 20px;background:#f3f4f5;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <h3>
+        <span class="commontextredcolor">{{checkvalue}}</span></h3>
     </div>
-    <div fxLayout="row wrap" style="background-color:#fff;padding:12px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-      <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-        <div>
-          <span class="headerclass">{{checkvalue}}</span></div>
-      </div>
-    </div>
-    <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-      <div>
-        <mat-divider></mat-divider>
-      </div>
-    </div>
-    <form [formGroup]="createreportform" (ngSubmit)="reportformsubmit()">
-      <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false">
-        <div fxLayout="column wrap" style="padding:15px" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false" fxFlex.xs="100">
-          <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
-            <input matInput type="text" placeholder="Report Name" required formControlName="rname">
-            <mat-error align="start" *ngIf="createreportform.value.rname == &apos;&apos;">Please Enter ReportName</mat-error>
-            <mat-error align="start" *ngIf="createreportform.value.rname.length &lt; 3 &amp;&amp; createreportform.value.rname !=&apos;&apos;">Enter min 3 to max 20 char</mat-error>
-            <mat-error align="start" *ngIf="createreportform.value.rname.length &gt;25">Enter min 3 to max 20 char</mat-error>
-          </mat-form-field>
-          <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
-            <mat-select formControlName="source" placeholder="JNDI Name" required>
-              <ng-template ngFor let-option [ngForOf]="selectvalue" let-i="index">
-                <mat-option [value]="option.jndi_id">{{option.JNDIName}}</mat-option>
-              </ng-template>
-            </mat-select>
-            <mat-error align="start" *ngIf="createreportform.value.source== &apos;&apos;">Please select JNDI Name</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <textarea matInput rows="12" cols="40" formControlName="query" name="query" placeholder="Query" required></textarea>
-          </mat-form-field>
-        </div>
-        <div fxLayout="column wrap" style="padding:15px;" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-          <div style="margin-bottom:10px">
-            <mat-label>Query Type *</mat-label>
+    <div fxLayout="row wrap" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
+      <div fxLayout="column wrap" style="background-color:#fff;padding:15px" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+        <div fxLayout="column wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div>
+            <mat-divider></mat-divider>
           </div>
-          <div fxLayout="row wrap" fxLayoutAlign="space-between stretch" [fxShow]="true" [fxHide]="false">
-            <mat-radio-group formControlName="typeq" [labelPosition]="&apos;after&apos;">
-              <mat-radio-button required [value]="type.value" *ngFor="let type of querytype">{{type.viewValue}}</mat-radio-button>
-            </mat-radio-group>
-          </div>
-          <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
-            <input matInput placeholder="Parameter Table Name" required formControlName="ptname">
-            <mat-error align="start" *ngIf="createreportform.value.ptname== &apos;&apos;">Please Enter TableName</mat-error>
-            <mat-error align="start" *ngIf="createreportform.value.ptname.length &lt; 3 &amp;&amp; createreportform.value.ptname!=&apos;&apos;">Enter min 3 to max 20 char</mat-error>
-            <mat-error align="start" *ngIf="createreportform.value.ptname.length &gt;25">Enter min 3 to max 20 char</mat-error>
-          </mat-form-field>
-          <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
-            <mat-select formControlName="rgpname" placeholder="Report Group Name" required>
-              <ng-template ngFor let-option [ngForOf]="RGname" let-i="index">
-                <mat-option [value]="option.id">{{option.Groupname}}</mat-option>
-              </ng-template>
-            </mat-select>
-            <mat-error align="start" *ngIf="createreportform.value.rgpname== &apos;&apos;">Please select Report Group Name</mat-error>
-          </mat-form-field>
-          <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false"><button mat-button style="background-color:#0e78e5;border-radius:12px" [disabled]="createreportform.invalid" type="submit">Create</button><button mat-button style="background-color:#ed1c24;border-radius:12px" (click)="formclear()">Cancel</button></div>
         </div>
+        <form [formGroup]="createreportform" (ngSubmit)="reportformsubmit()">
+          <div fxLayout="row wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="column wrap" style="padding:15px" fxFlex="45" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false" fxFlex.xs="100">
+              <div>
+                <span class="headerblackclass">Report Name *</span></div>
+              <div fxLayout="column wrap" style="padding-top:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+                <mat-form-field class="reportGroupNameInbox" [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
+                  <input matInput type="text" required formControlName="rname">
+                  <mat-error align="start" *ngIf="createreportform.value.rname == &apos;&apos;">Please Enter ReportName</mat-error>
+                  <mat-error align="start" *ngIf="createreportform.value.rname.length &lt; 3 &amp;&amp; createreportform.value.rname !=&apos;&apos;">Enter min 3 to max 20 char</mat-error>
+                  <mat-error align="start" *ngIf="createreportform.value.rname.length &gt;25">Enter min 3 to max 20 char</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="column wrap" fxFlex="10" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"></div>
+            <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+              <div>
+                <span class="headerblackclass">Query Type *</span></div>
+              <div fxLayout="row wrap" fxLayoutAlign="space-between stretch" [fxShow]="true" [fxHide]="false">
+                <mat-radio-group formControlName="typeq" [labelPosition]="&apos;after&apos;">
+                  <mat-radio-button style="padding:10px;" required [value]="type.value" *ngFor="let type of querytype">{{type.viewValue}}</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="column wrap" style="padding:15px" fxFlex="45" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false" fxFlex.xs="100">
+              <div>
+                <span class="headerblackclass">JNDI Name *</span></div>
+              <div fxLayout="column wrap" class="rtgpdropdown" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+                <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
+                  <mat-select formControlName="source" required>
+                    <ng-template ngFor let-option [ngForOf]="selectvalue" let-i="index">
+                      <mat-option [value]="option.jndi_id">{{option.JNDIName}}</mat-option>
+                    </ng-template>
+                  </mat-select>
+                  <mat-error align="start" *ngIf="createreportform.value.source== &apos;&apos;">Please select JNDI Name</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="column wrap" fxFlex="10" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"></div>
+            <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+              <div>
+                <span class="headerblackclass">Parameter Table Name</span></div>
+              <div fxLayout="column wrap" style="padding-top:8px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+                <mat-form-field class="reportGroupNameInbox" [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
+                  <input matInput required formControlName="ptname">
+
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="column wrap" style="padding:15px" fxFlex="45" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false" fxFlex.xs="100">
+              <div>
+                <span class="headerblackclass">Query *</span></div>
+              <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+                <mat-form-field class="textareaborder">
+                  <textarea matInput rows="8" cols="40" formControlName="query" name="query" required></textarea>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+                <div>
+                  <mat-error align="start" *ngIf="createreportform.controls.query.invalid &amp;&amp; createreportform.controls.query.touched">Please Enter Query</mat-error>
+                </div>
+              </div>
+            </div>
+            <div fxLayout="column wrap" fxFlex="10" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"></div>
+            <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+              <div>
+                <span class="headerblackclass">Report Group Name *</span></div>
+              <div fxLayout="column wrap" class="rtgpdropdown" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+                <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
+                  <mat-select formControlName="rgpname" required>
+                    <ng-template ngFor let-option [ngForOf]="RGname" let-i="index">
+                      <mat-option [value]="option.id">{{option.Groupname}}</mat-option>
+                    </ng-template>
+                  </mat-select>
+                  <mat-error align="start" *ngIf="createreportform.value.rgpname== &apos;&apos;">Please select Report Group Name</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row wrap" style="margin-top:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+                <div fxLayout="row wrap" class="Dbbutton" fxFlex="100" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false"><button mat-button class="mr-10 greenbtn" [disabled]="createreportform.invalid" type="submit">Submit</button><button mat-button class="redbtn" type="button" routerLink="/dashboard/createreportlist">Cancel</button></div>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
 </div>

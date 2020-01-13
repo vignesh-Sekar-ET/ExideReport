@@ -15,8 +15,9 @@ export class reportconfigserviceService {
     dropdownlist: any;
     reportid: number;
     reportconfiglist: any;
-    changecomp: any ;
+    changecomp: any;
     updatename: any;
+    sttr: any;
     constructor(private bdms: NDataModelService, private http: HttpClient) {
 
         this.dm = new ModelMethods(bdms);
@@ -40,6 +41,7 @@ export class reportconfigserviceService {
         let emailsubscription = "'" + email + "'";
         url += "createreportconfig "
         let body = { 'reports_id': reportName, 'network': networklocationn, 'starttime': starttimee, 'endtime': endtimee, 'isdownloadable': downloablee, 'status': selectedstatus, 'issubscribe': emailsubscription };
+
         return this.http.post(url, body);
     }
     getReportConfigList() {
@@ -48,19 +50,41 @@ export class reportconfigserviceService {
 
             if (reportconfiglist instanceof Array) {
                 this.reportconfiglist = reportconfiglist.map(item => {
-                    // item.isdownloadable == 1 ? "Yes" : "No";
                     if (item.isdownloadable == 1) { item.isdownloadable = 'Yes' }
                     else { item.isdownloadable = 'No' }
                     if (item.issubscribe == 1) { item.issubscribe = 'Yes' }
                     else { item.issubscribe = 'No' }
-                    if (item.status == 1) { item.status = 'Yes' }
-                    else { item.status = 'No' }
+                    if (item.status == 1) { item.status = 'Active' }
+                    else { item.status = 'InActive' }
+                    
                     let timestart = new Date(item.starttime);
                     let setStartTime = timestart.getUTCHours() + ':' + timestart.getUTCMinutes();
-                    item.starttime = setStartTime;
+                    let AmOrPm = timestart.getUTCHours() >= 12 ? 'PM' : 'AM';
+                    if (AmOrPm == 'PM') {
+                        let sam = timestart.getUTCHours();
+                        sam -= 12;
+                        item.starttime = sam + ':' + timestart.getUTCMinutes() + AmOrPm;
+                    }
+                    else {
+                        this.sttr = timestart.getUTCHours() + ':' + timestart.getUTCMinutes() + AmOrPm;
+                        item.starttime = this.sttr;
+                    }
+
+
                     let timeend = new Date(item.endtime);
                     let setEndtime = timeend.getUTCHours() + ':' + timeend.getUTCMinutes();
-                    item.endtime = setEndtime;
+                    let PMOrAM = timeend.getUTCHours() >= 12 ? 'PM' : 'AM';
+                    if (PMOrAM == 'PM') {
+                        let timeEnd = timeend.getUTCHours();
+                        timeEnd -= 12;
+                        item.endtime = timeEnd + ':' + timeend.getUTCMinutes() + PMOrAM;
+                    }
+                    else {
+                        let endtr = timeend.getUTCHours() + ':' + timeend.getUTCMinutes() + PMOrAM
+                        item.endtime = endtr;
+                    }
+
+
                     return item;
                 });
             } else {

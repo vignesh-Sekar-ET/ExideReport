@@ -1,7 +1,7 @@
 <div fxLayout="row " class="Loginbackground" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
   <div fxLayout="column " class="login_Form" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
     <div fxLayout="column " fxLayoutAlign="center stretch" [fxShow]="true" [fxHide]="false"><img imgSrc="ReportBuilder/Login/Logo.png"></div>
-    <div fxLayout="column wrap" style="color: #1476db;  font-weight: bold;" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false"><span>
+    <div fxLayout="column wrap" style="color: #1476db;  font-weight: bold;" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false"><span style="padding-top:6px">
                 <span>REPORT BUILDER<span></span></span></span></div>
     <div fxLayout="column wrap" fxLayoutAlign="space-around stretch" [fxShow]="true" [fxHide]="false">
       <form [formGroup]="loginform" (ngSubmit)="LoginSubmit()">
@@ -18,8 +18,8 @@
             <mat-error align="start" *ngIf="loginform.value.password.length &lt;3 &amp;&amp; loginform.value.password !=&apos;&apos;">Enter min 3 to max 15 char</mat-error>
             <mat-error align="start" *ngIf="loginform.value.password.length &gt;15">Enter min 3 to max 15 char</mat-error>
           </mat-form-field>
-          <div fxLayout="row " style="padding:6px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-            <mat-checkbox required></mat-checkbox>
+          <div fxLayout="row " style="padding: 10px 0px;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <mat-checkbox (change)="rememberme($event)" required></mat-checkbox>
             <div style="padding-left:5px;">
               <span>Remember me<span></span></span></div>
           </div><button mat-button style="background-color:#ed1c24;color:white" [disabled]="loginform.invalid" type="submit">Login</button>

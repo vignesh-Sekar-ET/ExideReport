@@ -23,16 +23,17 @@ import { dashboardService } from '../../services/dashboard/dashboard.service';
 export class reportgrouplistComponent extends NBaseComponent implements OnInit {
     mm: ModelMethods;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
+    isLoading: boolean = true;
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     updateData: any;
     updatename: any;
     tablePaginationSettings: Columnsetting = <Columnsetting>{};
     columnDefinition = [];
-    constructor(private bdms: NDataModelService, public dialog: MatDialog, public route: Router, 
-    private formBuilder: FormBuilder, public reportservice: reportlistserviceService, private snackBar: NSnackbarService) {
+    constructor(private bdms: NDataModelService, public dialog: MatDialog, public route: Router,
+        private formBuilder: FormBuilder, public reportservice: reportlistserviceService, private snackBar: NSnackbarService) {
         super();
         this.mm = new ModelMethods(bdms);
-           this.refreshingtabledata();
+        this.refreshingtabledata();
         this.tablePaginationSettings.enablePagination = true;
         this.tablePaginationSettings.pageSize = 5;
         this.tablePaginationSettings.pageSizeOptions = [5, 10, 15];
@@ -41,14 +42,14 @@ export class reportgrouplistComponent extends NBaseComponent implements OnInit {
 
             {
                 'name': 'Groupname',
-                'displayName': 'Groupname',
+                'displayName': 'Group name',
                 'disableSorting': false,
                 'icon': 'face',
 
             },
             {
                 'name': 'GroupCode',
-                'displayName': 'GroupCode',
+                'displayName': 'Group code',
                 'disableSorting': false,
                 'icon': 'home',
             },
@@ -65,16 +66,17 @@ export class reportgrouplistComponent extends NBaseComponent implements OnInit {
 
 
     ngOnInit() {
-}
+        this.isLoading = false;
+    }
     onClickCreate() {
         this.reportservice.changecomp = "create";
-        this.route.navigateByUrl('/dashboard/reportCreate');
+        this.route.navigateByUrl('/dashboard/reportgroupcreate');
     }
     onClickUpdate() {
         this.reportservice.changecomp = "update";
         if (this.updateData) {
             this.reportservice.updatename = this.updateData;
-            this.route.navigateByUrl('/dashboard/reportCreate');
+            this.route.navigateByUrl('/dashboard/reportgroupcreate');
         }
         else {
             this.snackBar.openSnackBar('Please Select ReportGroup', 2000);
@@ -82,18 +84,17 @@ export class reportgrouplistComponent extends NBaseComponent implements OnInit {
         }
     }
     openDialog() {
-        // if (this.updateData) {
-            // this.reportservice.deleteName = this.updateData;
-            // this.reportservice.tableData = this.testContent;
+
+        if (this.updateData) {
+            this.reportservice.deleteName = this.updateData;
             const dialogRef = this.dialog.open(reportgroupdeleteComponent, {
                 width: '400px',
             });
+        }
+        else {
+            this.snackBar.openSnackBar('Please Select ReportGroup', 2000);
 
-        // }
-        // else {
-        //     this.snackBar.openSnackBar('Please Select ReportGroup', 2000);
-
-        // }
+        }
     }
 
     onNotifySelected(selectedRows: object[]) {
@@ -101,7 +102,8 @@ export class reportgrouplistComponent extends NBaseComponent implements OnInit {
     }
 
     refreshingtabledata() {
-     this.reportservice.getReportGroupList();
+        this.reportservice.getReportGroupList();
+        this.isLoading = false;
     }
 }
 

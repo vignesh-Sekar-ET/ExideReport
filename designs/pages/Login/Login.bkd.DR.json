@@ -349,7 +349,7 @@
                     "designerReference": [
                         {
                             "_key": "style",
-                            "_value": "",
+                            "_value": "padding-top:6px",
                             "_type": "kv",
                             "_attrDef": "p"
                         },
@@ -1144,7 +1144,7 @@
                                 },
                                 {
                                     "_key": "style",
-                                    "_value": "padding:6px",
+                                    "_value": "padding: 10px 0px;",
                                     "_type": "kv",
                                     "_attrDef": "p"
                                 },
@@ -1276,7 +1276,7 @@
                                     },
                                     {
                                         "_key": "(change)",
-                                        "_value": "",
+                                        "_value": "rememberme($event)",
                                         "_type": "kv",
                                         "_attrDef": "p"
                                     },

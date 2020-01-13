@@ -14,6 +14,10 @@ window['neutrinos'] = {
 }
 
 //CORE_REFERENCE_IMPORTS
+//CORE_REFERENCE_IMPORT-systemconfigserviceService
+import { systemconfigserviceService } from '../services/systemconfigservice/systemconfigservice.service';
+//CORE_REFERENCE_IMPORT-systemconfigComponent
+import { systemconfigComponent } from '../components/systemconfigComponent/systemconfig.component';
 //CORE_REFERENCE_IMPORT-dbconfiglistComponent
 import { dbconfiglistComponent } from '../components/dbconfiglistComponent/dbconfiglist.component';
 //CORE_REFERENCE_IMPORT-reportconfigcreateComponent
@@ -119,6 +123,8 @@ export const appDeclarations = [
   NMapComponent,
   ArtImgSrcDirective,
   //CORE_REFERENCE_PUSH_TO_DEC_ARRAY
+//CORE_REFERENCE_PUSH_TO_DEC_ARRAY-systemconfigComponent
+systemconfigComponent,
 //CORE_REFERENCE_PUSH_TO_DEC_ARRAY-dbconfiglistComponent
 dbconfiglistComponent,
 //CORE_REFERENCE_PUSH_TO_DEC_ARRAY-reportconfigcreateComponent
@@ -179,6 +185,8 @@ export const appProviders = [
   },
   NAuthGuardService,
   //CORE_REFERENCE_PUSH_TO_PRO_ARRAY
+//CORE_REFERENCE_PUSH_TO_PRO_ARRAY-systemconfigserviceService
+systemconfigserviceService,
 //CORE_REFERENCE_PUSH_TO_PRO_ARRAY-reportconfigserviceService
 reportconfigserviceService,
 //CORE_REFERENCE_PUSH_TO_PRO_ARRAY-authService
@@ -207,8 +215,7 @@ tablepaginationserviceService
 */
 
 // CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY_START
-export const appRoutes = [{path: 'login', component: loginComponent},{path: 'dashboard', component: dashboardComponent,
-children: [{path: 'adminDashboard', component: admindashboardComponent},{path: 'generatereport', component: generatereportComponent},{path: 'admindash', component: admindashboardComponent,
-children: []},{path: 'createuserlist', component: userreportlistComponent, canActivate: [route_guardService]},{path: 'userCreate', component: usercreateComponent},{path: 'userUpdate', component: userupdateComponent},{path: 'usergroupmap', component: usergrouplistComponent},{path: 'createreport', component: createreportComponent},{path: 'createreportlist', component: createreportlistComponent},{path: 'reportgrouplist', component: reportgrouplistComponent},{path: 'reportCreate', component: reportgroupcreateComponent},{path: 'reportDelete', component: reportgroupdeleteComponent},{path: 'reportConfigList', component: reportconfiglistComponent},{path: 'reportConfigCreate', component: reportconfigcreateComponent},{path: 'userGroupmappingCreate', component: usergroupmappingcreateComponent,
-children: []},{path: 'dbconfiglist', component: dbconfiglistComponent},{path: 'dbconfigCreate', component: dbconfigcreateComponent},{path: 'dbconfigupdate', component: dbconfigupdateComponent}]},{path: '', redirectTo: 'login', pathMatch: 'full'},{path: '**', component: PageNotFoundComponent}]
+export const appRoutes = [{path: 'login', component: loginComponent},{path: 'dashboard', component: dashboardComponent, canActivate: [route_guardService],
+children: [{path: 'admindashboard', component: admindashboardComponent, canActivate: [route_guardService]},{path: 'generatereport', component: generatereportComponent, canActivate: [route_guardService]},{path: 'groupmaplist', component: usergrouplistComponent, canActivate: [route_guardService]},{path: 'createreport', component: createreportComponent, canActivate: [route_guardService]},{path: 'createreportlist', component: createreportlistComponent, canActivate: [route_guardService]},{path: 'reportgrouplist', component: reportgrouplistComponent, canActivate: [route_guardService]},{path: 'reportgroupcreate', component: reportgroupcreateComponent, canActivate: [route_guardService]},{path: 'reportgroupdelete', component: reportgroupdeleteComponent, canActivate: [route_guardService]},{path: 'reportConfigList', component: reportconfiglistComponent, canActivate: [route_guardService]},{path: 'reportConfigCreate', component: reportconfigcreateComponent, canActivate: [route_guardService]},{path: 'userGroupmappingCreate', component: usergroupmappingcreateComponent, canActivate: [route_guardService],
+children: []},{path: 'dbconfiglist', component: dbconfiglistComponent, canActivate: [route_guardService]},{path: 'dbconfigCreate', component: dbconfigcreateComponent, canActivate: [route_guardService]},{path: 'systemconfig', component: systemconfigComponent, canActivate: [route_guardService]}]},{path: '', redirectTo: 'login', pathMatch: 'full'},{path: '**', component: PageNotFoundComponent}]
 // CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY_END

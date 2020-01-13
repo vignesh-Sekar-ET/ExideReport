@@ -30,21 +30,25 @@ export class reportgroupdeleteComponent extends NBaseComponent implements OnInit
     dataSource: MatTableDataSource<{}>;
     deleterow: any;
     index: any
+    groupname:any;
     constructor(private bdms: NDataModelService, public dialog: MatDialog, private reportListService: reportlistserviceService, private ser: dashboardService, private snackBar: NSnackbarService, private route: Router,
     ) {
 
         super();
         this.mm = new ModelMethods(bdms);
+        this.groupname=this.reportListService.deleteName[0].Groupname;
+       
     }
 
     ngOnInit() {
+       
 
     }
 
     onDeleteClick() {
         this.reportListService.deleteReportGroup()
         this.dialog.closeAll();
-        this.snackBar.openSnackBar('Report Deleted Successfully', 2000);
+        this.snackBar.openSnackBar('Report Group Deleted Successfully', 2000);
     }
 
 

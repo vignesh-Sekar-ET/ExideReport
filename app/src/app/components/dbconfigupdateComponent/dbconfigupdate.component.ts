@@ -105,7 +105,7 @@ export class dbconfigupdateComponent extends NBaseComponent implements OnInit {
                 console.log(data)
                 this.dbconfigUpdate = data;
                 if (this.dbconfigUpdate.result) {
-                    this.route.navigateByUrl('dashboard/DbGrouplist');
+                    this.route.navigateByUrl('dashboard/dbconfiglist');
                     this.openSnackBar()
                 }
 

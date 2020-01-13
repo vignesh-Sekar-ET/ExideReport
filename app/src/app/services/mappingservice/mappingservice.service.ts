@@ -29,4 +29,30 @@ export class mappingserviceService {
         console.log(URL);
         return this.http.get(URL)
     }
+    postUserGroupmapping(usergroupmapping) {
+        let URL = this.systemProperties.modularUrl;
+        let body = {
+            "usermapping": usergroupmapping
+        }
+        URL += "usermappingcreate";
+        console.log(URL)
+        return this.http.post(URL, body);
+    }
+    updateUserGroupmapping(usergroup, reportgroup, id) {
+        let URL = this.systemProperties.modularUrl;
+        let body = {
+            "usergroup": usergroup,
+            "reportgroup":reportgroup,
+            "id":id
+        }
+        URL += "usermappingupdate";
+        console.log(body)
+        return this.http.post(URL, body);
+    }
+    getuserGroupmapping() {
+        let URL = this.systemProperties.modularUrl;
+        URL += "usermappinglist";
+        console.log(URL);
+        return this.http.get(URL)
+    }
 }

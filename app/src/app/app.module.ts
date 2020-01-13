@@ -9,9 +9,9 @@ import { AllowOnlyNumberDirective } from './allow-only-number.directive';
 import { usergroupmappingcreateComponent } from './components/usergroupmappingcreateComponent/usergroupmappingcreate.component';
 import { usergroupmappingviewComponent } from './components/usergroupmappingviewComponent/usergroupmappingview.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 import { MaterialTimePickerModule } from '@candidosales/material-time-picker';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -19,8 +19,8 @@ import { MaterialTimePickerModule } from '@candidosales/material-time-picker';
 @NgModule({
   declarations: [...appDeclarations, CcLogoDirective, AllowOnlyNumberDirective
     , usergroupmappingcreateComponent, usergroupmappingviewComponent],
-  imports: [...appImportModules,CalendarModule,NgMultiSelectDropDownModule,MaterialTimePickerModule, UserIdleModule.forRoot({ idle: 600, timeout: 10, ping: 10 }), AngularMultiSelectModule],
-  providers: [...appProviders],
+  imports: [...appImportModules,CalendarModule,MaterialTimePickerModule, UserIdleModule.forRoot({ idle: 180, timeout: 1, ping:0 }), AngularMultiSelectModule],
+  providers: [...appProviders,CookieService],
   entryComponents: [...appEntryComponents, reportgroupdeleteComponent, userdeleteComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [...appBootstrap]
