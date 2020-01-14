@@ -1,11 +1,11 @@
 <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
   <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-    <div fxLayout="row wrap" style="background:#f3f4f5;padding-left:40px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" style="background:#f3f4f5;padding-left:2%" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
       <h3>
         <span class="commontextredcolor">System Configuration</span></h3>
     </div>
     <div fxLayout="row wrap" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
-      <div fxLayout="column wrap" style="background-color:#fff;padding:15px;margin:15px" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+      <div fxLayout="column wrap" style="background-color:#fff;margin:15px" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
         <div fxLayout="row wrap" style="background-color:#fff;padding:12px" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false">
           <div fxLayout="row wrap" class="Dbbutton mr-5" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false"><button mat-button class="mr-10 orangebtn" (click)="update()">Update</button></div>
         </div>
@@ -16,13 +16,13 @@
         </div>
         <form [formGroup]="systemConfigForm">
           <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-            <div fxLayout="row wrap" style="padding:12px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
               <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
                 <div>
                   <span class="headerblackclass">Maximum Time Out(In sec)</span></div>
                 <div fxLayout="column wrap" style="padding-top:8px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
                   <mat-form-field class="reportGroupNameInbox" [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
-                    <input matInput required formControlName="systemMaxTimeout" appAllowOnlyNumber="appAllowOnlyNumber" readonly="true">
+                    <input matInput required formControlName="systemMaxTimeout" appAllowOnlyNumber="appAllowOnlyNumber">
                     <mat-error align="start" *ngIf="systemConfigForm.invalid">Please Enter Maximum Timeout</mat-error>
                   </mat-form-field>
                 </div>
@@ -34,7 +34,7 @@
                       <span class="headerblackclass">Maximum Record Output</span></div>
                     <div fxLayout="column wrap" style="padding-top:8px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
                       <mat-form-field class="reportGroupNameInbox" [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
-                        <input matInput required formControlName="systemMaxRecordOutput" appAllowOnlyNumber="appAllowOnlyNumber" readonly="true">
+                        <input matInput required formControlName="systemMaxRecordOutput" appAllowOnlyNumber="appAllowOnlyNumber">
                         <mat-error align="start" *ngIf="systemConfigForm.invalid">Please Enter Maximum record output</mat-error>
                       </mat-form-field>
                     </div>

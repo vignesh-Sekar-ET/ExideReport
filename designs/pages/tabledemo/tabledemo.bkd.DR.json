@@ -137,7 +137,7 @@
                 "designerReference": [
                     {
                         "_key": "style",
-                        "_value": "width:95%",
+                        "_value": "width:100%",
                         "_type": "kv",
                         "_attrDef": "p"
                     },

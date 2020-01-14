@@ -58,7 +58,7 @@ export class dashboardService {
         "admin": [{ name: "Dashboard", maticon: "dashboard", router: 'admindashboard' },
         { name: "Report group", maticon: "assignment_ind", router: 'reportgrouplist' },
         { name: "Report", maticon: "description", router: 'createreportlist' },
-        { name: "Report Configuration", maticon: "description", router: 'reportConfigList' },
+        { name: "Report Configuration", maticon: "perm_data_setting", router: 'reportConfigList' },
         { name: "JNDI Configuration", maticon: "grid_on", router: 'dbconfiglist' },
 
         { name: "System Configuration", maticon: "settings_brightness", router: 'systemconfig' },

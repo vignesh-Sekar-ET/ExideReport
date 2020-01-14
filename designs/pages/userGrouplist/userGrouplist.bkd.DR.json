@@ -149,7 +149,7 @@
                     },
                     {
                         "_key": "class",
-                        "_value": "commonHeaderTextColor",
+                        "_value": "",
                         "_type": "kv",
                         "_attrDef": "p"
                     },
@@ -203,7 +203,7 @@
                     "designerReference": [
                         {
                             "_key": "style",
-                            "_value": "margin-left: 45px;",
+                            "_value": "",
                             "_type": "kv",
                             "_attrDef": "p"
                         },

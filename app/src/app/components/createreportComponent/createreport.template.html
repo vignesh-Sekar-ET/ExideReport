@@ -1,18 +1,13 @@
 <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center stretch" [fxShow]="true" [fxHide]="false">
   <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-    <div fxLayout="row wrap" style="text-indent: 20px;background:#f3f4f5;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" style="padding-left:2%;background:#f3f4f5;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
       <h3>
         <span class="commontextredcolor">{{checkvalue}}</span></h3>
     </div>
     <div fxLayout="row wrap" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
       <div fxLayout="column wrap" style="background-color:#fff;padding:15px" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-        <div fxLayout="column wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-          <div>
-            <mat-divider></mat-divider>
-          </div>
-        </div>
         <form [formGroup]="createreportform" (ngSubmit)="reportformsubmit()">
-          <div fxLayout="row wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
             <div fxLayout="column wrap" style="padding:15px" fxFlex="45" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false" fxFlex.xs="100">
               <div>
                 <span class="headerblackclass">Report Name *</span></div>
@@ -36,7 +31,7 @@
               </div>
             </div>
           </div>
-          <div fxLayout="row wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
             <div fxLayout="column wrap" style="padding:15px" fxFlex="45" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false" fxFlex.xs="100">
               <div>
                 <span class="headerblackclass">JNDI Name *</span></div>
@@ -63,7 +58,7 @@
               </div>
             </div>
           </div>
-          <div fxLayout="row wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
             <div fxLayout="column wrap" style="padding:15px" fxFlex="45" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false" fxFlex.xs="100">
               <div>
                 <span class="headerblackclass">Query *</span></div>

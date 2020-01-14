@@ -936,6 +936,12 @@
                                     "_value": "username",
                                     "_type": "kv",
                                     "_attrDef": "c"
+                                },
+                                {
+                                    "_key": "(keyup)",
+                                    "_value": "usernamechange($event)",
+                                    "_type": "kv",
+                                    "_attrDef": "c"
                                 }
                             ]
                         },

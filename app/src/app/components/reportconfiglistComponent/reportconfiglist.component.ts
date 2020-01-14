@@ -43,7 +43,7 @@ export class reportconfiglistComponent extends NBaseComponent implements OnInit 
             },
             {
                 'name': 'starttime',
-                'displayName': 'Execution Srt Time',
+                'displayName': 'Start Time',
                 'disableSorting': false,
                 'icon': 'face',
                 'formcontrol': 'jndc1'
@@ -51,7 +51,7 @@ export class reportconfiglistComponent extends NBaseComponent implements OnInit 
             },
             {
                 'name': 'endtime',
-                'displayName': 'Execution End Time',
+                'displayName': 'End Time',
                 'disableSorting': false,
                 'icon': 'home',
                 'formcontrol': 'jndc2'

@@ -50,6 +50,27 @@ export class generatereportComponent implements OnInit {
         this.reportservice.genreportlist().subscribe((response) => {
             this.selectvalue = response;
             console.log(this.selectvalue);
+            this.selectvalue.length > 0 ? this.dropdownsetting = {
+                singleSelection: true,
+                text: "Select Report",
+                enableSearchFilter: true,
+                labelKey: "ReportName",
+                primaryKey: "reports_id",
+                showCheckbox: false,
+                classes: "myclass custom-class",
+                noDataLabel: "No Reports Found",
+                maxHeight: 150
+            } : this.dropdownsetting = {
+                singleSelection: true,
+                text: "Select Report",
+                enableSearchFilter: false,
+                labelKey: "ReportName",
+                primaryKey: "reports_id",
+                showCheckbox: false,
+                classes: "myclass custom-class",
+                noDataLabel: "No Reports Found",
+                maxHeight: 150
+            };
         });
         this.dropdownsetting = {
             singleSelection: true,
@@ -59,16 +80,16 @@ export class generatereportComponent implements OnInit {
             primaryKey: "reports_id",
             showCheckbox: false,
             classes: "myclass custom-class",
-            noDataLabel :"No Reports Found",
-            maxHeight:150
+            noDataLabel: "No Reports Found",
+            maxHeight: 150
         };
 
 
     }
 
-   
+
     onDeSelectAll(item: any) {
-       this.generatereportform.controls['rname'].setValue('');
+        this.generatereportform.controls['rname'].setValue('');
     }
 
 

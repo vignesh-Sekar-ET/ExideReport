@@ -5,15 +5,10 @@
         <span class="commontextredcolor">Generate Report</span></h3>
     </div>
     <div fxLayout="row wrap" fxLayoutAlign="center center" [fxShow]="true" [fxHide]="false">
-      <div fxLayout="column wrap" style="background-color:#fff;padding:15px" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-        <div fxLayout="column wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-          <div>
-            <mat-divider></mat-divider>
-          </div>
-        </div>
+      <div fxLayout="column wrap" style="background-color:#fff;margin:15px" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
         <form [formGroup]="generatereportform" (ngSubmit)="reportformsubmit()">
-          <div fxLayout="row wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-            <div fxLayout="column wrap" style="padding:15px" fxFlex="30" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="column wrap" fxFlex="30" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
               <div>
                 <span class="headerblackclass">Report Type *</span></div>
               <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
@@ -24,11 +19,11 @@
                 </div>
               </div>
             </div>
-            <div fxLayout="column wrap" style="margin-top:15px" fxFlex="40" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
               <div>
                 <span class="headerblackclass">Upload File *</span></div>
               <div>
-                <mat-form-field class="reportGroupNameInbox">
+                <mat-form-field style="width: 250px " class="reportGroupNameInbox">
                   <input matInput [value]="filename" disabled>
                 </mat-form-field>
                 <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;">
@@ -38,15 +33,20 @@
                 <mat-error style="padding-left:10px" align="start" *ngIf="invalid_csv">Upload Only CSV/EXCEL File</mat-error>
               </div>
             </div>
-            <div fxLayout="column wrap" style="margin-top:30px" fxFlex="30" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-              <div fxLayout="row wrap" class="Dbbutton" fxLayoutAlign="center stretch" [fxShow]="true" [fxHide]="false"><button mat-button class="mr-10 greenbtn" [disabled]="generatereportform.invalid" type="submit">Submit</button><button mat-button class="mr-10 orangebtn" (click)="generateformreset()" type="button">Clear</button></div>
+            <div fxLayout="column wrap" fxFlex="20" fxLayoutAlign="end none" [fxShow]="true" [fxHide]="false">
+              <div fxLayout="row wrap" class="Dbbutton" fxLayoutAlign="end stretch" [fxShow]="true" [fxHide]="false"><button mat-button class="mr-10 greenbtn" [disabled]="generatereportform.invalid" type="submit">Submit</button><button mat-button class="mr-10 orangebtn" (click)="generateformreset()" type="button">Clear</button></div>
             </div>
           </div>
-          <div fxLayout="column wrap" style="padding:5px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+          <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="column wrap" style="padding:10px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false" *ngIf="tablevisible">
+              <div>
+                <mat-divider></mat-divider>
+              </div>
+            </div>
             <div *ngIf="tablevisible">
               <bh-tabledemo [rowData]="testContent" [sqColumnDefinition]="columnDefinition" (getSelectedRows)="onNotifySelected($event)" [sqPaginationConfig]="tablePaginationSettings"></bh-tabledemo>
             </div>
-            <div fxLayout="column wrap" style="padding-left:15px" fxLayoutAlign="start start" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="column wrap" fxLayoutAlign="start start" [fxShow]="true" [fxHide]="false">
               <div fxLayout="row wrap" class="Dbbutton" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false"><button mat-button class="mr-10 greenbtn" *ngIf="downloadable" (click)="generatereport()" type="button">Generate</button><button mat-button class="mr-10 orangebtn" *ngIf="subscribable">Subscribe</button></div>
             </div>
           </div>

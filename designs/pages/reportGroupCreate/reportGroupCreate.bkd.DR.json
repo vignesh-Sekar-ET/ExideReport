@@ -143,7 +143,7 @@
                     },
                     {
                         "_key": "style",
-                        "_value": "padding-left:4%",
+                        "_value": "padding-left:2%",
                         "_type": "kv",
                         "_attrDef": "p"
                     },
@@ -680,7 +680,7 @@
                                     },
                                     {
                                         "_key": "style",
-                                        "_value": "padding:12px",
+                                        "_value": "",
                                         "_type": "kv",
                                         "_attrDef": "p"
                                     },
@@ -1831,7 +1831,7 @@
                                                             "_key": "matError",
                                                             "_value": [
                                                                 {
-                                                                    "input1": "this.reportCreateForm.invalid",
+                                                                    "input1": "reportCreateForm.value.reportGroupCode == ''",
                                                                     "input2": "Please enter reportgroupcode!!",
                                                                     "toggle": {
                                                                         "toggleData": [],

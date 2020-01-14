@@ -7,7 +7,7 @@
       <form [formGroup]="loginform" (ngSubmit)="LoginSubmit()">
         <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
           <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
-            <input matInput name="username" type="text" placeholder="Username" required formControlName="username" id="username">
+            <input matInput name="username" type="text" placeholder="Username" required formControlName="username" (keyup)="usernamechange($event)" id="username">
             <mat-error align="start" *ngIf="loginform.value.username == &apos;&apos;">Please Enter Username</mat-error>
             <mat-error align="start" *ngIf="loginform.value.username.length &lt; 3 &amp;&amp; loginform.value.username !=&apos;&apos;">Enter min 3 to max 20 char</mat-error>
             <mat-error align="start" *ngIf="loginform.value.username.length &gt; 20">Enter min 3 to max 20 char</mat-error>

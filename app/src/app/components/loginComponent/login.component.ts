@@ -11,6 +11,8 @@ import 'rxjs';
 import { authService } from '../../services/auth/auth.service';
 import { UserIdleService } from 'angular-user-idle';
 import { reportcreateserviceService } from 'app/services/reportcreateservice/reportcreateservice.service';
+import { systemconfigserviceService } from '../../services/systemconfigservice/systemconfigservice.service';
+
 
 
 @Component({
@@ -32,7 +34,8 @@ export class loginComponent implements OnInit {
         private dashserve: dashboardService,
         private auth: authService, private userIdle: UserIdleService,
         private reportservice: reportcreateserviceService,
-        private remember_me_service: CookieService) {
+        private remember_me_service: CookieService,
+        private systemconfig: systemconfigserviceService) {
 
     }
 
@@ -70,11 +73,23 @@ export class loginComponent implements OnInit {
                     this.userIdle.startWatching();
                     this.userIdle.onTimerStart().subscribe(count => console.log(count));
                     this.userIdle.onTimeout().subscribe(() => {
-                        this._snackBar.open("Idle Time out", "", {
+                        this._snackBar.open("Idle Time Out", "", {
                             duration: 4000,
+                            verticalPosition: 'top'
                         });
 
                         this.router.navigate(['/login']);
+                    });
+
+                    this.systemconfig.getSystemConfig().subscribe((response) => {
+                        let timeoutvalue = response[0].max_timeout * 1000
+                        setTimeout(() => {
+                            this._snackBar.open("Session Time Out", "", {
+                                duration: 4000,
+                                verticalPosition: 'top'
+                            });
+                            this.router.navigate(['/login']);
+                        }, timeoutvalue);
                     });
 
                     if (this.remember_me) {
@@ -129,11 +144,13 @@ export class loginComponent implements OnInit {
                 else if (this.datavalue.result == 'failure' && this.datavalue.reason == 'invaliduser') {
                     this._snackBar.open("Username Or Password Incorrect", "", {
                         duration: 2000,
+                        verticalPosition: 'top'
                     });
                 }
                 else {
                     this._snackBar.open("Group Not Defined", "", {
                         duration: 2000,
+                        verticalPosition: 'top'
                     });
                 }
 
@@ -143,6 +160,7 @@ export class loginComponent implements OnInit {
             (err) => {
                 this._snackBar.open("Server problem", "", {
                     duration: 2000,
+                    verticalPosition: 'top'
                 });
             });
     }
@@ -156,4 +174,9 @@ export class loginComponent implements OnInit {
         }
 
     }
+    usernamechange(event: any) {
+        let values = event.target.value;
+        this.loginform.patchValue({ username: values.replace(/^\s+|\s+$/gm, "") })
+    }
+
 }

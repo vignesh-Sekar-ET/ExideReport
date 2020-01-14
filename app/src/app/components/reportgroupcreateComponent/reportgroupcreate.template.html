@@ -1,6 +1,6 @@
 <div fxLayout="row wrap" style="height:100%;background:#f3f4f5;" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
   <div fxLayout="column wrap" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-    <div fxLayout="row wrap" style="padding-left:4%" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+    <div fxLayout="row wrap" style="padding-left:2%" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
       <h3>
         <span class="commontextredcolor"> {{title}}</span></h3>
     </div>
@@ -8,7 +8,7 @@
       <div fxLayout="column wrap" style="background-color:#fff;padding:15px;margin:15px" fxFlex="100" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
         <form [formGroup]="reportCreateForm">
           <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
-            <div fxLayout="row wrap" style="padding:12px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
+            <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
               <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
                 <div>
                   <span class="headerblackclass">Report Group Name</span></div>
@@ -27,7 +27,7 @@
                     <div fxLayout="column wrap" style="padding-top:8px" fxLayoutAlign="start stretch" [fxShow]="true" [fxHide]="false">
                       <mat-form-field class="reportGroupNameInbox" [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;">
                         <input matInput required formControlName="reportGroupCode" appAllowOnlyNumber="appAllowOnlyNumber">
-                        <mat-error align="start" *ngIf="this.reportCreateForm.invalid">Please enter reportgroupcode!!</mat-error>
+                        <mat-error align="start" *ngIf="reportCreateForm.value.reportGroupCode == &apos;&apos;">Please enter reportgroupcode!!</mat-error>
                         <mat-error align="start" *ngIf="reportCreateForm.value.reportGroupCode.length &gt;10">Please Enter max 10 code</mat-error>
                       </mat-form-field>
                     </div>

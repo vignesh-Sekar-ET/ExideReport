@@ -36,7 +36,7 @@ export class createreportComponent implements OnInit {
                 rname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
                 typeq: ['',[Validators.required]],
                 source: ['', [Validators.required]],
-                ptname: [''],
+                ptname: ['',],
                 query: ['', [Validators.required]],
                 rgpname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
                 reports_id:[''],
@@ -135,13 +135,7 @@ export class createreportComponent implements OnInit {
 
     formclear() {
         this.createreportform.reset();
-        // this.createreportform.value.rname   ='';
-        // this.createreportform.value.typeq   ='';
-        // this.createreportform.value.ptname  ='';
-        // this.createreportform.value.query   ='';
-        // this.createreportform.value.rgpname ='';
 
-        console.log(this.createreportform)
     }
 
 

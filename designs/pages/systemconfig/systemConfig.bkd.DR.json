@@ -143,7 +143,7 @@
                     },
                     {
                         "_key": "style",
-                        "_value": "background:#f3f4f5;padding-left:40px",
+                        "_value": "background:#f3f4f5;padding-left:2%",
                         "_type": "kv",
                         "_attrDef": "p"
                     },
@@ -488,7 +488,7 @@
                         },
                         {
                             "_key": "style",
-                            "_value": "background-color:#fff;padding:15px;margin:15px",
+                            "_value": "background-color:#fff;margin:15px",
                             "_type": "kv",
                             "_attrDef": "p"
                         },
@@ -1154,7 +1154,7 @@
                                     },
                                     {
                                         "_key": "style",
-                                        "_value": "padding:12px",
+                                        "_value": "",
                                         "_type": "kv",
                                         "_attrDef": "p"
                                     },
@@ -1625,7 +1625,7 @@
                                                 },
                                                 {
                                                     "_key": "readonly",
-                                                    "_value": "true",
+                                                    "_value": "",
                                                     "_type": "kv",
                                                     "_attrDef": "p"
                                                 },
@@ -2285,7 +2285,7 @@
                                                         },
                                                         {
                                                             "_key": "readonly",
-                                                            "_value": "true",
+                                                            "_value": "",
                                                             "_type": "kv",
                                                             "_attrDef": "p"
                                                         },

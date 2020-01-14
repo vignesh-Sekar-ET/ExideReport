@@ -143,7 +143,7 @@
                     },
                     {
                         "_key": "style",
-                        "_value": "background:#f3f4f5;padding-left:4%",
+                        "_value": "background:#f3f4f5;padding-left:2%",
                         "_type": "kv",
                         "_attrDef": "p"
                     },
@@ -614,7 +614,7 @@
                                 },
                                 {
                                     "_key": "style",
-                                    "_value": "padding:12px",
+                                    "_value": "padding:12px;",
                                     "_type": "kv",
                                     "_attrDef": "p"
                                 },
